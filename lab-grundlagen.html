@@ -48,6 +48,17 @@
         .notebook-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.2s; background: var(--orange); color: white; font-size: 1rem; }
         .notebook-cta:hover { opacity: 0.9; transform: translateY(-2px); }
         @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+    
+        .colab-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 700;
+            text-decoration: none; font-size: 0.9rem; transition: all 0.2s;
+            border: 2px solid #E8792F; color: #E8792F; background: white;
+        }
+        .colab-btn:hover { background: #E8792F; color: white; }
+        .colab-btn img { height: 20px; }
+        .notebook-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.5rem; }
+
     </style>
 </head>
 <body>
@@ -375,6 +386,9 @@ function App() {
                         <a href={tr.notebook_link} target="_blank" rel="noopener noreferrer" className="notebook-cta">
                             {tr.notebook_label}
                         </a>
+                        <div className="notebook-buttons" style={{marginTop:"0.75rem"}}>
+                            <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/01_CRISP_DM.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" style={{height:"20px"}}/> CRISP-DM Notebook</a>
+                        </div>
                     </div>
                     <div className="info-box mt-4">
                         <p className="text-blue-800 text-sm">JupyterLab muss lokal laufen (docker compose up -d). Dann ist es unter localhost:8888 erreichbar.</p>

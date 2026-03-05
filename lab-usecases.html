@@ -45,6 +45,17 @@
         h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
         p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
         @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+    
+        .colab-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 700;
+            text-decoration: none; font-size: 0.9rem; transition: all 0.2s;
+            border: 2px solid #E8792F; color: #E8792F; background: white;
+        }
+        .colab-btn:hover { background: #E8792F; color: white; }
+        .colab-btn img { height: 20px; }
+        .notebook-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.5rem; }
+
     </style>
 </head>
 <body>
@@ -364,6 +375,11 @@ df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
                            style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
                             Notebook in Docker öffnen →
                         </a>
+                    <div className="notebook-cta-group">
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/09_Fallstudie_Customer_Churn.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 09 Fallstudie Customer Churn</a>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/10_Fallstudie_Movies.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 10 Fallstudie Movies</a>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/11_Fallstudie_Used_Cars.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 11 Fallstudie Used Cars</a>
+                    </div>
                     </div>
                 </div>
             </main>
