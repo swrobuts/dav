@@ -10,20 +10,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root { --primary: #0389CF; --orange: #E8792F; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; }
-        .header { position: fixed; top: 0; left: 0; right: 0; background: var(--primary); color: white; height: 4rem; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 50; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; margin: 0; }
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: white;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+            height: 4rem; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between; z-index: 50;
+        }
         .sidebar { position: fixed; left: 0; top: 4rem; width: 260px; height: calc(100vh - 4rem); background: #f0f4f8; border-right: 1px solid #ddd; overflow-y: auto; padding: 1.5rem 0; z-index: 40; }
-        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; border-left: 4px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; transition: all 0.2s; }
+        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; border-left: 3px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; transition: all 0.2s; }
         .sidebar-item:hover { background: #e1eaf5; }
-        .sidebar-item.active { background: var(--orange); color: white; border-left-color: var(--orange); }
+        .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
         .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
         .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; font-size: 0.85rem; margin: 1rem 0; white-space: pre; overflow-x: auto; }
         .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
         .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
-        .lang-btn { padding: 0.4rem 0.75rem; border: 2px solid rgba(255,255,255,0.4); background: transparent; border-radius: 0.375rem; cursor: pointer; font-weight: 600; font-size: 0.8rem; color: white; }
-        .lang-btn.active { background: var(--orange); border-color: var(--orange); }
+        .lang-btn {
+            padding: 0.4rem 0.7rem; border-radius: 0.375rem;
+            border: 2px solid #e5e7eb; background: white;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
+            color: #666; transition: all 0.2s;
+        }
+        .lang-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+        .lang-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
         .quiz-option { display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; font-size: 0.9rem; text-align: left; background: white; transition: all 0.2s; }
         .quiz-option:hover { border-color: var(--primary); background: #eff6ff; }
         .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; }
@@ -55,7 +68,12 @@ function QuizSection({ questions, title, intro }) {
             </div>
         ))}
         <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
-        {score !== null && <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}><p className="text-2xl font-black">{score}/{questions.length}</p><p>{score>=questions.length*0.8?'✓ Sehr gut!':'Nochmal lesen!'}</p></div>}
+        {score !== null && (
+            <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}>
+                <p className="text-2xl font-black">{score}/{questions.length}</p>
+                <p className="font-semibold">{score>=questions.length*0.8?'Sehr gut!':'Nochmal lesen!'}</p>
+            </div>
+        )}
         </div>
     );
 }
@@ -68,6 +86,21 @@ const quiz_questions = [
     { q: 'Was versteht man unter "Temporal Data"?', opts: ['Daten, die zeitabhängige Informationen enthalten','Temporär gespeicherte Daten, die regelmäßig gelöscht werden','Daten, die aus Temperaturmessungen bestehen','Daten, die in temporären Speicherstrukturen gehalten werden'], ans: 0 }
 ];
 
+const crisp_phases_data = [
+    { name: 'Business Understanding', num: '01', desc_de: 'Was wollen wir herausfinden? KPI definieren.', desc_en: 'What do we want to find out? Define KPIs.' },
+    { name: 'Data Understanding', num: '02', desc_de: 'EDA: Verteilungen, Korrelationen, Fehlerbilder.', desc_en: 'EDA: Distributions, correlations, error patterns.' },
+    { name: 'Data Preparation', num: '03', desc_de: 'Bereinigen, transformieren, encoden, skalieren.', desc_en: 'Clean, transform, encode, scale.' },
+    { name: 'Modeling', num: '04', desc_de: 'Modell wählen, Features vorbereiten, trainieren.', desc_en: 'Choose model, prepare features, train.' },
+    { name: 'Evaluation', num: '05', desc_de: 'Ergebnisse bewerten, Hypothesen prüfen.', desc_en: 'Evaluate results, check hypotheses.' },
+    { name: 'Deployment', num: '06', desc_de: 'Erkenntnisse kommunizieren, Modell deployen.', desc_en: 'Communicate insights, deploy model.' }
+];
+
+const cases = [
+    { nb: '09', title_de: 'Customer Churn', title_en: 'Customer Churn', label: 'Churn', desc_de: 'Telekommunikationsunternehmen: Welche Kunden werden abwandern?', desc_en: 'Telecom: Which customers will churn?', rows: '1.000', cols: '9' },
+    { nb: '10', title_de: 'Filmanalyse', title_en: 'Movie Analysis', label: 'Movies', desc_de: 'Streaming-Plattform: Welches Genre ist am profitabelsten?', desc_en: 'Streaming: Which genre is most profitable?', rows: '500', cols: '9' },
+    { nb: '11', title_de: 'Gebrauchtwagen', title_en: 'Used Cars', label: 'Cars', desc_de: 'Händler: Welche Faktoren bestimmen den Preis?', desc_en: 'Dealer: What factors determine price?', rows: '1.000+', cols: '10+' }
+];
+
 function App() {
     const [lang, setLang] = useState('de');
     const [active, setActive] = useState('overview');
@@ -76,22 +109,13 @@ function App() {
         ? ['Überblick','Fallstudie 1: Churn','Fallstudie 2: Movies','Fallstudie 3: Cars','CRISP-DM Workflow','Quiz','Notebooks']
         : ['Overview','Case 1: Churn','Case 2: Movies','Case 3: Cars','CRISP-DM Workflow','Quiz','Notebooks'];
 
-    const crisp_phases = [
-        { name: 'Business Understanding', icon: '🎯', desc: lang==='de'?'Was wollen wir herausfinden? KPI definieren.':'What do we want to find out? Define KPIs.' },
-        { name: 'Data Understanding', icon: '🔍', desc: lang==='de'?'EDA: Verteilungen, Korrelationen, Fehlerbilder.':'EDA: Distributions, correlations, error patterns.' },
-        { name: 'Data Preparation', icon: '🧹', desc: lang==='de'?'Bereinigen, transformieren, encoden, skalieren.':'Clean, transform, encode, scale.' },
-        { name: 'Modeling', icon: '🤖', desc: lang==='de'?'Modell wählen, Features vorbereiten, trainieren.':'Choose model, prepare features, train.' },
-        { name: 'Evaluation', icon: '📊', desc: lang==='de'?'Ergebnisse bewerten, Hypothesen prüfen.':'Evaluate results, check hypotheses.' },
-        { name: 'Deployment', icon: '🚀', desc: lang==='de'?'Erkenntnisse kommunizieren, Modell deployen.':'Communicate insights, deploy model.' }
-    ];
-
     return (
         <div>
             <div className="header">
                 <div className="flex items-center gap-4">
-                    <a href="index.html" className="text-white opacity-75 hover:opacity-100 text-sm">{lang==='de'?'← Zurück':'← Back'}</a>
-                    <span className="text-white opacity-30">|</span>
-                    <span className="text-white font-bold">{lang==='de'?'Fallstudien & Use Cases':'Case Studies & Use Cases'}</span>
+                    <a href="index.html" className="text-sm font-semibold" style={{color:'#0389CF'}}>← DAV Lab</a>
+                    <span style={{color:'#d1d5db'}}>|</span>
+                    <span className="font-bold" style={{color:'#1e293b'}}>{lang==='de'?'Fallstudien & Use Cases':'Case Studies & Use Cases'}</span>
                 </div>
                 <div className="flex gap-2">
                     <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
@@ -108,19 +132,15 @@ function App() {
                     <h2>{lang==='de'?'Fallstudien & Use Cases':'Case Studies & Use Cases'}</h2>
                     <p className="text-gray-600">{lang==='de'?'In den 3 Fallstudien wenden Sie alle DAV-Techniken auf echte Szenarien an – von Rohdaten bis zur Analyse. Jede Fallstudie folgt dem vollständigen CRISP-DM-Workflow.':'In the 3 case studies, you apply all DAV techniques to real scenarios – from raw data to analysis. Each case study follows the complete CRISP-DM workflow.'}</p>
                     <div className="grid md:grid-cols-3 gap-4 mt-4">
-                        {[
-                            { nb: '09', title: lang==='de'?'Customer Churn':'Customer Churn', icon: '📉', desc: lang==='de'?'Telekommunikationsunternehmen: Welche Kunden werden abwandern?':'Telecom: Which customers will churn?', rows: '1.000', cols: '9' },
-                            { nb: '10', title: lang==='de'?'Filmanalyse':'Movie Analysis', icon: '🎬', desc: lang==='de'?'Streaming-Plattform: Welches Genre ist am profitabelsten?':'Streaming: Which genre is most profitable?', rows: '500', cols: '9' },
-                            { nb: '11', title: lang==='de'?'Gebrauchtwagen':'Used Cars', icon: '🚗', desc: lang==='de'?'Händler: Welche Faktoren bestimmen den Preis?':'Dealer: What factors determine price?', rows: '1.000+', cols: '10+' }
-                        ].map((c,i) => (
-                            <div key={i} className="bg-white rounded-2xl p-5 border-2 border-gray-100 hover:border-orange-300 transition-all">
-                                <div className="text-3xl mb-2">{c.icon}</div>
-                                <div className="text-xs font-bold text-gray-400 mb-1">Notebook {c.nb}</div>
-                                <h3 className="text-base font-bold mb-1" style={{color:'#0389CF', marginTop:0}}>{c.title}</h3>
-                                <p className="text-sm text-gray-500 mb-2">{c.desc}</p>
+                        {cases.map((c,i) => (
+                            <div key={i} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-orange-300 transition-all" style={{borderColor:'rgba(3,137,207,0.15)'}}>
+                                <div className="text-xs font-bold mb-1" style={{color:'#94a3b8'}}>Notebook {c.nb}</div>
+                                <div className="inline-block text-xs font-bold px-2 py-0.5 rounded mb-2 text-white" style={{background:'#0389CF'}}>{c.label}</div>
+                                <h3 className="text-base font-bold mb-1" style={{color:'#0389CF', marginTop:'0.25rem'}}>{lang==='de'?c.title_de:c.title_en}</h3>
+                                <p className="text-sm text-gray-500 mb-2">{lang==='de'?c.desc_de:c.desc_en}</p>
                                 <div className="flex gap-2 text-xs text-gray-400">
                                     <span>{c.rows} {lang==='de'?'Zeilen':'rows'}</span>
-                                    <span>•</span>
+                                    <span>·</span>
                                     <span>{c.cols} {lang==='de'?'Spalten':'cols'}</span>
                                 </div>
                             </div>
@@ -130,8 +150,9 @@ function App() {
 
                 {/* Churn */}
                 <div id="churn" className="mb-12">
-                    <h2>📉 {lang==='de'?'Fallstudie 1: Customer Churn':'Case Study 1: Customer Churn'}</h2>
-                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                    <h2>{lang==='de'?'Fallstudie 1: Customer Churn':'Case Study 1: Customer Churn'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du bist Data Analyst bei einem Telekommunikationsunternehmen. Auftrag: Analysiere, welche Kunden das Unternehmen verlassen ("Churn"), und bereite die Daten für ein ML-Modell vor.':'You are a Data Analyst at a telecom company. Task: Analyze which customers leave the company ("churn") and prepare data for an ML model.'}</p>
                     </div>
                     <div className="code-block">{`import pandas as pd
@@ -192,8 +213,9 @@ print("Daten in PostgreSQL geladen!")`}</div>
 
                 {/* Movies */}
                 <div id="movies" className="mb-12">
-                    <h2>🎬 {lang==='de'?'Fallstudie 2: Filmanalyse':'Case Study 2: Movie Analysis'}</h2>
-                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                    <h2>{lang==='de'?'Fallstudie 2: Filmanalyse':'Case Study 2: Movie Analysis'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du analysierst Filmdaten für eine Streaming-Plattform. Fragen: Welches Genre ist am profitabelsten? Gibt es eine Korrelation zwischen Budget und Umsatz?':'You analyze movie data for a streaming platform. Questions: Which genre is most profitable? Is there a correlation between budget and revenue?'}</p>
                     </div>
                     <div className="code-block">{`import pandas as pd
@@ -237,13 +259,14 @@ fig2 = px.scatter(df, x='budget_mio', y='revenue_mio',
     trendline='ols')
 fig2.show()
 
-print(f"\\nKorrelation Budget↔Revenue: {df['budget_mio'].corr(df['revenue_mio']):.3f}")`}</div>
+print(f"\\nKorrelation Budget/Revenue: {df['budget_mio'].corr(df['revenue_mio']):.3f}")`}</div>
                 </div>
 
                 {/* Cars */}
                 <div id="cars" className="mb-12">
-                    <h2>🚗 {lang==='de'?'Fallstudie 3: Gebrauchtwagen-Preise':'Case Study 3: Used Car Prices'}</h2>
-                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                    <h2>{lang==='de'?'Fallstudie 3: Gebrauchtwagen-Preise':'Case Study 3: Used Car Prices'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du arbeitest für einen Gebrauchtwagenhändler. Ziel: Bereite den Datensatz für ein Preisvorhersage-Modell vor. Nutze cars.xlsx aus dem Kurs.':'You work for a used car dealer. Goal: Prepare the dataset for a price prediction model. Use cars.xlsx from the course.'}</p>
                     </div>
                     <div className="code-block">{`import pandas as pd
@@ -299,12 +322,12 @@ df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
                     <h2>{lang==='de'?'"Putting it all together": Der vollständige DAV-Workflow':'"Putting it all together": The Complete DAV Workflow'}</h2>
                     <p className="text-gray-600">{lang==='de'?'Alle 6 CRISP-DM-Phasen für ein vollständiges Data-Science-Projekt:':'All 6 CRISP-DM phases for a complete data science project:'}</p>
                     <div className="space-y-3 mt-4">
-                        {crisp_phases.map((ph, i) => (
-                            <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-200">
-                                <span className="text-2xl">{ph.icon}</span>
+                        {crisp_phases_data.map((ph, i) => (
+                            <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-200" style={{borderColor:'rgba(3,137,207,0.15)'}}>
+                                <div style={{background:'#0389CF', color:'white', borderRadius:'6px', width:'2.5rem', height:'2.5rem', display:'flex', alignItems:'center', justifyContent:'center', fontWeight:800, fontSize:'0.8rem', flexShrink:0}}>{ph.num}</div>
                                 <div>
-                                    <div className="font-bold" style={{color:'#0389CF'}}>{i+1}. {ph.name}</div>
-                                    <p className="text-gray-500 text-sm mt-0.5">{ph.desc}</p>
+                                    <div className="font-bold" style={{color:'#0389CF'}}>{ph.name}</div>
+                                    <p className="text-gray-500 text-sm mt-0.5">{lang==='de'?ph.desc_de:ph.desc_en}</p>
                                 </div>
                             </div>
                         ))}
@@ -315,7 +338,9 @@ df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
                     </div>
                 </div>
 
-                <div id="quiz" className="mb-12"><QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Fallstudien & Konzepte':'Quiz: Case Studies & Concepts'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} /></div>
+                <div id="quiz" className="mb-12">
+                    <QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Fallstudien & Konzepte':'Quiz: Case Studies & Concepts'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} />
+                </div>
 
                 <div id="notebooks" className="mb-12">
                     <h2>{lang==='de'?'Notebooks öffnen':'Open Notebooks'}</h2>
@@ -323,25 +348,37 @@ df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
                         {['09_Fallstudie_Customer_Churn','10_Fallstudie_Movies','11_Fallstudie_Used_Cars'].map(nb => (
                             <a key={nb} href={`http://localhost:8888/lab/tree/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
                                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
-                                📓 {nb}.ipynb
+                                {nb}.ipynb →
                             </a>
                         ))}
                     </div>
-                    <div className="info-box mt-4"><p className="text-blue-800 text-sm">💡 {lang==='de'?'Datensätze werden mit Python generiert (generate_data.py). Starte mit: cd docker && python data/generate_data.py':'Datasets are generated with Python (generate_data.py). Start with: cd docker && python data/generate_data.py'}</p></div>
+                    <div className="info-box mt-4">
+                        <p className="text-blue-800 text-sm">{lang==='de'?'Datensätze werden mit Python generiert (generate_data.py). Starte mit: cd docker && python data/generate_data.py':'Datasets are generated with Python (generate_data.py). Start with: cd docker && python data/generate_data.py'}</p>
+                    </div>
+                    <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
+                        <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
+                            {lang==='de' ? 'Notebook in Docker öffnen:' : 'Open Notebook in Docker:'}
+                        </p>
+                        <a href="http://localhost:8888/lab/tree/notebooks/09_Fallstudie_Customer_Churn.ipynb"
+                           target="_blank" rel="noopener noreferrer"
+                           style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
+                            Notebook in Docker öffnen →
+                        </a>
+                    </div>
                 </div>
             </main>
+
+            {/* Footer */}
+            <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
+                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <div style={{marginTop:'1rem'}}>
+                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
+                </div>
+            </footer>
         </div>
     );
 }
-
-const crisp_phases = [
-    { name: 'Business Understanding', icon: '🎯', desc: '' },
-    { name: 'Data Understanding', icon: '🔍', desc: '' },
-    { name: 'Data Preparation', icon: '🧹', desc: '' },
-    { name: 'Modeling', icon: '🤖', desc: '' },
-    { name: 'Evaluation', icon: '📊', desc: '' },
-    { name: 'Deployment', icon: '🚀', desc: '' }
-];
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>

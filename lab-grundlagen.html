@@ -10,24 +10,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root { --primary: #0389CF; --orange: #E8792F; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; color: #1e293b; }
-        .header { position: fixed; top: 0; left: 0; right: 0; background: var(--primary); color: white; height: 4rem; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; color: #1e293b; margin: 0; }
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: white;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+            height: 4rem; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between; z-index: 50;
+        }
         .sidebar { position: fixed; left: 0; top: 4rem; width: 260px; height: calc(100vh - 4rem); background: #f0f4f8; border-right: 1px solid #ddd; overflow-y: auto; padding: 1.5rem 0; z-index: 40; }
-        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; transition: all 0.2s; border-left: 4px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; }
+        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; }
         .sidebar-item:hover { background: #e1eaf5; }
-        .sidebar-item.active { background: var(--orange); color: white; border-left-color: var(--orange); }
+        .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
         .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
-        .section { display: none; }
-        .section.active { display: block; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.875rem; margin: 1rem 0; white-space: pre; }
         .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
-        .lang-btn { padding: 0.4rem 0.75rem; border: 2px solid rgba(255,255,255,0.4); background: transparent; border-radius: 0.375rem; cursor: pointer; font-weight: 600; font-size: 0.8rem; color: white; transition: all 0.2s; }
-        .lang-btn.active { background: var(--orange); border-color: var(--orange); }
-        .quiz-option { display: block; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; font-size: 0.9rem; }
+        .lang-btn {
+            padding: 0.4rem 0.7rem; border-radius: 0.375rem;
+            border: 2px solid #e5e7eb; background: white;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
+            color: #666; transition: all 0.2s;
+        }
+        .lang-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+        .lang-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+        .quiz-option { display: block; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; font-size: 0.9rem; width: 100%; text-align: left; background: white; }
         .quiz-option:hover { border-color: var(--primary); background: #eff6ff; }
         .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; }
         .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; }
@@ -35,8 +45,9 @@
         h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
         p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
         .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
-        .notebook-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 700; text-decoration: none; transition: all 0.2s; background: var(--orange); color: white; }
-        .notebook-link:hover { opacity: 0.9; transform: translateY(-2px); }
+        .notebook-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.2s; background: var(--orange); color: white; font-size: 1rem; }
+        .notebook-cta:hover { opacity: 0.9; transform: translateY(-2px); }
+        @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
     </style>
 </head>
 <body>
@@ -47,7 +58,7 @@ const { useState } = React;
 const t = {
     de: {
         brand: 'DAV Lab',
-        back: '← Zurück',
+        back: '← DAV Lab',
         title: 'Grundlagen & CRISP-DM',
         sections: ['Überblick', 'Was ist DAV?', 'CRISP-DM', 'Garbage in/out', 'Warum Python?', 'Lernziele', 'Quiz', 'Notebook'],
         overview: {
@@ -79,7 +90,7 @@ const t = {
                 { name: 'Deployment', color: '#f59e0b', desc: 'Ergebnisse in die Praxis bringen, Modell in Produktion nehmen.' }
             ],
             focus: 'DAV fokussiert auf die Phasen 2 und 3 – Data Understanding und Data Preparation. Diese Phasen sind iterativ: Oft stellt man beim Bereinigen fest, dass man die Daten noch nicht vollständig versteht.',
-            iterative: 'CRISP-DM ist kein linearer Prozess! Man springt zwischen Phasen hin und her. Typisch: Man entdeckt beim Modellieren, dass weitere Datenbereiningung nötig ist.'
+            iterative: 'CRISP-DM ist kein linearer Prozess! Man springt zwischen Phasen hin und her. Typisch: Man entdeckt beim Modellieren, dass weitere Datenbereinigung nötig ist.'
         },
         garbage: {
             title: '"Garbage in, Garbage out"',
@@ -135,39 +146,19 @@ print(df.columns.tolist()) # Spaltennamen`
         quiz_title: 'Quiz: Grundlagen',
         quiz_intro: 'Testen Sie Ihr Verständnis – 5 Fragen.',
         quiz: [
-            {
-                q: 'Was versteht man unter "Data Cleansing"?',
-                opts: ['Die Integration von Daten aus verschiedenen Quellen', 'Die Visualisierung von Daten', 'Das Bereinigen von Daten, um Inkonsistenzen und Fehler zu korrigieren', 'Die Reduktion von Daten auf wesentliche Informationen'],
-                ans: 2
-            },
-            {
-                q: 'Was bedeutet "Garbage in, Garbage out"?',
-                opts: ['Der Ausschluss von irrelevanten Daten aus Analysen', 'Die Notwendigkeit, hochqualitative Daten für aussagekräftige Ergebnisse zu verwenden', 'Der Prozess der Datenreduktion', 'Eine spezielle Technik der Datentransformation'],
-                ans: 1
-            },
-            {
-                q: 'Welche Rolle spielt "Data Preparation" im CRISP-DM Prozessmodell?',
-                opts: ['Es ist ein eigenständiger Teilschritt, der sich auf die systematische Bereinigung und Strukturierung von Daten konzentriert', 'Es ist lediglich eine vorbereitende Phase ohne große Bedeutung', 'Es bezieht sich ausschließlich auf die Auswahl von Daten für die Analyse', 'Es ist nicht Teil des CRISP-DM Modells'],
-                ans: 0
-            },
-            {
-                q: 'Was ist ein Vorteil von "Data Literacy" im Kontext der Datenaufbereitung?',
-                opts: ['Die Fähigkeit, die Zuverlässigkeit von Datenquellen kritisch zu beurteilen', 'Die ausschließliche Nutzung von Python für Datenanalysen', 'Die Vermeidung jeglicher Form von Datenvisualisierung', 'Die Beschränkung auf Daten aus einer einzigen Quelle'],
-                ans: 0
-            },
-            {
-                q: 'Welcher Schritt gehört NICHT direkt zur "Data Preparation"?',
-                opts: ['Datenbereinigung', 'Datenintegration', 'Modellierung', 'Datentransformation'],
-                ans: 2
-            }
+            { q: 'Was versteht man unter "Data Cleansing"?', opts: ['Die Integration von Daten aus verschiedenen Quellen', 'Die Visualisierung von Daten', 'Das Bereinigen von Daten, um Inkonsistenzen und Fehler zu korrigieren', 'Die Reduktion von Daten auf wesentliche Informationen'], ans: 2 },
+            { q: 'Was bedeutet "Garbage in, Garbage out"?', opts: ['Der Ausschluss von irrelevanten Daten aus Analysen', 'Die Notwendigkeit, hochqualitative Daten für aussagekräftige Ergebnisse zu verwenden', 'Der Prozess der Datenreduktion', 'Eine spezielle Technik der Datentransformation'], ans: 1 },
+            { q: 'Welche Rolle spielt "Data Preparation" im CRISP-DM Prozessmodell?', opts: ['Es ist ein eigenständiger Teilschritt, der sich auf die systematische Bereinigung und Strukturierung von Daten konzentriert', 'Es ist lediglich eine vorbereitende Phase ohne große Bedeutung', 'Es bezieht sich ausschließlich auf die Auswahl von Daten für die Analyse', 'Es ist nicht Teil des CRISP-DM Modells'], ans: 0 },
+            { q: 'Was ist ein Vorteil von "Data Literacy" im Kontext der Datenaufbereitung?', opts: ['Die Fähigkeit, die Zuverlässigkeit von Datenquellen kritisch zu beurteilen', 'Die ausschließliche Nutzung von Python für Datenanalysen', 'Die Vermeidung jeglicher Form von Datenvisualisierung', 'Die Beschränkung auf Daten aus einer einzigen Quelle'], ans: 0 },
+            { q: 'Welcher Schritt gehört NICHT direkt zur "Data Preparation"?', opts: ['Datenbereinigung', 'Datenintegration', 'Modellierung', 'Datentransformation'], ans: 2 }
         ],
         notebook_title: 'Zum Notebook',
         notebook_desc: 'Öffnen Sie das Notebook in JupyterLab für praktische Übungen:',
         notebook_link: 'http://localhost:8888/lab/tree/notebooks/01_CRISP_DM.ipynb',
-        notebook_label: '01_CRISP_DM.ipynb öffnen'
+        notebook_label: 'Notebook in Docker öffnen →'
     },
     en: {
-        brand: 'DAV Lab', back: '← Back',
+        brand: 'DAV Lab', back: '← DAV Lab',
         title: 'Fundamentals & CRISP-DM',
         sections: ['Overview', 'What is DAV?', 'CRISP-DM', 'Garbage in/out', 'Why Python?', 'Learning Goals', 'Quiz', 'Notebook'],
         overview: {
@@ -192,7 +183,7 @@ print(df.columns.tolist()) # Spaltennamen`
         notebook_title: 'Open Notebook',
         notebook_desc: 'Open the notebook in JupyterLab for hands-on exercises:',
         notebook_link: 'http://localhost:8888/lab/tree/notebooks/01_CRISP_DM.ipynb',
-        notebook_label: 'Open 01_CRISP_DM.ipynb'
+        notebook_label: 'Open Notebook in Docker →'
     }
 };
 
@@ -236,7 +227,7 @@ function QuizSection({ questions, title, intro }) {
             {score !== null && (
                 <div className="mt-4 p-4 rounded-xl text-center" style={{background: score >= questions.length * 0.8 ? '#f0fdf4' : '#fef2f2'}}>
                     <p className="text-2xl font-black">{score}/{questions.length}</p>
-                    <p className="font-semibold">{score >= questions.length * 0.8 ? '✓ Sehr gut!' : 'Nochmal lesen!'}</p>
+                    <p className="font-semibold">{score >= questions.length * 0.8 ? 'Sehr gut!' : 'Nochmal lesen!'}</p>
                 </div>
             )}
         </div>
@@ -254,9 +245,9 @@ function App() {
         <div>
             <div className="header">
                 <div className="flex items-center gap-4">
-                    <a href="index.html" className="text-white opacity-75 hover:opacity-100 text-sm font-medium">{tr.back}</a>
-                    <span className="text-white opacity-30">|</span>
-                    <span className="text-white font-bold">{tr.title}</span>
+                    <a href="index.html" className="text-sm font-semibold" style={{color:'#0389CF'}}>{tr.back}</a>
+                    <span style={{color:'#d1d5db'}}>|</span>
+                    <span className="font-bold" style={{color:'#1e293b'}}>{tr.title}</span>
                 </div>
                 <div className="flex gap-2">
                     <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
@@ -278,7 +269,7 @@ function App() {
                     <p>{tr.overview.desc}</p>
                     <div className="concept-box">
                         <p className="font-semibold mb-2" style={{color:'#0389CF'}}>In diesem Modul lernen Sie:</p>
-                        <ul>{tr.overview.goals.map((g,i) => <li key={i} className="flex items-start gap-2 text-sm text-gray-600 mb-1"><span className="text-green-500">✓</span>{g}</li>)}</ul>
+                        <ul>{tr.overview.goals.map((g,i) => <li key={i} className="flex items-start gap-2 text-sm text-gray-600 mb-1"><span className="text-green-500 font-bold flex-shrink-0">✓</span>{g}</li>)}</ul>
                     </div>
                 </div>
 
@@ -321,17 +312,19 @@ function App() {
                         ))}
                     </div>
                     <div className="info-box"><p className="text-blue-800 text-sm">{tr.crisp.focus}</p></div>
-                    <div className="tip-box"><p className="text-yellow-800 text-sm font-semibold">💡 {tr.crisp.iterative}</p></div>
+                    <div className="tip-box"><p className="text-yellow-800 text-sm font-semibold">{tr.crisp.iterative}</p></div>
                 </div>
 
                 <div id="garbage" className="mb-12">
                     <h2>{tr.garbage.title}</h2>
                     <p>{tr.garbage.p1}</p>
-                    <div className="challenge-box"><p className="text-green-800 text-sm"><span className="font-bold">📋 Praxisbeispiel: </span>{tr.garbage.example}</p></div>
+                    <div className="challenge-box"><p className="text-green-800 text-sm"><span className="font-bold">Praxisbeispiel: </span>{tr.garbage.example}</p></div>
                     <h3>{tr.garbage.consequences}</h3>
                     <ul className="space-y-2">
                         {tr.garbage.cons_items.map((c,i) => (
-                            <li key={i} className="flex items-center gap-2 text-gray-600 text-sm"><span className="text-red-400">⚠️</span>{c}</li>
+                            <li key={i} className="flex items-center gap-2 text-gray-600 text-sm">
+                                <span className="text-red-400 font-bold flex-shrink-0">—</span>{c}
+                            </li>
                         ))}
                     </ul>
                     <div className="concept-box mt-4"><p className="text-sm" style={{color:'#0389CF'}}>{tr.garbage.solution}</p></div>
@@ -378,19 +371,25 @@ function App() {
                 <div id="notebook" className="mb-12">
                     <h2>{tr.notebook_title}</h2>
                     <p>{tr.notebook_desc}</p>
-                    <div className="mt-4 flex flex-wrap gap-3">
-                        <a href={tr.notebook_link} target="_blank" rel="noopener noreferrer" className="notebook-link">
-                            📓 {tr.notebook_label}
-                        </a>
-                        <a href="http://localhost:8888/lab/tree/notebooks/00_Willkommen.ipynb" target="_blank" rel="noopener noreferrer" className="notebook-link" style={{background:'#0389CF'}}>
-                            🏠 00_Willkommen.ipynb
+                    <div className="mt-4">
+                        <a href={tr.notebook_link} target="_blank" rel="noopener noreferrer" className="notebook-cta">
+                            {tr.notebook_label}
                         </a>
                     </div>
                     <div className="info-box mt-4">
-                        <p className="text-blue-800 text-sm">💡 JupyterLab muss lokal laufen (docker compose up -d). Dann ist es unter localhost:8888 erreichbar.</p>
+                        <p className="text-blue-800 text-sm">JupyterLab muss lokal laufen (docker compose up -d). Dann ist es unter localhost:8888 erreichbar.</p>
                     </div>
                 </div>
             </main>
+
+            {/* Footer */}
+            <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
+                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <div style={{marginTop:'1rem'}}>
+                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
+                </div>
+            </footer>
         </div>
     );
 }

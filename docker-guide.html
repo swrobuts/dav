@@ -15,11 +15,11 @@
             --color-light-blue: #EBF5FF;
             --color-light-yellow: #FFFBEB;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; margin: 0; }
         .text-primary { color: var(--color-primary); }
         .bg-primary { background-color: var(--color-primary); }
         .text-orange { color: var(--color-orange); }
-        .hero-section { background-color: var(--color-primary); }
         .code-block {
             background-color: #1e293b;
             border-left: 4px solid var(--color-orange);
@@ -56,24 +56,31 @@
         .nav-item {
             padding: 0.75rem 1.5rem; cursor: pointer;
             border-left: 3px solid transparent;
-            color: var(--color-primary); transition: all 0.2s;
+            color: #374151; transition: all 0.2s;
+            font-size: 0.875rem; font-weight: 500;
         }
-        .nav-item:hover { background-color: #e8f4f8; border-left-color: var(--color-orange); }
-        .nav-item.active { background-color: var(--color-light-blue); border-left-color: var(--color-orange); font-weight: 600; }
+        .nav-item:hover { background-color: #e1eaf5; border-left-color: rgba(3,137,207,0.3); }
+        .nav-item.active {
+            background-color: rgba(3,137,207,0.07);
+            border-left-color: var(--color-primary);
+            color: var(--color-primary);
+            font-weight: 600;
+        }
         .main-content { margin-left: 240px; padding: 2rem; }
         .sticky-navbar {
             position: sticky; top: 0; height: 4rem; background-color: white;
-            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 2rem; z-index: 50;
         }
         .lang-btn {
-            padding: 0.5rem 1rem; border: 1px solid #d0d0d0; background-color: white;
-            border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem;
-            transition: all 0.2s; color: var(--color-primary);
+            padding: 0.4rem 0.7rem; border-radius: 0.375rem;
+            border: 2px solid #e5e7eb; background: white;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
+            color: #666; transition: all 0.2s;
         }
-        .lang-btn.active { background-color: var(--color-orange); color: white; border-color: var(--color-orange); }
-        .lang-btn:hover { border-color: var(--color-orange); }
+        .lang-btn.active { background: #E8792F; color: white; border-color: #E8792F; }
+        .lang-btn:hover:not(.active) { border-color: #0389CF; color: #0389CF; }
         .info-box { background-color: var(--color-light-blue); border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
         .warning-box { background-color: var(--color-light-yellow); border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
         .success-box { background-color: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
@@ -118,10 +125,10 @@
             repo_title: 'Repository klonen',
             repo_option1: 'Option 1: Mit Git (empfohlen)',
             repo_option2: 'Option 2: ZIP herunterladen',
-            repo_zip: 'Gehen Sie zu github.com/swrobuts/dav-lab, klicken Sie auf "Code" → "Download ZIP", entpacken Sie das Archiv.',
-            repo_clone: 'git clone https://github.com/swrobuts/dav-lab.git\ncd dav-lab/docker',
+            repo_zip: 'Gehen Sie zu github.com/swrobuts/dav, klicken Sie auf "Code" → "Download ZIP", entpacken Sie das Archiv.',
+            repo_clone: 'git clone https://github.com/swrobuts/dav.git\ncd dav/docker',
             start_title: 'Lernumgebung starten',
-            start_desc: 'Im Verzeichnis dav-lab/docker:',
+            start_desc: 'Im Verzeichnis dav/docker:',
             start_cmd: 'docker compose up -d',
             start_steps: [
                 'Docker lädt beim ersten Start alle Images herunter (~2 GB, dauert 3–10 Minuten je nach Verbindung)',
@@ -148,26 +155,11 @@
             stop_restart: 'Beim nächsten Mal einfach wieder starten:',
             trouble_title: 'Häufige Probleme',
             trouble_items: [
-                {
-                    problem: 'Port 8888 bereits belegt',
-                    solution: 'Ein anderes Programm nutzt Port 8888. Beenden Sie es oder ändern Sie in docker-compose.yml "8888:8888" auf z.B. "8890:8888" und öffnen Sie localhost:8890.'
-                },
-                {
-                    problem: 'Docker Desktop nicht gestartet',
-                    solution: 'Starten Sie Docker Desktop und warten Sie, bis das Walsymbol ruhig leuchtet (nicht animiert). Dann erneut versuchen.'
-                },
-                {
-                    problem: '"Cannot connect to the Docker daemon"',
-                    solution: 'Docker Desktop läuft nicht. Starten Sie es und versuchen Sie es erneut.'
-                },
-                {
-                    problem: 'Container startet nicht (Exit 1)',
-                    solution: 'Logs ansehen: docker compose logs jupyter. Häufig fehlen Berechtigungen oder ein Port ist belegt.'
-                },
-                {
-                    problem: 'JupyterLab lädt nicht',
-                    solution: 'Warten Sie 30 Sekunden nach dem Start. Überprüfen Sie mit docker compose ps, ob der Container "Up" ist.'
-                }
+                { problem: 'Port 8888 bereits belegt', solution: 'Ein anderes Programm nutzt Port 8888. Beenden Sie es oder ändern Sie in docker-compose.yml "8888:8888" auf z.B. "8890:8888" und öffnen Sie localhost:8890.' },
+                { problem: 'Docker Desktop nicht gestartet', solution: 'Starten Sie Docker Desktop und warten Sie, bis das Walsymbol ruhig leuchtet (nicht animiert). Dann erneut versuchen.' },
+                { problem: '"Cannot connect to the Docker daemon"', solution: 'Docker Desktop läuft nicht. Starten Sie es und versuchen Sie es erneut.' },
+                { problem: 'Container startet nicht (Exit 1)', solution: 'Logs ansehen: docker compose logs jupyter. Häufig fehlen Berechtigungen oder ein Port ist belegt.' },
+                { problem: 'JupyterLab lädt nicht', solution: 'Warten Sie 30 Sekunden nach dem Start. Überprüfen Sie mit docker compose ps, ob der Container "Up" ist.' }
             ],
             cmds_title: 'Wichtige Docker-Befehle',
             cmds: [
@@ -208,10 +200,10 @@
             repo_title: 'Clone Repository',
             repo_option1: 'Option 1: With Git (recommended)',
             repo_option2: 'Option 2: Download ZIP',
-            repo_zip: 'Go to github.com/swrobuts/dav-lab, click "Code" → "Download ZIP", extract the archive.',
-            repo_clone: 'git clone https://github.com/swrobuts/dav-lab.git\ncd dav-lab/docker',
+            repo_zip: 'Go to github.com/swrobuts/dav, click "Code" → "Download ZIP", extract the archive.',
+            repo_clone: 'git clone https://github.com/swrobuts/dav.git\ncd dav/docker',
             start_title: 'Start Learning Environment',
-            start_desc: 'In the dav-lab/docker directory:',
+            start_desc: 'In the dav/docker directory:',
             start_cmd: 'docker compose up -d',
             start_steps: [
                 'Docker downloads all images on first start (~2 GB, takes 3-10 minutes depending on connection)',
@@ -238,26 +230,11 @@
             stop_restart: 'Next time, simply start again:',
             trouble_title: 'Common Problems',
             trouble_items: [
-                {
-                    problem: 'Port 8888 already in use',
-                    solution: 'Another program uses port 8888. Stop it, or change "8888:8888" to e.g. "8890:8888" in docker-compose.yml and open localhost:8890.'
-                },
-                {
-                    problem: 'Docker Desktop not started',
-                    solution: 'Start Docker Desktop and wait until the whale icon glows steadily (not animated). Then try again.'
-                },
-                {
-                    problem: '"Cannot connect to the Docker daemon"',
-                    solution: 'Docker Desktop is not running. Start it and try again.'
-                },
-                {
-                    problem: 'Container does not start (Exit 1)',
-                    solution: 'View logs: docker compose logs jupyter. Often missing permissions or a port is in use.'
-                },
-                {
-                    problem: 'JupyterLab does not load',
-                    solution: 'Wait 30 seconds after starting. Check with docker compose ps that the container is "Up".'
-                }
+                { problem: 'Port 8888 already in use', solution: 'Another program uses port 8888. Stop it, or change "8888:8888" to e.g. "8890:8888" in docker-compose.yml and open localhost:8890.' },
+                { problem: 'Docker Desktop not started', solution: 'Start Docker Desktop and wait until the whale icon glows steadily (not animated). Then try again.' },
+                { problem: '"Cannot connect to the Docker daemon"', solution: 'Docker Desktop is not running. Start it and try again.' },
+                { problem: 'Container does not start (Exit 1)', solution: 'View logs: docker compose logs jupyter. Often missing permissions or a port is in use.' },
+                { problem: 'JupyterLab does not load', solution: 'Wait 30 seconds after starting. Check with docker compose ps that the container is "Up".' }
             ],
             cmds_title: 'Important Docker Commands',
             cmds: [
@@ -278,7 +255,7 @@
             <button className="copy-button" onClick={() => {
                 navigator.clipboard.writeText(text);
                 setCopied(true); setTimeout(() => setCopied(false), 2000);
-            }}>{copied ? '✓' : 'Kopieren'}</button>
+            }}>{copied ? 'Kopiert' : 'Kopieren'}</button>
         );
     }
 
@@ -314,8 +291,8 @@
                 <div className="sticky-navbar">
                     <div className="flex items-center gap-4">
                         <a href="index.html" className="text-sm font-semibold" style={{color:'#0389CF'}}>{tr.brand}</a>
-                        <span className="text-gray-300">|</span>
-                        <span className="font-bold" style={{color:'#0389CF'}}>{tr.title}</span>
+                        <span style={{color:'#d1d5db'}}>|</span>
+                        <span className="font-bold" style={{color:'#1e293b'}}>{tr.title}</span>
                     </div>
                     <div className="flex gap-2">
                         <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
@@ -338,8 +315,14 @@
                 <main className="main-content max-w-4xl">
 
                     {/* Hero */}
-                    <div className="hero-section text-white rounded-2xl p-8 mb-8 flex items-center gap-6">
-                        <div className="text-6xl">🐳</div>
+                    <div style={{background:'#0389CF'}} className="text-white rounded-2xl p-8 mb-8 flex items-center gap-6">
+                        <div style={{background:'rgba(255,255,255,0.15)', borderRadius:12, padding:'1rem', display:'inline-flex', flexShrink:0}}>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <path d="M3.27 6.96L12 12.01l8.73-5.05"/>
+                                <path d="M12 22.08V12"/>
+                            </svg>
+                        </div>
                         <div>
                             <h1 className="text-3xl font-black mb-2">{tr.title}</h1>
                             <p className="text-lg opacity-80">JupyterLab + Python + PostgreSQL in Docker</p>
@@ -428,7 +411,7 @@
                         <ul className="space-y-2 mb-4">
                             {tr.start_steps.map((s, i) => (
                                 <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
-                                    <span className="text-green-500 mt-0.5">✓</span>{s}
+                                    <span className="text-green-500 mt-0.5 font-bold flex-shrink-0">✓</span>{s}
                                 </li>
                             ))}
                         </ul>
@@ -465,7 +448,7 @@
                             ))}
                         </div>
                         <div className="info-box mt-4">
-                            <p className="text-blue-800 font-semibold">💡 {tr.jupyter_first}</p>
+                            <p className="text-blue-800 font-semibold">{tr.jupyter_first}</p>
                         </div>
                     </section>
 
@@ -492,12 +475,12 @@
                         <h2 className="section-header">{tr.trouble_title}</h2>
                         <div className="space-y-4">
                             {tr.trouble_items.map((item, i) => (
-                                <div key={i} className="border rounded-xl overflow-hidden">
+                                <div key={i} className="border rounded-xl overflow-hidden" style={{borderColor:'rgba(3,137,207,0.15)'}}>
                                     <div className="p-4" style={{background:'rgba(232,121,47,0.08)', borderLeft:'4px solid #E8792F'}}>
-                                        <p className="font-semibold" style={{color:'#E8792F'}}>❌ {item.problem}</p>
+                                        <p className="font-semibold" style={{color:'#E8792F'}}>{item.problem}</p>
                                     </div>
                                     <div className="p-4 bg-white">
-                                        <p className="text-gray-600 text-sm"><span className="font-semibold text-green-600">✓ Lösung: </span>{item.solution}</p>
+                                        <p className="text-gray-600 text-sm"><span className="font-semibold text-green-600">Lösung: </span>{item.solution}</p>
                                     </div>
                                 </div>
                             ))}
@@ -527,7 +510,30 @@
                         </div>
                     </section>
 
+                    {/* Notebook CTA */}
+                    <section className="mb-16">
+                        <div style={{background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
+                            <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
+                                {lang==='de' ? 'Lernumgebung läuft? Notebook öffnen:' : 'Environment running? Open notebook:'}
+                            </p>
+                            <a href="http://localhost:8888/lab/tree/notebooks/00_Willkommen.ipynb"
+                               target="_blank" rel="noopener noreferrer"
+                               style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
+                                Notebook in Docker öffnen →
+                            </a>
+                        </div>
+                    </section>
+
                 </main>
+
+                {/* Footer */}
+                <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:240}}>
+                    <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
+                    <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                    <div style={{marginTop:'1rem'}}>
+                        <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
+                    </div>
+                </footer>
             </div>
         );
     }
