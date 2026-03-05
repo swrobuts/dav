@@ -45,7 +45,7 @@
         h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
         p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
         @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
-    
+
         .colab-btn {
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 700;
@@ -62,7 +62,7 @@
 <div id="root"></div>
 <script type="text/babel">
 const { useState } = React;
-const sectionIds = ['overview','churn','movies','cars','workflow','quiz','notebooks'];
+const sectionIds = ['overview','churn','movies','cars','supermarkt','hr','energie','ecommerce','workflow','quiz','notebooks'];
 
 function QuizSection({ questions, title, intro }) {
     const [answers, setAnswers] = useState({});
@@ -107,18 +107,40 @@ const crisp_phases_data = [
 ];
 
 const cases = [
-    { nb: '09', title_de: 'Customer Churn', title_en: 'Customer Churn', label: 'Churn', desc_de: 'Telekommunikationsunternehmen: Welche Kunden werden abwandern?', desc_en: 'Telecom: Which customers will churn?', rows: '1.000', cols: '9' },
-    { nb: '10', title_de: 'Filmanalyse', title_en: 'Movie Analysis', label: 'Movies', desc_de: 'Streaming-Plattform: Welches Genre ist am profitabelsten?', desc_en: 'Streaming: Which genre is most profitable?', rows: '500', cols: '9' },
-    { nb: '11', title_de: 'Gebrauchtwagen', title_en: 'Used Cars', label: 'Cars', desc_de: 'Händler: Welche Faktoren bestimmen den Preis?', desc_en: 'Dealer: What factors determine price?', rows: '1.000+', cols: '10+' }
+    { nb: '09', title_de: 'Customer Churn', title_en: 'Customer Churn', label: 'Churn', desc_de: 'Telekommunikationsunternehmen: Welche Kunden werden abwandern?', desc_en: 'Telecom: Which customers will churn?', rows: '1.000', cols: '9', diff: 'Fortgeschritten' },
+    { nb: '10', title_de: 'Filmanalyse', title_en: 'Movie Analysis', label: 'Movies', desc_de: 'Streaming-Plattform: Welches Genre ist am profitabelsten?', desc_en: 'Streaming: Which genre is most profitable?', rows: '500', cols: '9', diff: 'Fortgeschritten' },
+    { nb: '11', title_de: 'Gebrauchtwagen', title_en: 'Used Cars', label: 'Cars', desc_de: 'Händler: Welche Faktoren bestimmen den Preis?', desc_en: 'Dealer: What factors determine price?', rows: '1.000+', cols: '10+', diff: 'Fortgeschritten' },
+    { nb: '12', title_de: 'Supermarktanalyse', title_en: 'Supermarket Analysis', label: 'Supermarkt', desc_de: 'Supermarktkette: Umsatzanalyse nach Kategorie, Filiale und Tageszeit.', desc_en: 'Supermarket chain: Revenue analysis by category, branch and time of day.', rows: '2.000', cols: '9', diff: 'Grundlagen' },
+    { nb: '13', title_de: 'HR Analytics', title_en: 'HR Analytics', label: 'HR', desc_de: 'HR-Abteilung: Welche Faktoren führen zum Mitarbeiterabgang?', desc_en: 'HR dept: What factors drive employee turnover?', rows: '1.500', cols: '10', diff: 'Fortgeschritten' },
+    { nb: '14', title_de: 'Energieverbrauch', title_en: 'Energy Consumption', label: 'Energie', desc_de: 'Unternehmen: Stündlicher Stromverbrauch – Zeitreihenanalyse und Bereinigung.', desc_en: 'Company: Hourly electricity consumption – time series and cleansing.', rows: '8.760', cols: '8', diff: 'Fortgeschritten' },
+    { nb: '15', title_de: 'E-Commerce', title_en: 'E-Commerce', label: 'Ecommerce', desc_de: 'Online-Shop: 3-Tabellen-Join, RFM-Analyse, Retourenanalyse.', desc_en: 'Online shop: 3-table join, RFM analysis, returns analysis.', rows: '3.000+', cols: '10', diff: 'Fortgeschritten' }
 ];
+
+const COLAB_BASE = 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/';
+const COLAB_BADGE = 'https://colab.research.google.com/assets/colab-badge.svg';
+
+const notebooks = [
+    { file: '09_Fallstudie_Customer_Churn', label: '09 Fallstudie Customer Churn' },
+    { file: '10_Fallstudie_Movies', label: '10 Fallstudie Movies' },
+    { file: '11_Fallstudie_Used_Cars', label: '11 Fallstudie Used Cars' },
+    { file: '12_Fallstudie_Supermarkt', label: '12 Fallstudie Supermarkt' },
+    { file: '13_Fallstudie_HR_Analytics', label: '13 Fallstudie HR Analytics' },
+    { file: '14_Fallstudie_Energie', label: '14 Fallstudie Energie' },
+    { file: '15_Fallstudie_Ecommerce', label: '15 Fallstudie Ecommerce' }
+];
+
+const diffColors = {
+    'Grundlagen': { bg: '#fef3c7', color: '#92400e' },
+    'Fortgeschritten': { bg: '#fee2e2', color: '#991b1b' }
+};
 
 function App() {
     const [lang, setLang] = useState('de');
     const [active, setActive] = useState('overview');
     const scrollTo = (id) => { setActive(id); document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); };
     const sections = lang === 'de'
-        ? ['Überblick','Fallstudie 1: Churn','Fallstudie 2: Movies','Fallstudie 3: Cars','CRISP-DM Workflow','Quiz','Notebooks']
-        : ['Overview','Case 1: Churn','Case 2: Movies','Case 3: Cars','CRISP-DM Workflow','Quiz','Notebooks'];
+        ? ['Überblick','FS 1: Churn','FS 2: Movies','FS 3: Cars','FS 4: Supermarkt','FS 5: HR Analytics','FS 6: Energie','FS 7: Ecommerce','CRISP-DM Workflow','Quiz','Notebooks']
+        : ['Overview','CS 1: Churn','CS 2: Movies','CS 3: Cars','CS 4: Supermarket','CS 5: HR Analytics','CS 6: Energy','CS 7: Ecommerce','CRISP-DM Workflow','Quiz','Notebooks'];
 
     return (
         <div>
@@ -141,12 +163,15 @@ function App() {
                 {/* Overview */}
                 <div id="overview" className="mb-12">
                     <h2>{lang==='de'?'Fallstudien & Use Cases':'Case Studies & Use Cases'}</h2>
-                    <p className="text-gray-600">{lang==='de'?'In den 3 Fallstudien wenden Sie alle DAV-Techniken auf echte Szenarien an – von Rohdaten bis zur Analyse. Jede Fallstudie folgt dem vollständigen CRISP-DM-Workflow.':'In the 3 case studies, you apply all DAV techniques to real scenarios – from raw data to analysis. Each case study follows the complete CRISP-DM workflow.'}</p>
+                    <p className="text-gray-600">{lang==='de'?'In den 7 Fallstudien wenden Sie alle DAV-Techniken auf echte Szenarien an – von Rohdaten bis zur Analyse. Jede Fallstudie folgt dem vollständigen CRISP-DM-Workflow.':'In the 7 case studies, you apply all DAV techniques to real scenarios – from raw data to analysis. Each case study follows the complete CRISP-DM workflow.'}</p>
                     <div className="grid md:grid-cols-3 gap-4 mt-4">
                         {cases.map((c,i) => (
-                            <div key={i} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-orange-300 transition-all" style={{borderColor:'rgba(3,137,207,0.15)'}}>
+                            <div key={i} className="bg-white rounded-xl p-5 border border-gray-200 transition-all" style={{borderColor:'rgba(3,137,207,0.15)'}}>
                                 <div className="text-xs font-bold mb-1" style={{color:'#94a3b8'}}>Notebook {c.nb}</div>
-                                <div className="inline-block text-xs font-bold px-2 py-0.5 rounded mb-2 text-white" style={{background:'#0389CF'}}>{c.label}</div>
+                                <div style={{display:'flex', gap:'0.5rem', alignItems:'center', marginBottom:'0.5rem'}}>
+                                    <span className="text-xs font-bold px-2 py-0.5 rounded text-white" style={{background:'#0389CF'}}>{c.label}</span>
+                                    <span className="text-xs font-bold px-2 py-0.5 rounded" style={diffColors[c.diff]||{bg:'#f3f4f6',color:'#374151'}}>{c.diff}</span>
+                                </div>
                                 <h3 className="text-base font-bold mb-1" style={{color:'#0389CF', marginTop:'0.25rem'}}>{lang==='de'?c.title_de:c.title_en}</h3>
                                 <p className="text-sm text-gray-500 mb-2">{lang==='de'?c.desc_de:c.desc_en}</p>
                                 <div className="flex gap-2 text-xs text-gray-400">
@@ -166,60 +191,38 @@ function App() {
                         <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du bist Data Analyst bei einem Telekommunikationsunternehmen. Auftrag: Analysiere, welche Kunden das Unternehmen verlassen ("Churn"), und bereite die Daten für ein ML-Modell vor.':'You are a Data Analyst at a telecom company. Task: Analyze which customers leave the company ("churn") and prepare data for an ML model.'}</p>
                     </div>
-                    <div className="code-block">{`import pandas as pd
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+
+import pandas as pd
 import numpy as np
 import plotly.express as px
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-# --- 1. Business Understanding ---
-# Frage: Welche Faktoren beeinflussen Churn?
-# KPI: Churn Rate, Feature Importance
-
-# --- 2. Daten laden & inspizieren ---
-df = pd.read_csv('../data/customer_churn.csv')
+# --- 1. Daten laden & inspizieren ---
+df = pd.read_csv(BASE_URL + "customer_churn.csv")
 print(f"Shape: {df.shape}")
 print(f"Churn Rate: {df['churn'].mean()*100:.1f}%")
-print(df.info())
 
-# --- 3. EDA ---
-# Churn-Verteilung
+# --- 2. EDA ---
 fig = px.bar(df['churn'].value_counts().reset_index(),
     x='churn', y='count', title='Churn-Verteilung',
     color='churn', color_discrete_map={0:'#0389CF', 1:'#E8792F'})
 fig.show()
 
-# Monatliche Kosten nach Churn
-fig2 = px.box(df, x='churn', y='monthly_charge',
-    title='Monthly Charge by Churn',
-    color='churn', color_discrete_map={0:'#0389CF', 1:'#E8792F'})
-fig2.show()
-
-# Korrelation
-numeric = df.select_dtypes('number')
-corr_with_churn = numeric.corr()['churn'].sort_values(ascending=False)
-print("\\nKorrelation mit Churn:")
-print(corr_with_churn)
-
-# --- 4. Daten bereinigen ---
-df_clean = df.dropna()
-df_clean = df_clean.drop_duplicates()
-
-# --- 5. Transformieren & Feature Engineering ---
+# --- 3. Feature Engineering & Encoding ---
 le = LabelEncoder()
-df_clean['contract_encoded'] = le.fit_transform(df_clean['contract_type'])
-df_encoded = pd.get_dummies(df_clean,
-    columns=['internet_service'], drop_first=True)
+df['contract_encoded'] = le.fit_transform(df['contract_type'])
+df_encoded = pd.get_dummies(df, columns=['internet_service'], drop_first=True)
 
 scaler = StandardScaler()
 num_cols = ['monthly_charge', 'total_charges', 'tenure_months']
 df_encoded[num_cols] = scaler.fit_transform(df_encoded[num_cols])
-
-# --- 6. In PostgreSQL laden ---
-from sqlalchemy import create_engine
-engine = create_engine('postgresql://dav:dav2026@postgres:5432/davdb')
-df_encoded.to_sql('customer_churn_prepared', engine,
-    if_exists='replace', index=False)
-print("Daten in PostgreSQL geladen!")`}</div>
+print(f"ML-bereit: {df_encoded.shape}")`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "09_Fallstudie_Customer_Churn.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 09 Notebook öffnen
+                        </a>
+                    </div>
                 </div>
 
                 {/* Movies */}
@@ -229,48 +232,33 @@ print("Daten in PostgreSQL geladen!")`}</div>
                         <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du analysierst Filmdaten für eine Streaming-Plattform. Fragen: Welches Genre ist am profitabelsten? Gibt es eine Korrelation zwischen Budget und Umsatz?':'You analyze movie data for a streaming platform. Questions: Which genre is most profitable? Is there a correlation between budget and revenue?'}</p>
                     </div>
-                    <div className="code-block">{`import pandas as pd
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 
-df = pd.read_csv('../data/movies.csv')
+df = pd.read_csv(BASE_URL + "movies.csv")
 
-# --- Feature Engineering für Filme ---
-# Dekade berechnen
+# Feature Engineering
 df['decade'] = (df['year'] // 10) * 10
-
-# Profit-Ratio
-df['profit_ratio'] = df['revenue_mio'] / df['budget_mio'].replace(0, 1)
 df['profit_mio'] = df['revenue_mio'] - df['budget_mio']
 
-# Rating-Kategorie
-df['rating_cat'] = pd.cut(df['rating'],
-    bins=[0, 5, 7, 8, 10],
-    labels=['Schlecht', 'Gut', 'Sehr gut', 'Ausgezeichnet'])
-
-# --- Frage 1: Welches Genre ist profitabelst? ---
-genre_profit = df.groupby('genre').agg({
-    'profit_mio': 'mean',
-    'rating': 'mean',
-    'title': 'count'
-}).rename(columns={'title': 'anzahl'}).sort_values('profit_mio', ascending=False)
-print(genre_profit)
-
+# Welches Genre ist profitabelst?
+genre_profit = df.groupby('genre')['profit_mio'].mean().sort_values(ascending=False)
 fig = px.bar(genre_profit.reset_index(),
     x='genre', y='profit_mio',
-    title='Durchschnittlicher Profit nach Genre (Mio. $)',
+    title='Durchschnittlicher Profit nach Genre',
     color='profit_mio', color_continuous_scale='Blues')
 fig.show()
 
-# --- Frage 2: Budget vs. Revenue Korrelation ---
-fig2 = px.scatter(df, x='budget_mio', y='revenue_mio',
-    color='genre', size='votes',
-    hover_data=['title', 'year'],
-    title='Budget vs. Revenue (Größe = Votes)',
-    trendline='ols')
-fig2.show()
-
-print(f"\\nKorrelation Budget/Revenue: {df['budget_mio'].corr(df['revenue_mio']):.3f}")`}</div>
+# Budget vs. Revenue
+fig2 = px.scatter(df, x='budget_mio', y='revenue_mio', color='genre',
+    hover_data=['title','year'], title='Budget vs. Revenue', trendline='ols')
+fig2.show()`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "10_Fallstudie_Movies.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 10 Notebook öffnen
+                        </a>
+                    </div>
                 </div>
 
                 {/* Cars */}
@@ -278,54 +266,226 @@ print(f"\\nKorrelation Budget/Revenue: {df['budget_mio'].corr(df['revenue_mio'])
                     <h2>{lang==='de'?'Fallstudie 3: Gebrauchtwagen-Preise':'Case Study 3: Used Car Prices'}</h2>
                     <div className="tip-box">
                         <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
-                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du arbeitest für einen Gebrauchtwagenhändler. Ziel: Bereite den Datensatz für ein Preisvorhersage-Modell vor. Nutze cars.xlsx aus dem Kurs.':'You work for a used car dealer. Goal: Prepare the dataset for a price prediction model. Use cars.xlsx from the course.'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du arbeitest für einen Gebrauchtwagenhändler. Ziel: Bereite den Datensatz für ein Preisvorhersage-Modell vor.':'You work for a used car dealer. Goal: Prepare the dataset for a price prediction model.'}</p>
                     </div>
-                    <div className="code-block">{`import pandas as pd
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
-# --- Daten laden (echte Kursdaten!) ---
-df = pd.read_excel('../data/cars.xlsx')
-print(df.head())
-print(df.info())
-
-# --- EDA ---
-print("\\nNumerische Statistiken:")
-print(df.describe())
-
-print("\\nFehlende Werte:")
-print(df.isnull().sum()[df.isnull().sum() > 0])
-
-# --- Bereinigung ---
-df_clean = df.copy()
+df = pd.read_csv(BASE_URL + "used_cars_extended.csv")
+print(df.shape, df.dtypes)
 
 # Fehlende Werte behandeln
-for col in df_clean.select_dtypes('number').columns:
-    df_clean[col] = df_clean[col].fillna(df_clean[col].median())
+for col in df.select_dtypes('number').columns:
+    df[col] = df[col].fillna(df[col].median())
 
-for col in df_clean.select_dtypes('object').columns:
-    df_clean[col] = df_clean[col].fillna(df_clean[col].mode()[0])
+# Feature Engineering
+df['fahrzeugalter'] = 2026 - df['year']
+df['preis_pro_km'] = df['price'] / df['mileage'].replace(0, 1)
 
-# Ausreißer beim Preis entfernen
-Q1, Q3 = df_clean['price'].quantile([0.01, 0.99])
-df_clean = df_clean[(df_clean['price'] >= Q1) & (df_clean['price'] <= Q3)]
-
-# --- Feature Engineering ---
-df_clean['fahrzeugalter'] = 2026 - df_clean['year']
-df_clean['preis_pro_km'] = df_clean['price'] / df_clean['mileage'].replace(0, 1)
-
-# --- Encoding ---
+# Encoding
 le = LabelEncoder()
-for col in df_clean.select_dtypes('object').columns:
-    df_clean[col + '_encoded'] = le.fit_transform(df_clean[col].astype(str))
+for col in df.select_dtypes('object').columns:
+    df[col + '_encoded'] = le.fit_transform(df[col].astype(str))
 
-# --- Skalierung ---
-scaler = MinMaxScaler()
-num_features = ['mileage', 'fahrzeugalter', 'engine_size']
-df_clean[num_features] = scaler.fit_transform(df_clean[num_features])
+print(f"ML-bereit: {df.shape}")`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "11_Fallstudie_Used_Cars.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 11 Notebook öffnen
+                        </a>
+                    </div>
+                </div>
 
-print(f"\\nML-bereit: {df_clean.shape}")
-df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
+                {/* Supermarkt */}
+                <div id="supermarkt" className="mb-12">
+                    <h2>{lang==='de'?'Fallstudie 4: Supermarktanalyse':'Case Study 4: Supermarket Analysis'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du bist Data Analyst bei einer deutschen Supermarktkette mit 5 Filialen. Analysiere Verkaufsdaten des letzten Jahres: Welche Kategorie ist umsatzstärkst? Kaufverhalten nach Tageszeit?':'You are a Data Analyst at a German supermarket chain with 5 branches. Analyze sales data from last year: Which category has the highest revenue? Buying behavior by time of day?'}</p>
+                    </div>
+                    <div className="challenge-box">
+                        <p className="font-semibold text-green-800">{lang==='de'?'Lernziele':'Learning Objectives'}</p>
+                        <ul className="text-green-700 text-sm mt-1 space-y-1">
+                            <li>✓ {lang==='de'?'Zeitreihen-Features extrahieren (Wochentag, Jahreszeit)':'Extract time series features (weekday, season)'}</li>
+                            <li>✓ {lang==='de'?'Groupby & Aggregation für Umsatzanalysen':'Groupby & aggregation for revenue analysis'}</li>
+                            <li>✓ {lang==='de'?'Interaktive Plotly-Visualisierungen':'Interactive Plotly visualizations'}</li>
+                            <li>✓ {lang==='de'?'Feature Engineering für ML-Vorbereitung':'Feature engineering for ML preparation'}</li>
+                        </ul>
+                    </div>
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv(BASE_URL + "supermarkt_verkauf.csv")
+df['datum'] = pd.to_datetime(df['datum'])
+df['wochentag'] = df['datum'].dt.day_name()
+
+# Umsatz nach Kategorie
+umsatz = df.groupby('kategorie')['gesamtpreis'].sum().sort_values(ascending=False)
+fig = px.bar(umsatz.reset_index(), x='kategorie', y='gesamtpreis',
+    title='Umsatz nach Kategorie', color='gesamtpreis',
+    color_continuous_scale='Blues')
+fig.show()
+
+# Filial-Performance
+filiale_umsatz = df.groupby('filiale')['gesamtpreis'].sum().reset_index()
+fig2 = px.bar(filiale_umsatz, x='filiale', y='gesamtpreis',
+    title='Umsatz nach Filiale', color='gesamtpreis',
+    color_continuous_scale='Oranges')
+fig2.show()`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "12_Fallstudie_Supermarkt.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 12 Notebook öffnen
+                        </a>
+                    </div>
+                </div>
+
+                {/* HR Analytics */}
+                <div id="hr" className="mb-12">
+                    <h2>{lang==='de'?'Fallstudie 5: HR Analytics':'Case Study 5: HR Analytics'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Als HR-Analyst sollst du herausfinden, welche Faktoren zum Mitarbeiterabgang führen. Erstelle Risikoprofile und bereite die Daten für ein ML-Modell vor.':'As an HR analyst, you need to find out which factors drive employee turnover. Create risk profiles and prepare data for an ML model.'}</p>
+                    </div>
+                    <div className="challenge-box">
+                        <p className="font-semibold text-green-800">{lang==='de'?'Lernziele':'Learning Objectives'}</p>
+                        <ul className="text-green-700 text-sm mt-1 space-y-1">
+                            <li>✓ {lang==='de'?'Korrelationsanalyse mit Plotly Heatmap':'Correlation analysis with Plotly heatmap'}</li>
+                            <li>✓ {lang==='de'?'One-Hot-Encoding aller kategorialen Spalten':'One-hot-encoding of all categorical columns'}</li>
+                            <li>✓ {lang==='de'?'Binäre Zielvariable analysieren (Abgang 0/1)':'Analyze binary target variable (turnover 0/1)'}</li>
+                            <li>✓ {lang==='de'?'Feature Engineering: Risikoscore berechnen':'Feature engineering: calculate risk score'}</li>
+                        </ul>
+                    </div>
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv(BASE_URL + "mitarbeiter_hr.csv")
+
+# Abgang-Rate nach Abteilung
+abgang_rate = df.groupby('abteilung')['abgang'].mean().sort_values(ascending=False)
+fig = px.bar(abgang_rate.reset_index(), x='abteilung', y='abgang',
+    title='Abgangsrate nach Abteilung',
+    color='abgang', color_continuous_scale='Reds')
+fig.show()
+
+# Korrelationsmatrix
+numeric_df = df.select_dtypes('number')
+corr = numeric_df.corr()
+fig2 = px.imshow(corr, title='Korrelationsmatrix',
+    color_continuous_scale='RdBu_r', aspect='auto')
+fig2.show()
+
+# Gehalt vs. Zufriedenheit (nach Abgang gefärbt)
+fig3 = px.scatter(df, x='gehalt', y='zufriedenheit',
+    color='abgang', title='Gehalt vs. Zufriedenheit',
+    color_discrete_map={0:'#0389CF', 1:'#E8792F'})
+fig3.show()`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "13_Fallstudie_HR_Analytics.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 13 Notebook öffnen
+                        </a>
+                    </div>
+                </div>
+
+                {/* Energie */}
+                <div id="energie" className="mb-12">
+                    <h2>{lang==='de'?'Fallstudie 6: Energieverbrauchsanalyse':'Case Study 6: Energy Consumption Analysis'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du analysierst den stündlichen Stromverbrauch eines Unternehmens über ein ganzes Jahr. Ziel: Saisonalität erkennen, Sensorausfälle bereinigen, Sparmöglichkeiten identifizieren.':'You analyze the hourly electricity consumption of a company over an entire year. Goal: Identify seasonality, clean sensor failures, find savings opportunities.'}</p>
+                    </div>
+                    <div className="challenge-box">
+                        <p className="font-semibold text-green-800">{lang==='de'?'Lernziele':'Learning Objectives'}</p>
+                        <ul className="text-green-700 text-sm mt-1 space-y-1">
+                            <li>✓ {lang==='de'?'Zeitreihen-Daten verarbeiten (8.760 Zeilen)':'Process time series data (8,760 rows)'}</li>
+                            <li>✓ {lang==='de'?'Fehlende Werte durch Interpolation bereinigen':'Clean missing values by interpolation'}</li>
+                            <li>✓ {lang==='de'?'Rolling Mean für Glättung':'Rolling mean for smoothing'}</li>
+                            <li>✓ {lang==='de'?'Heatmap: Stunde × Wochentag':'Heatmap: hour × weekday'}</li>
+                        </ul>
+                    </div>
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv(BASE_URL + "energie_verbrauch.csv",
+    parse_dates=['timestamp'])
+
+# Fehlende Werte durch Interpolation bereinigen
+print(f"Fehlende Werte: {df['verbrauch_kwh'].isna().sum()}")
+df['verbrauch_kwh'] = df['verbrauch_kwh'].interpolate(method='linear')
+
+# Monatlicher Durchschnittsverbrauch
+monthly = df.groupby('monat')['verbrauch_kwh'].mean().reset_index()
+fig = px.line(monthly, x='monat', y='verbrauch_kwh',
+    title='Monatlicher Durchschnittsverbrauch (kWh)',
+    markers=True, line_shape='spline')
+fig.show()
+
+# Heatmap: Stunde x Wochentag
+pivot = df.pivot_table(values='verbrauch_kwh',
+    index='stunde', columns='wochentag', aggfunc='mean')
+fig2 = px.imshow(pivot, title='Verbrauch: Stunde × Wochentag',
+    color_continuous_scale='Blues', aspect='auto')
+fig2.show()`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "14_Fallstudie_Energie.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 14 Notebook öffnen
+                        </a>
+                    </div>
+                </div>
+
+                {/* Ecommerce */}
+                <div id="ecommerce" className="mb-12">
+                    <h2>{lang==='de'?'Fallstudie 7: E-Commerce Analyse':'Case Study 7: E-Commerce Analysis'}</h2>
+                    <div className="tip-box">
+                        <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du analysierst Bestelldaten eines deutschen Online-Shops. Drei Tabellen müssen zusammengeführt werden. Anschließend: RFM-Analyse, Retourenanalyse, Pivot nach Land & Kategorie.':'You analyze order data from a German online shop. Three tables need to be joined. Then: RFM analysis, returns analysis, pivot by country & category.'}</p>
+                    </div>
+                    <div className="challenge-box">
+                        <p className="font-semibold text-green-800">{lang==='de'?'Lernziele':'Learning Objectives'}</p>
+                        <ul className="text-green-700 text-sm mt-1 space-y-1">
+                            <li>✓ {lang==='de'?'3-Tabellen-Join (Bestellungen + Kunden + Produkte)':'3-table join (orders + customers + products)'}</li>
+                            <li>✓ {lang==='de'?'Pivot: Umsatz pro Land × Kategorie':'Pivot: Revenue per country × category'}</li>
+                            <li>✓ {lang==='de'?'RFM-Analyse (Recency, Frequency, Monetary)':'RFM analysis (Recency, Frequency, Monetary)'}</li>
+                            <li>✓ {lang==='de'?'Retourenquote analysieren':'Analyze return rates'}</li>
+                        </ul>
+                    </div>
+                    <div className="code-block">{`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+import pandas as pd
+import plotly.express as px
+
+# 3 Tabellen laden
+bestellungen = pd.read_csv(BASE_URL + "ecommerce_bestellungen.csv")
+kunden = pd.read_csv(BASE_URL + "ecommerce_kunden.csv")
+produkte = pd.read_csv(BASE_URL + "ecommerce_produkte.csv")
+
+# 3-Tabellen-Join
+df = bestellungen.merge(kunden, on='kunden_id').merge(produkte, on='produkt_id')
+print(f"Joined shape: {df.shape}")
+
+# Pivot: Umsatz pro Land × Kategorie
+pivot = df.pivot_table(values='preis_eur', index='land',
+    columns='kategorie', aggfunc='sum', fill_value=0)
+fig = px.imshow(pivot, title='Umsatz pro Land × Kategorie',
+    color_continuous_scale='Blues', aspect='auto')
+fig.show()
+
+# RFM-Analyse
+df['datum'] = pd.to_datetime(df['datum'])
+today = df['datum'].max()
+rfm = df.groupby('kunden_id').agg(
+    Recency=('datum', lambda x: (today - x.max()).days),
+    Frequency=('bestellnummer', 'count'),
+    Monetary=('preis_eur', 'sum')
+).reset_index()
+print(rfm.describe())`}</div>
+                    <div className="notebook-buttons">
+                        <a href={COLAB_BASE + "15_Fallstudie_Ecommerce.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> 15 Notebook öffnen
+                        </a>
+                    </div>
                 </div>
 
                 {/* Workflow */}
@@ -354,32 +514,24 @@ df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
                 </div>
 
                 <div id="notebooks" className="mb-12">
-                    <h2>{lang==='de'?'Notebooks öffnen':'Open Notebooks'}</h2>
-                    <div className="flex flex-wrap gap-3">
-                        {['09_Fallstudie_Customer_Churn','10_Fallstudie_Movies','11_Fallstudie_Used_Cars'].map(nb => (
-                            <a key={nb} href={`http://localhost:8888/lab/tree/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
-                               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
-                                {nb}.ipynb →
+                    <h2>{lang==='de'?'Alle Fallstudien-Notebooks':'All Case Study Notebooks'}</h2>
+                    <p className="text-gray-600 mb-4">{lang==='de'?'Öffnen Sie alle 7 Fallstudien direkt in Google Colab:':'Open all 7 case studies directly in Google Colab:'}</p>
+                    <div className="notebook-buttons">
+                        {notebooks.map(nb => (
+                            <a key={nb.file} href={COLAB_BASE + nb.file + ".ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
+                                <img src={COLAB_BADGE} alt="Open in Colab"/> {nb.label}
                             </a>
                         ))}
                     </div>
-                    <div className="info-box mt-4">
-                        <p className="text-blue-800 text-sm">{lang==='de'?'Datensätze werden mit Python generiert (generate_data.py). Starte mit: cd docker && python data/generate_data.py':'Datasets are generated with Python (generate_data.py). Start with: cd docker && python data/generate_data.py'}</p>
-                    </div>
                     <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
                         <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                            {lang==='de' ? 'Notebook in Docker öffnen:' : 'Open Notebook in Docker:'}
+                            {lang==='de' ? 'Alle Notebooks in Google Colab starten:' : 'Start all notebooks in Google Colab:'}
                         </p>
-                        <a href="http://localhost:8888/lab/tree/notebooks/09_Fallstudie_Customer_Churn.ipynb"
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/09_Fallstudie_Customer_Churn.ipynb"
                            target="_blank" rel="noopener noreferrer"
                            style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                            Notebook in Docker öffnen →
+                            {lang==='de' ? 'Erste Fallstudie öffnen →' : 'Open first case study →'}
                         </a>
-                    <div className="notebook-cta-group">
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/09_Fallstudie_Customer_Churn.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 09 Fallstudie Customer Churn</a>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/10_Fallstudie_Movies.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 10 Fallstudie Movies</a>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/11_Fallstudie_Used_Cars.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 11 Fallstudie Used Cars</a>
-                    </div>
                     </div>
                 </div>
             </main>

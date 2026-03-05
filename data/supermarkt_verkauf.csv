@@ -1,0 +1,2001 @@
+datum,filiale,kategorie,produkt,menge,einzelpreis,gesamtpreis,zahlungsart,uhrzeit,wochentag
+2024-02-02,München-Hauptbahnhof,Hygiene,Rasierer,7,9.73,68.11,EC-Karte,21:43,Freitag
+2024-10-09,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),9,1.75,15.75,Bargeld,15:52,Mittwoch
+2024-08-26,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),7,8.03,56.21,EC-Karte,07:08,Montag
+2024-06-09,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),6,4.06,24.36,Bargeld,20:14,Sonntag
+2024-06-07,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),5,2.69,13.45,Bargeld,21:02,Freitag
+2024-11-09,Köln-Ehrenfeld,Backwaren,Baguette,3,0.95,2.85,EC-Karte,11:29,Samstag
+2024-02-01,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),3,5.71,17.13,EC-Karte,13:29,Donnerstag
+2024-09-11,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,8,0.87,6.96,Kreditkarte,07:01,Mittwoch
+2024-03-14,Berlin-Mitte,Süßwaren,Schokolade (100 g),1,1.22,1.22,Kreditkarte,19:39,Donnerstag
+2024-02-04,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),1,5.66,5.66,Kreditkarte,18:00,Sonntag
+2024-07-11,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),4,4.2,16.8,Kreditkarte,07:47,Donnerstag
+2024-12-22,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),8,3.61,28.88,Kreditkarte,17:42,Sonntag
+2024-09-25,Frankfurt-Sachsenhausen,Backwaren,Vollkornbrot,7,2.81,19.67,Bargeld,13:48,Mittwoch
+2024-10-04,Hamburg-Altona,Hygiene,Shampoo (250 ml),6,1.98,11.88,EC-Karte,15:07,Freitag
+2024-09-18,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,6,5.38,32.28,Bargeld,10:52,Mittwoch
+2024-10-13,Berlin-Mitte,Molkereiprodukte,Vollmilch (1 l),2,3.14,6.28,Bargeld,19:32,Sonntag
+2024-07-06,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),4,4.12,16.48,Bargeld,13:51,Samstag
+2024-02-16,Berlin-Mitte,Tiefkühlkost,Tiefkühlerbsen (750 g),1,4.71,4.71,Kreditkarte,19:41,Freitag
+2024-11-02,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),8,2.52,20.16,Kreditkarte,09:39,Samstag
+2024-06-13,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),8,7.18,57.44,Apple Pay,15:01,Donnerstag
+2024-07-01,Berlin-Mitte,Molkereiprodukte,Vollmilch (1 l),3,1.8,5.4,Apple Pay,11:41,Montag
+2024-05-15,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),3,3.15,9.45,Kreditkarte,21:26,Mittwoch
+2024-03-07,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),4,3.88,15.52,Bargeld,15:50,Donnerstag
+2024-12-04,München-Hauptbahnhof,Getränke,Eistee (500 ml),9,6.38,57.42,Kreditkarte,17:41,Mittwoch
+2024-10-12,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),5,2.94,14.7,Kreditkarte,08:04,Samstag
+2024-08-23,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),8,8.64,69.12,Kreditkarte,17:53,Freitag
+2024-05-26,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),5,4.83,24.15,Bargeld,08:03,Sonntag
+2024-10-27,Hamburg-Altona,Hygiene,Duschgel (300 ml),7,9.11,63.77,Bargeld,12:17,Sonntag
+2024-07-18,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),6,3.77,22.62,Apple Pay,10:13,Donnerstag
+2024-06-10,Hamburg-Altona,Molkereiprodukte,Quark (500 g),3,4.6,13.8,Bargeld,07:58,Montag
+2024-06-13,Hamburg-Altona,Getränke,"Cola (1,5 l)",9,3.96,35.64,EC-Karte,15:09,Donnerstag
+2024-03-23,Hamburg-Altona,Backwaren,Roggenbrot,8,1.38,11.04,EC-Karte,10:50,Samstag
+2024-02-03,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),8,2.52,20.16,Bargeld,14:13,Samstag
+2024-07-21,München-Hauptbahnhof,Tiefkühlkost,Tiefkühlerbsen (750 g),10,5.27,52.7,Bargeld,18:39,Sonntag
+2024-11-20,Hamburg-Altona,Hygiene,Rasierer,3,2.92,8.76,Apple Pay,09:05,Mittwoch
+2024-01-24,Berlin-Mitte,Süßwaren,Marzipan (200 g),1,2.12,2.12,Kreditkarte,17:23,Mittwoch
+2024-11-09,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",6,2.73,16.38,Apple Pay,11:37,Samstag
+2024-10-29,Frankfurt-Sachsenhausen,Obst & Gemüse,Tomaten (500 g),4,3.08,12.32,EC-Karte,11:42,Dienstag
+2024-04-11,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),5,5.85,29.25,Bargeld,15:52,Donnerstag
+2024-08-18,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),3,7.83,23.49,EC-Karte,16:48,Sonntag
+2024-03-01,München-Hauptbahnhof,Molkereiprodukte,Gouda (400 g),4,2.7,10.8,EC-Karte,16:31,Freitag
+2024-10-03,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),4,10.16,40.64,Bargeld,09:18,Donnerstag
+2024-09-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,4,2.8,11.2,Kreditkarte,15:15,Donnerstag
+2024-05-09,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),8,7.54,60.32,Apple Pay,10:59,Donnerstag
+2024-01-25,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),6,2.86,17.16,EC-Karte,11:36,Donnerstag
+2024-12-20,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),5,4.48,22.4,EC-Karte,21:54,Freitag
+2024-06-11,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),2,4.06,8.12,EC-Karte,08:26,Dienstag
+2024-11-21,München-Hauptbahnhof,Getränke,Bier (6er-Pack),6,2.43,14.58,Bargeld,13:29,Donnerstag
+2024-09-04,München-Hauptbahnhof,Süßwaren,Kekse (400 g),2,2.02,4.04,EC-Karte,13:49,Mittwoch
+2024-10-11,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,4,6.3,25.2,EC-Karte,10:43,Freitag
+2024-10-04,München-Hauptbahnhof,Backwaren,Laugenbrezel,5,2.86,14.3,EC-Karte,18:12,Freitag
+2024-03-12,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),2,3.63,7.26,EC-Karte,14:31,Dienstag
+2024-05-12,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),4,3.13,12.52,Kreditkarte,17:12,Sonntag
+2024-06-19,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),3,6.65,19.95,Bargeld,12:45,Mittwoch
+2024-06-30,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),9,6.96,62.64,Bargeld,20:01,Sonntag
+2024-01-16,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),9,4.37,39.33,Bargeld,17:49,Dienstag
+2024-07-18,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),1,3.75,3.75,Bargeld,11:55,Donnerstag
+2024-02-26,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),7,7.71,53.97,EC-Karte,21:01,Montag
+2024-09-28,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),7,5.06,35.42,Kreditkarte,19:37,Samstag
+2024-09-06,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),4,7.69,30.76,Kreditkarte,15:04,Freitag
+2024-12-02,Berlin-Mitte,Hygiene,Handseife (300 ml),5,12.61,63.05,EC-Karte,07:21,Montag
+2024-09-28,Berlin-Mitte,Getränke,Orangensaft (1 l),8,5.15,41.2,EC-Karte,15:20,Samstag
+2024-05-13,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,4,0.89,3.56,Bargeld,17:31,Montag
+2024-12-19,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,1,5.51,5.51,EC-Karte,12:55,Donnerstag
+2024-05-29,Frankfurt-Sachsenhausen,Getränke,"Mineralwasser (1,5 l)",4,1.53,6.12,EC-Karte,09:27,Mittwoch
+2024-04-28,München-Hauptbahnhof,Getränke,Eistee (500 ml),3,5.68,17.04,Kreditkarte,15:23,Sonntag
+2024-11-26,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),4,3.68,14.72,EC-Karte,19:05,Dienstag
+2024-05-15,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),3,9.48,28.44,Bargeld,11:53,Mittwoch
+2024-01-28,Frankfurt-Sachsenhausen,Molkereiprodukte,Vollmilch (1 l),2,4.62,9.24,EC-Karte,13:18,Sonntag
+2024-06-20,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),10,3.67,36.7,Bargeld,07:27,Donnerstag
+2024-10-17,Berlin-Mitte,Backwaren,Roggenbrot,2,1.47,2.94,Apple Pay,17:05,Donnerstag
+2024-03-10,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),8,5.87,46.96,Bargeld,19:17,Sonntag
+2024-06-17,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),8,5.22,41.76,Bargeld,18:33,Montag
+2024-02-17,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),7,1.61,11.27,Bargeld,13:54,Samstag
+2024-09-07,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),10,2.16,21.6,Kreditkarte,07:19,Samstag
+2024-06-22,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),1,5.13,5.13,EC-Karte,14:33,Samstag
+2024-04-30,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),4,6.71,26.84,EC-Karte,21:52,Dienstag
+2024-03-23,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),2,6.22,12.44,EC-Karte,08:21,Samstag
+2024-07-25,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),6,1.53,9.18,Bargeld,10:17,Donnerstag
+2024-09-01,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,7,1.62,11.34,Kreditkarte,19:02,Sonntag
+2024-12-09,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),9,2.03,18.27,Bargeld,15:54,Montag
+2024-06-08,München-Hauptbahnhof,Obst & Gemüse,Salat (Kopf),4,1.53,6.12,Bargeld,09:06,Samstag
+2024-02-28,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),3,3.88,11.64,EC-Karte,07:12,Mittwoch
+2024-10-30,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,10,3.85,38.5,Bargeld,13:08,Mittwoch
+2024-08-17,Hamburg-Altona,Backwaren,Croissant,7,1.84,12.88,Bargeld,15:42,Samstag
+2024-09-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Tiefkühlerbsen (750 g),8,7.53,60.24,Kreditkarte,19:21,Donnerstag
+2024-02-05,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),5,5.23,26.15,EC-Karte,20:42,Montag
+2024-04-24,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),5,5.69,28.45,Bargeld,13:36,Mittwoch
+2024-10-07,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),4,1.19,4.76,EC-Karte,13:00,Montag
+2024-10-30,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),8,1.27,10.16,Kreditkarte,20:18,Mittwoch
+2024-06-07,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",3,2.65,7.95,Bargeld,18:00,Freitag
+2024-10-20,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),10,4.03,40.3,Bargeld,10:03,Sonntag
+2024-11-03,München-Hauptbahnhof,Süßwaren,Chips (200 g),2,3.85,7.7,EC-Karte,17:28,Sonntag
+2024-05-21,Hamburg-Altona,Backwaren,Baguette,5,0.96,4.8,EC-Karte,17:15,Dienstag
+2024-11-23,Köln-Ehrenfeld,Backwaren,Laugenbrezel,4,1.04,4.16,Apple Pay,10:05,Samstag
+2024-04-15,Hamburg-Altona,Süßwaren,Kekse (400 g),7,1.85,12.95,EC-Karte,21:24,Montag
+2024-03-28,Hamburg-Altona,Hygiene,Shampoo (250 ml),7,8.29,58.03,Bargeld,11:27,Donnerstag
+2024-09-06,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),10,3.02,30.2,EC-Karte,15:59,Freitag
+2024-08-20,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),8,3.27,26.16,EC-Karte,14:39,Dienstag
+2024-02-21,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),3,2.75,8.25,Bargeld,17:23,Mittwoch
+2024-10-30,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",3,4.88,14.64,EC-Karte,20:28,Mittwoch
+2024-03-13,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),9,5.94,53.46,Bargeld,12:05,Mittwoch
+2024-10-20,Berlin-Mitte,Backwaren,Roggenbrot,5,1.89,9.45,Kreditkarte,12:23,Sonntag
+2024-01-03,Berlin-Mitte,Backwaren,Baguette,1,1.25,1.25,Kreditkarte,18:34,Mittwoch
+2024-10-17,Berlin-Mitte,Süßwaren,Chips (200 g),9,4.13,37.17,EC-Karte,21:01,Donnerstag
+2024-10-14,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),7,1.28,8.96,Apple Pay,20:55,Montag
+2024-10-11,Berlin-Mitte,Süßwaren,Kekse (400 g),1,3.37,3.37,Apple Pay,18:30,Freitag
+2024-08-30,Köln-Ehrenfeld,Backwaren,Baguette,8,2.31,18.48,Bargeld,17:47,Freitag
+2024-06-21,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),7,4.64,32.48,EC-Karte,18:16,Freitag
+2024-09-14,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),7,3.02,21.14,EC-Karte,21:50,Samstag
+2024-04-11,Berlin-Mitte,Molkereiprodukte,Joghurt (500 g),9,2.21,19.89,Bargeld,07:22,Donnerstag
+2024-10-11,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),5,6.96,34.8,EC-Karte,15:55,Freitag
+2024-07-21,Berlin-Mitte,Hygiene,Duschgel (300 ml),5,10.35,51.75,EC-Karte,07:31,Sonntag
+2024-06-16,Köln-Ehrenfeld,Hygiene,Zahnpasta (75 ml),7,7.24,50.68,Apple Pay,15:38,Sonntag
+2024-07-03,München-Hauptbahnhof,Tiefkühlkost,Tiefkühlerbsen (750 g),2,6.6,13.2,EC-Karte,12:12,Mittwoch
+2024-07-26,Hamburg-Altona,Backwaren,Baguette,2,1.16,2.32,Kreditkarte,11:59,Freitag
+2024-01-14,Berlin-Mitte,Hygiene,Rasierer,9,8.27,74.43,EC-Karte,20:11,Sonntag
+2024-02-21,Berlin-Mitte,Getränke,Bier (6er-Pack),3,6.15,18.45,Bargeld,17:01,Mittwoch
+2024-03-30,München-Hauptbahnhof,Getränke,Bier (6er-Pack),6,2.76,16.56,Kreditkarte,15:26,Samstag
+2024-02-11,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),3,4.89,14.67,Bargeld,20:50,Sonntag
+2024-06-09,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),3,4.3,12.9,Bargeld,08:55,Sonntag
+2024-08-31,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",6,10.67,64.02,EC-Karte,16:51,Samstag
+2024-08-26,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),9,6.29,56.61,EC-Karte,09:33,Montag
+2024-06-20,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),5,3.18,15.9,EC-Karte,10:55,Donnerstag
+2024-11-08,Frankfurt-Sachsenhausen,Tiefkühlkost,Fischstäbchen (400 g),2,7.97,15.94,Bargeld,09:29,Freitag
+2024-07-25,Hamburg-Altona,Molkereiprodukte,Butter (250 g),3,1.52,4.56,EC-Karte,15:28,Donnerstag
+2024-01-29,Berlin-Mitte,Molkereiprodukte,Butter (250 g),2,3.02,6.04,Bargeld,16:10,Montag
+2024-10-06,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),9,4.87,43.83,Bargeld,18:47,Sonntag
+2024-07-28,Hamburg-Altona,Obst & Gemüse,Karotten (1 kg),4,2.95,11.8,EC-Karte,13:18,Sonntag
+2024-08-19,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),4,4.62,18.48,Bargeld,21:11,Montag
+2024-07-25,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,1,6.38,6.38,EC-Karte,12:22,Donnerstag
+2024-07-21,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),5,8.7,43.5,EC-Karte,09:36,Sonntag
+2024-02-03,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),10,3.44,34.4,Kreditkarte,07:16,Samstag
+2024-07-23,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),5,5.81,29.05,EC-Karte,08:21,Dienstag
+2024-10-17,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),7,5.8,40.6,EC-Karte,13:19,Donnerstag
+2024-04-20,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),2,2.11,4.22,Bargeld,13:35,Samstag
+2024-08-08,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",2,3.91,7.82,Apple Pay,19:42,Donnerstag
+2024-01-12,München-Hauptbahnhof,Obst & Gemüse,Karotten (1 kg),8,3.1,24.8,Bargeld,08:40,Freitag
+2024-05-06,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),1,5.19,5.19,Bargeld,10:08,Montag
+2024-06-08,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),5,7.66,38.3,EC-Karte,21:20,Samstag
+2024-12-24,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),4,4.33,17.32,Bargeld,07:38,Dienstag
+2024-03-19,Köln-Ehrenfeld,Hygiene,Handseife (300 ml),1,7.57,7.57,Bargeld,13:12,Dienstag
+2024-04-10,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),6,1.88,11.28,Bargeld,09:04,Mittwoch
+2024-05-29,Hamburg-Altona,Getränke,Bier (6er-Pack),10,3.16,31.6,EC-Karte,15:19,Mittwoch
+2024-12-28,Berlin-Mitte,Molkereiprodukte,Vollmilch (1 l),1,2.84,2.84,EC-Karte,21:40,Samstag
+2024-11-07,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),9,4.15,37.35,EC-Karte,10:39,Donnerstag
+2024-01-13,Hamburg-Altona,Backwaren,Laugenbrezel,6,0.57,3.42,Kreditkarte,12:07,Samstag
+2024-03-26,Köln-Ehrenfeld,Hygiene,Handseife (300 ml),8,9.43,75.44,EC-Karte,13:40,Dienstag
+2024-10-26,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),1,2.29,2.29,Apple Pay,18:11,Samstag
+2024-01-22,München-Hauptbahnhof,Süßwaren,Kekse (400 g),9,2.21,19.89,Kreditkarte,21:44,Montag
+2024-11-08,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),1,1.91,1.91,Kreditkarte,08:33,Freitag
+2024-04-12,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),10,3.1,31.0,Kreditkarte,14:07,Freitag
+2024-11-30,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),7,2.3,16.1,EC-Karte,18:21,Samstag
+2024-04-17,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),4,3.73,14.92,EC-Karte,07:49,Mittwoch
+2024-06-07,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),1,5.48,5.48,EC-Karte,19:25,Freitag
+2024-08-29,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),7,2.53,17.71,Bargeld,10:41,Donnerstag
+2024-02-16,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),1,8.39,8.39,EC-Karte,14:44,Freitag
+2024-07-22,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),7,2.42,16.94,Bargeld,21:01,Montag
+2024-07-03,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),8,2.35,18.8,Bargeld,16:55,Mittwoch
+2024-10-13,Berlin-Mitte,Molkereiprodukte,Quark (500 g),3,1.74,5.22,Apple Pay,21:20,Sonntag
+2024-12-29,Hamburg-Altona,Süßwaren,Schokolade (100 g),3,2.63,7.89,EC-Karte,16:47,Sonntag
+2024-08-30,München-Hauptbahnhof,Backwaren,Laugenbrezel,3,1.19,3.57,EC-Karte,10:28,Freitag
+2024-05-29,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),3,8.08,24.24,EC-Karte,17:34,Mittwoch
+2024-05-28,München-Hauptbahnhof,Hygiene,Rasierer,2,6.05,12.1,EC-Karte,16:21,Dienstag
+2024-06-01,Frankfurt-Sachsenhausen,Hygiene,Handseife (300 ml),3,8.84,26.52,Kreditkarte,11:51,Samstag
+2024-10-24,Frankfurt-Sachsenhausen,Hygiene,Handseife (300 ml),7,4.35,30.45,EC-Karte,08:07,Donnerstag
+2024-04-27,Hamburg-Altona,Molkereiprodukte,Butter (250 g),4,0.97,3.88,EC-Karte,16:53,Samstag
+2024-03-01,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),8,2.17,17.36,EC-Karte,15:12,Freitag
+2024-05-02,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),9,7.66,68.94,EC-Karte,18:52,Donnerstag
+2024-01-09,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),8,6.77,54.16,EC-Karte,08:01,Dienstag
+2024-02-08,München-Hauptbahnhof,Obst & Gemüse,Brokkoli,6,3.39,20.34,Apple Pay,15:00,Donnerstag
+2024-02-02,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),4,6.23,24.92,EC-Karte,19:05,Freitag
+2024-10-08,Hamburg-Altona,Hygiene,Shampoo (250 ml),10,12.94,129.4,EC-Karte,20:32,Dienstag
+2024-09-20,München-Hauptbahnhof,Süßwaren,Chips (200 g),3,1.74,5.22,EC-Karte,21:15,Freitag
+2024-09-11,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),5,2.46,12.3,EC-Karte,10:35,Mittwoch
+2024-06-17,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),5,2.76,13.8,Apple Pay,09:49,Montag
+2024-09-18,München-Hauptbahnhof,Obst & Gemüse,Äpfel (1 kg),8,2.44,19.52,Kreditkarte,15:01,Mittwoch
+2024-02-28,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),6,8.9,53.4,EC-Karte,13:31,Mittwoch
+2024-11-24,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),8,5.91,47.28,EC-Karte,10:44,Sonntag
+2024-07-01,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),10,8.33,83.3,EC-Karte,08:25,Montag
+2024-12-08,Frankfurt-Sachsenhausen,Tiefkühlkost,Tiefkühlerbsen (750 g),4,6.34,25.36,Bargeld,09:55,Sonntag
+2024-02-25,München-Hauptbahnhof,Backwaren,Roggenbrot,9,0.81,7.29,EC-Karte,12:39,Sonntag
+2024-06-30,Berlin-Mitte,Getränke,Orangensaft (1 l),2,5.13,10.26,Kreditkarte,18:02,Sonntag
+2024-09-11,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),10,4.9,49.0,EC-Karte,07:32,Mittwoch
+2024-06-29,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,2,7.5,15.0,Bargeld,08:23,Samstag
+2024-06-11,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),9,4.2,37.8,Kreditkarte,10:07,Dienstag
+2024-03-01,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),4,1.32,5.28,Kreditkarte,20:57,Freitag
+2024-05-19,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),10,1.44,14.4,EC-Karte,21:13,Sonntag
+2024-03-28,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),2,2.94,5.88,EC-Karte,13:05,Donnerstag
+2024-04-20,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),5,3.85,19.25,EC-Karte,07:13,Samstag
+2024-09-06,Hamburg-Altona,Molkereiprodukte,Butter (250 g),10,1.22,12.2,Kreditkarte,07:49,Freitag
+2024-08-18,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),1,7.19,7.19,Bargeld,19:35,Sonntag
+2024-08-09,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),3,3.15,9.45,Bargeld,13:49,Freitag
+2024-05-12,Berlin-Mitte,Backwaren,Vollkornbrot,1,2.58,2.58,EC-Karte,08:27,Sonntag
+2024-12-16,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),4,3.67,14.68,Bargeld,19:07,Montag
+2024-02-01,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),4,2.61,10.44,EC-Karte,14:23,Donnerstag
+2024-05-05,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),7,1.37,9.59,Kreditkarte,12:11,Sonntag
+2024-02-13,Berlin-Mitte,Süßwaren,Chips (200 g),3,4.04,12.12,Bargeld,13:33,Dienstag
+2024-05-03,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),2,1.88,3.76,EC-Karte,10:16,Freitag
+2024-12-17,München-Hauptbahnhof,Backwaren,Vollkornbrot,2,0.75,1.5,Apple Pay,20:58,Dienstag
+2024-05-13,Frankfurt-Sachsenhausen,Molkereiprodukte,Butter (250 g),10,1.73,17.3,EC-Karte,18:22,Montag
+2024-11-27,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,10,2.97,29.7,EC-Karte,09:18,Mittwoch
+2024-06-29,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),3,1.08,3.24,EC-Karte,18:59,Samstag
+2024-09-12,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),2,3.41,6.82,Bargeld,09:31,Donnerstag
+2024-06-15,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),1,7.34,7.34,Bargeld,13:10,Samstag
+2024-04-07,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),10,3.52,35.2,EC-Karte,18:28,Sonntag
+2024-10-05,Köln-Ehrenfeld,Backwaren,Vollkornbrot,8,0.97,7.76,EC-Karte,07:15,Samstag
+2024-12-19,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),8,0.83,6.64,EC-Karte,17:42,Donnerstag
+2024-04-06,München-Hauptbahnhof,Backwaren,Vollkornbrot,3,1.61,4.83,Bargeld,10:34,Samstag
+2024-10-11,Frankfurt-Sachsenhausen,Backwaren,Croissant,7,1.0,7.0,Kreditkarte,17:43,Freitag
+2024-04-05,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),1,6.19,6.19,Bargeld,14:56,Freitag
+2024-09-18,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),7,1.98,13.86,Kreditkarte,07:43,Mittwoch
+2024-10-14,Hamburg-Altona,Getränke,Orangensaft (1 l),6,3.58,21.48,EC-Karte,18:20,Montag
+2024-06-13,Frankfurt-Sachsenhausen,Obst & Gemüse,Bananen (500 g),4,1.1,4.4,EC-Karte,10:12,Donnerstag
+2024-09-25,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),8,2.32,18.56,Bargeld,21:31,Mittwoch
+2024-04-09,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),7,3.7,25.9,Bargeld,19:26,Dienstag
+2024-01-29,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),5,6.9,34.5,EC-Karte,09:18,Montag
+2024-02-05,München-Hauptbahnhof,Hygiene,Handseife (300 ml),2,2.31,4.62,EC-Karte,16:48,Montag
+2024-06-12,Hamburg-Altona,Molkereiprodukte,Quark (500 g),1,4.89,4.89,Bargeld,12:54,Mittwoch
+2024-11-25,Berlin-Mitte,Backwaren,Baguette,10,2.2,22.0,EC-Karte,16:22,Montag
+2024-02-16,Berlin-Mitte,Hygiene,Handseife (300 ml),3,3.58,10.74,EC-Karte,15:40,Freitag
+2024-06-15,Hamburg-Altona,Backwaren,Baguette,4,0.53,2.12,Bargeld,11:59,Samstag
+2024-09-13,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),7,1.69,11.83,EC-Karte,16:00,Freitag
+2024-03-14,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),3,3.48,10.44,Bargeld,10:21,Donnerstag
+2024-09-20,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),4,3.91,15.64,EC-Karte,20:44,Freitag
+2024-04-21,Berlin-Mitte,Getränke,Orangensaft (1 l),8,6.2,49.6,Bargeld,21:29,Sonntag
+2024-10-22,Hamburg-Altona,Hygiene,Shampoo (250 ml),6,8.43,50.58,EC-Karte,09:47,Dienstag
+2024-07-30,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),7,3.52,24.64,EC-Karte,17:28,Dienstag
+2024-07-18,München-Hauptbahnhof,Molkereiprodukte,Gouda (400 g),1,3.17,3.17,EC-Karte,20:03,Donnerstag
+2024-03-05,Berlin-Mitte,Hygiene,Shampoo (250 ml),5,4.43,22.15,EC-Karte,08:26,Dienstag
+2024-06-18,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),5,7.85,39.25,Apple Pay,18:24,Dienstag
+2024-11-08,Köln-Ehrenfeld,Obst & Gemüse,Bananen (500 g),7,0.88,6.16,EC-Karte,21:50,Freitag
+2024-01-08,Frankfurt-Sachsenhausen,Hygiene,Zahnpasta (75 ml),2,9.91,19.82,Kreditkarte,10:08,Montag
+2024-10-03,München-Hauptbahnhof,Backwaren,Laugenbrezel,2,2.42,4.84,Bargeld,15:09,Donnerstag
+2024-06-28,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),8,1.21,9.68,EC-Karte,18:08,Freitag
+2024-09-19,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),7,1.26,8.82,Bargeld,12:34,Donnerstag
+2024-08-30,Köln-Ehrenfeld,Backwaren,Croissant,9,1.45,13.05,EC-Karte,10:59,Freitag
+2024-06-06,Berlin-Mitte,Molkereiprodukte,Butter (250 g),3,4.45,13.35,EC-Karte,12:37,Donnerstag
+2024-04-22,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),10,5.98,59.8,Kreditkarte,12:48,Montag
+2024-08-16,München-Hauptbahnhof,Hygiene,Handseife (300 ml),3,9.03,27.09,EC-Karte,17:51,Freitag
+2024-02-21,München-Hauptbahnhof,Backwaren,Vollkornbrot,7,2.45,17.15,EC-Karte,12:36,Mittwoch
+2024-08-01,München-Hauptbahnhof,Tiefkühlkost,Tiefkühlerbsen (750 g),2,6.96,13.92,Bargeld,12:36,Donnerstag
+2024-02-04,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),10,5.59,55.9,Bargeld,21:14,Sonntag
+2024-08-25,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),4,2.16,8.64,Kreditkarte,15:57,Sonntag
+2024-08-17,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),9,6.3,56.7,Bargeld,20:47,Samstag
+2024-01-31,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),4,1.62,6.48,Bargeld,17:52,Mittwoch
+2024-10-03,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",8,6.09,48.72,Apple Pay,20:59,Donnerstag
+2024-05-31,Berlin-Mitte,Backwaren,Roggenbrot,5,0.54,2.7,Apple Pay,09:20,Freitag
+2024-10-14,Köln-Ehrenfeld,Backwaren,Laugenbrezel,1,0.98,0.98,EC-Karte,21:08,Montag
+2024-01-16,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),2,7.69,15.38,EC-Karte,21:51,Dienstag
+2024-03-06,Hamburg-Altona,Getränke,"Cola (1,5 l)",7,2.9,20.3,Kreditkarte,07:28,Mittwoch
+2024-06-29,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),2,1.72,3.44,Bargeld,12:57,Samstag
+2024-03-09,Köln-Ehrenfeld,Backwaren,Vollkornbrot,3,0.96,2.88,EC-Karte,13:41,Samstag
+2024-04-30,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),6,4.08,24.48,EC-Karte,13:15,Dienstag
+2024-08-29,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),3,4.36,13.08,Apple Pay,18:21,Donnerstag
+2024-02-22,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,2,2.41,4.82,Apple Pay,17:36,Donnerstag
+2024-09-04,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),7,0.71,4.97,EC-Karte,10:23,Mittwoch
+2024-02-07,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,7,4.78,33.46,Bargeld,16:16,Mittwoch
+2024-03-04,Frankfurt-Sachsenhausen,Obst & Gemüse,Karotten (1 kg),8,3.37,26.96,EC-Karte,21:12,Montag
+2024-08-02,Berlin-Mitte,Hygiene,Rasierer,10,4.7,47.0,Bargeld,13:38,Freitag
+2024-10-16,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),2,3.38,6.76,Kreditkarte,20:02,Mittwoch
+2024-03-03,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),5,11.7,58.5,Bargeld,16:05,Sonntag
+2024-04-19,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),3,1.55,4.65,Bargeld,20:02,Freitag
+2024-12-03,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),10,5.86,58.6,Kreditkarte,20:44,Dienstag
+2024-12-27,Hamburg-Altona,Obst & Gemüse,Bananen (500 g),6,2.64,15.84,EC-Karte,07:01,Freitag
+2024-07-31,Köln-Ehrenfeld,Obst & Gemüse,Brokkoli,1,2.17,2.17,Kreditkarte,19:25,Mittwoch
+2024-06-12,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),7,4.53,31.71,Bargeld,09:07,Mittwoch
+2024-05-06,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),1,6.88,6.88,Kreditkarte,19:35,Montag
+2024-08-11,Berlin-Mitte,Obst & Gemüse,Karotten (1 kg),3,2.93,8.79,Bargeld,19:02,Sonntag
+2024-08-03,Hamburg-Altona,Hygiene,Duschgel (300 ml),8,10.19,81.52,Bargeld,10:01,Samstag
+2024-04-17,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),6,4.98,29.88,EC-Karte,07:24,Mittwoch
+2024-01-09,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),8,2.85,22.8,Bargeld,13:41,Dienstag
+2024-02-25,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),6,4.2,25.2,EC-Karte,11:06,Sonntag
+2024-12-15,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),9,8.1,72.9,Bargeld,15:29,Sonntag
+2024-06-01,Berlin-Mitte,Backwaren,Vollkornbrot,6,1.02,6.12,Bargeld,08:48,Samstag
+2024-06-25,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),1,2.76,2.76,Kreditkarte,07:37,Dienstag
+2024-06-19,Berlin-Mitte,Backwaren,Roggenbrot,1,1.5,1.5,Bargeld,13:45,Mittwoch
+2024-10-12,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),8,3.1,24.8,EC-Karte,18:18,Samstag
+2024-01-24,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),1,2.08,2.08,Kreditkarte,11:56,Mittwoch
+2024-01-31,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),4,6.19,24.76,Bargeld,11:08,Mittwoch
+2024-04-10,Hamburg-Altona,Süßwaren,Schokolade (100 g),1,0.62,0.62,Kreditkarte,09:36,Mittwoch
+2024-06-26,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),4,2.35,9.4,EC-Karte,11:26,Mittwoch
+2024-09-01,Berlin-Mitte,Molkereiprodukte,Butter (250 g),6,3.41,20.46,EC-Karte,11:01,Sonntag
+2024-06-28,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),2,1.1,2.2,Bargeld,10:56,Freitag
+2024-06-10,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),5,7.37,36.85,Kreditkarte,12:42,Montag
+2024-12-08,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),10,1.2,12.0,EC-Karte,11:13,Sonntag
+2024-02-28,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",1,11.95,11.95,EC-Karte,17:03,Mittwoch
+2024-07-27,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),1,1.43,1.43,Apple Pay,12:40,Samstag
+2024-07-16,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",3,12.92,38.76,EC-Karte,18:32,Dienstag
+2024-06-21,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),9,6.42,57.78,Kreditkarte,16:02,Freitag
+2024-10-21,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),5,3.04,15.2,Kreditkarte,16:59,Montag
+2024-04-07,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),7,1.16,8.12,Apple Pay,15:43,Sonntag
+2024-12-14,Hamburg-Altona,Backwaren,Roggenbrot,1,0.68,0.68,Apple Pay,20:27,Samstag
+2024-05-01,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),8,5.53,44.24,Apple Pay,10:14,Mittwoch
+2024-07-17,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),1,6.85,6.85,Bargeld,21:16,Mittwoch
+2024-07-09,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),8,2.16,17.28,Kreditkarte,10:27,Dienstag
+2024-11-06,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),2,1.6,3.2,Kreditkarte,09:03,Mittwoch
+2024-06-09,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),9,6.32,56.88,EC-Karte,19:22,Sonntag
+2024-04-13,Berlin-Mitte,Backwaren,Laugenbrezel,3,1.82,5.46,EC-Karte,20:13,Samstag
+2024-01-08,Berlin-Mitte,Hygiene,Rasierer,2,9.4,18.8,Apple Pay,08:06,Montag
+2024-05-12,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),4,2.82,11.28,Bargeld,15:07,Sonntag
+2024-10-28,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,1,2.27,2.27,EC-Karte,14:20,Montag
+2024-01-04,Berlin-Mitte,Getränke,Eistee (500 ml),2,6.97,13.94,EC-Karte,10:22,Donnerstag
+2024-11-23,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",6,5.52,33.12,Bargeld,14:21,Samstag
+2024-07-17,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),4,1.63,6.52,Kreditkarte,17:41,Mittwoch
+2024-02-21,Frankfurt-Sachsenhausen,Obst & Gemüse,Bananen (500 g),4,1.13,4.52,Bargeld,15:31,Mittwoch
+2024-04-20,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),9,3.16,28.44,EC-Karte,14:11,Samstag
+2024-07-21,Frankfurt-Sachsenhausen,Backwaren,Baguette,2,1.35,2.7,Kreditkarte,20:58,Sonntag
+2024-04-25,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),4,4.74,18.96,EC-Karte,10:43,Donnerstag
+2024-02-09,Frankfurt-Sachsenhausen,Getränke,Bier (6er-Pack),2,4.68,9.36,Kreditkarte,16:28,Freitag
+2024-08-31,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),5,3.02,15.1,Bargeld,11:02,Samstag
+2024-09-02,Köln-Ehrenfeld,Obst & Gemüse,Brokkoli,4,2.94,11.76,Kreditkarte,21:54,Montag
+2024-02-13,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",1,2.39,2.39,Apple Pay,10:44,Dienstag
+2024-04-12,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),1,3.0,3.0,Bargeld,20:27,Freitag
+2024-03-30,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),9,0.5,4.5,EC-Karte,16:09,Samstag
+2024-08-28,München-Hauptbahnhof,Obst & Gemüse,Äpfel (1 kg),1,2.46,2.46,EC-Karte,10:06,Mittwoch
+2024-09-23,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),8,3.31,26.48,EC-Karte,18:17,Montag
+2024-09-22,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),10,7.61,76.1,Kreditkarte,10:13,Sonntag
+2024-12-08,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),5,3.92,19.6,EC-Karte,10:12,Sonntag
+2024-10-07,Berlin-Mitte,Süßwaren,Chips (200 g),4,2.14,8.56,EC-Karte,12:24,Montag
+2024-04-27,Frankfurt-Sachsenhausen,Obst & Gemüse,Orangen (1 kg),8,3.02,24.16,Bargeld,17:02,Samstag
+2024-02-09,Hamburg-Altona,Obst & Gemüse,Brokkoli,10,2.28,22.8,EC-Karte,12:19,Freitag
+2024-08-12,Hamburg-Altona,Molkereiprodukte,Butter (250 g),2,3.43,6.86,Kreditkarte,15:52,Montag
+2024-11-30,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,10,2.34,23.4,Bargeld,15:51,Samstag
+2024-12-21,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),10,3.2,32.0,EC-Karte,09:00,Samstag
+2024-03-25,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),2,2.74,5.48,Bargeld,10:40,Montag
+2024-03-27,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),1,1.13,1.13,Kreditkarte,11:59,Mittwoch
+2024-01-14,Hamburg-Altona,Backwaren,Roggenbrot,8,2.34,18.72,EC-Karte,10:34,Sonntag
+2024-02-21,Berlin-Mitte,Obst & Gemüse,Brokkoli,1,3.06,3.06,EC-Karte,20:23,Mittwoch
+2024-07-21,Köln-Ehrenfeld,Backwaren,Roggenbrot,7,2.79,19.53,Bargeld,12:29,Sonntag
+2024-07-18,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),1,1.06,1.06,EC-Karte,13:12,Donnerstag
+2024-05-15,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),7,4.25,29.75,Apple Pay,17:23,Mittwoch
+2024-04-23,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),3,1.17,3.51,EC-Karte,18:56,Dienstag
+2024-10-29,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),1,2.44,2.44,EC-Karte,17:36,Dienstag
+2024-06-16,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),1,6.0,6.0,Kreditkarte,15:25,Sonntag
+2024-10-22,Hamburg-Altona,Getränke,Orangensaft (1 l),2,1.23,2.46,EC-Karte,21:07,Dienstag
+2024-12-17,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),6,2.61,15.66,EC-Karte,20:54,Dienstag
+2024-04-25,München-Hauptbahnhof,Süßwaren,Chips (200 g),1,0.69,0.69,EC-Karte,10:09,Donnerstag
+2024-03-14,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),9,2.17,19.53,Bargeld,09:43,Donnerstag
+2024-12-13,Hamburg-Altona,Obst & Gemüse,Brokkoli,7,2.98,20.86,Kreditkarte,12:18,Freitag
+2024-08-19,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),3,3.32,9.96,Kreditkarte,19:16,Montag
+2024-04-16,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),10,3.3,33.0,Apple Pay,21:10,Dienstag
+2024-08-14,Hamburg-Altona,Getränke,Eistee (500 ml),7,4.31,30.17,Kreditkarte,17:22,Mittwoch
+2024-07-06,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),7,3.4,23.8,EC-Karte,17:40,Samstag
+2024-11-26,München-Hauptbahnhof,Getränke,Bier (6er-Pack),2,5.32,10.64,EC-Karte,10:24,Dienstag
+2024-04-03,Hamburg-Altona,Molkereiprodukte,Quark (500 g),8,4.78,38.24,EC-Karte,15:01,Mittwoch
+2024-12-27,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),6,4.03,24.18,Apple Pay,09:15,Freitag
+2024-12-07,Berlin-Mitte,Süßwaren,Kekse (400 g),10,4.01,40.1,Kreditkarte,15:09,Samstag
+2024-03-06,Frankfurt-Sachsenhausen,Backwaren,Baguette,5,1.79,8.95,EC-Karte,09:24,Mittwoch
+2024-03-01,München-Hauptbahnhof,Getränke,Eistee (500 ml),7,5.95,41.65,EC-Karte,08:54,Freitag
+2024-07-13,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),4,1.92,7.68,Kreditkarte,21:57,Samstag
+2024-01-17,Hamburg-Altona,Süßwaren,Kekse (400 g),1,0.86,0.86,Apple Pay,20:59,Mittwoch
+2024-04-19,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),2,5.93,11.86,Kreditkarte,17:06,Freitag
+2024-06-07,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),9,2.83,25.47,EC-Karte,16:29,Freitag
+2024-12-19,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),8,4.55,36.4,EC-Karte,10:02,Donnerstag
+2024-12-28,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),4,3.73,14.92,EC-Karte,15:29,Samstag
+2024-02-25,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),7,8.68,60.76,EC-Karte,18:34,Sonntag
+2024-11-21,München-Hauptbahnhof,Backwaren,Vollkornbrot,1,1.27,1.27,Apple Pay,15:46,Donnerstag
+2024-02-03,Frankfurt-Sachsenhausen,Tiefkühlkost,Fischstäbchen (400 g),1,4.91,4.91,EC-Karte,11:20,Samstag
+2024-09-30,Köln-Ehrenfeld,Backwaren,Roggenbrot,6,2.34,14.04,EC-Karte,12:02,Montag
+2024-11-04,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,7,3.45,24.15,EC-Karte,19:27,Montag
+2024-11-21,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),10,2.7,27.0,EC-Karte,10:25,Donnerstag
+2024-03-22,Hamburg-Altona,Hygiene,Handseife (300 ml),8,9.07,72.56,EC-Karte,21:37,Freitag
+2024-11-22,Köln-Ehrenfeld,Obst & Gemüse,Brokkoli,3,3.43,10.29,Bargeld,18:05,Freitag
+2024-02-12,Hamburg-Altona,Süßwaren,Schokolade (100 g),9,3.49,31.41,Kreditkarte,20:36,Montag
+2024-07-08,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),5,1.11,5.55,EC-Karte,14:24,Montag
+2024-06-20,Berlin-Mitte,Molkereiprodukte,Quark (500 g),9,2.84,25.56,EC-Karte,10:44,Donnerstag
+2024-04-25,Berlin-Mitte,Backwaren,Baguette,2,1.96,3.92,Bargeld,07:59,Donnerstag
+2024-01-09,Köln-Ehrenfeld,Backwaren,Croissant,1,0.86,0.86,EC-Karte,15:13,Dienstag
+2024-10-08,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),1,1.57,1.57,Kreditkarte,12:45,Dienstag
+2024-05-02,Hamburg-Altona,Obst & Gemüse,Bananen (500 g),10,1.56,15.6,Kreditkarte,08:07,Donnerstag
+2024-08-29,Berlin-Mitte,Süßwaren,Kekse (400 g),1,1.05,1.05,Bargeld,20:59,Donnerstag
+2024-05-29,München-Hauptbahnhof,Obst & Gemüse,Äpfel (1 kg),10,2.17,21.7,Apple Pay,21:28,Mittwoch
+2024-05-16,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),8,3.57,28.56,Kreditkarte,12:44,Donnerstag
+2024-11-19,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),2,5.53,11.06,EC-Karte,17:46,Dienstag
+2024-02-04,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),9,3.44,30.96,Bargeld,13:36,Sonntag
+2024-09-25,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),2,3.41,6.82,EC-Karte,14:23,Mittwoch
+2024-09-29,München-Hauptbahnhof,Backwaren,Vollkornbrot,2,0.98,1.96,Kreditkarte,16:45,Sonntag
+2024-05-18,Berlin-Mitte,Hygiene,Handseife (300 ml),6,11.8,70.8,EC-Karte,13:28,Samstag
+2024-04-05,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),3,2.15,6.45,EC-Karte,19:39,Freitag
+2024-01-02,Köln-Ehrenfeld,Backwaren,Croissant,3,1.79,5.37,Kreditkarte,09:36,Dienstag
+2024-12-07,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),2,4.57,9.14,Kreditkarte,17:27,Samstag
+2024-12-11,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),7,4.08,28.56,EC-Karte,21:07,Mittwoch
+2024-03-28,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),1,5.56,5.56,Kreditkarte,19:17,Donnerstag
+2024-01-12,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),3,2.6,7.8,Bargeld,07:56,Freitag
+2024-02-14,Frankfurt-Sachsenhausen,Hygiene,Rasierer,6,12.02,72.12,Kreditkarte,08:31,Mittwoch
+2024-01-25,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),5,4.98,24.9,EC-Karte,16:38,Donnerstag
+2024-10-30,Berlin-Mitte,Hygiene,Duschgel (300 ml),7,3.26,22.82,Bargeld,20:15,Mittwoch
+2024-11-21,München-Hauptbahnhof,Hygiene,Zahnpasta (75 ml),3,9.77,29.31,Apple Pay,19:42,Donnerstag
+2024-02-25,Hamburg-Altona,Süßwaren,Schokolade (100 g),7,2.86,20.02,Bargeld,20:29,Sonntag
+2024-09-29,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),8,3.8,30.4,Bargeld,09:13,Sonntag
+2024-03-06,Köln-Ehrenfeld,Backwaren,Laugenbrezel,4,2.39,9.56,EC-Karte,14:08,Mittwoch
+2024-05-14,Berlin-Mitte,Getränke,Bier (6er-Pack),3,4.01,12.03,EC-Karte,17:23,Dienstag
+2024-08-06,Berlin-Mitte,Backwaren,Baguette,6,2.12,12.72,Bargeld,16:33,Dienstag
+2024-09-19,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),6,4.83,28.98,EC-Karte,18:16,Donnerstag
+2024-11-15,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),1,4.62,4.62,Kreditkarte,10:14,Freitag
+2024-01-17,München-Hauptbahnhof,Hygiene,Handseife (300 ml),6,3.56,21.36,Kreditkarte,13:16,Mittwoch
+2024-03-12,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),2,3.99,7.98,Bargeld,13:17,Dienstag
+2024-04-12,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),6,1.53,9.18,EC-Karte,21:44,Freitag
+2024-04-23,Frankfurt-Sachsenhausen,Tiefkühlkost,Fischstäbchen (400 g),10,6.66,66.6,Kreditkarte,10:29,Dienstag
+2024-12-30,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),6,2.94,17.64,Bargeld,11:28,Montag
+2024-10-10,Berlin-Mitte,Getränke,Eistee (500 ml),8,5.42,43.36,Bargeld,07:09,Donnerstag
+2024-04-26,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),4,2.11,8.44,Bargeld,09:32,Freitag
+2024-12-20,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),10,2.48,24.8,EC-Karte,21:57,Freitag
+2024-07-01,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),9,5.53,49.77,Bargeld,19:44,Montag
+2024-07-01,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),10,2.91,29.1,Kreditkarte,10:26,Montag
+2024-06-07,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),8,4.66,37.28,Apple Pay,17:18,Freitag
+2024-02-22,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,7,4.24,29.68,Bargeld,15:21,Donnerstag
+2024-12-07,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),6,8.18,49.08,EC-Karte,20:01,Samstag
+2024-01-06,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),10,1.23,12.3,Bargeld,11:01,Samstag
+2024-03-04,Berlin-Mitte,Getränke,"Cola (1,5 l)",9,3.09,27.81,Bargeld,21:46,Montag
+2024-03-24,Hamburg-Altona,Obst & Gemüse,Äpfel (1 kg),5,0.93,4.65,Kreditkarte,12:50,Sonntag
+2024-04-11,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),1,10.03,10.03,EC-Karte,17:58,Donnerstag
+2024-02-18,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",1,1.72,1.72,Apple Pay,12:37,Sonntag
+2024-01-07,Hamburg-Altona,Molkereiprodukte,Butter (250 g),3,1.94,5.82,EC-Karte,17:55,Sonntag
+2024-09-04,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),1,7.53,7.53,Bargeld,12:24,Mittwoch
+2024-12-19,Hamburg-Altona,Getränke,Orangensaft (1 l),3,4.11,12.33,EC-Karte,19:15,Donnerstag
+2024-02-14,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),2,0.95,1.9,Bargeld,16:14,Mittwoch
+2024-04-18,Frankfurt-Sachsenhausen,Molkereiprodukte,Joghurt (500 g),10,0.9,9.0,Kreditkarte,11:14,Donnerstag
+2024-07-03,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),1,5.81,5.81,EC-Karte,21:44,Mittwoch
+2024-12-04,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),7,2.14,14.98,EC-Karte,17:00,Mittwoch
+2024-09-10,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),4,1.29,5.16,EC-Karte,13:56,Dienstag
+2024-10-06,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,2,2.45,4.9,EC-Karte,09:46,Sonntag
+2024-07-31,Hamburg-Altona,Süßwaren,Schokolade (100 g),8,1.48,11.84,Kreditkarte,21:22,Mittwoch
+2024-06-01,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),10,3.32,33.2,Bargeld,18:42,Samstag
+2024-03-13,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",8,3.14,25.12,Bargeld,17:08,Mittwoch
+2024-11-11,München-Hauptbahnhof,Backwaren,Laugenbrezel,10,0.96,9.6,Bargeld,19:25,Montag
+2024-10-20,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),6,3.39,20.34,EC-Karte,16:06,Sonntag
+2024-01-10,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),7,1.51,10.57,EC-Karte,10:06,Mittwoch
+2024-09-18,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),2,1.01,2.02,Bargeld,10:00,Mittwoch
+2024-01-31,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),9,1.26,11.34,EC-Karte,08:47,Mittwoch
+2024-09-26,Berlin-Mitte,Getränke,Bier (6er-Pack),8,6.38,51.04,EC-Karte,07:44,Donnerstag
+2024-10-28,Köln-Ehrenfeld,Backwaren,Croissant,3,2.57,7.71,Bargeld,17:53,Montag
+2024-02-17,Berlin-Mitte,Molkereiprodukte,Butter (250 g),4,2.42,9.68,Apple Pay,19:58,Samstag
+2024-06-07,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),7,6.23,43.61,EC-Karte,09:57,Freitag
+2024-02-15,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),1,4.31,4.31,EC-Karte,15:59,Donnerstag
+2024-07-26,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,9,6.96,62.64,EC-Karte,08:00,Freitag
+2024-12-04,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),3,3.41,10.23,EC-Karte,13:47,Mittwoch
+2024-01-30,München-Hauptbahnhof,Süßwaren,Kekse (400 g),1,1.75,1.75,Kreditkarte,18:43,Dienstag
+2024-05-25,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),4,1.6,6.4,EC-Karte,19:09,Samstag
+2024-12-21,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),9,1.06,9.54,EC-Karte,21:08,Samstag
+2024-04-19,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),3,1.64,4.92,Apple Pay,11:58,Freitag
+2024-02-18,Frankfurt-Sachsenhausen,Obst & Gemüse,Bananen (500 g),6,3.16,18.96,Kreditkarte,21:52,Sonntag
+2024-06-27,Hamburg-Altona,Backwaren,Laugenbrezel,9,2.77,24.93,Kreditkarte,18:19,Donnerstag
+2024-07-04,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),1,1.47,1.47,Bargeld,12:04,Donnerstag
+2024-08-29,Hamburg-Altona,Hygiene,Rasierer,8,6.76,54.08,Bargeld,11:20,Donnerstag
+2024-04-24,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),3,2.08,6.24,EC-Karte,08:00,Mittwoch
+2024-12-14,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),7,4.93,34.51,EC-Karte,20:41,Samstag
+2024-07-09,Hamburg-Altona,Süßwaren,Chips (200 g),2,2.75,5.5,EC-Karte,10:22,Dienstag
+2024-04-14,Köln-Ehrenfeld,Backwaren,Vollkornbrot,2,0.54,1.08,Kreditkarte,11:02,Sonntag
+2024-12-16,Köln-Ehrenfeld,Süßwaren,Chips (200 g),8,3.87,30.96,EC-Karte,13:58,Montag
+2024-12-03,München-Hauptbahnhof,Hygiene,Rasierer,9,12.69,114.21,EC-Karte,09:49,Dienstag
+2024-07-01,Hamburg-Altona,Obst & Gemüse,Bananen (500 g),10,2.55,25.5,EC-Karte,19:54,Montag
+2024-01-10,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),7,6.78,47.46,EC-Karte,17:59,Mittwoch
+2024-08-05,Frankfurt-Sachsenhausen,Süßwaren,Gummibärchen (200 g),5,2.65,13.25,EC-Karte,09:00,Montag
+2024-07-21,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),2,4.66,9.32,Kreditkarte,09:46,Sonntag
+2024-02-24,Hamburg-Altona,Süßwaren,Marzipan (200 g),3,1.17,3.51,EC-Karte,07:47,Samstag
+2024-08-19,Berlin-Mitte,Hygiene,Shampoo (250 ml),7,8.21,57.47,Kreditkarte,21:46,Montag
+2024-11-02,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),4,2.78,11.12,EC-Karte,13:15,Samstag
+2024-02-08,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),5,3.02,15.1,Kreditkarte,16:23,Donnerstag
+2024-09-21,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),2,2.62,5.24,Bargeld,09:55,Samstag
+2024-02-21,München-Hauptbahnhof,Backwaren,Vollkornbrot,5,1.53,7.65,Kreditkarte,10:03,Mittwoch
+2024-09-30,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),3,4.62,13.86,Kreditkarte,15:38,Montag
+2024-06-01,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",2,6.8,13.6,EC-Karte,10:47,Samstag
+2024-01-03,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),2,3.63,7.26,EC-Karte,16:47,Mittwoch
+2024-12-18,Berlin-Mitte,Backwaren,Laugenbrezel,6,0.87,5.22,Kreditkarte,20:35,Mittwoch
+2024-03-01,Frankfurt-Sachsenhausen,Molkereiprodukte,Vollmilch (1 l),4,1.57,6.28,Bargeld,11:46,Freitag
+2024-08-05,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),1,5.94,5.94,Kreditkarte,16:54,Montag
+2024-03-07,Köln-Ehrenfeld,Obst & Gemüse,Orangen (1 kg),6,3.47,20.82,Apple Pay,20:45,Donnerstag
+2024-12-06,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,2,1.08,2.16,Kreditkarte,20:06,Freitag
+2024-09-26,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",1,11.9,11.9,EC-Karte,07:14,Donnerstag
+2024-10-20,Köln-Ehrenfeld,Obst & Gemüse,Bananen (500 g),2,1.54,3.08,EC-Karte,08:18,Sonntag
+2024-06-06,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),5,6.7,33.5,Apple Pay,21:20,Donnerstag
+2024-06-19,Berlin-Mitte,Backwaren,Vollkornbrot,10,0.59,5.9,EC-Karte,20:21,Mittwoch
+2024-08-19,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),3,2.13,6.39,Bargeld,11:13,Montag
+2024-10-13,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),3,6.74,20.22,Bargeld,14:40,Sonntag
+2024-11-05,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),3,4.12,12.36,Kreditkarte,15:06,Dienstag
+2024-01-07,München-Hauptbahnhof,Backwaren,Baguette,4,1.08,4.32,EC-Karte,17:47,Sonntag
+2024-08-30,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),8,3.03,24.24,Bargeld,18:39,Freitag
+2024-02-09,Hamburg-Altona,Backwaren,Laugenbrezel,4,2.92,11.68,EC-Karte,12:57,Freitag
+2024-04-15,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),7,4.75,33.25,Kreditkarte,20:00,Montag
+2024-10-29,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),9,3.07,27.63,EC-Karte,07:17,Dienstag
+2024-04-01,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),10,2.47,24.7,Kreditkarte,07:53,Montag
+2024-10-17,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),6,1.88,11.28,Kreditkarte,21:29,Donnerstag
+2024-06-17,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),8,4.43,35.44,Apple Pay,09:33,Montag
+2024-03-25,München-Hauptbahnhof,Molkereiprodukte,Gouda (400 g),10,2.04,20.4,Kreditkarte,21:01,Montag
+2024-05-01,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),8,2.43,19.44,EC-Karte,11:45,Mittwoch
+2024-07-12,München-Hauptbahnhof,Obst & Gemüse,Salat (Kopf),3,1.09,3.27,EC-Karte,12:15,Freitag
+2024-10-06,Frankfurt-Sachsenhausen,Getränke,Bier (6er-Pack),2,2.58,5.16,Bargeld,07:57,Sonntag
+2024-08-09,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),2,3.08,6.16,Apple Pay,21:22,Freitag
+2024-12-06,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),9,3.04,27.36,EC-Karte,12:11,Freitag
+2024-11-12,Berlin-Mitte,Molkereiprodukte,Quark (500 g),6,4.38,26.28,EC-Karte,09:35,Dienstag
+2024-10-01,Frankfurt-Sachsenhausen,Hygiene,Zahnpasta (75 ml),3,12.95,38.85,Kreditkarte,14:28,Dienstag
+2024-08-08,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",4,1.45,5.8,Bargeld,09:28,Donnerstag
+2024-04-15,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),3,4.25,12.75,Kreditkarte,18:56,Montag
+2024-05-30,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),9,1.38,12.42,Bargeld,08:21,Donnerstag
+2024-02-13,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),7,2.46,17.22,EC-Karte,14:23,Dienstag
+2024-05-16,München-Hauptbahnhof,Hygiene,Handseife (300 ml),9,7.17,64.53,EC-Karte,12:37,Donnerstag
+2024-12-04,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),4,3.1,12.4,EC-Karte,07:10,Mittwoch
+2024-06-04,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),5,10.35,51.75,EC-Karte,07:49,Dienstag
+2024-02-11,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,2,2.1,4.2,Apple Pay,14:13,Sonntag
+2024-08-25,Hamburg-Altona,Obst & Gemüse,Brokkoli,10,2.02,20.2,EC-Karte,12:14,Sonntag
+2024-12-17,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),6,3.0,18.0,EC-Karte,08:00,Dienstag
+2024-11-12,Frankfurt-Sachsenhausen,Obst & Gemüse,Tomaten (500 g),6,2.03,12.18,Kreditkarte,09:20,Dienstag
+2024-04-10,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),5,1.14,5.7,Kreditkarte,19:34,Mittwoch
+2024-06-14,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),3,1.86,5.58,Bargeld,17:42,Freitag
+2024-07-12,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),10,5.17,51.7,Apple Pay,16:53,Freitag
+2024-03-31,Hamburg-Altona,Getränke,Apfelsaft (1 l),5,1.95,9.75,Bargeld,19:46,Sonntag
+2024-04-08,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),7,7.41,51.87,EC-Karte,08:19,Montag
+2024-03-27,Köln-Ehrenfeld,Obst & Gemüse,Brokkoli,1,1.66,1.66,EC-Karte,17:49,Mittwoch
+2024-12-29,München-Hauptbahnhof,Backwaren,Roggenbrot,3,1.96,5.88,Kreditkarte,18:11,Sonntag
+2024-09-29,Hamburg-Altona,Süßwaren,Marzipan (200 g),9,2.6,23.4,Bargeld,10:12,Sonntag
+2024-11-02,Berlin-Mitte,Hygiene,Handseife (300 ml),1,11.58,11.58,Bargeld,15:21,Samstag
+2024-10-25,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),2,1.07,2.14,Kreditkarte,18:32,Freitag
+2024-12-16,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),9,1.1,9.9,Bargeld,16:12,Montag
+2024-02-08,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),4,1.76,7.04,EC-Karte,10:54,Donnerstag
+2024-11-17,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),3,4.58,13.74,Kreditkarte,16:16,Sonntag
+2024-01-25,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",6,2.64,15.84,EC-Karte,18:23,Donnerstag
+2024-06-22,Frankfurt-Sachsenhausen,Backwaren,Croissant,2,2.4,4.8,Bargeld,07:36,Samstag
+2024-08-04,Hamburg-Altona,Hygiene,Handseife (300 ml),1,4.31,4.31,EC-Karte,15:25,Sonntag
+2024-05-10,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),1,3.04,3.04,Apple Pay,14:24,Freitag
+2024-02-23,Frankfurt-Sachsenhausen,Obst & Gemüse,Tomaten (500 g),1,1.91,1.91,EC-Karte,12:59,Freitag
+2024-03-11,Hamburg-Altona,Backwaren,Vollkornbrot,2,2.42,4.84,Bargeld,07:26,Montag
+2024-10-28,Köln-Ehrenfeld,Fleisch & Wurst,Hähnchenbrust (500 g),7,8.02,56.14,Bargeld,08:06,Montag
+2024-04-26,Köln-Ehrenfeld,Obst & Gemüse,Salat (Kopf),3,2.77,8.31,EC-Karte,18:43,Freitag
+2024-04-23,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),1,3.18,3.18,Apple Pay,19:42,Dienstag
+2024-12-03,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),1,7.2,7.2,EC-Karte,13:13,Dienstag
+2024-02-22,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),5,9.33,46.65,Bargeld,21:51,Donnerstag
+2024-11-30,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),9,1.42,12.78,EC-Karte,20:23,Samstag
+2024-12-02,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",4,4.2,16.8,Bargeld,16:09,Montag
+2024-08-06,Berlin-Mitte,Hygiene,Rasierer,1,10.35,10.35,EC-Karte,15:10,Dienstag
+2024-03-01,Berlin-Mitte,Süßwaren,Kekse (400 g),3,1.83,5.49,Apple Pay,21:42,Freitag
+2024-02-26,Frankfurt-Sachsenhausen,Hygiene,Handseife (300 ml),5,9.01,45.05,Kreditkarte,16:12,Montag
+2024-04-13,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),2,1.69,3.38,Bargeld,21:28,Samstag
+2024-07-29,Berlin-Mitte,Süßwaren,Marzipan (200 g),10,2.55,25.5,EC-Karte,21:44,Montag
+2024-02-26,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),8,2.53,20.24,Bargeld,09:51,Montag
+2024-06-15,Berlin-Mitte,Molkereiprodukte,Joghurt (500 g),4,3.62,14.48,Bargeld,16:29,Samstag
+2024-02-12,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),10,8.12,81.2,EC-Karte,17:54,Montag
+2024-07-16,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),4,1.67,6.68,EC-Karte,19:18,Dienstag
+2024-01-08,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),2,4.87,9.74,Kreditkarte,12:52,Montag
+2024-09-15,Hamburg-Altona,Molkereiprodukte,Butter (250 g),10,1.09,10.9,Kreditkarte,19:15,Sonntag
+2024-01-21,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",10,1.83,18.3,Bargeld,14:03,Sonntag
+2024-03-12,Köln-Ehrenfeld,Hygiene,Rasierer,4,12.87,51.48,Apple Pay,12:43,Dienstag
+2024-03-04,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),6,5.7,34.2,EC-Karte,09:45,Montag
+2024-10-30,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),2,1.98,3.96,EC-Karte,11:55,Mittwoch
+2024-01-20,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),7,4.28,29.96,Kreditkarte,21:55,Samstag
+2024-06-05,Hamburg-Altona,Süßwaren,Chips (200 g),7,4.41,30.87,Bargeld,17:06,Mittwoch
+2024-08-03,Köln-Ehrenfeld,Getränke,"Cola (1,5 l)",8,2.35,18.8,EC-Karte,17:37,Samstag
+2024-07-07,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),6,7.21,43.26,Kreditkarte,20:42,Sonntag
+2024-09-05,Köln-Ehrenfeld,Backwaren,Croissant,8,1.2,9.6,EC-Karte,11:36,Donnerstag
+2024-10-20,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,6,2.41,14.46,Kreditkarte,16:01,Sonntag
+2024-05-23,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),9,3.69,33.21,Bargeld,12:02,Donnerstag
+2024-10-29,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),2,0.49,0.98,Kreditkarte,19:40,Dienstag
+2024-04-26,Hamburg-Altona,Backwaren,Baguette,5,2.18,10.9,Bargeld,13:51,Freitag
+2024-12-25,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",5,4.37,21.85,Bargeld,19:10,Mittwoch
+2024-07-03,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),6,2.8,16.8,EC-Karte,18:02,Mittwoch
+2024-09-25,Berlin-Mitte,Süßwaren,Chips (200 g),2,3.59,7.18,Kreditkarte,18:24,Mittwoch
+2024-11-15,Köln-Ehrenfeld,Süßwaren,Chips (200 g),4,3.41,13.64,Bargeld,20:18,Freitag
+2024-10-16,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),10,0.86,8.6,Kreditkarte,18:58,Mittwoch
+2024-11-06,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",2,5.15,10.3,Bargeld,11:55,Mittwoch
+2024-07-14,Hamburg-Altona,Getränke,Apfelsaft (1 l),7,6.93,48.51,EC-Karte,14:33,Sonntag
+2024-01-16,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),7,1.88,13.16,EC-Karte,14:56,Dienstag
+2024-06-28,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),5,3.64,18.2,Bargeld,07:13,Freitag
+2024-03-07,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),1,7.78,7.78,Apple Pay,15:59,Donnerstag
+2024-11-20,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),1,3.53,3.53,EC-Karte,13:26,Mittwoch
+2024-03-27,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),3,6.78,20.34,EC-Karte,12:28,Mittwoch
+2024-03-24,Frankfurt-Sachsenhausen,Süßwaren,Gummibärchen (200 g),2,3.53,7.06,EC-Karte,08:03,Sonntag
+2024-04-01,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,1,2.21,2.21,EC-Karte,14:10,Montag
+2024-08-22,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),2,6.09,12.18,EC-Karte,15:11,Donnerstag
+2024-07-27,München-Hauptbahnhof,Hygiene,Handseife (300 ml),2,8.11,16.22,Kreditkarte,08:29,Samstag
+2024-12-12,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),9,1.77,15.93,EC-Karte,16:11,Donnerstag
+2024-05-31,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),7,11.57,80.99,EC-Karte,09:06,Freitag
+2024-04-13,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,1,2.97,2.97,EC-Karte,09:36,Samstag
+2024-01-18,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),7,4.86,34.02,EC-Karte,13:52,Donnerstag
+2024-01-03,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),2,3.9,7.8,EC-Karte,12:04,Mittwoch
+2024-05-16,Frankfurt-Sachsenhausen,Molkereiprodukte,Butter (250 g),5,1.67,8.35,EC-Karte,20:33,Donnerstag
+2024-12-03,Berlin-Mitte,Molkereiprodukte,Butter (250 g),1,4.26,4.26,EC-Karte,08:57,Dienstag
+2024-07-10,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),1,3.0,3.0,Kreditkarte,12:24,Mittwoch
+2024-11-22,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),2,7.12,14.24,Apple Pay,18:10,Freitag
+2024-02-07,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",5,1.26,6.3,Apple Pay,10:04,Mittwoch
+2024-02-04,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),5,6.9,34.5,Kreditkarte,21:56,Sonntag
+2024-10-31,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),4,7.63,30.52,EC-Karte,18:24,Donnerstag
+2024-02-08,Berlin-Mitte,Molkereiprodukte,Quark (500 g),7,4.37,30.59,Kreditkarte,21:06,Donnerstag
+2024-01-19,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,8,7.88,63.04,Bargeld,21:51,Freitag
+2024-05-27,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),8,3.65,29.2,EC-Karte,08:48,Montag
+2024-12-03,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),6,5.56,33.36,EC-Karte,13:42,Dienstag
+2024-09-08,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),6,2.96,17.76,Bargeld,18:05,Sonntag
+2024-02-06,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),5,4.63,23.15,Apple Pay,07:04,Dienstag
+2024-11-01,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),3,8.89,26.67,Kreditkarte,13:13,Freitag
+2024-11-03,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),5,4.51,22.55,EC-Karte,17:09,Sonntag
+2024-10-19,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),1,1.43,1.43,EC-Karte,18:31,Samstag
+2024-11-25,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),10,5.72,57.2,EC-Karte,13:23,Montag
+2024-03-28,Berlin-Mitte,Getränke,Apfelsaft (1 l),4,5.31,21.24,EC-Karte,19:45,Donnerstag
+2024-12-23,Frankfurt-Sachsenhausen,Obst & Gemüse,Karotten (1 kg),8,1.34,10.72,Kreditkarte,17:06,Montag
+2024-04-27,Frankfurt-Sachsenhausen,Molkereiprodukte,Butter (250 g),10,1.76,17.6,Apple Pay,07:43,Samstag
+2024-10-19,Berlin-Mitte,Backwaren,Baguette,5,2.94,14.7,EC-Karte,11:56,Samstag
+2024-07-30,Köln-Ehrenfeld,Getränke,Eistee (500 ml),9,3.48,31.32,Bargeld,21:07,Dienstag
+2024-10-11,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,5,3.08,15.4,EC-Karte,07:39,Freitag
+2024-08-17,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),2,5.3,10.6,Bargeld,08:30,Samstag
+2024-08-22,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),1,5.07,5.07,EC-Karte,12:05,Donnerstag
+2024-08-12,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),2,3.02,6.04,Bargeld,21:17,Montag
+2024-10-11,Köln-Ehrenfeld,Backwaren,Baguette,10,2.8,28.0,Bargeld,17:47,Freitag
+2024-09-26,München-Hauptbahnhof,Süßwaren,Chips (200 g),5,4.44,22.2,EC-Karte,09:52,Donnerstag
+2024-02-19,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),4,4.83,19.32,Bargeld,12:22,Montag
+2024-10-28,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),5,3.32,16.6,Kreditkarte,21:06,Montag
+2024-07-14,Hamburg-Altona,Süßwaren,Chips (200 g),3,1.85,5.55,Bargeld,10:14,Sonntag
+2024-04-27,München-Hauptbahnhof,Getränke,Orangensaft (1 l),9,6.1,54.9,Kreditkarte,15:50,Samstag
+2024-07-06,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),10,1.78,17.8,Bargeld,13:34,Samstag
+2024-12-18,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),1,1.45,1.45,Bargeld,18:25,Mittwoch
+2024-11-09,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),8,4.39,35.12,Bargeld,18:00,Samstag
+2024-10-31,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",4,11.43,45.72,Kreditkarte,19:46,Donnerstag
+2024-06-17,München-Hauptbahnhof,Hygiene,Rasierer,1,4.98,4.98,EC-Karte,08:27,Montag
+2024-10-13,Frankfurt-Sachsenhausen,Backwaren,Croissant,10,2.18,21.8,EC-Karte,13:32,Sonntag
+2024-05-20,Hamburg-Altona,Getränke,Bier (6er-Pack),1,3.69,3.69,Bargeld,17:50,Montag
+2024-09-07,Hamburg-Altona,Obst & Gemüse,Brokkoli,3,1.66,4.98,Apple Pay,13:33,Samstag
+2024-08-21,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),1,3.71,3.71,Bargeld,17:55,Mittwoch
+2024-04-01,München-Hauptbahnhof,Hygiene,"Waschmittel (1,5 kg)",5,3.05,15.25,EC-Karte,16:33,Montag
+2024-04-07,Hamburg-Altona,Obst & Gemüse,Brokkoli,6,2.27,13.62,Kreditkarte,12:20,Sonntag
+2024-01-23,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),4,4.67,18.68,Bargeld,08:55,Dienstag
+2024-02-21,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",1,7.38,7.38,EC-Karte,21:38,Mittwoch
+2024-06-07,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),2,1.43,2.86,Kreditkarte,19:45,Freitag
+2024-06-23,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),10,8.59,85.9,EC-Karte,20:13,Sonntag
+2024-03-01,Köln-Ehrenfeld,Obst & Gemüse,Bananen (500 g),9,2.51,22.59,Bargeld,11:40,Freitag
+2024-06-01,Berlin-Mitte,Hygiene,Rasierer,10,11.84,118.4,EC-Karte,11:33,Samstag
+2024-08-08,München-Hauptbahnhof,Hygiene,"Waschmittel (1,5 kg)",6,2.75,16.5,Bargeld,11:06,Donnerstag
+2024-03-25,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),6,4.65,27.9,Apple Pay,07:15,Montag
+2024-05-03,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),8,11.26,90.08,EC-Karte,09:54,Freitag
+2024-05-14,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),7,1.68,11.76,EC-Karte,11:34,Dienstag
+2024-07-03,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),5,2.0,10.0,Bargeld,21:46,Mittwoch
+2024-05-13,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),3,1.51,4.53,EC-Karte,10:10,Montag
+2024-09-25,Berlin-Mitte,Hygiene,Rasierer,5,4.63,23.15,EC-Karte,14:13,Mittwoch
+2024-04-29,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),1,4.67,4.67,Bargeld,15:56,Montag
+2024-06-07,München-Hauptbahnhof,Hygiene,Handseife (300 ml),2,5.24,10.48,Kreditkarte,12:25,Freitag
+2024-05-18,Berlin-Mitte,Getränke,Apfelsaft (1 l),8,2.47,19.76,EC-Karte,20:53,Samstag
+2024-03-07,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),9,2.54,22.86,Kreditkarte,08:48,Donnerstag
+2024-09-07,Frankfurt-Sachsenhausen,Obst & Gemüse,Bananen (500 g),2,0.93,1.86,EC-Karte,20:20,Samstag
+2024-03-26,Köln-Ehrenfeld,Molkereiprodukte,Gouda (400 g),1,2.29,2.29,Bargeld,18:56,Dienstag
+2024-04-18,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),1,6.13,6.13,Kreditkarte,11:46,Donnerstag
+2024-10-16,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,8,0.93,7.44,Kreditkarte,18:07,Mittwoch
+2024-12-12,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),4,1.45,5.8,EC-Karte,13:05,Donnerstag
+2024-09-01,Köln-Ehrenfeld,Backwaren,Baguette,4,0.99,3.96,Bargeld,21:07,Sonntag
+2024-11-30,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),1,2.5,2.5,Kreditkarte,07:44,Samstag
+2024-11-07,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),10,1.67,16.7,Bargeld,07:08,Donnerstag
+2024-06-24,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),5,2.74,13.7,EC-Karte,15:16,Montag
+2024-10-08,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),8,4.26,34.08,EC-Karte,20:26,Dienstag
+2024-04-29,Hamburg-Altona,Obst & Gemüse,Äpfel (1 kg),8,3.48,27.84,Bargeld,07:08,Montag
+2024-06-17,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),2,6.48,12.96,Bargeld,18:19,Montag
+2024-07-14,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),9,1.43,12.87,Bargeld,21:40,Sonntag
+2024-12-16,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),6,5.06,30.36,Apple Pay,14:58,Montag
+2024-11-05,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),7,2.79,19.53,EC-Karte,20:28,Dienstag
+2024-06-27,München-Hauptbahnhof,Hygiene,Rasierer,3,11.2,33.6,EC-Karte,18:44,Donnerstag
+2024-08-26,Köln-Ehrenfeld,Hygiene,Duschgel (300 ml),9,10.72,96.48,Apple Pay,10:31,Montag
+2024-03-14,München-Hauptbahnhof,Hygiene,Rasierer,10,2.94,29.4,EC-Karte,19:27,Donnerstag
+2024-10-20,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),5,1.4,7.0,EC-Karte,17:31,Sonntag
+2024-07-20,Berlin-Mitte,Süßwaren,Schokolade (100 g),1,2.22,2.22,EC-Karte,07:57,Samstag
+2024-07-13,Berlin-Mitte,Getränke,Apfelsaft (1 l),9,6.18,55.62,EC-Karte,15:03,Samstag
+2024-10-06,Berlin-Mitte,Obst & Gemüse,Karotten (1 kg),9,3.17,28.53,EC-Karte,16:30,Sonntag
+2024-08-19,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),6,1.33,7.98,Apple Pay,19:03,Montag
+2024-01-27,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),6,5.44,32.64,Kreditkarte,18:52,Samstag
+2024-04-15,Hamburg-Altona,Backwaren,Vollkornbrot,3,0.88,2.64,EC-Karte,14:36,Montag
+2024-03-05,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),1,6.95,6.95,EC-Karte,11:02,Dienstag
+2024-09-25,Hamburg-Altona,Süßwaren,Schokolade (100 g),10,4.16,41.6,Kreditkarte,09:37,Mittwoch
+2024-01-13,Berlin-Mitte,Backwaren,Baguette,5,1.63,8.15,Bargeld,08:26,Samstag
+2024-03-14,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),3,3.03,9.09,Kreditkarte,16:02,Donnerstag
+2024-08-06,München-Hauptbahnhof,Backwaren,Vollkornbrot,7,1.94,13.58,EC-Karte,21:58,Dienstag
+2024-09-10,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),1,3.32,3.32,Kreditkarte,08:22,Dienstag
+2024-07-02,München-Hauptbahnhof,Backwaren,Laugenbrezel,1,2.52,2.52,Kreditkarte,17:01,Dienstag
+2024-11-10,Berlin-Mitte,Hygiene,Shampoo (250 ml),3,5.4,16.2,EC-Karte,15:36,Sonntag
+2024-12-01,Frankfurt-Sachsenhausen,Obst & Gemüse,Orangen (1 kg),5,3.15,15.75,Bargeld,09:22,Sonntag
+2024-02-18,Hamburg-Altona,Hygiene,Handseife (300 ml),4,4.64,18.56,Kreditkarte,10:39,Sonntag
+2024-12-13,Berlin-Mitte,Süßwaren,Marzipan (200 g),2,1.2,2.4,EC-Karte,11:09,Freitag
+2024-08-12,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),4,1.79,7.16,EC-Karte,17:49,Montag
+2024-08-20,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),4,0.73,2.92,EC-Karte,11:25,Dienstag
+2024-02-04,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),6,1.19,7.14,EC-Karte,19:25,Sonntag
+2024-08-14,Köln-Ehrenfeld,Hygiene,Zahnpasta (75 ml),6,9.08,54.48,EC-Karte,12:48,Mittwoch
+2024-09-21,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),9,1.67,15.03,Bargeld,08:32,Samstag
+2024-07-30,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",9,2.77,24.93,EC-Karte,08:00,Dienstag
+2024-01-31,Hamburg-Altona,Hygiene,Handseife (300 ml),3,3.01,9.03,Kreditkarte,13:34,Mittwoch
+2024-07-09,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),10,1.27,12.7,Bargeld,13:38,Dienstag
+2024-12-07,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),6,4.48,26.88,EC-Karte,18:18,Samstag
+2024-09-21,München-Hauptbahnhof,Obst & Gemüse,Brokkoli,2,3.34,6.68,EC-Karte,14:10,Samstag
+2024-02-20,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),4,0.92,3.68,Kreditkarte,09:03,Dienstag
+2024-12-16,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),8,7.43,59.44,EC-Karte,10:50,Montag
+2024-12-15,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),9,3.46,31.14,Kreditkarte,15:00,Sonntag
+2024-03-02,Hamburg-Altona,Getränke,Apfelsaft (1 l),4,6.97,27.88,Bargeld,12:35,Samstag
+2024-10-19,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),2,4.75,9.5,EC-Karte,17:50,Samstag
+2024-05-28,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),2,1.2,2.4,Apple Pay,20:21,Dienstag
+2024-08-04,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),2,3.6,7.2,Kreditkarte,12:12,Sonntag
+2024-06-11,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),7,7.13,49.91,EC-Karte,15:42,Dienstag
+2024-10-12,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),6,9.87,59.22,EC-Karte,19:37,Samstag
+2024-12-29,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),5,4.82,24.1,EC-Karte,10:00,Sonntag
+2024-10-17,Berlin-Mitte,Getränke,"Cola (1,5 l)",7,2.31,16.17,Bargeld,14:34,Donnerstag
+2024-12-05,Köln-Ehrenfeld,Hygiene,Rasierer,9,9.85,88.65,Kreditkarte,11:00,Donnerstag
+2024-12-11,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),8,8.04,64.32,Kreditkarte,16:23,Mittwoch
+2024-02-02,Frankfurt-Sachsenhausen,Hygiene,Rasierer,2,6.09,12.18,EC-Karte,18:18,Freitag
+2024-04-02,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),6,3.63,21.78,EC-Karte,09:50,Dienstag
+2024-09-20,Berlin-Mitte,Backwaren,Vollkornbrot,9,1.49,13.41,EC-Karte,09:58,Freitag
+2024-08-03,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),8,5.6,44.8,Bargeld,07:41,Samstag
+2024-01-19,München-Hauptbahnhof,Backwaren,Croissant,4,1.8,7.2,Kreditkarte,07:44,Freitag
+2024-02-04,Berlin-Mitte,Obst & Gemüse,Brokkoli,4,2.88,11.52,EC-Karte,07:01,Sonntag
+2024-07-08,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),9,12.73,114.57,Bargeld,17:03,Montag
+2024-08-12,Berlin-Mitte,Süßwaren,Marzipan (200 g),1,2.32,2.32,EC-Karte,20:46,Montag
+2024-03-02,Hamburg-Altona,Backwaren,Croissant,6,1.35,8.1,Apple Pay,13:25,Samstag
+2024-03-03,Köln-Ehrenfeld,Süßwaren,Chips (200 g),2,2.05,4.1,Bargeld,20:30,Sonntag
+2024-02-17,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),9,1.15,10.35,EC-Karte,17:41,Samstag
+2024-07-25,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),1,2.11,2.11,EC-Karte,19:20,Donnerstag
+2024-01-03,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,1,2.51,2.51,Bargeld,18:40,Mittwoch
+2024-07-27,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),4,2.64,10.56,EC-Karte,09:43,Samstag
+2024-06-22,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),3,2.99,8.97,EC-Karte,14:14,Samstag
+2024-06-19,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),5,1.94,9.7,Bargeld,14:41,Mittwoch
+2024-09-04,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),3,2.93,8.79,Bargeld,16:10,Mittwoch
+2024-07-09,Frankfurt-Sachsenhausen,Obst & Gemüse,Karotten (1 kg),4,1.45,5.8,Kreditkarte,18:18,Dienstag
+2024-09-22,Köln-Ehrenfeld,Hygiene,Duschgel (300 ml),6,8.53,51.18,EC-Karte,08:46,Sonntag
+2024-10-05,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",6,6.38,38.28,EC-Karte,17:58,Samstag
+2024-12-01,Berlin-Mitte,Getränke,"Cola (1,5 l)",10,4.3,43.0,EC-Karte,19:03,Sonntag
+2024-10-18,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),5,3.75,18.75,Kreditkarte,08:38,Freitag
+2024-07-07,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),6,4.73,28.38,Kreditkarte,13:34,Sonntag
+2024-06-28,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),7,5.53,38.71,Kreditkarte,20:36,Freitag
+2024-03-27,Hamburg-Altona,Getränke,Apfelsaft (1 l),2,3.93,7.86,EC-Karte,07:47,Mittwoch
+2024-08-06,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),7,0.86,6.02,EC-Karte,09:04,Dienstag
+2024-02-20,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),9,4.67,42.03,EC-Karte,19:44,Dienstag
+2024-12-05,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),4,5.25,21.0,EC-Karte,09:16,Donnerstag
+2024-11-04,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),2,1.51,3.02,EC-Karte,17:09,Montag
+2024-02-13,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),4,6.47,25.88,Bargeld,20:26,Dienstag
+2024-10-13,München-Hauptbahnhof,Süßwaren,Kekse (400 g),3,0.86,2.58,EC-Karte,14:01,Sonntag
+2024-02-12,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",6,2.88,17.28,EC-Karte,14:37,Montag
+2024-09-20,Berlin-Mitte,Backwaren,Vollkornbrot,9,2.5,22.5,Bargeld,13:33,Freitag
+2024-02-02,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),6,1.49,8.94,EC-Karte,12:30,Freitag
+2024-06-27,Berlin-Mitte,Getränke,Eistee (500 ml),2,4.54,9.08,Kreditkarte,12:01,Donnerstag
+2024-08-28,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),4,5.16,20.64,EC-Karte,15:45,Mittwoch
+2024-09-23,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),7,5.13,35.91,Kreditkarte,20:02,Montag
+2024-06-01,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",4,6.47,25.88,EC-Karte,21:15,Samstag
+2024-12-02,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),6,5.44,32.64,Kreditkarte,19:23,Montag
+2024-10-09,München-Hauptbahnhof,Backwaren,Laugenbrezel,7,1.08,7.56,Kreditkarte,08:42,Mittwoch
+2024-03-17,Köln-Ehrenfeld,Fleisch & Wurst,Hähnchenbrust (500 g),4,8.4,33.6,Bargeld,11:24,Sonntag
+2024-09-01,Hamburg-Altona,Backwaren,Laugenbrezel,7,2.35,16.45,Apple Pay,18:48,Sonntag
+2024-09-23,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",4,5.02,20.08,Bargeld,15:56,Montag
+2024-05-01,München-Hauptbahnhof,Backwaren,Roggenbrot,2,0.61,1.22,EC-Karte,12:45,Mittwoch
+2024-09-26,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),4,3.34,13.36,Kreditkarte,11:02,Donnerstag
+2024-11-23,Hamburg-Altona,Molkereiprodukte,Butter (250 g),5,3.51,17.55,EC-Karte,08:46,Samstag
+2024-10-25,München-Hauptbahnhof,Backwaren,Roggenbrot,1,1.01,1.01,EC-Karte,11:12,Freitag
+2024-10-05,Hamburg-Altona,Obst & Gemüse,Brokkoli,9,1.4,12.6,EC-Karte,13:53,Samstag
+2024-08-19,Hamburg-Altona,Getränke,Orangensaft (1 l),6,5.62,33.72,Bargeld,13:58,Montag
+2024-04-08,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),1,4.78,4.78,Bargeld,15:05,Montag
+2024-10-17,Frankfurt-Sachsenhausen,Backwaren,Baguette,9,0.67,6.03,Bargeld,11:05,Donnerstag
+2024-05-12,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),9,2.73,24.57,Bargeld,10:41,Sonntag
+2024-07-13,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,1,1.6,1.6,EC-Karte,20:08,Samstag
+2024-04-24,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),2,3.0,6.0,EC-Karte,13:58,Mittwoch
+2024-04-24,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),4,8.14,32.56,EC-Karte,10:32,Mittwoch
+2024-02-27,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),6,2.76,16.56,EC-Karte,16:34,Dienstag
+2024-12-16,Berlin-Mitte,Backwaren,Vollkornbrot,8,0.98,7.84,Bargeld,15:51,Montag
+2024-02-23,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),5,2.22,11.1,EC-Karte,15:13,Freitag
+2024-02-01,Köln-Ehrenfeld,Getränke,"Cola (1,5 l)",7,3.05,21.35,Kreditkarte,10:33,Donnerstag
+2024-12-07,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),1,4.89,4.89,Apple Pay,17:59,Samstag
+2024-07-21,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),7,12.12,84.84,EC-Karte,09:01,Sonntag
+2024-06-08,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),10,2.72,27.2,Bargeld,19:10,Samstag
+2024-09-26,Hamburg-Altona,Hygiene,Handseife (300 ml),6,6.26,37.56,Kreditkarte,13:08,Donnerstag
+2024-05-19,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,5,7.93,39.65,Kreditkarte,13:20,Sonntag
+2024-02-16,Hamburg-Altona,Molkereiprodukte,Butter (250 g),3,1.16,3.48,EC-Karte,12:07,Freitag
+2024-09-23,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),10,8.55,85.5,Bargeld,13:10,Montag
+2024-03-05,Köln-Ehrenfeld,Backwaren,Roggenbrot,1,1.74,1.74,Bargeld,16:51,Dienstag
+2024-07-20,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),3,5.76,17.28,EC-Karte,14:27,Samstag
+2024-12-12,Berlin-Mitte,Molkereiprodukte,Vollmilch (1 l),2,4.67,9.34,Apple Pay,08:21,Donnerstag
+2024-12-07,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),9,2.16,19.44,EC-Karte,15:25,Samstag
+2024-05-11,Hamburg-Altona,Backwaren,Croissant,5,1.59,7.95,EC-Karte,11:58,Samstag
+2024-10-11,Berlin-Mitte,Getränke,Eistee (500 ml),10,2.48,24.8,EC-Karte,08:29,Freitag
+2024-08-11,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),7,3.59,25.13,Kreditkarte,19:28,Sonntag
+2024-06-23,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",6,8.04,48.24,EC-Karte,11:55,Sonntag
+2024-02-21,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),6,3.88,23.28,Kreditkarte,15:02,Mittwoch
+2024-05-17,Berlin-Mitte,Hygiene,Shampoo (250 ml),3,9.65,28.95,EC-Karte,09:28,Freitag
+2024-08-25,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),6,5.85,35.1,EC-Karte,12:44,Sonntag
+2024-12-26,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),7,1.86,13.02,EC-Karte,12:30,Donnerstag
+2024-01-02,Berlin-Mitte,Backwaren,Laugenbrezel,10,0.5,5.0,EC-Karte,09:52,Dienstag
+2024-09-18,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),6,4.67,28.02,Apple Pay,21:53,Mittwoch
+2024-11-04,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",10,0.83,8.3,EC-Karte,11:20,Montag
+2024-12-13,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),10,1.2,12.0,EC-Karte,15:49,Freitag
+2024-06-03,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",6,3.46,20.76,EC-Karte,15:14,Montag
+2024-02-13,Frankfurt-Sachsenhausen,Hygiene,Rasierer,5,2.43,12.15,EC-Karte,13:14,Dienstag
+2024-04-08,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),2,4.28,8.56,EC-Karte,15:58,Montag
+2024-11-06,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),3,2.56,7.68,Kreditkarte,15:00,Mittwoch
+2024-11-16,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),9,2.16,19.44,EC-Karte,08:21,Samstag
+2024-08-20,Hamburg-Altona,Hygiene,Handseife (300 ml),2,12.96,25.92,EC-Karte,17:37,Dienstag
+2024-02-14,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),4,4.16,16.64,EC-Karte,08:24,Mittwoch
+2024-02-14,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),7,2.87,20.09,Bargeld,13:50,Mittwoch
+2024-06-23,Köln-Ehrenfeld,Hygiene,Handseife (300 ml),3,12.61,37.83,EC-Karte,12:15,Sonntag
+2024-08-02,München-Hauptbahnhof,Obst & Gemüse,Karotten (1 kg),10,3.13,31.3,EC-Karte,13:33,Freitag
+2024-01-12,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),7,2.2,15.4,EC-Karte,08:07,Freitag
+2024-09-07,Berlin-Mitte,Obst & Gemüse,Tomaten (500 g),1,2.81,2.81,Kreditkarte,17:12,Samstag
+2024-07-17,München-Hauptbahnhof,Obst & Gemüse,Äpfel (1 kg),3,1.16,3.48,Kreditkarte,13:10,Mittwoch
+2024-01-05,Hamburg-Altona,Süßwaren,Chips (200 g),8,3.26,26.08,Kreditkarte,07:44,Freitag
+2024-02-04,Berlin-Mitte,Hygiene,Rasierer,9,7.14,64.26,EC-Karte,07:12,Sonntag
+2024-06-14,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),10,0.53,5.3,EC-Karte,15:40,Freitag
+2024-09-20,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,9,3.64,32.76,Kreditkarte,16:20,Freitag
+2024-10-28,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),1,6.71,6.71,EC-Karte,15:33,Montag
+2024-06-06,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),8,1.64,13.12,EC-Karte,17:52,Donnerstag
+2024-04-17,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",2,3.58,7.16,EC-Karte,18:51,Mittwoch
+2024-12-19,Hamburg-Altona,Süßwaren,Schokolade (100 g),1,1.32,1.32,Kreditkarte,20:00,Donnerstag
+2024-06-16,Berlin-Mitte,Getränke,Apfelsaft (1 l),7,3.76,26.32,Bargeld,21:47,Sonntag
+2024-04-25,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),5,7.05,35.25,EC-Karte,20:57,Donnerstag
+2024-06-10,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),7,7.42,51.94,Bargeld,18:40,Montag
+2024-01-05,Frankfurt-Sachsenhausen,Süßwaren,Gummibärchen (200 g),9,2.29,20.61,EC-Karte,13:11,Freitag
+2024-04-20,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),1,3.85,3.85,EC-Karte,14:39,Samstag
+2024-07-07,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),6,2.02,12.12,EC-Karte,16:38,Sonntag
+2024-12-01,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),9,2.04,18.36,EC-Karte,09:39,Sonntag
+2024-09-26,Frankfurt-Sachsenhausen,Backwaren,Croissant,5,2.53,12.65,Kreditkarte,17:25,Donnerstag
+2024-10-12,Frankfurt-Sachsenhausen,Hygiene,Rasierer,6,9.88,59.28,Kreditkarte,15:31,Samstag
+2024-07-17,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),5,2.57,12.85,EC-Karte,14:39,Mittwoch
+2024-02-10,Köln-Ehrenfeld,Molkereiprodukte,Quark (500 g),10,3.33,33.3,Apple Pay,19:27,Samstag
+2024-05-22,München-Hauptbahnhof,Süßwaren,Chips (200 g),1,2.29,2.29,EC-Karte,17:46,Mittwoch
+2024-12-29,Köln-Ehrenfeld,Backwaren,Vollkornbrot,9,1.94,17.46,Kreditkarte,20:42,Sonntag
+2024-01-17,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),9,4.0,36.0,Bargeld,21:18,Mittwoch
+2024-11-16,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),9,3.68,33.12,EC-Karte,19:36,Samstag
+2024-09-06,Hamburg-Altona,Backwaren,Laugenbrezel,5,1.76,8.8,EC-Karte,11:45,Freitag
+2024-04-13,Hamburg-Altona,Hygiene,Handseife (300 ml),6,12.31,73.86,Bargeld,09:29,Samstag
+2024-10-10,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),4,1.56,6.24,EC-Karte,11:42,Donnerstag
+2024-11-01,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),3,0.83,2.49,Bargeld,17:07,Freitag
+2024-01-16,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),9,3.41,30.69,EC-Karte,19:23,Dienstag
+2024-02-08,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),6,2.54,15.24,Bargeld,20:42,Donnerstag
+2024-08-30,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),8,1.84,14.72,Bargeld,17:53,Freitag
+2024-12-30,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),2,5.3,10.6,Apple Pay,17:38,Montag
+2024-01-09,Hamburg-Altona,Getränke,Orangensaft (1 l),8,5.22,41.76,EC-Karte,21:39,Dienstag
+2024-08-30,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),7,1.66,11.62,Apple Pay,17:20,Freitag
+2024-02-19,Köln-Ehrenfeld,Backwaren,Croissant,10,2.15,21.5,EC-Karte,09:42,Montag
+2024-08-25,Köln-Ehrenfeld,Hygiene,Handseife (300 ml),2,9.59,19.18,Bargeld,14:21,Sonntag
+2024-08-15,Hamburg-Altona,Getränke,Eistee (500 ml),6,3.34,20.04,EC-Karte,12:03,Donnerstag
+2024-02-03,Hamburg-Altona,Süßwaren,Marzipan (200 g),6,2.16,12.96,EC-Karte,16:14,Samstag
+2024-09-05,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),6,1.62,9.72,Bargeld,16:36,Donnerstag
+2024-11-23,Hamburg-Altona,Hygiene,Shampoo (250 ml),1,6.25,6.25,Kreditkarte,11:57,Samstag
+2024-11-11,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),5,6.71,33.55,EC-Karte,11:29,Montag
+2024-01-11,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),3,2.76,8.28,Kreditkarte,08:51,Donnerstag
+2024-03-30,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),7,8.32,58.24,EC-Karte,11:46,Samstag
+2024-03-28,Berlin-Mitte,Süßwaren,Marzipan (200 g),3,1.76,5.28,EC-Karte,19:33,Donnerstag
+2024-06-14,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),5,3.69,18.45,EC-Karte,16:48,Freitag
+2024-02-22,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",7,5.38,37.66,Apple Pay,21:24,Donnerstag
+2024-11-07,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),1,4.65,4.65,EC-Karte,20:26,Donnerstag
+2024-10-10,Hamburg-Altona,Getränke,"Cola (1,5 l)",8,5.91,47.28,Bargeld,19:44,Donnerstag
+2024-10-22,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),8,2.34,18.72,Bargeld,09:38,Dienstag
+2024-03-13,Berlin-Mitte,Hygiene,Handseife (300 ml),1,1.61,1.61,EC-Karte,12:31,Mittwoch
+2024-01-06,Köln-Ehrenfeld,Backwaren,Laugenbrezel,1,0.8,0.8,Apple Pay,07:25,Samstag
+2024-11-28,Köln-Ehrenfeld,Hygiene,Zahnpasta (75 ml),9,3.28,29.52,Kreditkarte,08:58,Donnerstag
+2024-04-15,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),3,8.2,24.6,Kreditkarte,10:03,Montag
+2024-08-27,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,9,4.54,40.86,Apple Pay,11:03,Dienstag
+2024-11-27,Berlin-Mitte,Süßwaren,Chips (200 g),5,1.66,8.3,Kreditkarte,07:28,Mittwoch
+2024-01-14,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),4,5.28,21.12,EC-Karte,19:02,Sonntag
+2024-01-02,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),3,5.06,15.18,EC-Karte,14:20,Dienstag
+2024-01-02,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),7,4.45,31.15,Bargeld,16:34,Dienstag
+2024-02-27,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),2,1.13,2.26,Bargeld,16:24,Dienstag
+2024-01-19,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),5,6.75,33.75,EC-Karte,21:12,Freitag
+2024-10-26,Berlin-Mitte,Molkereiprodukte,Quark (500 g),4,1.45,5.8,Bargeld,09:17,Samstag
+2024-08-09,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),2,4.07,8.14,Apple Pay,12:36,Freitag
+2024-12-23,Köln-Ehrenfeld,Backwaren,Laugenbrezel,4,0.99,3.96,Apple Pay,11:57,Montag
+2024-10-19,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),6,7.24,43.44,EC-Karte,15:46,Samstag
+2024-12-17,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),7,2.97,20.79,Kreditkarte,14:32,Dienstag
+2024-03-28,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),1,1.13,1.13,EC-Karte,18:08,Donnerstag
+2024-04-15,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),9,2.51,22.59,Bargeld,15:14,Montag
+2024-11-06,Frankfurt-Sachsenhausen,Obst & Gemüse,Karotten (1 kg),9,3.35,30.15,EC-Karte,10:26,Mittwoch
+2024-03-30,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",7,3.66,25.62,Bargeld,15:14,Samstag
+2024-01-21,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),10,3.05,30.5,EC-Karte,21:41,Sonntag
+2024-09-01,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),5,2.13,10.65,Bargeld,15:21,Sonntag
+2024-10-19,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),9,4.3,38.7,Bargeld,15:50,Samstag
+2024-12-19,Berlin-Mitte,Backwaren,Vollkornbrot,8,1.75,14.0,Bargeld,09:16,Donnerstag
+2024-12-04,Köln-Ehrenfeld,Hygiene,Rasierer,6,11.68,70.08,Apple Pay,07:29,Mittwoch
+2024-02-13,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),2,1.65,3.3,Bargeld,10:42,Dienstag
+2024-10-08,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",6,5.6,33.6,EC-Karte,07:12,Dienstag
+2024-11-04,Köln-Ehrenfeld,Obst & Gemüse,Salat (Kopf),10,2.58,25.8,EC-Karte,13:45,Montag
+2024-09-11,Hamburg-Altona,Obst & Gemüse,Brokkoli,10,1.1,11.0,EC-Karte,20:35,Mittwoch
+2024-10-26,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),5,2.09,10.45,EC-Karte,13:38,Samstag
+2024-11-01,München-Hauptbahnhof,Backwaren,Vollkornbrot,3,1.08,3.24,Bargeld,16:27,Freitag
+2024-06-11,Köln-Ehrenfeld,Süßwaren,Chips (200 g),8,2.32,18.56,EC-Karte,19:56,Dienstag
+2024-01-15,Frankfurt-Sachsenhausen,Backwaren,Croissant,1,2.08,2.08,EC-Karte,18:46,Montag
+2024-06-15,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),2,2.67,5.34,EC-Karte,16:11,Samstag
+2024-03-14,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",6,4.3,25.8,EC-Karte,18:33,Donnerstag
+2024-02-11,Berlin-Mitte,Süßwaren,Chips (200 g),10,3.3,33.0,EC-Karte,11:54,Sonntag
+2024-02-15,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),4,1.95,7.8,EC-Karte,13:16,Donnerstag
+2024-09-11,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),5,5.87,29.35,Bargeld,12:32,Mittwoch
+2024-07-03,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),4,4.23,16.92,EC-Karte,18:45,Mittwoch
+2024-07-16,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),5,3.32,16.6,Bargeld,13:16,Dienstag
+2024-09-28,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),1,9.31,9.31,EC-Karte,21:31,Samstag
+2024-07-19,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),6,2.1,12.6,EC-Karte,09:33,Freitag
+2024-08-17,Frankfurt-Sachsenhausen,Hygiene,Zahnpasta (75 ml),6,5.67,34.02,Bargeld,09:10,Samstag
+2024-02-01,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),4,1.19,4.76,Bargeld,17:10,Donnerstag
+2024-11-06,Köln-Ehrenfeld,Backwaren,Roggenbrot,3,1.98,5.94,EC-Karte,18:33,Mittwoch
+2024-06-12,Hamburg-Altona,Getränke,Eistee (500 ml),8,4.53,36.24,EC-Karte,17:10,Mittwoch
+2024-02-26,Berlin-Mitte,Obst & Gemüse,Bananen (500 g),2,1.71,3.42,Kreditkarte,11:56,Montag
+2024-10-23,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),1,4.42,4.42,Apple Pay,07:31,Mittwoch
+2024-09-25,München-Hauptbahnhof,Backwaren,Roggenbrot,1,2.6,2.6,Apple Pay,11:42,Mittwoch
+2024-01-20,Frankfurt-Sachsenhausen,Hygiene,Rasierer,9,2.74,24.66,EC-Karte,13:23,Samstag
+2024-03-11,Hamburg-Altona,Obst & Gemüse,Brokkoli,4,2.67,10.68,EC-Karte,13:17,Montag
+2024-01-06,München-Hauptbahnhof,Backwaren,Laugenbrezel,2,1.47,2.94,EC-Karte,20:29,Samstag
+2024-04-08,Hamburg-Altona,Backwaren,Baguette,9,2.99,26.91,EC-Karte,19:42,Montag
+2024-02-06,Köln-Ehrenfeld,Backwaren,Baguette,2,1.05,2.1,EC-Karte,18:23,Dienstag
+2024-09-16,Hamburg-Altona,Getränke,Orangensaft (1 l),4,2.53,10.12,EC-Karte,07:16,Montag
+2024-07-09,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),1,2.7,2.7,Bargeld,08:08,Dienstag
+2024-12-23,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",7,4.58,32.06,Bargeld,13:32,Montag
+2024-09-30,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),7,3.73,26.11,Bargeld,16:40,Montag
+2024-08-11,Hamburg-Altona,Getränke,Eistee (500 ml),8,3.77,30.16,Bargeld,17:31,Sonntag
+2024-07-04,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),3,3.32,9.96,Apple Pay,11:15,Donnerstag
+2024-01-20,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),4,5.03,20.12,Bargeld,08:14,Samstag
+2024-01-26,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),10,4.06,40.6,EC-Karte,11:22,Freitag
+2024-08-12,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),9,2.47,22.23,Apple Pay,18:20,Montag
+2024-01-02,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",1,3.88,3.88,EC-Karte,21:12,Dienstag
+2024-01-16,Frankfurt-Sachsenhausen,Süßwaren,Gummibärchen (200 g),7,1.72,12.04,EC-Karte,21:56,Dienstag
+2024-03-20,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),9,1.29,11.61,EC-Karte,15:19,Mittwoch
+2024-11-18,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),6,6.24,37.44,EC-Karte,08:15,Montag
+2024-06-16,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),7,6.25,43.75,EC-Karte,21:36,Sonntag
+2024-09-15,Frankfurt-Sachsenhausen,Süßwaren,Gummibärchen (200 g),1,2.82,2.82,Kreditkarte,09:48,Sonntag
+2024-05-30,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",1,6.24,6.24,Kreditkarte,11:27,Donnerstag
+2024-03-04,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),1,2.89,2.89,Kreditkarte,21:40,Montag
+2024-05-15,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,2,2.2,4.4,Apple Pay,14:05,Mittwoch
+2024-02-03,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),10,1.78,17.8,EC-Karte,09:31,Samstag
+2024-10-08,Köln-Ehrenfeld,Obst & Gemüse,Bananen (500 g),7,1.12,7.84,Kreditkarte,14:03,Dienstag
+2024-03-07,Hamburg-Altona,Obst & Gemüse,Tomaten (500 g),8,2.05,16.4,EC-Karte,08:08,Donnerstag
+2024-05-17,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),3,5.01,15.03,EC-Karte,11:35,Freitag
+2024-12-23,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,10,2.84,28.4,Kreditkarte,21:12,Montag
+2024-08-04,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),2,4.6,9.2,Kreditkarte,11:02,Sonntag
+2024-06-16,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),10,7.79,77.9,Kreditkarte,20:10,Sonntag
+2024-07-17,Berlin-Mitte,Getränke,Eistee (500 ml),1,5.43,5.43,EC-Karte,15:46,Mittwoch
+2024-10-13,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),1,9.17,9.17,EC-Karte,16:35,Sonntag
+2024-04-02,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),1,4.18,4.18,EC-Karte,17:22,Dienstag
+2024-08-20,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),8,5.14,41.12,EC-Karte,15:58,Dienstag
+2024-11-14,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),3,2.49,7.47,Kreditkarte,07:23,Donnerstag
+2024-07-27,Köln-Ehrenfeld,Süßwaren,Chips (200 g),5,1.22,6.1,Kreditkarte,20:52,Samstag
+2024-06-11,Hamburg-Altona,Obst & Gemüse,Tomaten (500 g),5,1.53,7.65,EC-Karte,14:20,Dienstag
+2024-02-22,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),8,6.24,49.92,EC-Karte,16:01,Donnerstag
+2024-03-31,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),4,5.57,22.28,EC-Karte,15:06,Sonntag
+2024-12-11,Berlin-Mitte,Backwaren,Vollkornbrot,1,1.34,1.34,Bargeld,16:16,Mittwoch
+2024-07-16,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",4,2.13,8.52,EC-Karte,12:11,Dienstag
+2024-04-19,Hamburg-Altona,Molkereiprodukte,Butter (250 g),3,2.88,8.64,Apple Pay,19:09,Freitag
+2024-06-01,Berlin-Mitte,Backwaren,Roggenbrot,8,2.28,18.24,EC-Karte,10:23,Samstag
+2024-07-29,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),8,3.71,29.68,Apple Pay,16:58,Montag
+2024-07-15,Berlin-Mitte,Backwaren,Vollkornbrot,1,2.38,2.38,Bargeld,15:12,Montag
+2024-09-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,8,5.77,46.16,Kreditkarte,14:14,Donnerstag
+2024-04-03,Köln-Ehrenfeld,Backwaren,Roggenbrot,1,2.46,2.46,EC-Karte,07:59,Mittwoch
+2024-08-24,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),7,4.12,28.84,EC-Karte,12:12,Samstag
+2024-06-10,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),4,3.05,12.2,EC-Karte,07:49,Montag
+2024-12-09,Hamburg-Altona,Backwaren,Roggenbrot,4,0.87,3.48,Kreditkarte,14:37,Montag
+2024-02-27,Köln-Ehrenfeld,Süßwaren,Chips (200 g),5,2.01,10.05,Apple Pay,17:55,Dienstag
+2024-02-24,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,4,6.34,25.36,EC-Karte,14:33,Samstag
+2024-06-17,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),8,8.75,70.0,Bargeld,18:35,Montag
+2024-07-04,München-Hauptbahnhof,Backwaren,Baguette,10,0.96,9.6,EC-Karte,12:13,Donnerstag
+2024-09-09,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),9,7.14,64.26,Kreditkarte,11:34,Montag
+2024-05-27,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),5,2.1,10.5,EC-Karte,13:40,Montag
+2024-11-29,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),6,2.91,17.46,EC-Karte,10:59,Freitag
+2024-06-22,Köln-Ehrenfeld,Backwaren,Baguette,5,2.95,14.75,EC-Karte,19:05,Samstag
+2024-02-17,Berlin-Mitte,Süßwaren,Schokolade (100 g),8,2.66,21.28,EC-Karte,19:09,Samstag
+2024-02-13,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,6,2.95,17.7,Kreditkarte,13:01,Dienstag
+2024-12-21,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),5,4.48,22.4,Kreditkarte,18:47,Samstag
+2024-02-18,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),5,7.58,37.9,Kreditkarte,07:04,Sonntag
+2024-12-11,München-Hauptbahnhof,Getränke,Bier (6er-Pack),4,4.85,19.4,Kreditkarte,09:54,Mittwoch
+2024-04-11,München-Hauptbahnhof,Getränke,Bier (6er-Pack),6,5.08,30.48,Kreditkarte,11:21,Donnerstag
+2024-02-04,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),7,1.41,9.87,EC-Karte,12:17,Sonntag
+2024-04-21,Berlin-Mitte,Getränke,Bier (6er-Pack),5,5.39,26.95,Apple Pay,10:58,Sonntag
+2024-08-12,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",9,4.23,38.07,Bargeld,14:43,Montag
+2024-06-05,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),9,8.86,79.74,EC-Karte,18:32,Mittwoch
+2024-10-13,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),5,1.82,9.1,Kreditkarte,13:53,Sonntag
+2024-08-11,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),10,4.21,42.1,EC-Karte,13:45,Sonntag
+2024-05-26,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),2,3.11,6.22,EC-Karte,07:38,Sonntag
+2024-08-19,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),10,4.07,40.7,EC-Karte,11:19,Montag
+2024-12-20,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),3,3.03,9.09,EC-Karte,19:59,Freitag
+2024-05-30,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),6,7.14,42.84,Apple Pay,19:43,Donnerstag
+2024-02-26,München-Hauptbahnhof,Hygiene,Handseife (300 ml),3,3.32,9.96,EC-Karte,08:56,Montag
+2024-05-29,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),5,3.52,17.6,Bargeld,07:57,Mittwoch
+2024-11-02,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),4,7.08,28.32,EC-Karte,19:32,Samstag
+2024-03-20,München-Hauptbahnhof,Obst & Gemüse,Brokkoli,8,1.45,11.6,EC-Karte,09:21,Mittwoch
+2024-12-12,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,1,3.4,3.4,Bargeld,15:56,Donnerstag
+2024-08-02,Berlin-Mitte,Getränke,Orangensaft (1 l),9,0.85,7.65,EC-Karte,19:59,Freitag
+2024-08-07,München-Hauptbahnhof,Backwaren,Laugenbrezel,10,1.42,14.2,EC-Karte,18:07,Mittwoch
+2024-04-25,München-Hauptbahnhof,Backwaren,Baguette,6,1.29,7.74,Bargeld,15:38,Donnerstag
+2024-12-01,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),6,2.18,13.08,EC-Karte,12:36,Sonntag
+2024-01-14,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,7,5.72,40.04,EC-Karte,18:44,Sonntag
+2024-04-19,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),2,4.68,9.36,Kreditkarte,17:58,Freitag
+2024-06-01,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),8,0.98,7.84,EC-Karte,19:15,Samstag
+2024-06-23,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),3,2.76,8.28,Bargeld,14:58,Sonntag
+2024-06-22,Frankfurt-Sachsenhausen,Hygiene,Handseife (300 ml),7,11.53,80.71,Apple Pay,21:38,Samstag
+2024-02-23,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),4,2.36,9.44,EC-Karte,18:04,Freitag
+2024-03-23,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),8,5.17,41.36,Bargeld,07:30,Samstag
+2024-02-04,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),8,5.51,44.08,Kreditkarte,11:08,Sonntag
+2024-07-27,Berlin-Mitte,Hygiene,"Waschmittel (1,5 kg)",3,3.89,11.67,Bargeld,18:57,Samstag
+2024-05-08,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),7,4.22,29.54,Kreditkarte,08:45,Mittwoch
+2024-07-25,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),5,8.43,42.15,Kreditkarte,17:54,Donnerstag
+2024-08-03,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),3,7.45,22.35,Apple Pay,12:36,Samstag
+2024-09-13,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),6,1.39,8.34,Apple Pay,10:23,Freitag
+2024-07-18,Berlin-Mitte,Süßwaren,Schokolade (100 g),10,1.8,18.0,EC-Karte,15:25,Donnerstag
+2024-08-24,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),1,1.22,1.22,Kreditkarte,20:56,Samstag
+2024-08-02,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),10,3.83,38.3,EC-Karte,20:09,Freitag
+2024-08-26,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),9,3.99,35.91,EC-Karte,13:53,Montag
+2024-08-13,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),6,5.79,34.74,EC-Karte,07:25,Dienstag
+2024-04-25,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),7,1.33,9.31,Bargeld,20:35,Donnerstag
+2024-03-30,Köln-Ehrenfeld,Hygiene,Rasierer,4,12.06,48.24,Bargeld,20:40,Samstag
+2024-10-14,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),2,3.16,6.32,Bargeld,16:04,Montag
+2024-05-05,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),6,2.53,15.18,Bargeld,16:08,Sonntag
+2024-07-19,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),9,7.12,64.08,EC-Karte,14:09,Freitag
+2024-03-12,Köln-Ehrenfeld,Backwaren,Laugenbrezel,3,2.25,6.75,Apple Pay,07:46,Dienstag
+2024-06-06,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),8,1.98,15.84,EC-Karte,09:04,Donnerstag
+2024-07-12,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),8,2.91,23.28,Kreditkarte,09:36,Freitag
+2024-08-16,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,8,3.33,26.64,Kreditkarte,20:06,Freitag
+2024-07-11,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),4,1.58,6.32,Kreditkarte,07:46,Donnerstag
+2024-05-11,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),4,2.82,11.28,EC-Karte,15:58,Samstag
+2024-12-17,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),5,4.79,23.95,Kreditkarte,12:24,Dienstag
+2024-07-06,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),9,5.68,51.12,Kreditkarte,07:12,Samstag
+2024-10-22,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),10,1.44,14.4,Kreditkarte,20:26,Dienstag
+2024-09-25,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,5,5.97,29.85,Apple Pay,07:41,Mittwoch
+2024-07-22,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),10,10.31,103.1,EC-Karte,19:43,Montag
+2024-11-19,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),6,3.41,20.46,EC-Karte,18:38,Dienstag
+2024-02-16,Frankfurt-Sachsenhausen,Tiefkühlkost,Fischstäbchen (400 g),4,2.25,9.0,Kreditkarte,18:34,Freitag
+2024-12-02,Köln-Ehrenfeld,Molkereiprodukte,Quark (500 g),1,2.69,2.69,EC-Karte,09:37,Montag
+2024-11-06,Hamburg-Altona,Getränke,Eistee (500 ml),7,5.59,39.13,Kreditkarte,20:13,Mittwoch
+2024-07-02,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),7,6.72,47.04,Bargeld,15:12,Dienstag
+2024-09-24,Frankfurt-Sachsenhausen,Tiefkühlkost,Fischstäbchen (400 g),10,6.2,62.0,Bargeld,13:55,Dienstag
+2024-07-08,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),8,2.16,17.28,EC-Karte,17:34,Montag
+2024-04-08,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),1,1.85,1.85,Bargeld,12:51,Montag
+2024-10-18,Berlin-Mitte,Getränke,Apfelsaft (1 l),6,4.09,24.54,Apple Pay,11:37,Freitag
+2024-03-30,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),8,1.34,10.72,Bargeld,11:27,Samstag
+2024-04-24,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),5,6.35,31.75,Kreditkarte,15:34,Mittwoch
+2024-07-08,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),5,3.77,18.85,Bargeld,16:41,Montag
+2024-11-01,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),9,4.38,39.42,Apple Pay,10:11,Freitag
+2024-05-20,Berlin-Mitte,Getränke,Bier (6er-Pack),7,3.93,27.51,EC-Karte,10:27,Montag
+2024-06-29,Hamburg-Altona,Backwaren,Croissant,7,1.71,11.97,Bargeld,21:43,Samstag
+2024-01-16,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),5,4.52,22.6,Bargeld,14:05,Dienstag
+2024-02-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),3,4.61,13.83,EC-Karte,19:04,Montag
+2024-01-21,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),6,4.66,27.96,Apple Pay,11:09,Sonntag
+2024-01-27,Hamburg-Altona,Backwaren,Croissant,10,2.59,25.9,Apple Pay,11:35,Samstag
+2024-11-13,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),7,8.2,57.4,EC-Karte,11:14,Mittwoch
+2024-11-03,Hamburg-Altona,Backwaren,Vollkornbrot,8,2.06,16.48,EC-Karte,14:26,Sonntag
+2024-10-26,Köln-Ehrenfeld,Molkereiprodukte,Sahne (200 ml),2,3.49,6.98,Bargeld,18:08,Samstag
+2024-01-21,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),10,5.65,56.5,EC-Karte,14:15,Sonntag
+2024-01-29,München-Hauptbahnhof,Obst & Gemüse,Brokkoli,3,1.96,5.88,EC-Karte,11:01,Montag
+2024-04-12,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),10,3.92,39.2,EC-Karte,21:48,Freitag
+2024-07-25,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,5,1.97,9.85,EC-Karte,15:27,Donnerstag
+2024-05-01,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),10,1.78,17.8,Kreditkarte,12:10,Mittwoch
+2024-06-26,München-Hauptbahnhof,Tiefkühlkost,Tiefkühlerbsen (750 g),9,2.03,18.27,Bargeld,07:31,Mittwoch
+2024-03-04,Köln-Ehrenfeld,Molkereiprodukte,Sahne (200 ml),8,4.38,35.04,Bargeld,15:55,Montag
+2024-09-23,München-Hauptbahnhof,Getränke,Bier (6er-Pack),10,1.08,10.8,Bargeld,16:49,Montag
+2024-04-24,Berlin-Mitte,Obst & Gemüse,Brokkoli,7,2.21,15.47,Bargeld,20:53,Mittwoch
+2024-01-25,Berlin-Mitte,Obst & Gemüse,Äpfel (1 kg),9,2.45,22.05,Bargeld,10:24,Donnerstag
+2024-09-28,München-Hauptbahnhof,Hygiene,Rasierer,2,3.77,7.54,EC-Karte,09:21,Samstag
+2024-11-25,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),1,4.08,4.08,Bargeld,21:18,Montag
+2024-01-06,Hamburg-Altona,Backwaren,Croissant,6,0.97,5.82,Kreditkarte,15:18,Samstag
+2024-06-08,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),9,4.52,40.68,Kreditkarte,07:55,Samstag
+2024-10-28,München-Hauptbahnhof,Backwaren,Baguette,8,2.4,19.2,Apple Pay,08:08,Montag
+2024-09-14,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),6,4.05,24.3,EC-Karte,14:51,Samstag
+2024-11-08,Berlin-Mitte,Molkereiprodukte,Quark (500 g),6,1.51,9.06,Bargeld,16:54,Freitag
+2024-05-31,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),7,2.19,15.33,Bargeld,10:50,Freitag
+2024-05-15,Hamburg-Altona,Getränke,Apfelsaft (1 l),9,3.26,29.34,Bargeld,12:37,Mittwoch
+2024-09-15,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),9,1.1,9.9,Apple Pay,18:51,Sonntag
+2024-02-26,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),2,12.98,25.96,Apple Pay,21:01,Montag
+2024-03-28,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),6,3.37,20.22,EC-Karte,14:49,Donnerstag
+2024-08-07,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),4,3.83,15.32,EC-Karte,13:30,Mittwoch
+2024-08-31,München-Hauptbahnhof,Backwaren,Laugenbrezel,8,0.89,7.12,EC-Karte,12:57,Samstag
+2024-02-13,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),6,7.87,47.22,EC-Karte,09:05,Dienstag
+2024-07-04,Hamburg-Altona,Süßwaren,Schokolade (100 g),10,1.47,14.7,Apple Pay,07:55,Donnerstag
+2024-05-13,Berlin-Mitte,Backwaren,Vollkornbrot,5,1.54,7.7,Bargeld,19:34,Montag
+2024-07-02,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),7,2.77,19.39,EC-Karte,07:06,Dienstag
+2024-12-15,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),2,1.38,2.76,EC-Karte,19:30,Sonntag
+2024-01-28,Berlin-Mitte,Süßwaren,Kekse (400 g),10,3.78,37.8,Bargeld,10:02,Sonntag
+2024-12-29,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),2,4.28,8.56,EC-Karte,17:04,Sonntag
+2024-06-13,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),4,2.73,10.92,Kreditkarte,21:31,Donnerstag
+2024-10-08,Köln-Ehrenfeld,Backwaren,Baguette,9,1.86,16.74,Bargeld,18:48,Dienstag
+2024-06-03,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),10,6.41,64.1,EC-Karte,17:06,Montag
+2024-04-23,Frankfurt-Sachsenhausen,Molkereiprodukte,Joghurt (500 g),5,1.12,5.6,EC-Karte,10:15,Dienstag
+2024-10-08,Hamburg-Altona,Backwaren,Laugenbrezel,5,0.91,4.55,Bargeld,15:23,Dienstag
+2024-09-07,Frankfurt-Sachsenhausen,Molkereiprodukte,Joghurt (500 g),1,1.55,1.55,Bargeld,16:32,Samstag
+2024-02-22,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),10,4.45,44.5,EC-Karte,13:00,Donnerstag
+2024-09-14,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,1,0.85,0.85,Bargeld,07:38,Samstag
+2024-10-01,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),1,7.52,7.52,EC-Karte,20:29,Dienstag
+2024-05-21,Frankfurt-Sachsenhausen,Getränke,Bier (6er-Pack),5,3.97,19.85,Kreditkarte,09:57,Dienstag
+2024-12-03,Hamburg-Altona,Süßwaren,Schokolade (100 g),1,3.02,3.02,Kreditkarte,21:18,Dienstag
+2024-08-21,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),2,4.13,8.26,Apple Pay,20:29,Mittwoch
+2024-05-01,Berlin-Mitte,Backwaren,Roggenbrot,7,1.18,8.26,EC-Karte,07:04,Mittwoch
+2024-01-04,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),8,2.15,17.2,Kreditkarte,18:55,Donnerstag
+2024-09-03,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),3,4.4,13.2,EC-Karte,16:50,Dienstag
+2024-03-17,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),8,4.72,37.76,Bargeld,10:21,Sonntag
+2024-10-03,Berlin-Mitte,Backwaren,Roggenbrot,7,1.62,11.34,EC-Karte,19:27,Donnerstag
+2024-07-10,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),3,2.56,7.68,EC-Karte,08:51,Mittwoch
+2024-06-19,Berlin-Mitte,Getränke,Bier (6er-Pack),8,6.89,55.12,Kreditkarte,10:17,Mittwoch
+2024-02-29,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,6,3.33,19.98,EC-Karte,21:14,Donnerstag
+2024-09-16,München-Hauptbahnhof,Obst & Gemüse,Salat (Kopf),9,2.11,18.99,Bargeld,18:14,Montag
+2024-03-01,Berlin-Mitte,Süßwaren,Chips (200 g),2,1.17,2.34,Apple Pay,08:42,Freitag
+2024-06-01,Köln-Ehrenfeld,Backwaren,Vollkornbrot,3,1.36,4.08,Bargeld,09:12,Samstag
+2024-11-01,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),4,7.15,28.6,Apple Pay,10:05,Freitag
+2024-12-01,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),4,3.62,14.48,Kreditkarte,08:09,Sonntag
+2024-12-27,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),9,2.86,25.74,Kreditkarte,09:59,Freitag
+2024-12-15,Berlin-Mitte,Molkereiprodukte,Quark (500 g),8,2.6,20.8,Kreditkarte,15:52,Sonntag
+2024-07-21,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),6,0.62,3.72,Bargeld,07:57,Sonntag
+2024-03-14,Hamburg-Altona,Molkereiprodukte,Quark (500 g),6,4.72,28.32,EC-Karte,11:16,Donnerstag
+2024-11-02,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),9,2.59,23.31,Kreditkarte,11:26,Samstag
+2024-10-19,Köln-Ehrenfeld,Backwaren,Laugenbrezel,5,2.45,12.25,Kreditkarte,21:29,Samstag
+2024-12-27,München-Hauptbahnhof,Backwaren,Vollkornbrot,3,1.53,4.59,EC-Karte,21:31,Freitag
+2024-08-25,Berlin-Mitte,Backwaren,Roggenbrot,2,2.83,5.66,Bargeld,19:01,Sonntag
+2024-02-21,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),4,4.38,17.52,EC-Karte,12:35,Mittwoch
+2024-07-02,Köln-Ehrenfeld,Molkereiprodukte,Gouda (400 g),7,2.58,18.06,EC-Karte,14:02,Dienstag
+2024-06-12,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),5,7.42,37.1,EC-Karte,14:16,Mittwoch
+2024-11-03,Berlin-Mitte,Tiefkühlkost,Tiefkühlerbsen (750 g),5,4.05,20.25,Kreditkarte,19:17,Sonntag
+2024-05-23,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),5,1.4,7.0,Kreditkarte,18:40,Donnerstag
+2024-04-29,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",10,12.93,129.3,EC-Karte,20:53,Montag
+2024-01-30,Berlin-Mitte,Süßwaren,Marzipan (200 g),10,2.76,27.6,EC-Karte,15:41,Dienstag
+2024-10-31,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,2,2.21,4.42,EC-Karte,20:26,Donnerstag
+2024-10-02,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),2,3.53,7.06,EC-Karte,18:31,Mittwoch
+2024-01-16,Köln-Ehrenfeld,Backwaren,Laugenbrezel,3,2.56,7.68,Bargeld,18:30,Dienstag
+2024-06-07,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),9,4.42,39.78,Bargeld,16:08,Freitag
+2024-06-24,Hamburg-Altona,Molkereiprodukte,Butter (250 g),5,3.2,16.0,EC-Karte,12:57,Montag
+2024-06-20,Hamburg-Altona,Backwaren,Laugenbrezel,9,1.23,11.07,EC-Karte,16:55,Donnerstag
+2024-12-01,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),7,0.85,5.95,EC-Karte,12:14,Sonntag
+2024-02-24,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),6,6.48,38.88,Bargeld,16:06,Samstag
+2024-04-21,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),3,6.94,20.82,EC-Karte,10:09,Sonntag
+2024-03-07,Frankfurt-Sachsenhausen,Molkereiprodukte,Vollmilch (1 l),4,2.74,10.96,Bargeld,18:37,Donnerstag
+2024-03-30,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),2,1.23,2.46,EC-Karte,15:01,Samstag
+2024-11-27,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),6,2.07,12.42,EC-Karte,17:06,Mittwoch
+2024-12-09,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),3,7.35,22.05,EC-Karte,10:38,Montag
+2024-01-17,München-Hauptbahnhof,Backwaren,Baguette,3,2.58,7.74,Bargeld,18:08,Mittwoch
+2024-08-18,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",1,1.85,1.85,Apple Pay,19:04,Sonntag
+2024-03-25,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),8,2.98,23.84,EC-Karte,09:01,Montag
+2024-03-11,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),10,2.82,28.2,EC-Karte,12:42,Montag
+2024-04-16,Berlin-Mitte,Hygiene,Rasierer,5,12.25,61.25,EC-Karte,17:21,Dienstag
+2024-03-11,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),6,1.37,8.22,Kreditkarte,20:17,Montag
+2024-06-27,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),10,8.51,85.1,Kreditkarte,18:38,Donnerstag
+2024-12-29,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),6,5.6,33.6,EC-Karte,14:10,Sonntag
+2024-08-02,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),7,6.59,46.13,EC-Karte,11:31,Freitag
+2024-09-20,Köln-Ehrenfeld,Obst & Gemüse,Salat (Kopf),5,0.94,4.7,Bargeld,20:29,Freitag
+2024-06-29,Berlin-Mitte,Süßwaren,Kekse (400 g),6,2.56,15.36,EC-Karte,20:40,Samstag
+2024-01-06,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),6,4.65,27.9,EC-Karte,20:37,Samstag
+2024-01-31,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",8,5.02,40.16,Bargeld,11:40,Mittwoch
+2024-04-08,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),7,5.3,37.1,Apple Pay,13:12,Montag
+2024-03-29,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),6,4.23,25.38,Kreditkarte,10:08,Freitag
+2024-11-02,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),1,6.08,6.08,EC-Karte,21:32,Samstag
+2024-11-03,Frankfurt-Sachsenhausen,Hygiene,Handseife (300 ml),10,1.97,19.7,Apple Pay,20:03,Sonntag
+2024-11-07,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),9,2.3,20.7,EC-Karte,09:27,Donnerstag
+2024-08-20,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",2,3.95,7.9,EC-Karte,10:37,Dienstag
+2024-07-22,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),3,6.47,19.41,Kreditkarte,15:49,Montag
+2024-08-24,Frankfurt-Sachsenhausen,Süßwaren,Chips (200 g),10,4.4,44.0,EC-Karte,13:39,Samstag
+2024-05-28,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),4,2.12,8.48,EC-Karte,13:59,Dienstag
+2024-09-01,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),9,3.63,32.67,EC-Karte,12:33,Sonntag
+2024-10-16,Hamburg-Altona,Süßwaren,Schokolade (100 g),8,1.45,11.6,Bargeld,17:26,Mittwoch
+2024-10-05,Berlin-Mitte,Obst & Gemüse,Tomaten (500 g),9,2.08,18.72,EC-Karte,20:14,Samstag
+2024-08-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),1,7.24,7.24,EC-Karte,20:40,Montag
+2024-01-22,Berlin-Mitte,Obst & Gemüse,Tomaten (500 g),5,2.14,10.7,EC-Karte,13:48,Montag
+2024-09-21,Hamburg-Altona,Getränke,Bier (6er-Pack),6,1.13,6.78,Bargeld,19:19,Samstag
+2024-05-13,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),9,2.75,24.75,Bargeld,17:04,Montag
+2024-09-28,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),3,3.97,11.91,Kreditkarte,09:00,Samstag
+2024-07-15,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),4,7.97,31.88,Bargeld,18:37,Montag
+2024-11-17,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),2,6.53,13.06,EC-Karte,12:39,Sonntag
+2024-05-03,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),8,6.15,49.2,Kreditkarte,16:07,Freitag
+2024-12-05,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),10,4.56,45.6,Kreditkarte,17:01,Donnerstag
+2024-11-04,Hamburg-Altona,Getränke,Eistee (500 ml),2,6.55,13.1,Bargeld,21:39,Montag
+2024-04-30,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),3,1.88,5.64,Kreditkarte,21:23,Dienstag
+2024-06-25,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),4,5.97,23.88,Kreditkarte,19:25,Dienstag
+2024-07-12,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),9,7.37,66.33,EC-Karte,14:15,Freitag
+2024-10-07,Köln-Ehrenfeld,Süßwaren,Chips (200 g),5,2.48,12.4,Kreditkarte,13:43,Montag
+2024-09-08,München-Hauptbahnhof,Hygiene,"Waschmittel (1,5 kg)",3,11.77,35.31,Kreditkarte,13:44,Sonntag
+2024-11-06,Hamburg-Altona,Obst & Gemüse,Tomaten (500 g),4,1.54,6.16,EC-Karte,21:03,Mittwoch
+2024-05-15,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),6,5.94,35.64,EC-Karte,10:05,Mittwoch
+2024-07-03,Frankfurt-Sachsenhausen,Backwaren,Croissant,4,0.71,2.84,Kreditkarte,14:33,Mittwoch
+2024-06-06,München-Hauptbahnhof,Backwaren,Croissant,2,1.67,3.34,Apple Pay,17:36,Donnerstag
+2024-11-27,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),9,1.44,12.96,EC-Karte,07:08,Mittwoch
+2024-04-21,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),5,0.96,4.8,Kreditkarte,16:09,Sonntag
+2024-08-02,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),3,0.6,1.8,Kreditkarte,10:40,Freitag
+2024-02-13,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),8,1.86,14.88,Kreditkarte,11:27,Dienstag
+2024-11-06,Berlin-Mitte,Hygiene,Rasierer,8,8.27,66.16,Apple Pay,16:07,Mittwoch
+2024-05-20,Berlin-Mitte,Tiefkühlkost,Tiefkühlerbsen (750 g),2,4.72,9.44,Bargeld,07:36,Montag
+2024-05-04,Köln-Ehrenfeld,Süßwaren,Chips (200 g),1,1.77,1.77,Bargeld,09:04,Samstag
+2024-07-31,München-Hauptbahnhof,Obst & Gemüse,Karotten (1 kg),1,3.47,3.47,EC-Karte,13:13,Mittwoch
+2024-07-01,Berlin-Mitte,Hygiene,Duschgel (300 ml),8,12.29,98.32,EC-Karte,15:42,Montag
+2024-11-05,München-Hauptbahnhof,Backwaren,Vollkornbrot,7,0.8,5.6,EC-Karte,08:13,Dienstag
+2024-07-12,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),8,2.59,20.72,Kreditkarte,12:03,Freitag
+2024-07-07,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),7,2.11,14.77,Apple Pay,11:57,Sonntag
+2024-02-08,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),5,7.26,36.3,EC-Karte,15:13,Donnerstag
+2024-01-09,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),6,4.19,25.14,Kreditkarte,11:30,Dienstag
+2024-05-25,Berlin-Mitte,Molkereiprodukte,Joghurt (500 g),8,3.95,31.6,Bargeld,07:49,Samstag
+2024-12-30,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),4,1.07,4.28,EC-Karte,14:59,Montag
+2024-11-30,Berlin-Mitte,Getränke,Apfelsaft (1 l),10,2.85,28.5,Bargeld,19:48,Samstag
+2024-08-17,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,9,6.29,56.61,EC-Karte,15:20,Samstag
+2024-08-18,Hamburg-Altona,Hygiene,Duschgel (300 ml),9,8.69,78.21,EC-Karte,12:51,Sonntag
+2024-05-22,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),10,7.93,79.3,Kreditkarte,14:00,Mittwoch
+2024-03-05,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),4,1.08,4.32,EC-Karte,09:19,Dienstag
+2024-01-04,München-Hauptbahnhof,Hygiene,Zahnpasta (75 ml),2,3.5,7.0,EC-Karte,10:11,Donnerstag
+2024-05-03,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",5,1.09,5.45,Bargeld,13:31,Freitag
+2024-04-25,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),8,1.98,15.84,Bargeld,15:53,Donnerstag
+2024-03-10,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),8,0.91,7.28,Apple Pay,14:46,Sonntag
+2024-04-04,Berlin-Mitte,Backwaren,Croissant,4,1.75,7.0,Apple Pay,21:59,Donnerstag
+2024-01-10,Hamburg-Altona,Backwaren,Vollkornbrot,3,1.81,5.43,EC-Karte,16:08,Mittwoch
+2024-08-09,Köln-Ehrenfeld,Backwaren,Roggenbrot,5,2.13,10.65,EC-Karte,07:45,Freitag
+2024-12-04,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,9,1.45,13.05,EC-Karte,14:43,Mittwoch
+2024-09-09,Frankfurt-Sachsenhausen,Tiefkühlkost,Tiefkühlerbsen (750 g),1,2.01,2.01,EC-Karte,15:27,Montag
+2024-06-12,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),4,2.61,10.44,EC-Karte,07:05,Mittwoch
+2024-06-02,Frankfurt-Sachsenhausen,Tiefkühlkost,Tiefkühlerbsen (750 g),3,2.32,6.96,Bargeld,12:06,Sonntag
+2024-04-22,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),9,11.45,103.05,EC-Karte,20:54,Montag
+2024-02-21,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),5,0.68,3.4,EC-Karte,12:17,Mittwoch
+2024-08-06,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),1,5.94,5.94,EC-Karte,13:38,Dienstag
+2024-07-25,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),3,3.21,9.63,Bargeld,10:56,Donnerstag
+2024-01-03,München-Hauptbahnhof,Süßwaren,Chips (200 g),1,2.82,2.82,EC-Karte,08:29,Mittwoch
+2024-05-31,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),5,2.43,12.15,EC-Karte,11:12,Freitag
+2024-04-11,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),10,6.08,60.8,EC-Karte,18:29,Donnerstag
+2024-03-03,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,6,2.72,16.32,EC-Karte,21:13,Sonntag
+2024-09-13,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),9,2.18,19.62,EC-Karte,16:10,Freitag
+2024-07-10,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),8,7.27,58.16,Kreditkarte,19:48,Mittwoch
+2024-08-19,Hamburg-Altona,Backwaren,Vollkornbrot,9,2.93,26.37,Apple Pay,16:20,Montag
+2024-09-17,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),4,1.6,6.4,Bargeld,16:41,Dienstag
+2024-12-24,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),10,1.93,19.3,Kreditkarte,13:43,Dienstag
+2024-10-20,Hamburg-Altona,Hygiene,Handseife (300 ml),3,10.15,30.45,Kreditkarte,07:32,Sonntag
+2024-08-14,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),5,3.12,15.6,EC-Karte,13:32,Mittwoch
+2024-11-16,Hamburg-Altona,Hygiene,Handseife (300 ml),7,4.45,31.15,EC-Karte,19:10,Samstag
+2024-06-23,Hamburg-Altona,Hygiene,Shampoo (250 ml),3,3.47,10.41,EC-Karte,15:31,Sonntag
+2024-12-25,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),3,1.25,3.75,Bargeld,18:45,Mittwoch
+2024-10-04,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,2,1.64,3.28,Apple Pay,07:11,Freitag
+2024-08-25,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),1,1.59,1.59,EC-Karte,10:13,Sonntag
+2024-11-25,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),6,2.11,12.66,EC-Karte,11:41,Montag
+2024-07-07,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),10,2.09,20.9,EC-Karte,12:58,Sonntag
+2024-09-20,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),3,4.22,12.66,Bargeld,21:23,Freitag
+2024-04-13,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),5,2.96,14.8,Bargeld,13:49,Samstag
+2024-12-17,Berlin-Mitte,Backwaren,Roggenbrot,10,0.67,6.7,EC-Karte,16:10,Dienstag
+2024-08-15,Berlin-Mitte,Hygiene,Rasierer,8,6.68,53.44,EC-Karte,16:34,Donnerstag
+2024-10-12,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),1,1.89,1.89,Kreditkarte,13:56,Samstag
+2024-06-17,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),6,4.84,29.04,EC-Karte,21:26,Montag
+2024-11-12,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",2,11.97,23.94,EC-Karte,10:30,Dienstag
+2024-01-28,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),3,3.3,9.9,Kreditkarte,07:09,Sonntag
+2024-02-11,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),3,2.73,8.19,Bargeld,18:31,Sonntag
+2024-07-04,Frankfurt-Sachsenhausen,Obst & Gemüse,Tomaten (500 g),7,1.8,12.6,EC-Karte,16:35,Donnerstag
+2024-09-24,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),2,2.74,5.48,Kreditkarte,10:58,Dienstag
+2024-10-22,Berlin-Mitte,Hygiene,Shampoo (250 ml),3,4.86,14.58,EC-Karte,20:12,Dienstag
+2024-06-09,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),3,3.29,9.87,Bargeld,09:21,Sonntag
+2024-08-25,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,4,2.6,10.4,Bargeld,10:38,Sonntag
+2024-07-20,Köln-Ehrenfeld,Molkereiprodukte,Gouda (400 g),7,3.19,22.33,Bargeld,09:56,Samstag
+2024-12-16,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),4,0.98,3.92,EC-Karte,09:14,Montag
+2024-08-26,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),4,0.99,3.96,Bargeld,17:41,Montag
+2024-06-01,Hamburg-Altona,Getränke,Apfelsaft (1 l),6,3.77,22.62,EC-Karte,17:52,Samstag
+2024-12-19,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),7,2.31,16.17,Bargeld,16:37,Donnerstag
+2024-02-09,München-Hauptbahnhof,Getränke,Orangensaft (1 l),1,1.64,1.64,Bargeld,19:25,Freitag
+2024-12-25,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),9,2.52,22.68,EC-Karte,08:14,Mittwoch
+2024-02-26,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),10,3.15,31.5,Bargeld,16:17,Montag
+2024-04-15,München-Hauptbahnhof,Süßwaren,Chips (200 g),7,1.51,10.57,Apple Pay,08:03,Montag
+2024-10-26,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),6,3.71,22.26,EC-Karte,21:09,Samstag
+2024-09-24,Hamburg-Altona,Backwaren,Baguette,7,2.78,19.46,Bargeld,16:26,Dienstag
+2024-12-20,München-Hauptbahnhof,Tiefkühlkost,Tiefkühlerbsen (750 g),5,4.43,22.15,Bargeld,18:08,Freitag
+2024-09-30,Berlin-Mitte,Obst & Gemüse,Äpfel (1 kg),4,1.88,7.52,EC-Karte,15:00,Montag
+2024-08-20,München-Hauptbahnhof,Getränke,Bier (6er-Pack),4,5.21,20.84,EC-Karte,12:41,Dienstag
+2024-05-06,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),2,4.68,9.36,Kreditkarte,17:04,Montag
+2024-01-02,Hamburg-Altona,Molkereiprodukte,Quark (500 g),9,1.64,14.76,EC-Karte,19:08,Dienstag
+2024-02-15,Köln-Ehrenfeld,Hygiene,Rasierer,4,2.73,10.92,EC-Karte,09:35,Donnerstag
+2024-04-18,Köln-Ehrenfeld,Hygiene,Duschgel (300 ml),3,6.52,19.56,EC-Karte,20:55,Donnerstag
+2024-01-15,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),10,2.32,23.2,Kreditkarte,17:43,Montag
+2024-07-04,München-Hauptbahnhof,Backwaren,Croissant,6,0.84,5.04,EC-Karte,08:01,Donnerstag
+2024-10-10,Köln-Ehrenfeld,Backwaren,Baguette,7,1.22,8.54,EC-Karte,21:10,Donnerstag
+2024-12-17,Köln-Ehrenfeld,Hygiene,Duschgel (300 ml),3,5.01,15.03,Kreditkarte,09:44,Dienstag
+2024-06-27,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),3,2.41,7.23,Kreditkarte,16:43,Donnerstag
+2024-11-15,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),8,4.75,38.0,EC-Karte,08:23,Freitag
+2024-12-25,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),5,3.14,15.7,Apple Pay,09:56,Mittwoch
+2024-11-09,Hamburg-Altona,Süßwaren,Kekse (400 g),2,2.58,5.16,Kreditkarte,16:53,Samstag
+2024-06-18,Köln-Ehrenfeld,Obst & Gemüse,Salat (Kopf),9,1.33,11.97,Bargeld,17:44,Dienstag
+2024-04-28,Köln-Ehrenfeld,Backwaren,Roggenbrot,5,0.75,3.75,Kreditkarte,17:44,Sonntag
+2024-12-22,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),7,7.83,54.81,EC-Karte,12:47,Sonntag
+2024-03-29,Berlin-Mitte,Molkereiprodukte,Gouda (400 g),4,2.86,11.44,EC-Karte,19:08,Freitag
+2024-05-30,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),6,2.36,14.16,EC-Karte,07:42,Donnerstag
+2024-01-28,Frankfurt-Sachsenhausen,Backwaren,Baguette,8,1.14,9.12,Kreditkarte,19:56,Sonntag
+2024-10-16,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),9,4.19,37.71,EC-Karte,11:13,Mittwoch
+2024-08-25,München-Hauptbahnhof,Backwaren,Vollkornbrot,3,2.37,7.11,EC-Karte,16:00,Sonntag
+2024-01-31,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),7,2.68,18.76,Bargeld,20:21,Mittwoch
+2024-03-22,Berlin-Mitte,Backwaren,Croissant,10,2.0,20.0,EC-Karte,10:16,Freitag
+2024-07-21,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),7,1.55,10.85,Apple Pay,13:56,Sonntag
+2024-07-16,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),2,3.44,6.88,Kreditkarte,19:26,Dienstag
+2024-10-19,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),2,3.75,7.5,Bargeld,19:39,Samstag
+2024-04-07,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),3,6.72,20.16,Kreditkarte,10:58,Sonntag
+2024-12-03,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),2,6.29,12.58,Kreditkarte,14:47,Dienstag
+2024-06-11,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),8,2.92,23.36,EC-Karte,11:44,Dienstag
+2024-10-27,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),10,4.04,40.4,Bargeld,14:58,Sonntag
+2024-03-28,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),6,3.07,18.42,EC-Karte,12:41,Donnerstag
+2024-01-14,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),6,2.29,13.74,Bargeld,07:13,Sonntag
+2024-01-21,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,8,3.96,31.68,EC-Karte,20:43,Sonntag
+2024-05-16,Frankfurt-Sachsenhausen,Tiefkühlkost,Tiefkühlerbsen (750 g),5,7.21,36.05,EC-Karte,16:19,Donnerstag
+2024-12-13,Frankfurt-Sachsenhausen,Backwaren,Vollkornbrot,5,2.78,13.9,Apple Pay,13:19,Freitag
+2024-01-18,Hamburg-Altona,Hygiene,Handseife (300 ml),6,7.13,42.78,EC-Karte,08:38,Donnerstag
+2024-05-14,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),4,2.88,11.52,Kreditkarte,08:18,Dienstag
+2024-02-09,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),1,8.18,8.18,Apple Pay,14:01,Freitag
+2024-12-06,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),6,6.94,41.64,Bargeld,16:59,Freitag
+2024-09-03,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),9,8.08,72.72,Bargeld,10:34,Dienstag
+2024-10-05,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,1,1.44,1.44,Kreditkarte,18:40,Samstag
+2024-09-17,München-Hauptbahnhof,Hygiene,Rasierer,3,10.19,30.57,Kreditkarte,12:48,Dienstag
+2024-08-27,München-Hauptbahnhof,Obst & Gemüse,Karotten (1 kg),3,2.35,7.05,EC-Karte,07:38,Dienstag
+2024-10-09,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),9,2.29,20.61,EC-Karte,15:36,Mittwoch
+2024-01-03,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),6,3.53,21.18,EC-Karte,09:47,Mittwoch
+2024-11-11,Berlin-Mitte,Tiefkühlkost,Eis (500 ml),6,6.38,38.28,Kreditkarte,07:17,Montag
+2024-09-27,Frankfurt-Sachsenhausen,Obst & Gemüse,Orangen (1 kg),7,3.38,23.66,Kreditkarte,08:49,Freitag
+2024-09-26,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),3,1.77,5.31,Bargeld,11:43,Donnerstag
+2024-05-23,Köln-Ehrenfeld,Hygiene,Handseife (300 ml),8,12.83,102.64,Bargeld,14:10,Donnerstag
+2024-10-19,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),1,1.81,1.81,Bargeld,21:08,Samstag
+2024-05-19,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),2,3.79,7.58,Apple Pay,10:52,Sonntag
+2024-01-18,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),9,3.22,28.98,Apple Pay,07:53,Donnerstag
+2024-11-27,München-Hauptbahnhof,Backwaren,Baguette,7,2.45,17.15,Kreditkarte,09:59,Mittwoch
+2024-03-26,Köln-Ehrenfeld,Backwaren,Croissant,2,1.88,3.76,Bargeld,11:06,Dienstag
+2024-02-07,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),5,1.26,6.3,EC-Karte,10:53,Mittwoch
+2024-08-14,München-Hauptbahnhof,Backwaren,Baguette,1,2.01,2.01,Bargeld,11:51,Mittwoch
+2024-03-26,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),7,4.65,32.55,EC-Karte,21:46,Dienstag
+2024-11-09,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),8,5.4,43.2,EC-Karte,12:29,Samstag
+2024-06-10,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),3,2.65,7.95,Kreditkarte,16:30,Montag
+2024-01-02,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),4,3.63,14.52,Bargeld,17:25,Dienstag
+2024-12-13,Köln-Ehrenfeld,Backwaren,Laugenbrezel,3,2.4,7.2,EC-Karte,08:01,Freitag
+2024-07-06,Frankfurt-Sachsenhausen,Süßwaren,Gummibärchen (200 g),4,2.87,11.48,Apple Pay,10:30,Samstag
+2024-04-05,Berlin-Mitte,Backwaren,Laugenbrezel,3,2.97,8.91,EC-Karte,13:14,Freitag
+2024-09-04,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),3,4.27,12.81,Bargeld,13:12,Mittwoch
+2024-07-12,Berlin-Mitte,Getränke,Eistee (500 ml),5,2.42,12.1,Apple Pay,07:03,Freitag
+2024-01-11,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),9,0.95,8.55,EC-Karte,16:27,Donnerstag
+2024-10-04,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),8,5.31,42.48,EC-Karte,11:02,Freitag
+2024-05-26,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),3,3.4,10.2,EC-Karte,11:50,Sonntag
+2024-09-12,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",10,5.29,52.9,Kreditkarte,16:53,Donnerstag
+2024-11-22,Hamburg-Altona,Molkereiprodukte,Quark (500 g),3,2.27,6.81,EC-Karte,21:48,Freitag
+2024-08-10,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),10,0.82,8.2,EC-Karte,19:18,Samstag
+2024-09-02,Köln-Ehrenfeld,Molkereiprodukte,Sahne (200 ml),4,3.48,13.92,EC-Karte,21:09,Montag
+2024-04-02,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),6,4.98,29.88,Bargeld,13:30,Dienstag
+2024-03-27,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,3,1.23,3.69,Kreditkarte,08:40,Mittwoch
+2024-05-31,Berlin-Mitte,Obst & Gemüse,Tomaten (500 g),8,1.29,10.32,Bargeld,10:01,Freitag
+2024-11-07,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),4,4.73,18.92,EC-Karte,12:51,Donnerstag
+2024-07-10,Köln-Ehrenfeld,Getränke,Eistee (500 ml),9,3.43,30.87,EC-Karte,11:26,Mittwoch
+2024-05-07,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),1,4.12,4.12,EC-Karte,10:49,Dienstag
+2024-10-11,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),6,5.48,32.88,EC-Karte,09:04,Freitag
+2024-11-07,München-Hauptbahnhof,Backwaren,Baguette,2,2.09,4.18,EC-Karte,09:25,Donnerstag
+2024-11-25,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),9,4.73,42.57,EC-Karte,16:27,Montag
+2024-04-19,Hamburg-Altona,Süßwaren,Chips (200 g),5,2.13,10.65,Bargeld,14:02,Freitag
+2024-09-16,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),7,2.23,15.61,Kreditkarte,07:42,Montag
+2024-08-03,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),9,8.46,76.14,Apple Pay,15:55,Samstag
+2024-06-12,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),6,2.56,15.36,EC-Karte,19:32,Mittwoch
+2024-05-24,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),1,1.68,1.68,EC-Karte,13:23,Freitag
+2024-02-11,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),3,1.02,3.06,Bargeld,11:38,Sonntag
+2024-04-10,Köln-Ehrenfeld,Backwaren,Baguette,3,2.08,6.24,Bargeld,11:21,Mittwoch
+2024-07-19,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),10,3.96,39.6,EC-Karte,12:21,Freitag
+2024-11-19,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),10,2.24,22.4,Apple Pay,11:45,Dienstag
+2024-11-12,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),5,3.43,17.15,Kreditkarte,20:35,Dienstag
+2024-03-09,München-Hauptbahnhof,Süßwaren,Kekse (400 g),9,1.16,10.44,EC-Karte,21:15,Samstag
+2024-09-04,Hamburg-Altona,Backwaren,Roggenbrot,3,2.0,6.0,Apple Pay,12:24,Mittwoch
+2024-01-31,München-Hauptbahnhof,Backwaren,Vollkornbrot,7,2.79,19.53,EC-Karte,20:50,Mittwoch
+2024-09-03,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),4,5.34,21.36,EC-Karte,19:31,Dienstag
+2024-05-04,Hamburg-Altona,Hygiene,Duschgel (300 ml),3,5.44,16.32,EC-Karte,08:04,Samstag
+2024-06-13,Hamburg-Altona,Getränke,Orangensaft (1 l),3,5.54,16.62,Bargeld,14:51,Donnerstag
+2024-09-18,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),5,3.49,17.45,Kreditkarte,16:44,Mittwoch
+2024-06-04,München-Hauptbahnhof,Backwaren,Croissant,4,1.11,4.44,EC-Karte,13:16,Dienstag
+2024-10-21,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),3,1.22,3.66,EC-Karte,13:57,Montag
+2024-07-13,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),4,1.76,7.04,EC-Karte,14:57,Samstag
+2024-12-30,Berlin-Mitte,Backwaren,Vollkornbrot,2,2.43,4.86,Apple Pay,17:59,Montag
+2024-08-20,Frankfurt-Sachsenhausen,Getränke,"Mineralwasser (1,5 l)",10,5.1,51.0,EC-Karte,11:22,Dienstag
+2024-04-18,Hamburg-Altona,Obst & Gemüse,Tomaten (500 g),4,2.59,10.36,EC-Karte,15:55,Donnerstag
+2024-10-09,München-Hauptbahnhof,Süßwaren,Chips (200 g),2,3.82,7.64,Bargeld,10:48,Mittwoch
+2024-05-28,Hamburg-Altona,Süßwaren,Schokolade (100 g),6,1.67,10.02,Apple Pay,20:52,Dienstag
+2024-07-13,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),9,2.9,26.1,EC-Karte,08:32,Samstag
+2024-02-19,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),4,1.06,4.24,EC-Karte,08:16,Montag
+2024-02-13,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),9,3.14,28.26,Kreditkarte,07:13,Dienstag
+2024-07-28,Hamburg-Altona,Getränke,Eistee (500 ml),7,4.4,30.8,Bargeld,12:57,Sonntag
+2024-03-09,München-Hauptbahnhof,Getränke,Eistee (500 ml),8,2.64,21.12,EC-Karte,16:30,Samstag
+2024-12-30,München-Hauptbahnhof,Süßwaren,Kekse (400 g),3,0.86,2.58,EC-Karte,21:55,Montag
+2024-11-08,Hamburg-Altona,Getränke,Bier (6er-Pack),1,5.28,5.28,EC-Karte,13:33,Freitag
+2024-09-12,Hamburg-Altona,Backwaren,Vollkornbrot,4,2.36,9.44,EC-Karte,09:32,Donnerstag
+2024-09-25,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),10,2.59,25.9,EC-Karte,12:04,Mittwoch
+2024-08-05,Hamburg-Altona,Süßwaren,Kekse (400 g),8,1.38,11.04,Bargeld,08:24,Montag
+2024-01-23,München-Hauptbahnhof,Backwaren,Roggenbrot,8,2.77,22.16,Bargeld,14:33,Dienstag
+2024-05-23,Hamburg-Altona,Hygiene,Rasierer,9,10.15,91.35,Bargeld,17:06,Donnerstag
+2024-06-29,Berlin-Mitte,Obst & Gemüse,Bananen (500 g),4,2.57,10.28,Apple Pay,07:09,Samstag
+2024-11-30,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),4,5.9,23.6,EC-Karte,18:35,Samstag
+2024-03-21,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),10,11.89,118.9,EC-Karte,10:14,Donnerstag
+2024-06-30,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),6,8.52,51.12,EC-Karte,17:42,Sonntag
+2024-05-05,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,3,2.4,7.2,Kreditkarte,19:27,Sonntag
+2024-02-19,Frankfurt-Sachsenhausen,Hygiene,Zahnpasta (75 ml),3,6.28,18.84,Bargeld,18:24,Montag
+2024-02-07,Berlin-Mitte,Backwaren,Croissant,9,1.4,12.6,EC-Karte,17:07,Mittwoch
+2024-05-13,München-Hauptbahnhof,Getränke,Orangensaft (1 l),1,5.87,5.87,EC-Karte,17:24,Montag
+2024-01-31,Frankfurt-Sachsenhausen,Hygiene,Rasierer,1,8.9,8.9,EC-Karte,09:32,Mittwoch
+2024-01-25,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,8,2.45,19.6,Kreditkarte,09:34,Donnerstag
+2024-05-08,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),1,1.17,1.17,Kreditkarte,12:16,Mittwoch
+2024-03-14,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),2,4.1,8.2,Kreditkarte,16:01,Donnerstag
+2024-07-21,München-Hauptbahnhof,Backwaren,Laugenbrezel,10,2.7,27.0,Bargeld,16:56,Sonntag
+2024-01-07,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),5,7.7,38.5,Bargeld,18:57,Sonntag
+2024-04-20,Berlin-Mitte,Getränke,Eistee (500 ml),8,3.44,27.52,Bargeld,11:54,Samstag
+2024-06-14,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),5,4.1,20.5,Kreditkarte,19:17,Freitag
+2024-12-17,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),1,7.87,7.87,Apple Pay,13:36,Dienstag
+2024-08-19,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),2,1.64,3.28,Apple Pay,10:08,Montag
+2024-11-17,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),8,3.16,25.28,EC-Karte,18:54,Sonntag
+2024-05-05,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,1,2.98,2.98,Kreditkarte,08:00,Sonntag
+2024-06-13,München-Hauptbahnhof,Molkereiprodukte,Gouda (400 g),6,1.01,6.06,EC-Karte,13:28,Donnerstag
+2024-06-02,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),4,4.49,17.96,Kreditkarte,18:51,Sonntag
+2024-11-19,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,4,5.89,23.56,EC-Karte,18:43,Dienstag
+2024-12-16,Frankfurt-Sachsenhausen,Getränke,"Mineralwasser (1,5 l)",10,5.02,50.2,Bargeld,10:51,Montag
+2024-12-17,Berlin-Mitte,Getränke,Orangensaft (1 l),7,2.37,16.59,Bargeld,09:29,Dienstag
+2024-10-01,München-Hauptbahnhof,Getränke,Bier (6er-Pack),7,5.26,36.82,Apple Pay,07:05,Dienstag
+2024-07-02,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),4,1.43,5.72,EC-Karte,08:00,Dienstag
+2024-07-16,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),4,7.88,31.52,EC-Karte,19:09,Dienstag
+2024-12-23,Berlin-Mitte,Süßwaren,Marzipan (200 g),7,1.44,10.08,EC-Karte,18:03,Montag
+2024-04-13,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),1,3.31,3.31,EC-Karte,14:26,Samstag
+2024-05-06,München-Hauptbahnhof,Hygiene,Rasierer,3,10.5,31.5,Apple Pay,15:03,Montag
+2024-11-23,München-Hauptbahnhof,Hygiene,Rasierer,7,3.66,25.62,Bargeld,11:11,Samstag
+2024-05-21,Berlin-Mitte,Süßwaren,Chips (200 g),7,1.52,10.64,Bargeld,09:25,Dienstag
+2024-03-26,Köln-Ehrenfeld,Backwaren,Vollkornbrot,1,2.44,2.44,Kreditkarte,07:44,Dienstag
+2024-07-23,München-Hauptbahnhof,Süßwaren,Chips (200 g),8,0.93,7.44,EC-Karte,17:40,Dienstag
+2024-04-28,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),6,3.13,18.78,Bargeld,07:03,Sonntag
+2024-11-21,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),3,2.76,8.28,Bargeld,08:54,Donnerstag
+2024-11-27,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,8,7.57,60.56,Bargeld,18:32,Mittwoch
+2024-04-21,Berlin-Mitte,Molkereiprodukte,Joghurt (500 g),10,3.19,31.9,EC-Karte,15:20,Sonntag
+2024-07-12,Berlin-Mitte,Getränke,Bier (6er-Pack),5,3.19,15.95,Bargeld,14:22,Freitag
+2024-12-25,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),3,4.41,13.23,Bargeld,10:50,Mittwoch
+2024-09-27,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),3,1.65,4.95,Kreditkarte,09:27,Freitag
+2024-03-19,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),6,2.67,16.02,Kreditkarte,13:14,Dienstag
+2024-08-03,Berlin-Mitte,Süßwaren,Kekse (400 g),1,2.2,2.2,Kreditkarte,12:25,Samstag
+2024-08-14,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),5,4.52,22.6,EC-Karte,15:04,Mittwoch
+2024-08-26,München-Hauptbahnhof,Hygiene,"Waschmittel (1,5 kg)",1,5.24,5.24,EC-Karte,09:09,Montag
+2024-01-10,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),1,2.65,2.65,Apple Pay,10:18,Mittwoch
+2024-04-19,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),5,2.24,11.2,Kreditkarte,08:13,Freitag
+2024-11-07,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),8,3.25,26.0,EC-Karte,13:20,Donnerstag
+2024-03-29,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),9,3.8,34.2,EC-Karte,11:03,Freitag
+2024-04-19,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,1,1.45,1.45,EC-Karte,10:36,Freitag
+2024-04-27,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),3,3.18,9.54,EC-Karte,15:06,Samstag
+2024-03-05,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),5,6.08,30.4,EC-Karte,14:13,Dienstag
+2024-02-26,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),6,3.88,23.28,Bargeld,10:58,Montag
+2024-05-06,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),10,2.34,23.4,Apple Pay,17:00,Montag
+2024-11-15,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,7,2.97,20.79,EC-Karte,12:16,Freitag
+2024-01-01,Hamburg-Altona,Tiefkühlkost,Pommes Frites (750 g),6,3.35,20.1,EC-Karte,12:30,Montag
+2024-04-13,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),1,7.81,7.81,Bargeld,14:18,Samstag
+2024-01-23,Berlin-Mitte,Obst & Gemüse,Bananen (500 g),1,1.51,1.51,Kreditkarte,09:19,Dienstag
+2024-07-23,Hamburg-Altona,Hygiene,Shampoo (250 ml),2,10.4,20.8,Kreditkarte,13:07,Dienstag
+2024-04-01,Hamburg-Altona,Backwaren,Vollkornbrot,7,1.32,9.24,Bargeld,15:25,Montag
+2024-10-16,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),4,1.3,5.2,EC-Karte,08:45,Mittwoch
+2024-08-01,München-Hauptbahnhof,Getränke,Eistee (500 ml),3,5.3,15.9,EC-Karte,15:35,Donnerstag
+2024-10-13,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),7,5.54,38.78,Kreditkarte,07:55,Sonntag
+2024-08-19,München-Hauptbahnhof,Getränke,Eistee (500 ml),9,0.98,8.82,Bargeld,16:41,Montag
+2024-06-09,Berlin-Mitte,Hygiene,Rasierer,5,12.53,62.65,Kreditkarte,07:47,Sonntag
+2024-11-10,Hamburg-Altona,Obst & Gemüse,Brokkoli,9,1.19,10.71,EC-Karte,09:25,Sonntag
+2024-06-22,Frankfurt-Sachsenhausen,Molkereiprodukte,Vollmilch (1 l),8,2.34,18.72,Bargeld,12:36,Samstag
+2024-12-12,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",8,3.18,25.44,Bargeld,16:34,Donnerstag
+2024-12-29,Köln-Ehrenfeld,Süßwaren,Kekse (400 g),9,2.5,22.5,Bargeld,17:48,Sonntag
+2024-08-02,Berlin-Mitte,Getränke,Orangensaft (1 l),2,5.66,11.32,EC-Karte,14:30,Freitag
+2024-09-03,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),8,2.53,20.24,EC-Karte,08:24,Dienstag
+2024-04-03,München-Hauptbahnhof,Getränke,Bier (6er-Pack),10,6.57,65.7,Kreditkarte,12:04,Mittwoch
+2024-10-24,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),10,8.92,89.2,Bargeld,18:51,Donnerstag
+2024-09-02,Köln-Ehrenfeld,Fleisch & Wurst,Hähnchenbrust (500 g),6,8.67,52.02,Apple Pay,08:26,Montag
+2024-11-25,Berlin-Mitte,Hygiene,Handseife (300 ml),8,10.89,87.12,Bargeld,17:47,Montag
+2024-04-07,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),9,4.21,37.89,EC-Karte,12:40,Sonntag
+2024-10-14,Köln-Ehrenfeld,Molkereiprodukte,Quark (500 g),9,3.35,30.15,Apple Pay,07:00,Montag
+2024-06-20,Köln-Ehrenfeld,Backwaren,Baguette,9,1.38,12.42,Kreditkarte,17:39,Donnerstag
+2024-03-08,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),9,2.32,20.88,EC-Karte,07:29,Freitag
+2024-03-03,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),4,2.14,8.56,Kreditkarte,12:14,Sonntag
+2024-07-24,Hamburg-Altona,Molkereiprodukte,Butter (250 g),8,2.64,21.12,Bargeld,09:15,Mittwoch
+2024-04-26,Hamburg-Altona,Backwaren,Croissant,5,2.32,11.6,Bargeld,15:38,Freitag
+2024-02-07,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",9,1.36,12.24,EC-Karte,07:05,Mittwoch
+2024-06-04,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),9,4.29,38.61,Bargeld,08:36,Dienstag
+2024-08-26,Berlin-Mitte,Tiefkühlkost,Tiefkühlerbsen (750 g),10,3.22,32.2,EC-Karte,14:50,Montag
+2024-04-26,Hamburg-Altona,Hygiene,Duschgel (300 ml),6,12.35,74.1,Bargeld,21:05,Freitag
+2024-12-14,Hamburg-Altona,Süßwaren,Chips (200 g),5,1.2,6.0,Apple Pay,07:00,Samstag
+2024-10-11,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),2,2.98,5.96,Kreditkarte,13:03,Freitag
+2024-07-06,Hamburg-Altona,Obst & Gemüse,Orangen (1 kg),7,2.98,20.86,Kreditkarte,19:43,Samstag
+2024-12-07,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),6,7.81,46.86,Kreditkarte,11:50,Samstag
+2024-06-07,Köln-Ehrenfeld,Backwaren,Roggenbrot,6,2.34,14.04,Bargeld,14:59,Freitag
+2024-02-20,München-Hauptbahnhof,Hygiene,Rasierer,7,12.54,87.78,Bargeld,19:01,Dienstag
+2024-01-14,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,9,3.61,32.49,EC-Karte,17:28,Sonntag
+2024-12-08,Frankfurt-Sachsenhausen,Molkereiprodukte,Butter (250 g),2,4.28,8.56,EC-Karte,11:02,Sonntag
+2024-12-16,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",5,2.97,14.85,EC-Karte,18:22,Montag
+2024-09-26,Hamburg-Altona,Getränke,"Cola (1,5 l)",8,4.12,32.96,EC-Karte,17:18,Donnerstag
+2024-02-07,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),9,5.39,48.51,EC-Karte,14:36,Mittwoch
+2024-04-17,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),8,2.53,20.24,Bargeld,13:54,Mittwoch
+2024-01-15,Frankfurt-Sachsenhausen,Obst & Gemüse,Tomaten (500 g),8,2.34,18.72,EC-Karte,20:48,Montag
+2024-01-19,Köln-Ehrenfeld,Fleisch & Wurst,Hähnchenbrust (500 g),9,7.35,66.15,EC-Karte,20:03,Freitag
+2024-03-30,Frankfurt-Sachsenhausen,Molkereiprodukte,Butter (250 g),10,1.61,16.1,EC-Karte,21:14,Samstag
+2024-07-27,München-Hauptbahnhof,Süßwaren,Kekse (400 g),7,4.22,29.54,Apple Pay,17:16,Samstag
+2024-01-24,Berlin-Mitte,Süßwaren,Schokolade (100 g),3,2.66,7.98,EC-Karte,12:15,Mittwoch
+2024-12-25,Berlin-Mitte,Süßwaren,Gummibärchen (200 g),6,1.29,7.74,Kreditkarte,08:21,Mittwoch
+2024-06-15,München-Hauptbahnhof,Obst & Gemüse,Salat (Kopf),8,2.53,20.24,Kreditkarte,08:36,Samstag
+2024-04-06,Hamburg-Altona,Süßwaren,Marzipan (200 g),2,1.34,2.68,Bargeld,21:44,Samstag
+2024-07-07,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),8,2.9,23.2,EC-Karte,12:56,Sonntag
+2024-10-15,Köln-Ehrenfeld,Fleisch & Wurst,Hähnchenbrust (500 g),6,6.94,41.64,EC-Karte,08:42,Dienstag
+2024-04-24,Berlin-Mitte,Hygiene,Rasierer,10,2.76,27.6,EC-Karte,10:17,Mittwoch
+2024-01-18,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),3,1.0,3.0,Bargeld,07:11,Donnerstag
+2024-01-19,München-Hauptbahnhof,Obst & Gemüse,Karotten (1 kg),10,2.79,27.9,Apple Pay,14:22,Freitag
+2024-11-06,Berlin-Mitte,Molkereiprodukte,Joghurt (500 g),5,1.12,5.6,Apple Pay,15:47,Mittwoch
+2024-02-10,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),6,6.85,41.1,Bargeld,12:59,Samstag
+2024-08-19,Berlin-Mitte,Getränke,Bier (6er-Pack),7,5.73,40.11,Bargeld,18:23,Montag
+2024-05-20,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),6,1.47,8.82,Bargeld,14:10,Montag
+2024-10-10,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",10,4.0,40.0,Kreditkarte,21:00,Donnerstag
+2024-01-23,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),2,0.97,1.94,EC-Karte,18:04,Dienstag
+2024-11-23,Hamburg-Altona,Backwaren,Croissant,8,2.07,16.56,Bargeld,08:38,Samstag
+2024-09-11,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),10,2.37,23.7,Kreditkarte,11:35,Mittwoch
+2024-06-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),3,7.66,22.98,EC-Karte,18:38,Mittwoch
+2024-03-16,Berlin-Mitte,Hygiene,Shampoo (250 ml),3,3.88,11.64,EC-Karte,15:01,Samstag
+2024-12-22,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),5,3.69,18.45,EC-Karte,18:26,Sonntag
+2024-04-20,Hamburg-Altona,Backwaren,Laugenbrezel,8,0.81,6.48,EC-Karte,12:10,Samstag
+2024-06-28,München-Hauptbahnhof,Getränke,Bier (6er-Pack),10,2.09,20.9,EC-Karte,07:20,Freitag
+2024-05-23,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",8,3.59,28.72,EC-Karte,18:37,Donnerstag
+2024-03-25,Berlin-Mitte,Fleisch & Wurst,Leberwurst (200 g),8,6.22,49.76,EC-Karte,18:16,Montag
+2024-06-01,Hamburg-Altona,Süßwaren,Schokolade (100 g),5,4.49,22.45,Apple Pay,16:39,Samstag
+2024-02-25,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),7,0.69,4.83,EC-Karte,13:17,Sonntag
+2024-01-01,Berlin-Mitte,Backwaren,Vollkornbrot,3,0.49,1.47,Apple Pay,07:30,Montag
+2024-04-15,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),5,1.96,9.8,EC-Karte,17:27,Montag
+2024-02-10,Köln-Ehrenfeld,Backwaren,Vollkornbrot,2,1.41,2.82,Kreditkarte,16:23,Samstag
+2024-05-31,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),1,8.23,8.23,EC-Karte,17:07,Freitag
+2024-11-10,Berlin-Mitte,Obst & Gemüse,Karotten (1 kg),9,3.25,29.25,Kreditkarte,09:34,Sonntag
+2024-02-29,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),9,4.5,40.5,EC-Karte,17:59,Donnerstag
+2024-01-01,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",6,3.14,18.84,Bargeld,17:38,Montag
+2024-02-10,Köln-Ehrenfeld,Fleisch & Wurst,Hähnchenbrust (500 g),1,5.17,5.17,Bargeld,19:44,Samstag
+2024-07-04,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,1,6.47,6.47,Bargeld,15:48,Donnerstag
+2024-04-10,Hamburg-Altona,Obst & Gemüse,Tomaten (500 g),2,1.63,3.26,Apple Pay,17:02,Mittwoch
+2024-06-27,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),8,5.97,47.76,Apple Pay,13:47,Donnerstag
+2024-01-11,Berlin-Mitte,Molkereiprodukte,Butter (250 g),3,1.86,5.58,Kreditkarte,17:14,Donnerstag
+2024-05-01,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,3,3.93,11.79,Bargeld,17:39,Mittwoch
+2024-05-29,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),9,11.38,102.42,Kreditkarte,18:59,Mittwoch
+2024-06-06,Berlin-Mitte,Getränke,"Cola (1,5 l)",9,2.34,21.06,Kreditkarte,19:53,Donnerstag
+2024-07-20,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,8,3.39,27.12,EC-Karte,07:24,Samstag
+2024-10-11,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),4,4.48,17.92,EC-Karte,18:50,Freitag
+2024-06-19,Köln-Ehrenfeld,Obst & Gemüse,Brokkoli,6,0.85,5.1,EC-Karte,18:37,Mittwoch
+2024-11-03,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),3,4.15,12.45,Bargeld,15:07,Sonntag
+2024-07-12,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),9,1.25,11.25,EC-Karte,14:14,Freitag
+2024-04-05,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),1,5.03,5.03,Kreditkarte,17:57,Freitag
+2024-03-24,Berlin-Mitte,Molkereiprodukte,Quark (500 g),8,1.35,10.8,Bargeld,13:54,Sonntag
+2024-04-27,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),6,2.06,12.36,EC-Karte,13:53,Samstag
+2024-08-06,Hamburg-Altona,Obst & Gemüse,Karotten (1 kg),8,3.15,25.2,EC-Karte,19:23,Dienstag
+2024-03-29,Köln-Ehrenfeld,Hygiene,Handseife (300 ml),5,5.66,28.3,Kreditkarte,18:19,Freitag
+2024-11-29,Berlin-Mitte,Süßwaren,Chips (200 g),2,1.25,2.5,Apple Pay,10:48,Freitag
+2024-06-24,Berlin-Mitte,Süßwaren,Marzipan (200 g),8,2.15,17.2,Kreditkarte,19:01,Montag
+2024-11-11,Hamburg-Altona,Obst & Gemüse,Äpfel (1 kg),7,2.91,20.37,EC-Karte,11:53,Montag
+2024-09-06,Köln-Ehrenfeld,Molkereiprodukte,Sahne (200 ml),5,3.32,16.6,EC-Karte,09:36,Freitag
+2024-05-01,Hamburg-Altona,Hygiene,Shampoo (250 ml),4,2.65,10.6,EC-Karte,20:37,Mittwoch
+2024-03-24,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),4,4.12,16.48,EC-Karte,10:26,Sonntag
+2024-09-28,Köln-Ehrenfeld,Backwaren,Laugenbrezel,5,1.66,8.3,Bargeld,10:58,Samstag
+2024-04-30,Köln-Ehrenfeld,Backwaren,Croissant,3,1.31,3.93,EC-Karte,11:44,Dienstag
+2024-03-31,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),3,1.34,4.02,Kreditkarte,14:03,Sonntag
+2024-12-05,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),3,12.77,38.31,EC-Karte,09:31,Donnerstag
+2024-06-25,Hamburg-Altona,Backwaren,Vollkornbrot,1,0.93,0.93,Kreditkarte,09:51,Dienstag
+2024-01-18,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",10,3.71,37.1,EC-Karte,12:04,Donnerstag
+2024-06-29,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),3,2.86,8.58,EC-Karte,10:44,Samstag
+2024-06-17,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",2,8.05,16.1,Bargeld,09:14,Montag
+2024-11-11,Hamburg-Altona,Süßwaren,Kekse (400 g),2,2.32,4.64,Bargeld,20:30,Montag
+2024-09-16,Frankfurt-Sachsenhausen,Molkereiprodukte,Joghurt (500 g),10,1.91,19.1,EC-Karte,15:52,Montag
+2024-03-10,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),5,2.26,11.3,EC-Karte,07:29,Sonntag
+2024-02-24,Köln-Ehrenfeld,Backwaren,Vollkornbrot,4,2.17,8.68,Bargeld,08:02,Samstag
+2024-08-08,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),5,2.04,10.2,Bargeld,19:01,Donnerstag
+2024-01-18,Berlin-Mitte,Backwaren,Roggenbrot,1,2.78,2.78,Bargeld,11:44,Donnerstag
+2024-04-26,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),4,1.26,5.04,Kreditkarte,09:55,Freitag
+2024-02-20,München-Hauptbahnhof,Obst & Gemüse,Karotten (1 kg),3,1.33,3.99,Kreditkarte,16:17,Dienstag
+2024-01-08,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),9,2.88,25.92,EC-Karte,19:56,Montag
+2024-12-01,Berlin-Mitte,Obst & Gemüse,Salat (Kopf),1,2.98,2.98,Bargeld,12:27,Sonntag
+2024-02-02,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),5,4.72,23.6,Bargeld,18:03,Freitag
+2024-01-04,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),8,3.06,24.48,Bargeld,13:31,Donnerstag
+2024-12-06,Hamburg-Altona,Obst & Gemüse,Bananen (500 g),9,2.19,19.71,EC-Karte,08:58,Freitag
+2024-03-09,Hamburg-Altona,Hygiene,Rasierer,6,5.48,32.88,Bargeld,18:15,Samstag
+2024-10-25,Berlin-Mitte,Obst & Gemüse,Karotten (1 kg),3,3.06,9.18,EC-Karte,20:57,Freitag
+2024-01-12,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),4,2.82,11.28,Apple Pay,21:39,Freitag
+2024-02-26,Berlin-Mitte,Obst & Gemüse,Äpfel (1 kg),3,1.59,4.77,EC-Karte,08:23,Montag
+2024-02-10,Köln-Ehrenfeld,Backwaren,Roggenbrot,7,2.01,14.07,Kreditkarte,15:41,Samstag
+2024-09-14,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",3,3.08,9.24,Bargeld,16:24,Samstag
+2024-08-14,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),7,0.59,4.13,EC-Karte,08:05,Mittwoch
+2024-06-22,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,7,7.76,54.32,Apple Pay,21:52,Samstag
+2024-03-29,Berlin-Mitte,Getränke,Eistee (500 ml),10,4.2,42.0,EC-Karte,08:22,Freitag
+2024-02-02,München-Hauptbahnhof,Obst & Gemüse,Salat (Kopf),4,2.41,9.64,EC-Karte,11:33,Freitag
+2024-07-26,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),10,2.93,29.3,Apple Pay,21:44,Freitag
+2024-03-25,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),5,2.28,11.4,EC-Karte,15:04,Montag
+2024-08-03,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),7,3.73,26.11,EC-Karte,17:43,Samstag
+2024-09-07,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),7,8.81,61.67,EC-Karte,14:21,Samstag
+2024-11-06,Berlin-Mitte,Hygiene,Shampoo (250 ml),9,8.64,77.76,Bargeld,18:32,Mittwoch
+2024-06-29,München-Hauptbahnhof,Molkereiprodukte,Quark (500 g),5,3.64,18.2,Bargeld,08:27,Samstag
+2024-01-02,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),8,4.72,37.76,Bargeld,17:46,Dienstag
+2024-04-12,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),4,4.36,17.44,Kreditkarte,07:11,Freitag
+2024-11-07,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",5,1.19,5.95,EC-Karte,09:06,Donnerstag
+2024-07-13,Frankfurt-Sachsenhausen,Hygiene,Rasierer,5,5.52,27.6,EC-Karte,14:24,Samstag
+2024-08-13,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,8,3.05,24.4,Bargeld,13:07,Dienstag
+2024-06-16,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),7,6.79,47.53,EC-Karte,09:14,Sonntag
+2024-02-29,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),1,8.2,8.2,Apple Pay,18:39,Donnerstag
+2024-11-23,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),9,3.81,34.29,EC-Karte,11:49,Samstag
+2024-10-09,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),8,2.25,18.0,EC-Karte,19:41,Mittwoch
+2024-12-29,Hamburg-Altona,Backwaren,Roggenbrot,2,2.17,4.34,Kreditkarte,07:19,Sonntag
+2024-11-08,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),10,3.46,34.6,Kreditkarte,10:48,Freitag
+2024-04-16,Hamburg-Altona,Obst & Gemüse,Brokkoli,7,3.3,23.1,Apple Pay,11:24,Dienstag
+2024-04-02,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),1,1.4,1.4,EC-Karte,15:10,Dienstag
+2024-03-31,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),5,3.15,15.75,Bargeld,13:45,Sonntag
+2024-12-01,Berlin-Mitte,Süßwaren,Schokolade (100 g),9,1.27,11.43,EC-Karte,09:31,Sonntag
+2024-07-22,Berlin-Mitte,Süßwaren,Chips (200 g),3,4.23,12.69,EC-Karte,15:22,Montag
+2024-06-14,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),10,1.9,19.0,Kreditkarte,21:39,Freitag
+2024-12-19,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),5,6.79,33.95,Bargeld,09:43,Donnerstag
+2024-08-08,München-Hauptbahnhof,Backwaren,Baguette,3,0.88,2.64,EC-Karte,10:13,Donnerstag
+2024-11-27,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),4,1.35,5.4,Apple Pay,14:07,Mittwoch
+2024-12-25,München-Hauptbahnhof,Backwaren,Baguette,6,2.69,16.14,Apple Pay,17:31,Mittwoch
+2024-01-29,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),7,1.17,8.19,EC-Karte,09:03,Montag
+2024-05-11,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),10,0.66,6.6,Apple Pay,10:38,Samstag
+2024-09-24,München-Hauptbahnhof,Tiefkühlkost,Eis (500 ml),2,5.0,10.0,Bargeld,10:26,Dienstag
+2024-10-23,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),10,4.43,44.3,EC-Karte,16:12,Mittwoch
+2024-02-24,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),6,5.24,31.44,Bargeld,08:35,Samstag
+2024-04-26,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),2,2.76,5.52,Apple Pay,16:22,Freitag
+2024-07-19,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),10,7.88,78.8,Apple Pay,13:23,Freitag
+2024-10-18,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),4,3.23,12.92,Bargeld,11:12,Freitag
+2024-02-11,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",7,11.27,78.89,Bargeld,19:40,Sonntag
+2024-08-07,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),7,2.82,19.74,EC-Karte,19:54,Mittwoch
+2024-04-18,Hamburg-Altona,Hygiene,Handseife (300 ml),1,9.52,9.52,EC-Karte,19:37,Donnerstag
+2024-03-19,Köln-Ehrenfeld,Süßwaren,Chips (200 g),3,2.09,6.27,Kreditkarte,20:14,Dienstag
+2024-07-07,Frankfurt-Sachsenhausen,Backwaren,Croissant,7,1.3,9.1,Bargeld,10:50,Sonntag
+2024-05-31,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),4,3.83,15.32,Kreditkarte,19:07,Freitag
+2024-08-20,Hamburg-Altona,Süßwaren,Chips (200 g),1,3.39,3.39,EC-Karte,09:17,Dienstag
+2024-04-25,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,1,2.87,2.87,EC-Karte,11:02,Donnerstag
+2024-10-27,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),9,6.19,55.71,Bargeld,15:50,Sonntag
+2024-01-29,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),2,3.76,7.52,Apple Pay,18:02,Montag
+2024-11-10,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,2,4.93,9.86,EC-Karte,15:32,Sonntag
+2024-01-11,Köln-Ehrenfeld,Hygiene,Duschgel (300 ml),6,8.55,51.3,EC-Karte,15:11,Donnerstag
+2024-09-25,Berlin-Mitte,Obst & Gemüse,Tomaten (500 g),2,1.94,3.88,EC-Karte,12:12,Mittwoch
+2024-05-06,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),7,4.13,28.91,Apple Pay,15:36,Montag
+2024-05-19,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),6,8.21,49.26,Kreditkarte,14:48,Sonntag
+2024-01-07,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",7,0.85,5.95,Kreditkarte,14:01,Sonntag
+2024-09-13,Köln-Ehrenfeld,Backwaren,Brötchen (6 Stk.),5,1.91,9.55,EC-Karte,15:09,Freitag
+2024-03-01,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),8,3.49,27.92,Kreditkarte,16:17,Freitag
+2024-08-28,Hamburg-Altona,Molkereiprodukte,Butter (250 g),7,4.64,32.48,EC-Karte,11:56,Mittwoch
+2024-09-21,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),5,3.36,16.8,Kreditkarte,09:03,Samstag
+2024-11-04,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),1,3.25,3.25,EC-Karte,11:10,Montag
+2024-09-15,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),3,3.73,11.19,EC-Karte,13:24,Sonntag
+2024-04-20,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),2,5.95,11.9,Apple Pay,09:19,Samstag
+2024-09-26,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",1,1.21,1.21,Apple Pay,09:02,Donnerstag
+2024-10-28,Berlin-Mitte,Backwaren,Baguette,3,2.73,8.19,EC-Karte,21:32,Montag
+2024-04-25,Hamburg-Altona,Getränke,Eistee (500 ml),3,6.43,19.29,EC-Karte,11:36,Donnerstag
+2024-02-15,Frankfurt-Sachsenhausen,Hygiene,Rasierer,1,7.79,7.79,Kreditkarte,18:10,Donnerstag
+2024-11-20,Berlin-Mitte,Backwaren,Roggenbrot,4,1.88,7.52,Apple Pay,08:41,Mittwoch
+2024-02-23,Hamburg-Altona,Molkereiprodukte,Vollmilch (1 l),6,1.13,6.78,Kreditkarte,21:03,Freitag
+2024-08-04,Hamburg-Altona,Tiefkühlkost,Eis (500 ml),2,5.58,11.16,Bargeld,10:43,Sonntag
+2024-03-27,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),3,3.45,10.35,EC-Karte,12:15,Mittwoch
+2024-02-15,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),1,6.24,6.24,Kreditkarte,18:13,Donnerstag
+2024-10-10,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),1,1.08,1.08,Kreditkarte,10:11,Donnerstag
+2024-02-22,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),2,6.26,12.52,Kreditkarte,15:52,Donnerstag
+2024-09-01,Frankfurt-Sachsenhausen,Getränke,"Cola (1,5 l)",5,2.57,12.85,EC-Karte,18:30,Sonntag
+2024-09-09,München-Hauptbahnhof,Obst & Gemüse,Bananen (500 g),7,2.55,17.85,EC-Karte,07:41,Montag
+2024-01-22,Hamburg-Altona,Süßwaren,Kekse (400 g),8,3.04,24.32,EC-Karte,07:12,Montag
+2024-03-04,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),7,3.96,27.72,Kreditkarte,18:03,Montag
+2024-10-16,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),7,1.98,13.86,EC-Karte,10:02,Mittwoch
+2024-07-04,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),10,7.92,79.2,EC-Karte,20:26,Donnerstag
+2024-02-14,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),3,6.43,19.29,Kreditkarte,20:19,Mittwoch
+2024-12-27,Berlin-Mitte,Obst & Gemüse,Brokkoli,8,0.98,7.84,Kreditkarte,20:46,Freitag
+2024-04-06,Berlin-Mitte,Hygiene,Shampoo (250 ml),10,6.58,65.8,EC-Karte,21:47,Samstag
+2024-01-02,Berlin-Mitte,Backwaren,Roggenbrot,6,1.27,7.62,Kreditkarte,19:18,Dienstag
+2024-12-03,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),9,3.52,31.68,Bargeld,12:26,Dienstag
+2024-01-07,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),2,6.48,12.96,Bargeld,21:22,Sonntag
+2024-07-20,München-Hauptbahnhof,Süßwaren,Chips (200 g),9,0.63,5.67,EC-Karte,12:40,Samstag
+2024-12-28,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,6,5.64,33.84,Bargeld,15:37,Samstag
+2024-07-29,Hamburg-Altona,Süßwaren,Schokolade (100 g),3,3.46,10.38,Apple Pay,07:39,Montag
+2024-08-01,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),1,2.41,2.41,Apple Pay,21:03,Donnerstag
+2024-05-21,Hamburg-Altona,Süßwaren,Marzipan (200 g),8,0.82,6.56,Bargeld,15:20,Dienstag
+2024-02-16,Berlin-Mitte,Süßwaren,Marzipan (200 g),5,1.77,8.85,Kreditkarte,21:58,Freitag
+2024-07-28,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),4,5.23,20.92,EC-Karte,12:20,Sonntag
+2024-11-23,Hamburg-Altona,Getränke,Bier (6er-Pack),4,1.9,7.6,Kreditkarte,11:10,Samstag
+2024-02-03,Hamburg-Altona,Obst & Gemüse,Karotten (1 kg),10,1.93,19.3,Kreditkarte,14:11,Samstag
+2024-11-17,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),5,0.87,4.35,EC-Karte,19:01,Sonntag
+2024-05-31,Frankfurt-Sachsenhausen,Hygiene,Zahnpasta (75 ml),1,2.79,2.79,Bargeld,15:46,Freitag
+2024-07-14,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),3,6.84,20.52,Bargeld,18:00,Sonntag
+2024-03-01,München-Hauptbahnhof,Getränke,Bier (6er-Pack),2,2.42,4.84,EC-Karte,10:35,Freitag
+2024-08-14,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),7,7.11,49.77,Apple Pay,18:23,Mittwoch
+2024-03-07,Berlin-Mitte,Obst & Gemüse,Tomaten (500 g),9,0.92,8.28,EC-Karte,17:05,Donnerstag
+2024-04-09,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),9,4.28,38.52,EC-Karte,20:53,Dienstag
+2024-09-20,Frankfurt-Sachsenhausen,Tiefkühlkost,Pizza Margherita,7,4.34,30.38,Bargeld,07:44,Freitag
+2024-01-19,München-Hauptbahnhof,Hygiene,Zahnpasta (75 ml),8,10.66,85.28,Apple Pay,12:49,Freitag
+2024-06-12,Frankfurt-Sachsenhausen,Hygiene,Rasierer,5,10.51,52.55,EC-Karte,08:56,Mittwoch
+2024-08-05,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),7,4.93,34.51,Kreditkarte,13:54,Montag
+2024-02-18,Frankfurt-Sachsenhausen,Hygiene,"Waschmittel (1,5 kg)",2,8.65,17.3,EC-Karte,18:42,Sonntag
+2024-04-17,Berlin-Mitte,Getränke,Bier (6er-Pack),6,2.2,13.2,EC-Karte,16:32,Mittwoch
+2024-05-05,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),6,5.47,32.82,Bargeld,18:41,Sonntag
+2024-08-30,Köln-Ehrenfeld,Getränke,"Mineralwasser (1,5 l)",1,1.29,1.29,EC-Karte,18:26,Freitag
+2024-12-22,Köln-Ehrenfeld,Hygiene,Duschgel (300 ml),6,6.49,38.94,EC-Karte,21:10,Sonntag
+2024-11-01,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),8,3.09,24.72,Kreditkarte,20:23,Freitag
+2024-03-10,Köln-Ehrenfeld,Obst & Gemüse,Brokkoli,4,3.18,12.72,Kreditkarte,15:28,Sonntag
+2024-01-07,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),6,1.99,11.94,Bargeld,20:02,Sonntag
+2024-01-19,Berlin-Mitte,Fleisch & Wurst,Hähnchenbrust (500 g),3,6.33,18.99,EC-Karte,07:50,Freitag
+2024-08-05,Hamburg-Altona,Getränke,Orangensaft (1 l),3,3.02,9.06,Bargeld,17:54,Montag
+2024-02-27,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),2,3.72,7.44,Bargeld,14:25,Dienstag
+2024-03-25,München-Hauptbahnhof,Fleisch & Wurst,Rinderhackfleisch (500 g),4,3.81,15.24,Kreditkarte,21:29,Montag
+2024-11-05,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),9,6.44,57.96,Kreditkarte,14:50,Dienstag
+2024-11-14,Köln-Ehrenfeld,Hygiene,Zahnpasta (75 ml),10,10.68,106.8,Kreditkarte,09:27,Donnerstag
+2024-11-02,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),7,1.44,10.08,Bargeld,17:41,Samstag
+2024-04-02,Frankfurt-Sachsenhausen,Fleisch & Wurst,Salami (200 g),7,7.34,51.38,EC-Karte,21:30,Dienstag
+2024-08-14,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",7,3.38,23.66,EC-Karte,07:16,Mittwoch
+2024-08-10,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),5,2.59,12.95,Apple Pay,07:47,Samstag
+2024-03-08,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",5,7.57,37.85,EC-Karte,16:11,Freitag
+2024-07-21,Hamburg-Altona,Hygiene,Rasierer,7,2.99,20.93,Apple Pay,15:13,Sonntag
+2024-07-10,Hamburg-Altona,Getränke,Apfelsaft (1 l),8,2.09,16.72,Bargeld,15:41,Mittwoch
+2024-05-24,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),5,7.01,35.05,EC-Karte,08:42,Freitag
+2024-10-01,München-Hauptbahnhof,Getränke,Orangensaft (1 l),6,2.38,14.28,Kreditkarte,15:57,Dienstag
+2024-09-04,Köln-Ehrenfeld,Backwaren,Vollkornbrot,5,2.72,13.6,EC-Karte,15:42,Mittwoch
+2024-07-13,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),3,6.76,20.28,EC-Karte,19:01,Samstag
+2024-09-21,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,3,2.57,7.71,EC-Karte,12:50,Samstag
+2024-10-05,München-Hauptbahnhof,Backwaren,Baguette,1,2.03,2.03,Apple Pay,12:24,Samstag
+2024-07-25,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,5,3.14,15.7,Bargeld,08:00,Donnerstag
+2024-04-07,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),8,3.03,24.24,Apple Pay,15:34,Sonntag
+2024-10-03,Frankfurt-Sachsenhausen,Obst & Gemüse,Orangen (1 kg),7,2.27,15.89,EC-Karte,16:10,Donnerstag
+2024-09-18,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),10,5.09,50.9,EC-Karte,11:24,Mittwoch
+2024-12-24,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),1,8.36,8.36,EC-Karte,17:28,Dienstag
+2024-02-24,Hamburg-Altona,Molkereiprodukte,Joghurt (500 g),8,1.57,12.56,EC-Karte,21:04,Samstag
+2024-06-02,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),8,2.84,22.72,Apple Pay,09:51,Sonntag
+2024-12-03,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),5,5.47,27.35,Apple Pay,15:30,Dienstag
+2024-07-06,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,3,4.21,12.63,Apple Pay,17:57,Samstag
+2024-12-10,Berlin-Mitte,Tiefkühlkost,Pommes Frites (750 g),4,7.2,28.8,Apple Pay,07:27,Dienstag
+2024-01-05,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),7,1.8,12.6,EC-Karte,09:35,Freitag
+2024-01-13,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),9,0.92,8.28,EC-Karte,12:48,Samstag
+2024-10-17,Hamburg-Altona,Getränke,Bier (6er-Pack),7,4.41,30.87,Kreditkarte,09:12,Donnerstag
+2024-05-10,Hamburg-Altona,Hygiene,"Waschmittel (1,5 kg)",6,6.33,37.98,Bargeld,12:54,Freitag
+2024-07-08,Hamburg-Altona,Backwaren,Croissant,7,0.53,3.71,Kreditkarte,09:11,Montag
+2024-06-05,Frankfurt-Sachsenhausen,Obst & Gemüse,Karotten (1 kg),1,0.98,0.98,EC-Karte,20:59,Mittwoch
+2024-05-28,München-Hauptbahnhof,Hygiene,Rasierer,7,3.74,26.18,EC-Karte,15:38,Dienstag
+2024-12-08,Frankfurt-Sachsenhausen,Hygiene,Rasierer,1,10.34,10.34,EC-Karte,11:31,Sonntag
+2024-02-04,München-Hauptbahnhof,Backwaren,Vollkornbrot,10,2.72,27.2,EC-Karte,18:12,Sonntag
+2024-10-08,München-Hauptbahnhof,Fleisch & Wurst,Salami (200 g),9,6.04,54.36,Bargeld,07:34,Dienstag
+2024-11-20,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,6,2.62,15.72,EC-Karte,15:33,Mittwoch
+2024-08-27,Köln-Ehrenfeld,Backwaren,Vollkornbrot,4,1.83,7.32,EC-Karte,17:59,Dienstag
+2024-05-24,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),8,4.4,35.2,Bargeld,19:50,Freitag
+2024-02-28,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),7,7.36,51.52,Bargeld,10:28,Mittwoch
+2024-09-06,Berlin-Mitte,Tiefkühlkost,Tiefkühlerbsen (750 g),8,3.74,29.92,EC-Karte,15:23,Freitag
+2024-06-20,Berlin-Mitte,Molkereiprodukte,Quark (500 g),6,1.4,8.4,EC-Karte,18:23,Donnerstag
+2024-02-24,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),3,8.34,25.02,Kreditkarte,18:22,Samstag
+2024-05-11,Frankfurt-Sachsenhausen,Molkereiprodukte,Sahne (200 ml),1,4.39,4.39,Bargeld,09:00,Samstag
+2024-12-16,München-Hauptbahnhof,Süßwaren,Kekse (400 g),3,0.8,2.4,EC-Karte,21:02,Montag
+2024-04-06,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,6,2.55,15.3,Bargeld,11:45,Samstag
+2024-03-06,München-Hauptbahnhof,Backwaren,Vollkornbrot,5,0.73,3.65,EC-Karte,12:15,Mittwoch
+2024-09-05,München-Hauptbahnhof,Backwaren,Roggenbrot,6,0.65,3.9,EC-Karte,09:24,Donnerstag
+2024-03-13,Hamburg-Altona,Hygiene,Duschgel (300 ml),3,10.21,30.63,EC-Karte,09:41,Mittwoch
+2024-12-01,München-Hauptbahnhof,Hygiene,"Waschmittel (1,5 kg)",10,7.66,76.6,EC-Karte,10:36,Sonntag
+2024-11-09,Köln-Ehrenfeld,Getränke,Bier (6er-Pack),4,3.36,13.44,EC-Karte,09:21,Samstag
+2024-12-24,Hamburg-Altona,Backwaren,Vollkornbrot,9,2.75,24.75,Bargeld,17:45,Dienstag
+2024-11-29,München-Hauptbahnhof,Süßwaren,Chips (200 g),4,3.86,15.44,EC-Karte,15:09,Freitag
+2024-03-29,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),5,2.86,14.3,EC-Karte,12:28,Freitag
+2024-03-18,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),7,2.99,20.93,EC-Karte,15:06,Montag
+2024-05-05,München-Hauptbahnhof,Molkereiprodukte,Gouda (400 g),3,4.06,12.18,EC-Karte,16:31,Sonntag
+2024-06-20,Köln-Ehrenfeld,Hygiene,Rasierer,3,7.82,23.46,Kreditkarte,09:05,Donnerstag
+2024-11-17,Hamburg-Altona,Süßwaren,Kekse (400 g),4,4.42,17.68,EC-Karte,11:56,Sonntag
+2024-09-24,Frankfurt-Sachsenhausen,Backwaren,Baguette,9,2.21,19.89,Bargeld,20:39,Dienstag
+2024-08-23,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),2,2.61,5.22,EC-Karte,07:14,Freitag
+2024-11-16,Hamburg-Altona,Molkereiprodukte,Butter (250 g),5,1.7,8.5,Bargeld,21:36,Samstag
+2024-08-23,Berlin-Mitte,Molkereiprodukte,Vollmilch (1 l),7,4.28,29.96,EC-Karte,21:20,Freitag
+2024-05-18,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),8,4.98,39.84,Kreditkarte,10:31,Samstag
+2024-05-30,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,5,2.58,12.9,Kreditkarte,11:10,Donnerstag
+2024-07-07,Hamburg-Altona,Molkereiprodukte,Quark (500 g),1,1.3,1.3,EC-Karte,10:30,Sonntag
+2024-02-02,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),1,6.57,6.57,Bargeld,15:06,Freitag
+2024-09-27,Hamburg-Altona,Getränke,Orangensaft (1 l),5,1.19,5.95,Kreditkarte,10:09,Freitag
+2024-08-26,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),9,0.86,7.74,Bargeld,18:35,Montag
+2024-09-23,Hamburg-Altona,Hygiene,Zahnpasta (75 ml),1,11.71,11.71,EC-Karte,12:30,Montag
+2024-07-13,München-Hauptbahnhof,Obst & Gemüse,Salat (Kopf),9,2.95,26.55,Kreditkarte,21:17,Samstag
+2024-10-12,München-Hauptbahnhof,Hygiene,Rasierer,7,11.63,81.41,EC-Karte,19:03,Samstag
+2024-12-12,Hamburg-Altona,Obst & Gemüse,Orangen (1 kg),1,2.55,2.55,Bargeld,13:25,Donnerstag
+2024-07-27,Berlin-Mitte,Getränke,Orangensaft (1 l),4,2.79,11.16,EC-Karte,15:55,Samstag
+2024-06-11,Hamburg-Altona,Molkereiprodukte,Butter (250 g),3,4.61,13.83,EC-Karte,07:42,Dienstag
+2024-02-08,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,10,3.78,37.8,Bargeld,08:03,Donnerstag
+2024-10-11,Köln-Ehrenfeld,Tiefkühlkost,Tiefkühlerbsen (750 g),6,3.64,21.84,EC-Karte,14:56,Freitag
+2024-11-25,Berlin-Mitte,Süßwaren,Kekse (400 g),4,4.05,16.2,EC-Karte,14:25,Montag
+2024-09-12,Köln-Ehrenfeld,Fleisch & Wurst,Rinderhackfleisch (500 g),3,6.92,20.76,EC-Karte,12:34,Donnerstag
+2024-11-11,Hamburg-Altona,Hygiene,Duschgel (300 ml),6,11.79,70.74,Bargeld,08:00,Montag
+2024-11-10,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),1,1.53,1.53,Kreditkarte,19:18,Sonntag
+2024-10-18,Hamburg-Altona,Backwaren,Baguette,3,2.87,8.61,EC-Karte,13:47,Freitag
+2024-07-02,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),2,6.47,12.94,Kreditkarte,14:19,Dienstag
+2024-02-06,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),7,4.93,34.51,EC-Karte,13:09,Dienstag
+2024-01-02,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),7,7.47,52.29,Bargeld,14:05,Dienstag
+2024-03-15,Berlin-Mitte,Süßwaren,Marzipan (200 g),5,2.07,10.35,EC-Karte,16:55,Freitag
+2024-06-06,Frankfurt-Sachsenhausen,Backwaren,Croissant,2,2.29,4.58,EC-Karte,18:48,Donnerstag
+2024-09-28,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),4,3.52,14.08,EC-Karte,15:02,Samstag
+2024-06-15,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",9,10.55,94.95,Kreditkarte,09:55,Samstag
+2024-01-09,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),3,8.32,24.96,Apple Pay,20:49,Dienstag
+2024-03-17,Berlin-Mitte,Backwaren,Laugenbrezel,2,2.19,4.38,Kreditkarte,11:21,Sonntag
+2024-12-23,Berlin-Mitte,Hygiene,Rasierer,2,2.27,4.54,EC-Karte,07:39,Montag
+2024-12-26,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),9,3.68,33.12,EC-Karte,07:15,Donnerstag
+2024-05-17,München-Hauptbahnhof,Hygiene,Zahnpasta (75 ml),2,12.46,24.92,EC-Karte,18:14,Freitag
+2024-10-20,Köln-Ehrenfeld,Hygiene,Rasierer,6,12.63,75.78,EC-Karte,12:42,Sonntag
+2024-09-19,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),10,12.62,126.2,Kreditkarte,07:12,Donnerstag
+2024-12-05,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),7,1.02,7.14,Kreditkarte,19:21,Donnerstag
+2024-11-19,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),5,2.08,10.4,EC-Karte,11:21,Dienstag
+2024-08-17,Berlin-Mitte,Hygiene,Shampoo (250 ml),3,10.23,30.69,Apple Pay,21:09,Samstag
+2024-05-24,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),1,3.98,3.98,Kreditkarte,20:49,Freitag
+2024-08-16,Berlin-Mitte,Obst & Gemüse,Karotten (1 kg),2,1.02,2.04,EC-Karte,07:40,Freitag
+2024-04-26,Hamburg-Altona,Molkereiprodukte,Sahne (200 ml),10,3.39,33.9,Apple Pay,17:51,Freitag
+2024-05-07,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),2,2.85,5.7,Bargeld,16:31,Dienstag
+2024-08-10,Hamburg-Altona,Getränke,"Cola (1,5 l)",1,3.85,3.85,Bargeld,09:10,Samstag
+2024-07-27,Hamburg-Altona,Obst & Gemüse,Brokkoli,9,1.44,12.96,EC-Karte,12:16,Samstag
+2024-07-31,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",5,1.12,5.6,EC-Karte,14:21,Mittwoch
+2024-05-20,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),4,0.69,2.76,EC-Karte,09:56,Montag
+2024-05-29,Berlin-Mitte,Getränke,Bier (6er-Pack),8,6.44,51.52,Apple Pay,17:14,Mittwoch
+2024-01-04,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",6,5.41,32.46,EC-Karte,11:41,Donnerstag
+2024-08-07,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),10,7.58,75.8,EC-Karte,21:07,Mittwoch
+2024-07-29,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),5,5.54,27.7,EC-Karte,19:57,Montag
+2024-12-07,Hamburg-Altona,Fleisch & Wurst,Leberwurst (200 g),8,5.18,41.44,Bargeld,16:38,Samstag
+2024-07-03,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,9,4.14,37.26,Kreditkarte,08:25,Mittwoch
+2024-06-19,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,5,5.69,28.45,EC-Karte,07:20,Mittwoch
+2024-01-25,Hamburg-Altona,Süßwaren,Kekse (400 g),3,1.96,5.88,Apple Pay,09:21,Donnerstag
+2024-03-12,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),10,3.95,39.5,EC-Karte,14:13,Dienstag
+2024-05-03,München-Hauptbahnhof,Fleisch & Wurst,Hähnchenbrust (500 g),3,7.7,23.1,Bargeld,18:35,Freitag
+2024-05-17,München-Hauptbahnhof,Molkereiprodukte,Sahne (200 ml),1,4.48,4.48,Bargeld,09:51,Freitag
+2024-05-12,Hamburg-Altona,Getränke,"Mineralwasser (1,5 l)",6,2.3,13.8,Bargeld,17:14,Sonntag
+2024-05-23,Berlin-Mitte,Backwaren,Croissant,10,1.81,18.1,Apple Pay,07:44,Donnerstag
+2024-10-07,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),1,3.94,3.94,EC-Karte,10:33,Montag
+2024-02-17,Köln-Ehrenfeld,Backwaren,Croissant,9,0.58,5.22,EC-Karte,15:46,Samstag
+2024-05-01,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),9,5.18,46.62,Bargeld,19:46,Mittwoch
+2024-02-29,Berlin-Mitte,Süßwaren,Marzipan (200 g),10,2.73,27.3,Kreditkarte,18:02,Donnerstag
+2024-04-22,Frankfurt-Sachsenhausen,Hygiene,Handseife (300 ml),5,9.82,49.1,Bargeld,14:01,Montag
+2024-09-06,Berlin-Mitte,Fleisch & Wurst,Schweinekotelett (500 g),3,3.06,9.18,Kreditkarte,07:54,Freitag
+2024-01-18,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),6,3.48,20.88,Kreditkarte,11:09,Donnerstag
+2024-05-03,Berlin-Mitte,Backwaren,Laugenbrezel,2,2.98,5.96,EC-Karte,18:34,Freitag
+2024-01-09,Köln-Ehrenfeld,Obst & Gemüse,Äpfel (1 kg),9,2.05,18.45,EC-Karte,08:45,Dienstag
+2024-12-14,Köln-Ehrenfeld,Süßwaren,Marzipan (200 g),7,3.97,27.79,Bargeld,17:30,Samstag
+2024-09-22,Hamburg-Altona,Hygiene,Handseife (300 ml),5,4.29,21.45,EC-Karte,17:00,Sonntag
+2024-03-29,Frankfurt-Sachsenhausen,Getränke,Eistee (500 ml),6,5.36,32.16,Apple Pay,18:00,Freitag
+2024-03-13,Frankfurt-Sachsenhausen,Backwaren,Baguette,8,2.69,21.52,EC-Karte,10:40,Mittwoch
+2024-02-06,Frankfurt-Sachsenhausen,Obst & Gemüse,Tomaten (500 g),6,2.99,17.94,Kreditkarte,10:53,Dienstag
+2024-06-21,Hamburg-Altona,Hygiene,Handseife (300 ml),9,10.83,97.47,EC-Karte,09:20,Freitag
+2024-10-02,Köln-Ehrenfeld,Molkereiprodukte,Joghurt (500 g),10,2.79,27.9,Bargeld,12:32,Mittwoch
+2024-08-01,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,10,3.0,30.0,Kreditkarte,14:56,Donnerstag
+2024-11-17,Berlin-Mitte,Backwaren,Baguette,7,2.22,15.54,EC-Karte,08:49,Sonntag
+2024-05-05,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),8,1.43,11.44,Bargeld,15:32,Sonntag
+2024-04-11,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),4,2.68,10.72,EC-Karte,10:39,Donnerstag
+2024-06-23,Hamburg-Altona,Hygiene,Shampoo (250 ml),1,10.37,10.37,EC-Karte,15:57,Sonntag
+2024-03-14,München-Hauptbahnhof,Molkereiprodukte,Gouda (400 g),5,3.45,17.25,Kreditkarte,11:47,Donnerstag
+2024-12-22,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,9,5.11,45.99,Bargeld,21:24,Sonntag
+2024-03-08,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,2,3.24,6.48,Kreditkarte,11:41,Freitag
+2024-06-23,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),6,2.57,15.42,EC-Karte,20:19,Sonntag
+2024-07-09,Hamburg-Altona,Obst & Gemüse,Bananen (500 g),2,1.86,3.72,EC-Karte,09:55,Dienstag
+2024-01-21,Berlin-Mitte,Hygiene,Shampoo (250 ml),5,6.25,31.25,Bargeld,08:05,Sonntag
+2024-06-19,München-Hauptbahnhof,Getränke,Orangensaft (1 l),2,4.54,9.08,Kreditkarte,09:13,Mittwoch
+2024-06-14,Hamburg-Altona,Süßwaren,Marzipan (200 g),8,3.56,28.48,EC-Karte,13:20,Freitag
+2024-04-04,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),9,2.31,20.79,EC-Karte,20:12,Donnerstag
+2024-02-16,München-Hauptbahnhof,Obst & Gemüse,Brokkoli,8,2.16,17.28,Bargeld,09:35,Freitag
+2024-01-17,Berlin-Mitte,Süßwaren,Chips (200 g),8,3.42,27.36,EC-Karte,18:42,Mittwoch
+2024-01-04,Hamburg-Altona,Obst & Gemüse,Brokkoli,3,2.69,8.07,Kreditkarte,17:53,Donnerstag
+2024-06-24,Köln-Ehrenfeld,Backwaren,Baguette,6,2.57,15.42,EC-Karte,12:30,Montag
+2024-02-02,Hamburg-Altona,Getränke,"Cola (1,5 l)",2,1.18,2.36,Apple Pay,12:37,Freitag
+2024-12-16,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",4,5.47,21.88,Bargeld,21:35,Montag
+2024-03-30,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),6,1.77,10.62,Bargeld,17:00,Samstag
+2024-08-26,Frankfurt-Sachsenhausen,Fleisch & Wurst,Leberwurst (200 g),7,2.98,20.86,EC-Karte,10:42,Montag
+2024-09-02,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),1,6.06,6.06,Kreditkarte,20:01,Montag
+2024-06-29,Köln-Ehrenfeld,Fleisch & Wurst,Salami (200 g),9,7.15,64.35,EC-Karte,13:32,Samstag
+2024-11-18,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),5,5.89,29.45,EC-Karte,08:59,Montag
+2024-02-10,Berlin-Mitte,Obst & Gemüse,Äpfel (1 kg),9,2.93,26.37,EC-Karte,19:47,Samstag
+2024-03-26,Hamburg-Altona,Fleisch & Wurst,Salami (200 g),6,4.44,26.64,EC-Karte,20:30,Dienstag
+2024-04-02,Köln-Ehrenfeld,Süßwaren,Schokolade (100 g),6,1.38,8.28,EC-Karte,13:19,Dienstag
+2024-02-19,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),7,4.09,28.63,Apple Pay,17:50,Montag
+2024-04-17,Hamburg-Altona,Hygiene,Shampoo (250 ml),9,6.21,55.89,EC-Karte,10:51,Mittwoch
+2024-04-24,Frankfurt-Sachsenhausen,Backwaren,Croissant,2,2.23,4.46,EC-Karte,19:22,Mittwoch
+2024-10-06,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),6,3.07,18.42,EC-Karte,12:06,Sonntag
+2024-04-20,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),1,5.26,5.26,EC-Karte,11:34,Samstag
+2024-11-15,Berlin-Mitte,Backwaren,Brötchen (6 Stk.),5,0.92,4.6,EC-Karte,14:38,Freitag
+2024-10-09,Hamburg-Altona,Getränke,"Cola (1,5 l)",9,3.06,27.54,Apple Pay,11:56,Mittwoch
+2024-11-25,Hamburg-Altona,Hygiene,Rasierer,9,3.31,29.79,Bargeld,16:53,Montag
+2024-02-08,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),3,3.71,11.13,Kreditkarte,18:13,Donnerstag
+2024-12-25,Frankfurt-Sachsenhausen,Getränke,Bier (6er-Pack),4,2.33,9.32,Bargeld,13:15,Mittwoch
+2024-08-12,Berlin-Mitte,Tiefkühlkost,Tiefkühlerbsen (750 g),6,5.14,30.84,Kreditkarte,18:59,Montag
+2024-12-24,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),4,2.47,9.88,Bargeld,13:19,Dienstag
+2024-05-09,München-Hauptbahnhof,Hygiene,Shampoo (250 ml),2,9.21,18.42,Apple Pay,21:27,Donnerstag
+2024-12-13,Berlin-Mitte,Backwaren,Croissant,4,1.24,4.96,EC-Karte,10:18,Freitag
+2024-08-02,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),5,1.89,9.45,Bargeld,17:23,Freitag
+2024-01-27,München-Hauptbahnhof,Tiefkühlkost,Fischstäbchen (400 g),6,5.91,35.46,EC-Karte,15:33,Samstag
+2024-05-29,München-Hauptbahnhof,Backwaren,Brötchen (6 Stk.),10,1.86,18.6,EC-Karte,21:17,Mittwoch
+2024-02-20,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),6,2.57,15.42,EC-Karte,10:24,Dienstag
+2024-12-09,Köln-Ehrenfeld,Backwaren,Baguette,4,2.67,10.68,EC-Karte,09:21,Montag
+2024-04-21,Berlin-Mitte,Getränke,Bier (6er-Pack),7,3.97,27.79,Kreditkarte,20:06,Sonntag
+2024-03-22,München-Hauptbahnhof,Hygiene,Rasierer,8,6.93,55.44,Kreditkarte,20:47,Freitag
+2024-07-20,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),5,3.77,18.85,EC-Karte,18:53,Samstag
+2024-06-04,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),5,2.06,10.3,Kreditkarte,14:29,Dienstag
+2024-02-05,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),3,4.65,13.95,EC-Karte,13:12,Montag
+2024-10-25,Hamburg-Altona,Getränke,Apfelsaft (1 l),9,2.47,22.23,Bargeld,16:38,Freitag
+2024-11-04,Berlin-Mitte,Molkereiprodukte,Sahne (200 ml),9,3.22,28.98,EC-Karte,18:32,Montag
+2024-09-28,Köln-Ehrenfeld,Hygiene,Zahnpasta (75 ml),2,6.81,13.62,Bargeld,11:33,Samstag
+2024-08-13,Berlin-Mitte,Fleisch & Wurst,Rinderhackfleisch (500 g),4,8.27,33.08,EC-Karte,07:35,Dienstag
+2024-05-26,Berlin-Mitte,Süßwaren,Chips (200 g),3,4.26,12.78,EC-Karte,08:43,Sonntag
+2024-07-16,Frankfurt-Sachsenhausen,Molkereiprodukte,Vollmilch (1 l),10,1.79,17.9,EC-Karte,12:02,Dienstag
+2024-07-09,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),1,2.59,2.59,Bargeld,17:05,Dienstag
+2024-03-01,Berlin-Mitte,Backwaren,Croissant,3,2.45,7.35,Kreditkarte,13:05,Freitag
+2024-01-30,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),4,7.96,31.84,EC-Karte,16:09,Dienstag
+2024-04-02,Hamburg-Altona,Obst & Gemüse,Äpfel (1 kg),6,3.12,18.72,Kreditkarte,14:58,Dienstag
+2024-06-14,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),3,0.85,2.55,EC-Karte,10:43,Freitag
+2024-02-28,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),6,1.92,11.52,EC-Karte,18:39,Mittwoch
+2024-02-08,Hamburg-Altona,Fleisch & Wurst,Rinderhackfleisch (500 g),8,2.77,22.16,EC-Karte,17:41,Donnerstag
+2024-11-06,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),9,6.91,62.19,Kreditkarte,21:02,Mittwoch
+2024-05-16,Hamburg-Altona,Molkereiprodukte,Gouda (400 g),1,3.27,3.27,Bargeld,19:12,Donnerstag
+2024-08-01,München-Hauptbahnhof,Obst & Gemüse,Orangen (1 kg),2,2.18,4.36,Bargeld,12:47,Donnerstag
+2024-07-10,München-Hauptbahnhof,Molkereiprodukte,Joghurt (500 g),1,3.16,3.16,Kreditkarte,17:27,Mittwoch
+2024-09-25,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),10,4.13,41.3,Kreditkarte,12:30,Mittwoch
+2024-09-27,Hamburg-Altona,Getränke,Orangensaft (1 l),7,4.52,31.64,EC-Karte,20:45,Freitag
+2024-04-18,Hamburg-Altona,Tiefkühlkost,Tiefkühlerbsen (750 g),6,2.17,13.02,Bargeld,16:04,Donnerstag
+2024-11-05,Hamburg-Altona,Backwaren,Baguette,8,2.11,16.88,Bargeld,19:47,Dienstag
+2024-05-15,München-Hauptbahnhof,Getränke,"Mineralwasser (1,5 l)",6,5.34,32.04,EC-Karte,11:40,Mittwoch
+2024-10-31,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),3,6.03,18.09,Kreditkarte,07:24,Donnerstag
+2024-05-27,Hamburg-Altona,Süßwaren,Schokolade (100 g),6,1.89,11.34,EC-Karte,09:29,Montag
+2024-02-10,Frankfurt-Sachsenhausen,Getränke,Bier (6er-Pack),8,5.91,47.28,Bargeld,14:04,Samstag
+2024-10-04,Köln-Ehrenfeld,Süßwaren,Chips (200 g),1,3.38,3.38,Bargeld,21:12,Freitag
+2024-01-12,Köln-Ehrenfeld,Backwaren,Laugenbrezel,7,0.81,5.67,EC-Karte,16:14,Freitag
+2024-10-08,Frankfurt-Sachsenhausen,Tiefkühlkost,Eis (500 ml),5,3.16,15.8,EC-Karte,19:52,Dienstag
+2024-01-16,Frankfurt-Sachsenhausen,Obst & Gemüse,Äpfel (1 kg),1,2.51,2.51,Bargeld,14:06,Dienstag
+2024-03-16,Hamburg-Altona,Obst & Gemüse,Salat (Kopf),3,1.57,4.71,Bargeld,21:17,Samstag
+2024-08-08,Frankfurt-Sachsenhausen,Süßwaren,Kekse (400 g),5,1.06,5.3,EC-Karte,21:07,Donnerstag
+2024-12-09,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),4,3.5,14.0,Bargeld,10:17,Montag
+2024-05-29,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),3,1.82,5.46,EC-Karte,19:00,Mittwoch
+2024-02-14,Berlin-Mitte,Getränke,Bier (6er-Pack),7,3.75,26.25,Bargeld,07:16,Mittwoch
+2024-03-26,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),5,5.63,28.15,EC-Karte,15:43,Dienstag
+2024-11-23,München-Hauptbahnhof,Backwaren,Baguette,5,0.93,4.65,Kreditkarte,13:46,Samstag
+2024-09-22,Frankfurt-Sachsenhausen,Backwaren,Baguette,8,2.27,18.16,Apple Pay,11:22,Sonntag
+2024-02-06,Berlin-Mitte,Obst & Gemüse,Bananen (500 g),1,1.55,1.55,Apple Pay,21:42,Dienstag
+2024-05-20,Berlin-Mitte,Süßwaren,Chips (200 g),4,1.81,7.24,EC-Karte,16:37,Montag
+2024-04-06,Köln-Ehrenfeld,Backwaren,Baguette,1,1.05,1.05,Bargeld,09:54,Samstag
+2024-03-05,Köln-Ehrenfeld,Getränke,Eistee (500 ml),10,5.66,56.6,EC-Karte,09:48,Dienstag
+2024-11-04,München-Hauptbahnhof,Fleisch & Wurst,Leberwurst (200 g),2,8.73,17.46,Kreditkarte,08:13,Montag
+2024-08-13,Berlin-Mitte,Backwaren,Roggenbrot,9,1.72,15.48,Bargeld,11:35,Dienstag
+2024-03-06,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),2,2.76,5.52,EC-Karte,08:47,Mittwoch
+2024-08-25,Köln-Ehrenfeld,Obst & Gemüse,Tomaten (500 g),4,1.49,5.96,EC-Karte,10:18,Sonntag
+2024-05-30,Berlin-Mitte,Backwaren,Laugenbrezel,7,0.89,6.23,Bargeld,18:34,Donnerstag
+2024-01-23,Frankfurt-Sachsenhausen,Backwaren,Laugenbrezel,9,2.6,23.4,Kreditkarte,20:24,Dienstag
+2024-06-13,München-Hauptbahnhof,Süßwaren,Gummibärchen (200 g),2,0.92,1.84,EC-Karte,18:18,Donnerstag
+2024-03-08,Frankfurt-Sachsenhausen,Getränke,Apfelsaft (1 l),3,6.78,20.34,EC-Karte,14:11,Freitag
+2024-03-30,Hamburg-Altona,Hygiene,Handseife (300 ml),9,8.26,74.34,Apple Pay,17:02,Samstag
+2024-11-16,Berlin-Mitte,Fleisch & Wurst,Salami (200 g),4,5.86,23.44,Bargeld,21:44,Samstag
+2024-09-16,München-Hauptbahnhof,Backwaren,Laugenbrezel,3,2.61,7.83,Bargeld,07:49,Montag
+2024-02-18,Hamburg-Altona,Getränke,Apfelsaft (1 l),8,0.96,7.68,EC-Karte,20:39,Sonntag
+2024-11-06,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),1,10.43,10.43,EC-Karte,17:14,Mittwoch
+2024-07-28,Berlin-Mitte,Getränke,Bier (6er-Pack),9,1.51,13.59,EC-Karte,12:01,Sonntag
+2024-11-15,Köln-Ehrenfeld,Obst & Gemüse,Bananen (500 g),9,3.06,27.54,Bargeld,13:37,Freitag
+2024-09-29,Frankfurt-Sachsenhausen,Molkereiprodukte,Gouda (400 g),9,3.06,27.54,Apple Pay,13:11,Sonntag
+2024-05-03,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",3,2.19,6.57,EC-Karte,09:32,Freitag
+2024-07-14,Köln-Ehrenfeld,Getränke,Orangensaft (1 l),2,5.96,11.92,EC-Karte,10:58,Sonntag
+2024-07-12,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),5,1.8,9.0,EC-Karte,11:00,Freitag
+2024-09-19,Berlin-Mitte,Getränke,Eistee (500 ml),4,1.65,6.6,Apple Pay,07:34,Donnerstag
+2024-03-31,Frankfurt-Sachsenhausen,Obst & Gemüse,Brokkoli,10,2.94,29.4,EC-Karte,14:59,Sonntag
+2024-05-01,Berlin-Mitte,Süßwaren,Marzipan (200 g),7,2.4,16.8,Apple Pay,14:20,Mittwoch
+2024-03-30,Berlin-Mitte,Süßwaren,Marzipan (200 g),10,4.03,40.3,Bargeld,11:48,Samstag
+2024-04-18,Hamburg-Altona,Tiefkühlkost,Fischstäbchen (400 g),8,5.8,46.4,EC-Karte,09:49,Donnerstag
+2024-02-28,Köln-Ehrenfeld,Hygiene,"Waschmittel (1,5 kg)",8,8.66,69.28,Kreditkarte,21:29,Mittwoch
+2024-01-14,Frankfurt-Sachsenhausen,Backwaren,Croissant,2,1.22,2.44,EC-Karte,17:18,Sonntag
+2024-12-09,Hamburg-Altona,Hygiene,Handseife (300 ml),1,3.03,3.03,EC-Karte,14:40,Montag
+2024-01-28,Berlin-Mitte,Backwaren,Vollkornbrot,1,2.89,2.89,Apple Pay,17:37,Sonntag
+2024-11-20,München-Hauptbahnhof,Hygiene,Duschgel (300 ml),6,2.7,16.2,Bargeld,12:28,Mittwoch
+2024-01-02,Frankfurt-Sachsenhausen,Backwaren,Baguette,3,1.81,5.43,EC-Karte,10:11,Dienstag
+2024-10-10,Berlin-Mitte,Getränke,Bier (6er-Pack),10,2.48,24.8,Kreditkarte,17:44,Donnerstag
+2024-04-29,Hamburg-Altona,Süßwaren,Gummibärchen (200 g),2,1.62,3.24,Apple Pay,18:12,Montag
+2024-07-07,Berlin-Mitte,Obst & Gemüse,Orangen (1 kg),10,2.4,24.0,Apple Pay,16:08,Sonntag
+2024-04-13,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),7,2.94,20.58,Kreditkarte,15:04,Samstag
+2024-06-28,München-Hauptbahnhof,Süßwaren,Schokolade (100 g),2,3.62,7.24,Bargeld,07:26,Freitag
+2024-06-13,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),1,3.14,3.14,Apple Pay,16:07,Donnerstag
+2024-07-12,Köln-Ehrenfeld,Getränke,Apfelsaft (1 l),4,2.61,10.44,EC-Karte,16:20,Freitag
+2024-05-23,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),4,6.85,27.4,EC-Karte,13:14,Donnerstag
+2024-07-14,Frankfurt-Sachsenhausen,Getränke,Bier (6er-Pack),4,0.85,3.4,EC-Karte,10:27,Sonntag
+2024-10-28,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),6,7.34,44.04,Kreditkarte,21:46,Montag
+2024-06-07,Köln-Ehrenfeld,Fleisch & Wurst,Schweinekotelett (500 g),2,4.46,8.92,EC-Karte,12:27,Freitag
+2024-05-11,Köln-Ehrenfeld,Tiefkühlkost,Pizza Margherita,2,5.36,10.72,Kreditkarte,11:33,Samstag
+2024-02-18,Berlin-Mitte,Getränke,"Cola (1,5 l)",7,1.84,12.88,Bargeld,17:08,Sonntag
+2024-05-11,Frankfurt-Sachsenhausen,Getränke,"Mineralwasser (1,5 l)",10,5.87,58.7,Bargeld,14:06,Samstag
+2024-02-15,Hamburg-Altona,Backwaren,Baguette,3,2.53,7.59,EC-Karte,15:58,Donnerstag
+2024-03-07,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),10,7.25,72.5,Bargeld,16:37,Donnerstag
+2024-12-13,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),4,2.27,9.08,EC-Karte,12:00,Freitag
+2024-02-02,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),4,7.94,31.76,EC-Karte,09:33,Freitag
+2024-06-24,Hamburg-Altona,Obst & Gemüse,Bananen (500 g),1,1.46,1.46,EC-Karte,09:00,Montag
+2024-10-31,München-Hauptbahnhof,Tiefkühlkost,Pommes Frites (750 g),5,3.85,19.25,Bargeld,21:04,Donnerstag
+2024-12-13,München-Hauptbahnhof,Tiefkühlkost,Pizza Margherita,5,3.49,17.45,Bargeld,14:22,Freitag
+2024-02-23,Köln-Ehrenfeld,Backwaren,Baguette,7,1.16,8.12,EC-Karte,13:39,Freitag
+2024-02-29,München-Hauptbahnhof,Süßwaren,Marzipan (200 g),2,2.75,5.5,EC-Karte,11:37,Donnerstag
+2024-05-15,Berlin-Mitte,Getränke,"Cola (1,5 l)",2,2.28,4.56,Bargeld,17:47,Mittwoch
+2024-07-21,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),5,5.05,25.25,Bargeld,20:10,Sonntag
+2024-12-16,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),1,5.92,5.92,Bargeld,18:11,Montag
+2024-03-16,Berlin-Mitte,Getränke,"Mineralwasser (1,5 l)",2,5.97,11.94,EC-Karte,15:31,Samstag
+2024-03-01,München-Hauptbahnhof,Getränke,Apfelsaft (1 l),7,5.08,35.56,Bargeld,14:52,Freitag
+2024-04-02,Hamburg-Altona,Molkereiprodukte,Quark (500 g),10,3.33,33.3,EC-Karte,19:43,Dienstag
+2024-11-15,Berlin-Mitte,Hygiene,Zahnpasta (75 ml),6,3.19,19.14,EC-Karte,19:40,Freitag
+2024-01-11,Frankfurt-Sachsenhausen,Hygiene,Duschgel (300 ml),2,10.88,21.76,EC-Karte,12:05,Donnerstag
+2024-05-18,München-Hauptbahnhof,Backwaren,Vollkornbrot,10,0.58,5.8,EC-Karte,21:52,Samstag
+2024-02-13,Berlin-Mitte,Tiefkühlkost,Pizza Margherita,6,3.58,21.48,EC-Karte,19:59,Dienstag
+2024-02-27,München-Hauptbahnhof,Obst & Gemüse,Tomaten (500 g),8,0.94,7.52,Apple Pay,19:34,Dienstag
+2024-11-30,Köln-Ehrenfeld,Molkereiprodukte,Butter (250 g),2,3.63,7.26,EC-Karte,07:20,Samstag
+2024-01-01,Köln-Ehrenfeld,Hygiene,Shampoo (250 ml),6,5.73,34.38,EC-Karte,08:39,Montag
+2024-04-27,Hamburg-Altona,Backwaren,Brötchen (6 Stk.),1,2.12,2.12,Apple Pay,11:38,Samstag
+2024-11-30,Hamburg-Altona,Fleisch & Wurst,Hähnchenbrust (500 g),7,4.75,33.25,EC-Karte,18:55,Samstag
+2024-08-09,Köln-Ehrenfeld,Backwaren,Laugenbrezel,3,1.63,4.89,EC-Karte,08:06,Freitag
+2024-01-27,Berlin-Mitte,Tiefkühlkost,Fischstäbchen (400 g),10,4.74,47.4,Kreditkarte,08:30,Samstag
+2024-06-18,Frankfurt-Sachsenhausen,Fleisch & Wurst,Rinderhackfleisch (500 g),1,2.79,2.79,Bargeld,07:42,Dienstag
+2024-12-20,Frankfurt-Sachsenhausen,Getränke,Orangensaft (1 l),7,3.46,24.22,Kreditkarte,09:20,Freitag
+2024-05-26,Frankfurt-Sachsenhausen,Hygiene,Shampoo (250 ml),2,8.86,17.72,EC-Karte,20:50,Sonntag
+2024-07-11,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",7,4.18,29.26,EC-Karte,17:03,Donnerstag
+2024-07-13,Frankfurt-Sachsenhausen,Tiefkühlkost,Pommes Frites (750 g),5,2.44,12.2,EC-Karte,17:06,Samstag
+2024-08-29,Frankfurt-Sachsenhausen,Obst & Gemüse,Salat (Kopf),10,2.59,25.9,Bargeld,11:47,Donnerstag
+2024-03-09,Köln-Ehrenfeld,Backwaren,Baguette,7,1.26,8.82,Apple Pay,16:07,Samstag
+2024-11-02,Berlin-Mitte,Hygiene,Rasierer,4,1.66,6.64,Bargeld,18:25,Samstag
+2024-12-26,Frankfurt-Sachsenhausen,Süßwaren,Marzipan (200 g),1,1.2,1.2,EC-Karte,14:16,Donnerstag
+2024-02-22,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),6,4.98,29.88,EC-Karte,19:41,Donnerstag
+2024-10-25,München-Hauptbahnhof,Fleisch & Wurst,Schweinekotelett (500 g),5,4.51,22.55,Kreditkarte,15:00,Freitag
+2024-10-25,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,1,2.23,2.23,Bargeld,11:21,Freitag
+2024-09-27,Berlin-Mitte,Süßwaren,Schokolade (100 g),6,1.53,9.18,Kreditkarte,16:59,Freitag
+2024-05-15,Frankfurt-Sachsenhausen,Süßwaren,Schokolade (100 g),3,3.6,10.8,EC-Karte,21:22,Mittwoch
+2024-06-20,Frankfurt-Sachsenhausen,Backwaren,Brötchen (6 Stk.),3,1.21,3.63,Kreditkarte,19:35,Donnerstag
+2024-11-02,Berlin-Mitte,Getränke,Orangensaft (1 l),1,4.64,4.64,Bargeld,14:59,Samstag
+2024-02-25,Berlin-Mitte,Getränke,Orangensaft (1 l),4,5.75,23.0,Bargeld,15:36,Sonntag
+2024-10-29,Frankfurt-Sachsenhausen,Fleisch & Wurst,Schweinekotelett (500 g),3,5.0,15.0,EC-Karte,21:45,Dienstag
+2024-12-02,München-Hauptbahnhof,Hygiene,Rasierer,1,2.03,2.03,Bargeld,18:57,Montag
+2024-09-05,Hamburg-Altona,Obst & Gemüse,Brokkoli,5,2.24,11.2,EC-Karte,14:37,Donnerstag
+2024-05-04,Berlin-Mitte,Molkereiprodukte,Quark (500 g),3,4.97,14.91,Bargeld,11:49,Samstag
+2024-07-23,Köln-Ehrenfeld,Obst & Gemüse,Karotten (1 kg),2,3.41,6.82,Kreditkarte,20:30,Dienstag
+2024-01-19,Hamburg-Altona,Tiefkühlkost,Pizza Margherita,5,3.32,16.6,Kreditkarte,21:48,Freitag
+2024-12-06,Köln-Ehrenfeld,Tiefkühlkost,Fischstäbchen (400 g),1,6.52,6.52,Kreditkarte,08:38,Freitag
+2024-05-04,Berlin-Mitte,Hygiene,Duschgel (300 ml),10,5.46,54.6,Apple Pay,07:20,Samstag
+2024-01-21,München-Hauptbahnhof,Getränke,"Cola (1,5 l)",5,1.78,8.9,Apple Pay,08:33,Sonntag
+2024-10-16,Frankfurt-Sachsenhausen,Backwaren,Roggenbrot,10,2.15,21.5,EC-Karte,12:20,Mittwoch
+2024-08-28,Frankfurt-Sachsenhausen,Fleisch & Wurst,Hähnchenbrust (500 g),9,5.75,51.75,EC-Karte,09:23,Mittwoch
+2024-08-15,Frankfurt-Sachsenhausen,Obst & Gemüse,Bananen (500 g),10,2.25,22.5,Kreditkarte,20:17,Donnerstag
+2024-01-20,Köln-Ehrenfeld,Tiefkühlkost,Pommes Frites (750 g),6,6.95,41.7,Apple Pay,20:29,Samstag
+2024-10-01,Köln-Ehrenfeld,Tiefkühlkost,Eis (500 ml),5,4.01,20.05,Apple Pay,09:20,Dienstag
+2024-08-20,Berlin-Mitte,Süßwaren,Marzipan (200 g),8,3.19,25.52,Kreditkarte,19:37,Dienstag
+2024-10-16,München-Hauptbahnhof,Molkereiprodukte,Vollmilch (1 l),1,2.39,2.39,Bargeld,09:22,Mittwoch
+2024-10-28,Köln-Ehrenfeld,Molkereiprodukte,Vollmilch (1 l),9,1.07,9.63,Apple Pay,18:29,Montag
+2024-03-18,Hamburg-Altona,Obst & Gemüse,Orangen (1 kg),4,1.81,7.24,Apple Pay,12:08,Montag
+2024-03-17,Köln-Ehrenfeld,Fleisch & Wurst,Leberwurst (200 g),1,8.67,8.67,EC-Karte,07:23,Sonntag
+2024-12-03,Hamburg-Altona,Fleisch & Wurst,Schweinekotelett (500 g),3,5.63,16.89,Kreditkarte,13:21,Dienstag
+2024-07-12,Berlin-Mitte,Süßwaren,Chips (200 g),3,1.01,3.03,EC-Karte,19:57,Freitag
+2024-06-08,Hamburg-Altona,Süßwaren,Schokolade (100 g),1,3.27,3.27,Apple Pay,21:26,Samstag
+2024-04-14,Köln-Ehrenfeld,Backwaren,Laugenbrezel,7,2.9,20.3,Bargeld,08:01,Sonntag
+2024-08-21,Frankfurt-Sachsenhausen,Molkereiprodukte,Quark (500 g),1,4.61,4.61,Kreditkarte,19:18,Mittwoch
+2024-10-02,Berlin-Mitte,Getränke,Bier (6er-Pack),9,4.34,39.06,Bargeld,11:43,Mittwoch
+2024-01-01,München-Hauptbahnhof,Molkereiprodukte,Butter (250 g),5,2.43,12.15,EC-Karte,13:09,Montag
+2024-07-20,Köln-Ehrenfeld,Obst & Gemüse,Salat (Kopf),8,2.36,18.88,Bargeld,08:09,Samstag
+2024-12-28,Köln-Ehrenfeld,Süßwaren,Gummibärchen (200 g),4,3.77,15.08,EC-Karte,21:22,Samstag
+2024-04-12,Frankfurt-Sachsenhausen,Tiefkühlkost,Fischstäbchen (400 g),2,7.16,14.32,Bargeld,18:21,Freitag
+2024-04-12,Berlin-Mitte,Getränke,Apfelsaft (1 l),2,5.87,11.74,Apple Pay,16:28,Freitag

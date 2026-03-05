@@ -1,0 +1,62 @@
+{
+    "company": "Tech GmbH",
+    "employees": [
+        {
+            "id": 1,
+            "name": "Anna",
+            "email": "anna@techgmbh.de",
+            "profile": {
+                "age": 28,
+                "city": "Berlin",
+                "skills": {
+                    "programming": [
+                        "Python",
+                        "R"
+                    ],
+                    "databases": [
+                        "MySQL",
+                        "PostgreSQL"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 2,
+            "name": "Bernd",
+            "email": "bernd@techgmbh.de",
+            "profile": {
+                "age": 34,
+                "city": "Hamburg",
+                "skills": {
+                    "programming": [
+                        "Java",
+                        "C#"
+                    ],
+                    "databases": [
+                        "SQL Server",
+                        "SQLite"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 3,
+            "name": "Carla",
+            "email": "carla@techgmbh.de",
+            "profile": {
+                "age": 45,
+                "city": "M\u00fcnchen",
+                "skills": {
+                    "programming": [
+                        "JavaScript",
+                        "TypeScript"
+                    ],
+                    "databases": [
+                        "MongoDB",
+                        "Cassandra"
+                    ]
+                }
+            }
+        }
+    ]
+}

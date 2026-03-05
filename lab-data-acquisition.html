@@ -382,25 +382,25 @@ function App() {
                 <h2>{tr.nb_title}</h2><p>{tr.nb_desc}</p>
                 <div className="flex flex-wrap gap-3 mt-4">
                     {['02_Dateiformate','03_APIs_WebScraping'].map(nb => (
-                        <a key={nb} href={`http://localhost:8888/lab/tree/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
+                        <a key={nb} href={`https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
                             {nb}.ipynb →
                         </a>
                     ))}
                 </div>
-                <div className="info-box mt-4"><p className="text-blue-800 text-sm">JupyterLab muss lokal laufen (docker compose up -d). Dann ist es unter localhost:8888 erreichbar.</p></div>
+                <div className="info-box mt-4"><p className="text-blue-800 text-sm">Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.</p></div>
                 <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
                     <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                        {lang==='de' ? 'Notebook in Docker öffnen:' : 'Open Notebook in Docker:'}
+                        {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
                     </p>
-                    <a href="http://localhost:8888/lab/tree/notebooks/02_Dateiformate.ipynb"
+                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/02_Dateiformate.ipynb"
                        target="_blank" rel="noopener noreferrer"
                        style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                        Notebook in Docker öffnen →
+                        Notebook in Colab öffnen →
                     </a>
                     <div className="notebook-cta-group">
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/02_Dateiformate.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 02 Dateiformate</a>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/03_APIs_WebScraping.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 03 APIs WebScraping</a>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/02_Dateiformate.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 02 Dateiformate</a>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/03_APIs_WebScraping.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 03 APIs WebScraping</a>
                     </div>
                 </div>
             </div>

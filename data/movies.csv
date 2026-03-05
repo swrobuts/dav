@@ -1,0 +1,501 @@
+title,year,genre,rating,votes,budget_mio,revenue_mio,director,runtime_min
+The Last Hope 760,1996,Horror,8.2,561910,26.8,50.4,Greta Gerwig,81
+Final Dream 229,2021,Adventure,7.7,1347606,77.6,152.9,James Cameron,124
+A New Shadow 693,1992,Horror,7.7,1190549,25.0,39.1,Bong Joon-ho,119
+Wild Shadow 605,2018,Thriller,8.0,843809,44.1,86.5,Bong Joon-ho,103
+Hidden Hope 31,2013,Sci-Fi,7.9,83910,106.6,241.8,James Cameron,108
+The Last Dream 239,2011,Horror,8.8,1230510,33.3,159.3,Ryan Coogler,146
+Wild Code 28,1995,Romance,7.4,382136,5.4,12.3,Greta Gerwig,147
+Wild Dream 734,2013,Romance,8.4,514271,28.9,91.4,Martin Scorsese,145
+Wild Legacy 226,2012,Comedy,6.6,506042,29.7,64.9,James Cameron,163
+Eternal Code 285,1999,Horror,7.0,164878,1.0,0.1,Sofia Coppola,133
+The Dark Journey 715,2005,Sci-Fi,8.2,674019,61.9,88.7,Alfonso Cuarón,132
+Hidden Fire 285,2000,Action,7.2,1032810,46.1,105.1,James Cameron,158
+A New Dream 981,2021,Thriller,7.9,155525,1.0,2.7,Christopher Nolan,128
+Lost Shadow 95,1995,Drama,7.7,949002,28.5,63.0,Bong Joon-ho,111
+Hidden Shadow 368,2013,Drama,8.8,1513185,13.5,39.4,Quentin Tarantino,140
+Lost Code 271,2022,Horror,7.8,803744,16.7,9.0,Bong Joon-ho,121
+The Dark Return 550,2001,Adventure,7.9,788868,86.4,177.0,Bong Joon-ho,80
+The Last Legacy 81,2016,Thriller,8.3,1863577,41.6,138.4,Christopher Nolan,142
+Wild Storm 850,2007,Animation,7.6,453029,82.2,84.5,James Cameron,114
+Blue Fire 592,2002,Documentary,8.3,642075,5.9,18.4,Ryan Coogler,130
+The Great Shadow 47,2019,Drama,8.8,1664349,22.1,67.8,Sofia Coppola,150
+The Great Storm 82,2002,Romance,7.3,1750922,17.9,13.7,Alfonso Cuarón,124
+The Great Shadow 390,2023,Thriller,8.0,365699,57.8,135.1,Christopher Nolan,156
+Final Return 651,2019,Adventure,7.3,709537,49.9,107.7,Ryan Coogler,144
+Lost Journey 380,2014,Sci-Fi,6.2,1047045,86.6,157.9,Kathryn Bigelow,93
+Lost Dream 687,1991,Adventure,7.6,1452097,107.3,50.8,Greta Gerwig,172
+Final Shadow 624,2007,Thriller,8.6,33646,52.2,90.7,Ryan Coogler,82
+A New Horizon 747,1994,Animation,8.1,1125702,78.5,144.7,Ridley Scott,103
+The Great Journey 474,2008,Drama,6.7,515116,16.3,4.9,Denis Villeneuve,144
+Hidden Storm 948,2007,Romance,8.5,1691786,52.2,36.3,Greta Gerwig,127
+Wild Dream 702,2021,Action,8.7,1304793,83.6,89.7,Sofia Coppola,89
+Lost Hope 235,2010,Sci-Fi,7.6,827862,100.6,95.7,Denis Villeneuve,92
+The Dark Fire 411,1999,Romance,6.8,385382,41.6,96.8,James Cameron,179
+Final Shadow 217,2011,Animation,7.5,593947,79.5,231.5,James Cameron,152
+Blue Fire 218,2002,Documentary,8.4,640629,23.8,40.2,Ridley Scott,93
+Eternal Legacy 906,2006,Animation,7.5,529446,91.1,252.0,Kathryn Bigelow,179
+Eternal Journey 272,1998,Animation,8.2,1123812,62.6,184.8,Steven Spielberg,89
+A New Dream 763,2013,Drama,8.5,1125643,55.4,106.1,Sofia Coppola,119
+Wild Horizon 270,2003,Thriller,8.3,684098,1.0,2.4,Bong Joon-ho,102
+Blue Legacy 920,1997,Thriller,8.1,10879,1.0,1.8,Denis Villeneuve,178
+Blue Legacy 371,2008,Romance,8.4,137615,1.4,1.2,Christopher Nolan,134
+The Great Journey 522,2017,Documentary,6.9,637572,1.0,1.3,Ridley Scott,142
+Eternal Shadow 774,2019,Documentary,6.6,179996,12.3,28.6,Kathryn Bigelow,150
+The Dark Shadow 157,1996,Adventure,7.7,1485140,76.2,143.2,Kathryn Bigelow,121
+A New Legacy 611,2015,Action,7.9,347261,79.8,218.4,Greta Gerwig,178
+The Last Legacy 391,2000,Animation,8.1,955183,65.9,7.4,Sofia Coppola,145
+Blue Return 542,2003,Action,8.3,211190,120.1,42.4,Martin Scorsese,158
+Final Horizon 882,2010,Comedy,7.9,1617752,8.9,4.2,Christopher Nolan,152
+The Dark Shadow 699,1997,Horror,6.8,817708,1.0,2.2,Ryan Coogler,126
+Wild Storm 788,1992,Animation,8.4,1022043,92.4,57.5,James Cameron,160
+Lost Shadow 301,2017,Action,7.4,530087,65.7,152.4,Bong Joon-ho,131
+Hidden Journey 465,2018,Drama,7.6,484843,18.2,50.1,Greta Gerwig,97
+The Dark Storm 996,2012,Horror,6.7,750130,2.1,7.4,Ridley Scott,158
+Wild Journey 520,2007,Documentary,7.2,1424249,19.7,67.1,Kathryn Bigelow,97
+The Last Storm 862,2024,Animation,7.2,912145,42.5,55.4,Denis Villeneuve,103
+Wild Code 204,2002,Animation,6.9,1562840,14.0,4.6,Denis Villeneuve,102
+A New Fire 781,2001,Documentary,7.0,91141,30.9,42.3,David Fincher,91
+A New Horizon 977,1994,Adventure,8.4,979062,94.9,282.5,James Cameron,102
+Wild Hope 614,2000,Drama,8.0,1426733,41.5,66.8,Christopher Nolan,100
+Lost Return 20,2000,Animation,7.4,1343388,95.2,188.1,Kathryn Bigelow,143
+The Last Fire 900,2020,Action,7.4,1184759,61.7,89.0,Ryan Coogler,169
+Final Dream 60,2020,Animation,8.3,1467478,71.2,255.0,Ryan Coogler,151
+The Great Code 970,2002,Horror,7.3,204623,25.1,24.7,James Cameron,173
+The Last Shadow 750,2003,Animation,8.1,1908400,67.8,140.1,Alfonso Cuarón,113
+Eternal Shadow 779,2014,Action,8.5,1066066,73.8,229.4,David Fincher,81
+Wild Journey 132,2022,Sci-Fi,8.7,429410,95.7,367.6,Alfonso Cuarón,148
+Eternal Horizon 170,2022,Horror,7.2,1981577,36.7,47.9,Alfonso Cuarón,110
+Final Horizon 894,2004,Romance,7.4,775426,9.8,29.0,David Fincher,176
+Blue Legacy 988,2005,Romance,8.2,447732,27.0,36.9,Bong Joon-ho,147
+The Great Horizon 774,1995,Horror,8.4,642507,21.9,74.0,Sofia Coppola,149
+The Great Storm 409,2014,Drama,7.7,482946,1.0,3.7,Christopher Nolan,166
+Lost Return 922,2004,Sci-Fi,6.5,569392,106.0,117.7,David Fincher,98
+Wild Return 124,1993,Horror,7.8,1579180,1.0,2.7,Ridley Scott,151
+The Great Dream 66,1993,Action,7.3,1087706,88.0,274.0,David Fincher,92
+Lost Hope 603,2019,Comedy,8.4,464445,42.8,73.0,Bong Joon-ho,144
+Wild Dream 603,2023,Thriller,8.7,370438,52.4,133.5,Denis Villeneuve,85
+The Great Hope 73,2016,Animation,7.6,817386,50.9,132.3,Quentin Tarantino,150
+The Dark Dream 70,2020,Adventure,7.5,1425157,79.3,318.0,Steven Spielberg,106
+The Dark Fire 73,2021,Sci-Fi,7.9,1988732,105.7,10.6,Denis Villeneuve,158
+Wild Dream 286,1998,Action,8.4,146250,70.5,137.1,Denis Villeneuve,131
+Eternal Dream 553,1997,Adventure,7.7,1027437,51.4,38.5,Martin Scorsese,177
+A New Code 591,2003,Romance,8.7,183235,4.2,8.5,Martin Scorsese,166
+Eternal Dream 804,2022,Horror,7.2,933255,20.6,25.1,James Cameron,127
+Eternal Legacy 195,2012,Sci-Fi,8.0,1970124,121.4,211.9,Kathryn Bigelow,167
+The Last Shadow 675,2010,Documentary,8.6,588453,38.8,43.7,Martin Scorsese,158
+Hidden Fire 434,2001,Animation,7.9,405696,72.5,156.3,Kathryn Bigelow,178
+Hidden Return 885,1991,Thriller,7.7,1770375,41.3,127.0,James Cameron,147
+The Dark Shadow 63,2002,Romance,6.8,438090,34.2,55.7,Denis Villeneuve,123
+Hidden Fire 820,1993,Horror,8.5,760893,1.0,3.4,Steven Spielberg,96
+The Last Dream 197,2009,Animation,8.3,592063,49.6,151.0,Christopher Nolan,174
+The Great Horizon 460,2003,Romance,7.6,400782,17.1,69.0,Christopher Nolan,117
+A New Legacy 188,2019,Documentary,8.9,348455,36.1,87.0,Alfonso Cuarón,89
+Final Return 256,2018,Adventure,8.3,1545309,102.6,198.9,Quentin Tarantino,133
+The Last Return 828,1997,Thriller,7.9,1627013,36.6,15.2,Greta Gerwig,170
+Wild Shadow 52,2001,Thriller,8.0,1970086,25.4,30.9,Christopher Nolan,85
+Wild Hope 993,2015,Animation,8.2,1384281,78.5,140.7,Alfonso Cuarón,85
+The Last Dream 171,1991,Action,7.5,1462215,68.1,130.1,Kathryn Bigelow,131
+Hidden Return 493,2003,Animation,6.9,1664574,54.4,236.6,Bong Joon-ho,94
+The Great Legacy 925,1995,Romance,8.4,93199,1.1,2.0,Sofia Coppola,147
+The Dark Journey 389,2020,Action,7.9,1214600,106.8,24.7,Alfonso Cuarón,136
+The Dark Legacy 272,2006,Thriller,7.3,552614,13.2,35.2,Greta Gerwig,135
+Eternal Storm 434,2014,Comedy,7.9,904704,17.0,44.3,David Fincher,86
+Wild Return 159,2021,Thriller,7.0,1080715,39.4,60.7,Ryan Coogler,130
+The Great Storm 223,2001,Animation,8.5,718463,52.4,216.3,Denis Villeneuve,137
+The Dark Code 754,2002,Romance,8.6,506950,19.5,2.0,Steven Spielberg,143
+Wild Hope 766,2008,Action,8.3,1241505,84.5,274.6,Sofia Coppola,105
+Lost Hope 52,2014,Horror,7.3,1385358,2.5,4.3,James Cameron,137
+Blue Return 515,2020,Action,7.5,1030677,74.8,78.5,Greta Gerwig,110
+Wild Journey 59,2014,Documentary,8.4,335796,1.0,4.4,Alfonso Cuarón,145
+Wild Shadow 872,2005,Drama,8.4,1586801,47.7,130.5,Quentin Tarantino,171
+A New Shadow 610,2012,Drama,8.8,1307582,25.2,42.9,Christopher Nolan,92
+The Last Dream 414,2003,Sci-Fi,8.0,817593,79.0,132.8,Ridley Scott,97
+The Last Code 253,1995,Adventure,7.8,922887,92.5,210.5,Christopher Nolan,173
+Blue Code 41,2014,Sci-Fi,7.7,873288,103.4,159.0,Martin Scorsese,154
+Blue Shadow 430,2012,Sci-Fi,7.7,510603,55.1,181.8,Kathryn Bigelow,92
+Blue Code 536,2001,Action,7.1,1381763,106.8,223.0,Denis Villeneuve,103
+Lost Storm 210,2002,Romance,8.0,1719671,1.0,3.0,Martin Scorsese,136
+Lost Dream 272,2023,Sci-Fi,8.3,1109495,141.8,313.1,Christopher Nolan,108
+Hidden Journey 688,1995,Animation,8.0,1013753,85.9,246.5,Ridley Scott,135
+Final Return 324,1997,Action,7.4,1393775,57.5,192.4,Kathryn Bigelow,133
+The Last Hope 470,1997,Romance,7.5,461777,8.7,32.0,Martin Scorsese,84
+Blue Code 103,2022,Drama,8.4,1921463,38.5,95.9,Steven Spielberg,114
+The Last Horizon 219,2023,Comedy,7.5,1480414,20.2,22.9,Alfonso Cuarón,98
+Wild Storm 136,2004,Animation,7.8,301279,93.6,171.0,Kathryn Bigelow,134
+Lost Shadow 901,2024,Horror,8.2,1740594,7.5,14.8,Kathryn Bigelow,156
+The Great Fire 292,2011,Adventure,8.0,1920685,88.4,126.1,Martin Scorsese,148
+A New Return 854,2012,Horror,8.6,1341416,34.0,42.8,Ridley Scott,123
+Wild Storm 627,2011,Romance,8.6,135845,27.1,58.9,Martin Scorsese,157
+Wild Hope 684,1994,Documentary,7.7,1074532,1.0,1.0,Greta Gerwig,117
+Wild Storm 955,2020,Romance,7.7,1851827,23.7,19.5,David Fincher,141
+The Last Journey 271,2002,Comedy,7.8,264672,28.3,8.6,Kathryn Bigelow,101
+The Last Shadow 761,2017,Drama,8.2,390925,1.8,4.5,James Cameron,152
+Wild Journey 279,2009,Thriller,7.8,87491,2.2,5.2,Christopher Nolan,119
+Final Code 216,2022,Romance,8.3,1094164,1.0,1.7,Greta Gerwig,105
+Lost Dream 704,2005,Drama,8.3,202657,14.1,42.2,James Cameron,84
+Final Horizon 501,2018,Horror,8.1,1148728,13.9,13.9,David Fincher,172
+Final Hope 95,2012,Romance,8.0,653160,25.1,59.8,Greta Gerwig,133
+Hidden Storm 46,2013,Romance,7.8,1463303,31.4,64.5,Quentin Tarantino,165
+The Dark Fire 790,2023,Sci-Fi,7.4,797551,91.7,115.5,Greta Gerwig,128
+A New Storm 166,1996,Horror,8.0,1387613,13.3,20.0,Steven Spielberg,82
+Eternal Horizon 723,1993,Adventure,6.8,1065743,74.8,107.0,Alfonso Cuarón,171
+Hidden Horizon 10,2023,Adventure,8.6,1761439,91.7,206.6,Ridley Scott,117
+The Last Shadow 968,2011,Animation,7.6,1160358,89.4,231.9,Christopher Nolan,93
+A New Horizon 37,1994,Documentary,8.6,1039058,7.0,11.0,Denis Villeneuve,126
+Lost Code 566,2012,Thriller,7.2,1530581,53.3,68.6,James Cameron,93
+A New Legacy 131,2004,Romance,7.8,131775,34.0,72.7,Martin Scorsese,154
+The Dark Storm 374,2020,Romance,7.8,1084465,44.2,15.4,Christopher Nolan,152
+The Dark Fire 216,1998,Animation,7.5,308822,72.6,147.7,Denis Villeneuve,117
+The Great Shadow 363,2014,Documentary,8.7,227406,1.0,3.6,David Fincher,143
+Wild Legacy 998,2014,Horror,7.4,1634126,27.4,35.5,Greta Gerwig,123
+Blue Journey 948,2010,Romance,7.5,136753,7.5,13.7,Denis Villeneuve,149
+The Great Journey 820,1998,Drama,7.7,605579,31.8,96.2,Bong Joon-ho,144
+A New Legacy 26,2011,Action,8.3,591296,66.7,183.7,Quentin Tarantino,104
+A New Fire 802,2012,Documentary,8.2,1821411,1.0,2.1,Christopher Nolan,95
+Hidden Dream 274,1993,Romance,7.4,230489,39.3,76.3,Kathryn Bigelow,94
+A New Shadow 392,2018,Documentary,7.7,1456482,1.0,0.8,Sofia Coppola,177
+The Dark Return 228,2004,Adventure,8.6,813344,110.4,275.0,Christopher Nolan,160
+The Great Return 359,1990,Thriller,8.1,1318193,41.7,27.4,Christopher Nolan,82
+Final Dream 229,2019,Romance,7.7,1746234,16.9,1.7,Kathryn Bigelow,146
+The Dark Dream 409,2018,Thriller,7.8,1461461,1.0,3.0,Bong Joon-ho,116
+Lost Storm 886,2009,Comedy,8.1,1935508,54.7,130.6,Alfonso Cuarón,160
+The Last Storm 360,2022,Action,7.3,1000502,61.3,176.5,Ridley Scott,134
+Wild Legacy 696,2011,Animation,7.8,1988023,89.1,112.6,David Fincher,117
+Wild Fire 962,2002,Thriller,6.5,826217,16.2,40.0,Alfonso Cuarón,142
+The Dark Shadow 899,1996,Romance,7.5,1674820,1.0,1.6,Ridley Scott,80
+Final Journey 595,1997,Sci-Fi,8.7,195499,113.4,189.7,Christopher Nolan,150
+Final Hope 112,2017,Animation,7.0,524764,80.8,240.3,Quentin Tarantino,169
+Blue Legacy 354,1998,Animation,5.6,1242649,47.1,87.1,Martin Scorsese,98
+Lost Legacy 621,2014,Horror,6.7,718084,43.7,57.0,Bong Joon-ho,131
+Wild Shadow 395,2005,Thriller,6.9,382150,25.9,16.4,Sofia Coppola,109
+Blue Dream 261,1999,Sci-Fi,7.9,273976,101.4,239.4,Quentin Tarantino,134
+The Dark Legacy 2,2000,Thriller,6.6,923889,24.1,73.7,James Cameron,93
+Wild Horizon 704,2020,Horror,7.0,1538690,1.0,1.2,David Fincher,92
+The Great Fire 442,2001,Action,8.4,1195356,94.7,254.6,Kathryn Bigelow,163
+The Last Fire 639,2020,Romance,8.3,1501392,20.8,22.0,Greta Gerwig,169
+Lost Shadow 738,2003,Adventure,7.6,1990518,73.9,203.2,Bong Joon-ho,106
+Final Horizon 317,2021,Adventure,6.8,1394467,108.9,221.4,Christopher Nolan,168
+Hidden Fire 413,2006,Thriller,8.1,1916115,31.1,70.5,Denis Villeneuve,88
+Final Horizon 131,2024,Horror,8.5,1764998,16.5,21.5,Martin Scorsese,120
+The Great Legacy 681,1990,Documentary,8.6,328572,40.5,95.5,Greta Gerwig,127
+Hidden Journey 631,2018,Romance,7.8,874275,1.0,1.4,Ryan Coogler,91
+Blue Storm 416,1993,Thriller,8.3,1060578,1.0,1.6,Alfonso Cuarón,89
+Wild Hope 312,2012,Documentary,7.4,954657,1.0,0.5,Quentin Tarantino,85
+Final Dream 441,2017,Romance,7.5,940944,22.3,27.4,Martin Scorsese,113
+Blue Code 671,2005,Documentary,8.3,1903509,1.0,1.5,Ryan Coogler,131
+Lost Return 453,2001,Animation,8.4,33556,64.4,148.9,Ridley Scott,120
+Eternal Dream 524,2010,Thriller,7.6,593251,11.2,29.1,Ryan Coogler,162
+Eternal Journey 675,2006,Horror,6.9,1543937,48.3,67.2,Sofia Coppola,85
+The Last Storm 528,2002,Romance,8.3,1009229,55.0,101.0,Greta Gerwig,81
+Blue Fire 96,2021,Adventure,8.3,222746,108.0,398.1,David Fincher,94
+The Great Storm 231,2004,Thriller,8.3,7563,1.0,2.1,Quentin Tarantino,96
+The Great Journey 26,2001,Romance,6.4,211995,5.3,7.8,Martin Scorsese,95
+The Dark Dream 487,2004,Romance,8.9,1841848,31.5,10.1,Ryan Coogler,107
+Blue Shadow 467,2023,Documentary,8.3,540442,4.1,4.7,Quentin Tarantino,164
+Hidden Code 200,1995,Documentary,8.2,1598058,23.0,25.5,Martin Scorsese,151
+Hidden Return 410,2006,Sci-Fi,8.5,721380,125.0,497.2,Alfonso Cuarón,89
+The Great Journey 672,2009,Thriller,8.5,703221,68.1,78.4,Martin Scorsese,89
+The Dark Shadow 798,1998,Comedy,8.6,1203096,11.9,24.4,Alfonso Cuarón,89
+Hidden Dream 181,1994,Drama,7.3,1539252,21.6,51.2,Kathryn Bigelow,152
+Wild Return 52,2012,Comedy,8.7,1859536,16.2,50.3,Sofia Coppola,107
+Wild Dream 940,2022,Romance,8.2,423618,1.0,2.0,Greta Gerwig,103
+The Last Return 137,2003,Sci-Fi,7.7,267496,114.0,169.8,Quentin Tarantino,98
+Eternal Horizon 573,2006,Romance,7.7,263328,26.3,37.4,Greta Gerwig,176
+Blue Fire 973,2008,Comedy,8.5,928888,14.1,33.2,Alfonso Cuarón,147
+Eternal Code 835,2022,Romance,7.6,1326039,1.0,1.3,Ryan Coogler,135
+Wild Legacy 851,1990,Documentary,8.2,1170073,1.0,0.9,James Cameron,146
+Wild Return 919,2002,Thriller,8.2,152521,44.6,66.4,David Fincher,121
+A New Return 461,2016,Adventure,7.7,319477,116.7,78.8,Kathryn Bigelow,91
+Final Dream 861,1995,Comedy,8.6,1877213,10.7,41.2,James Cameron,97
+Final Horizon 497,1995,Drama,8.8,535714,42.2,109.6,Steven Spielberg,102
+The Great Storm 451,2022,Drama,7.8,794936,32.4,117.3,Christopher Nolan,163
+The Last Storm 241,2019,Documentary,8.4,450794,13.3,33.1,Bong Joon-ho,85
+Final Fire 328,2024,Thriller,8.2,1763145,4.1,14.5,James Cameron,132
+Wild Shadow 142,2012,Action,8.1,117775,55.0,130.2,Ridley Scott,177
+A New Dream 393,1999,Action,9.0,34368,63.4,172.8,David Fincher,121
+A New Dream 66,2008,Horror,8.4,1024612,8.5,0.8,Christopher Nolan,145
+Hidden Legacy 339,2017,Horror,7.0,767913,51.0,55.4,Ryan Coogler,109
+Wild Return 426,2012,Comedy,8.6,1153417,11.8,24.0,Greta Gerwig,88
+The Dark Dream 853,1993,Documentary,7.7,491846,20.4,42.0,Ridley Scott,170
+Hidden Legacy 927,2009,Documentary,8.0,379888,1.0,1.9,Christopher Nolan,121
+Blue Hope 878,2008,Romance,7.7,212293,24.5,60.1,Christopher Nolan,113
+Blue Legacy 489,2016,Drama,7.4,781371,18.7,46.6,Martin Scorsese,119
+The Dark Fire 306,2023,Drama,7.7,9724,23.5,67.3,Steven Spielberg,167
+Hidden Legacy 552,1993,Drama,8.0,1447876,27.4,73.1,Greta Gerwig,96
+Wild Code 920,1996,Sci-Fi,8.7,1739746,95.0,304.4,Kathryn Bigelow,108
+The Great Return 225,1996,Thriller,8.4,1000781,37.5,120.5,Ryan Coogler,179
+Final Legacy 498,2015,Animation,6.9,869729,94.7,205.9,Bong Joon-ho,129
+The Dark Legacy 345,2015,Romance,7.8,912531,1.0,4.1,Quentin Tarantino,155
+Hidden Journey 861,2008,Action,8.1,1128448,103.7,348.4,James Cameron,174
+Eternal Journey 638,1998,Documentary,7.1,1987952,1.0,1.2,David Fincher,128
+Wild Hope 929,2009,Action,7.6,997454,72.6,173.7,Steven Spielberg,152
+Hidden Code 578,2005,Sci-Fi,8.8,595621,114.0,17.9,Martin Scorsese,140
+The Dark Shadow 659,2006,Action,8.8,725203,73.2,23.8,Kathryn Bigelow,162
+Hidden Journey 888,2011,Drama,7.7,506241,26.4,39.6,Martin Scorsese,125
+Eternal Journey 52,2002,Adventure,7.9,1278752,94.5,106.3,Christopher Nolan,125
+Final Legacy 336,2001,Romance,7.9,1576460,1.0,1.5,Denis Villeneuve,96
+The Great Return 335,1999,Adventure,7.9,1853175,98.4,229.1,James Cameron,145
+Lost Legacy 285,1990,Horror,7.7,88844,1.0,3.2,Steven Spielberg,84
+Hidden Storm 855,2021,Adventure,7.8,773427,62.7,198.9,Alfonso Cuarón,133
+The Last Return 20,2019,Animation,7.7,90751,77.3,186.5,Christopher Nolan,95
+Wild Hope 975,1997,Documentary,7.1,1179393,15.7,14.3,Steven Spielberg,160
+Lost Dream 666,2010,Sci-Fi,8.3,1520123,124.1,179.0,Ridley Scott,170
+The Last Hope 773,2011,Documentary,7.2,1654384,1.0,2.6,Greta Gerwig,86
+The Dark Dream 205,2007,Animation,6.8,59326,55.2,64.8,Bong Joon-ho,87
+The Dark Code 157,1991,Documentary,8.4,1651534,14.3,10.5,David Fincher,151
+The Great Journey 485,1998,Adventure,8.2,524292,114.5,285.4,James Cameron,166
+The Last Code 971,1992,Thriller,6.9,1715718,33.8,66.0,Alfonso Cuarón,175
+The Great Return 717,2015,Documentary,8.3,1222650,1.0,1.8,Sofia Coppola,161
+Final Fire 172,2010,Horror,8.5,1792123,45.1,140.3,Martin Scorsese,117
+Blue Code 987,2019,Romance,6.3,25022,9.8,30.3,Alfonso Cuarón,133
+The Last Journey 988,2017,Romance,7.7,85458,10.4,39.3,Alfonso Cuarón,155
+Final Shadow 593,2015,Action,7.4,1981698,51.3,69.2,Denis Villeneuve,94
+The Dark Storm 590,2023,Comedy,8.0,149317,39.5,96.0,Ryan Coogler,171
+Hidden Legacy 965,1997,Adventure,8.3,1657660,107.1,216.2,Quentin Tarantino,129
+The Great Shadow 607,1999,Drama,8.1,404243,5.9,13.8,Greta Gerwig,135
+The Great Shadow 714,2003,Animation,7.4,1456778,105.0,90.9,James Cameron,174
+Final Code 825,2004,Sci-Fi,8.5,1684568,88.3,52.8,Kathryn Bigelow,88
+The Last Code 802,2006,Adventure,8.1,397742,102.5,200.9,Ridley Scott,87
+The Dark Fire 546,2007,Romance,7.4,748157,19.5,22.6,James Cameron,98
+Hidden Fire 71,2021,Action,8.5,1356081,39.5,116.1,Ryan Coogler,130
+Wild Fire 13,2012,Documentary,8.5,1573094,15.9,7.9,Alfonso Cuarón,151
+Hidden Return 109,2012,Drama,6.4,1874294,29.1,16.9,Bong Joon-ho,177
+Hidden Fire 651,2024,Drama,8.6,1079109,1.0,1.6,David Fincher,136
+Eternal Journey 446,2004,Comedy,7.9,1281609,55.5,25.6,David Fincher,147
+A New Horizon 989,2013,Thriller,6.2,1198964,39.2,144.1,Steven Spielberg,110
+Final Code 828,2017,Comedy,7.6,1189347,49.8,90.5,Christopher Nolan,82
+Wild Return 477,2005,Documentary,8.1,735851,1.0,1.4,David Fincher,178
+Hidden Code 275,2005,Adventure,8.3,652729,81.8,201.9,Denis Villeneuve,162
+Lost Dream 851,1995,Horror,8.6,1933087,38.6,111.3,Quentin Tarantino,122
+The Last Storm 903,1991,Animation,7.5,1036670,38.6,85.2,Ridley Scott,108
+Eternal Dream 769,2002,Drama,8.8,101960,12.4,24.0,Bong Joon-ho,89
+Eternal Code 625,1998,Sci-Fi,8.7,1632329,108.1,109.9,Alfonso Cuarón,91
+Hidden Fire 30,2023,Adventure,8.3,148745,52.1,137.1,Ryan Coogler,125
+Eternal Fire 187,2006,Sci-Fi,8.6,1335115,73.6,251.5,Martin Scorsese,109
+Eternal Dream 364,2016,Action,6.6,1153738,107.6,191.6,David Fincher,173
+Final Fire 287,2018,Sci-Fi,8.4,1180280,101.2,116.5,Bong Joon-ho,161
+Blue Storm 570,2011,Drama,8.0,1204355,43.5,94.9,Martin Scorsese,167
+The Dark Horizon 971,2013,Drama,7.8,478965,23.6,47.3,Bong Joon-ho,111
+The Great Shadow 248,1996,Drama,8.0,76937,69.1,54.2,David Fincher,152
+Hidden Return 569,2023,Adventure,6.4,654935,98.8,147.9,Alfonso Cuarón,126
+The Great Return 662,2001,Adventure,7.6,645938,115.4,437.2,Bong Joon-ho,167
+Eternal Return 812,2012,Animation,8.7,393888,65.1,42.5,Alfonso Cuarón,142
+The Dark Shadow 302,2004,Romance,6.4,743092,19.2,25.1,Bong Joon-ho,105
+The Great Legacy 709,2022,Thriller,8.5,1761352,42.8,45.0,Denis Villeneuve,82
+The Great Storm 680,2002,Documentary,8.5,878944,21.2,24.2,Martin Scorsese,102
+Blue Fire 485,2012,Documentary,7.4,1189406,4.2,6.5,Christopher Nolan,154
+Wild Horizon 353,2021,Action,8.3,1640873,80.1,196.1,Alfonso Cuarón,153
+Hidden Horizon 339,2024,Comedy,7.7,407497,35.0,115.8,Ridley Scott,129
+Lost Return 278,1990,Animation,7.4,260188,80.0,176.3,Quentin Tarantino,115
+Final Storm 237,1994,Romance,8.0,1294916,1.0,1.3,Denis Villeneuve,92
+The Last Dream 324,2002,Horror,7.5,33548,19.5,69.0,Sofia Coppola,108
+The Last Horizon 974,1994,Action,7.8,1592235,86.4,8.6,Kathryn Bigelow,117
+A New Dream 222,2021,Adventure,8.4,1012403,70.5,188.5,Christopher Nolan,156
+Eternal Storm 742,2010,Romance,7.9,1417697,33.1,32.2,Quentin Tarantino,169
+Blue Horizon 612,2013,Drama,7.8,1724580,28.3,55.2,Christopher Nolan,163
+Final Shadow 853,2007,Adventure,7.6,225731,136.6,350.1,Kathryn Bigelow,84
+The Great Storm 233,2010,Comedy,7.2,1204522,24.5,9.7,Christopher Nolan,99
+Lost Journey 310,1999,Comedy,8.5,1531451,47.7,102.2,Christopher Nolan,157
+The Dark Horizon 130,2013,Documentary,8.3,1588145,15.8,35.1,Steven Spielberg,93
+Final Hope 998,2010,Thriller,8.3,987291,68.4,236.8,Quentin Tarantino,87
+The Dark Horizon 300,2014,Thriller,7.6,416505,10.6,50.0,Christopher Nolan,127
+A New Return 106,2012,Horror,7.9,1300636,5.1,2.3,Greta Gerwig,92
+The Dark Code 292,2011,Adventure,8.8,1447846,71.3,243.6,Greta Gerwig,103
+Eternal Return 452,1993,Adventure,8.2,101020,88.4,173.5,Bong Joon-ho,158
+Lost Journey 989,2023,Comedy,8.1,632796,2.5,3.0,Bong Joon-ho,144
+The Dark Storm 964,1995,Drama,8.4,1555202,1.0,2.4,David Fincher,165
+Eternal Shadow 842,2017,Drama,8.3,67846,1.0,0.7,Ridley Scott,113
+The Last Legacy 504,2020,Sci-Fi,8.1,1406402,56.1,42.5,Alfonso Cuarón,130
+The Last Code 645,2024,Drama,8.5,443985,33.1,8.8,Martin Scorsese,82
+The Dark Journey 153,2012,Romance,8.4,1341032,5.9,15.0,Kathryn Bigelow,169
+Blue Storm 88,1995,Thriller,8.6,1539309,5.3,12.3,Alfonso Cuarón,157
+The Great Shadow 572,2005,Drama,8.2,377330,6.8,8.1,Kathryn Bigelow,137
+Hidden Code 611,1991,Animation,7.0,791689,59.4,209.3,David Fincher,151
+Blue Dream 795,2013,Adventure,8.4,410062,70.7,94.5,Steven Spielberg,134
+Wild Legacy 462,2006,Drama,8.2,1465275,52.1,171.0,Greta Gerwig,159
+Eternal Storm 881,1990,Sci-Fi,6.4,551846,128.3,272.3,Quentin Tarantino,121
+Blue Legacy 313,1995,Horror,7.6,568476,46.8,61.9,Ridley Scott,100
+Blue Code 62,1994,Horror,6.8,669372,18.6,35.1,Ridley Scott,89
+Blue Shadow 971,2018,Comedy,7.9,558524,30.6,22.8,Bong Joon-ho,136
+The Great Dream 271,2001,Drama,7.7,1547001,6.9,15.3,Martin Scorsese,104
+The Last Journey 246,1992,Adventure,7.4,570364,73.1,148.4,Quentin Tarantino,135
+A New Horizon 77,1990,Adventure,7.0,311546,90.4,228.5,Sofia Coppola,117
+A New Hope 419,2016,Thriller,8.6,357611,43.0,123.8,Bong Joon-ho,165
+Eternal Code 482,2013,Horror,7.2,164148,38.9,82.3,Ryan Coogler,140
+Final Hope 238,2008,Comedy,7.6,1654201,14.1,7.4,Martin Scorsese,126
+Final Storm 720,1997,Drama,8.4,116827,1.0,2.9,Sofia Coppola,133
+Eternal Shadow 704,1991,Horror,8.5,1517956,29.7,59.8,Ridley Scott,125
+The Great Storm 807,2019,Horror,8.4,1648128,1.0,0.1,Steven Spielberg,147
+Blue Dream 436,2019,Adventure,8.8,804767,89.2,206.0,Denis Villeneuve,83
+The Last Horizon 231,2021,Drama,6.8,1827636,21.8,52.0,Denis Villeneuve,173
+A New Storm 847,1990,Action,8.3,569061,72.4,118.8,Greta Gerwig,145
+A New Shadow 62,2002,Drama,6.4,708518,1.0,1.8,Ridley Scott,172
+A New Storm 610,2000,Romance,7.8,291714,7.7,10.8,Steven Spielberg,122
+Blue Storm 450,1999,Horror,8.5,88995,47.9,115.7,Martin Scorsese,141
+The Last Return 706,2015,Thriller,7.3,41658,41.8,89.5,Steven Spielberg,179
+Final Legacy 966,2009,Action,8.4,1501976,103.2,112.7,Sofia Coppola,164
+Final Horizon 553,2006,Sci-Fi,8.8,1432360,75.7,273.9,James Cameron,164
+Eternal Return 83,2006,Comedy,7.0,1908621,30.1,40.2,Martin Scorsese,164
+Blue Hope 911,1993,Drama,8.1,321338,21.8,2.2,Kathryn Bigelow,83
+Hidden Fire 619,1994,Thriller,7.8,1248155,32.2,49.2,Christopher Nolan,144
+Final Hope 94,2012,Sci-Fi,8.9,375016,111.1,336.7,Martin Scorsese,141
+The Great Code 602,1999,Sci-Fi,7.7,952463,102.9,184.5,Greta Gerwig,169
+The Dark Storm 591,2017,Horror,6.8,447288,1.0,0.4,Bong Joon-ho,81
+The Dark Journey 482,2022,Romance,8.3,701948,27.3,26.5,Denis Villeneuve,88
+Wild Return 939,2015,Horror,8.8,959037,31.8,29.2,Sofia Coppola,136
+Final Journey 600,2018,Comedy,8.8,1944566,51.4,73.2,Martin Scorsese,124
+Hidden Return 993,2016,Action,7.1,1301529,107.3,186.5,Bong Joon-ho,97
+The Last Return 357,2007,Adventure,7.4,69582,99.5,248.1,Christopher Nolan,127
+Hidden Fire 329,1999,Animation,6.7,1766679,47.1,100.2,James Cameron,121
+The Last Journey 338,1994,Action,8.2,438734,49.4,107.5,Alfonso Cuarón,120
+Hidden Return 296,1999,Comedy,8.4,144775,20.5,77.5,Alfonso Cuarón,154
+Hidden Horizon 38,2010,Adventure,7.2,1623320,108.4,310.1,Sofia Coppola,168
+Eternal Shadow 323,2013,Sci-Fi,8.6,580779,117.1,324.7,Alfonso Cuarón,169
+Final Fire 119,1992,Action,8.1,271187,85.5,16.0,Steven Spielberg,137
+Hidden Horizon 845,2020,Adventure,8.5,366356,89.3,111.5,Quentin Tarantino,179
+The Dark Horizon 474,1991,Drama,7.3,519943,58.1,23.4,Denis Villeneuve,121
+Hidden Hope 193,1991,Horror,7.1,1813867,26.5,32.6,Steven Spielberg,114
+Wild Fire 638,2023,Animation,8.1,331484,68.3,190.9,James Cameron,117
+Eternal Return 779,2009,Thriller,8.5,1190824,17.1,27.5,Alfonso Cuarón,146
+The Dark Dream 274,2022,Drama,7.8,398152,1.0,3.1,Quentin Tarantino,120
+Wild Journey 950,1993,Action,8.7,1605038,57.9,155.9,Ridley Scott,178
+Final Return 902,2000,Documentary,8.4,1394352,1.0,2.1,David Fincher,129
+Eternal Shadow 30,1994,Adventure,8.7,351912,95.6,296.0,Greta Gerwig,165
+Blue Dream 727,2014,Sci-Fi,8.9,1961783,99.6,335.1,Steven Spielberg,151
+A New Storm 565,2023,Sci-Fi,8.6,633465,93.5,229.5,Bong Joon-ho,158
+The Dark Horizon 418,1998,Documentary,8.2,551197,19.7,43.9,Ryan Coogler,124
+The Last Dream 862,1995,Action,6.8,1093734,116.2,306.0,Quentin Tarantino,150
+The Last Return 970,2007,Sci-Fi,8.9,664726,83.5,49.6,Ridley Scott,98
+The Last Journey 511,2003,Romance,7.3,217197,1.5,2.8,Ryan Coogler,96
+Final Horizon 723,2008,Sci-Fi,7.6,1759273,55.7,110.1,David Fincher,144
+Final Legacy 855,2003,Animation,7.2,1960304,69.5,113.4,David Fincher,172
+Eternal Return 250,2006,Romance,7.8,846763,12.4,15.0,Denis Villeneuve,156
+Eternal Horizon 149,2024,Comedy,7.4,1835348,42.9,128.6,Kathryn Bigelow,135
+Hidden Dream 944,2018,Comedy,8.0,769278,23.3,50.6,Ryan Coogler,172
+Blue Horizon 765,2006,Adventure,8.4,728402,78.2,176.8,Denis Villeneuve,120
+A New Shadow 283,1997,Romance,8.0,1493716,18.9,64.7,Denis Villeneuve,121
+Hidden Fire 957,1990,Drama,7.4,1471634,31.1,56.1,Denis Villeneuve,85
+Wild Storm 841,1996,Adventure,8.6,673818,57.6,92.8,Alfonso Cuarón,148
+The Dark Storm 744,1994,Drama,8.6,1136943,40.1,134.8,Denis Villeneuve,177
+Final Code 594,2013,Animation,6.8,328526,96.1,48.9,Ridley Scott,154
+Eternal Journey 458,2017,Horror,8.1,1046144,25.9,53.1,Greta Gerwig,152
+Wild Return 354,2006,Action,8.7,1123895,61.3,77.4,Martin Scorsese,119
+Lost Horizon 782,2009,Romance,7.7,274314,8.5,19.5,Ridley Scott,120
+Wild Legacy 467,1992,Documentary,8.0,645240,28.7,73.8,James Cameron,88
+Lost Dream 715,2015,Thriller,8.1,605433,10.4,27.3,Denis Villeneuve,87
+The Great Code 393,2004,Action,7.7,1836003,92.6,280.2,Quentin Tarantino,123
+The Great Legacy 45,1997,Animation,8.1,1941634,69.0,120.6,Quentin Tarantino,137
+Lost Return 723,2002,Romance,8.2,1269219,18.2,32.9,Sofia Coppola,146
+Hidden Legacy 680,1992,Comedy,8.8,803640,8.3,21.0,Ryan Coogler,92
+A New Return 988,1990,Action,8.2,691538,86.6,250.1,Bong Joon-ho,98
+The Dark Journey 515,1998,Drama,8.8,211244,25.2,17.6,Ryan Coogler,177
+Blue Fire 891,2020,Documentary,7.5,665399,1.0,2.3,Sofia Coppola,175
+The Last Return 103,2015,Action,8.1,15990,79.9,128.2,James Cameron,128
+Wild Return 16,2006,Thriller,7.9,662801,42.3,88.3,Bong Joon-ho,159
+A New Legacy 892,2023,Animation,8.3,992725,62.3,102.4,Sofia Coppola,179
+A New Shadow 481,1998,Animation,7.6,1566217,21.0,26.8,Sofia Coppola,161
+Final Fire 639,2002,Adventure,8.7,130327,87.7,86.1,Ridley Scott,157
+Hidden Shadow 873,1994,Animation,8.2,866746,99.3,183.6,Bong Joon-ho,109
+Lost Horizon 390,2002,Adventure,7.5,1338582,83.1,196.0,Quentin Tarantino,145
+Lost Return 894,1990,Animation,7.2,1470065,98.6,137.7,Christopher Nolan,156
+Wild Hope 633,2014,Thriller,7.1,1929957,13.8,44.0,Alfonso Cuarón,170
+The Last Dream 647,1993,Animation,7.0,655511,46.8,208.7,Alfonso Cuarón,138
+Final Dream 765,1999,Documentary,7.2,1839964,4.9,11.8,Kathryn Bigelow,132
+The Last Legacy 101,2017,Horror,8.5,204161,1.0,2.0,Christopher Nolan,131
+The Last Return 171,1995,Comedy,7.2,1400509,31.6,34.4,Alfonso Cuarón,160
+Final Hope 48,2016,Documentary,8.1,1401171,1.0,2.4,Martin Scorsese,110
+Lost Hope 301,2001,Animation,7.2,118782,99.5,346.0,Christopher Nolan,94
+Lost Fire 442,1992,Romance,7.7,789797,6.2,24.5,Steven Spielberg,99
+A New Dream 544,2022,Drama,7.8,335348,21.8,74.0,Kathryn Bigelow,84
+Hidden Code 699,1999,Horror,7.6,399216,26.9,76.5,Denis Villeneuve,86
+A New Journey 180,2020,Comedy,7.8,844504,44.1,106.3,Alfonso Cuarón,97
+The Last Code 892,2004,Drama,8.0,53499,49.6,47.2,James Cameron,135
+Hidden Code 700,1996,Documentary,8.0,1306599,1.0,1.9,Ryan Coogler,154
+The Great Return 935,2003,Thriller,8.4,332355,22.0,39.3,Steven Spielberg,175
+Blue Journey 238,2003,Thriller,7.2,1193555,1.0,1.9,Sofia Coppola,170
+Eternal Storm 471,1992,Drama,8.2,149408,60.8,77.9,Greta Gerwig,169
+Final Hope 921,1992,Romance,8.2,1921228,22.2,61.2,Denis Villeneuve,124
+Eternal Storm 694,2011,Drama,8.1,881279,35.0,60.4,Quentin Tarantino,107
+Wild Journey 76,2008,Documentary,7.2,708691,16.1,26.5,Denis Villeneuve,129
+Eternal Fire 602,2024,Drama,8.5,372603,21.0,27.0,Sofia Coppola,81
+Final Legacy 707,2001,Comedy,7.3,1389475,32.0,71.4,Alfonso Cuarón,163
+Final Return 866,1994,Romance,8.6,331927,3.8,13.3,Sofia Coppola,147
+Final Dream 394,1999,Sci-Fi,7.9,726311,94.0,187.0,Ryan Coogler,156
+Eternal Shadow 243,2022,Action,8.0,1757445,61.0,139.2,David Fincher,103
+Hidden Code 368,2002,Sci-Fi,7.4,1963859,131.1,515.9,Bong Joon-ho,127
+Blue Storm 717,2024,Adventure,8.7,793904,101.2,324.2,Bong Joon-ho,124
+Final Hope 850,2021,Drama,7.3,1465172,59.5,154.0,David Fincher,172
+Hidden Storm 9,2000,Thriller,8.5,366296,75.9,193.2,Steven Spielberg,137
+Blue Hope 933,2013,Sci-Fi,7.1,1207928,71.9,100.4,Ridley Scott,115
+Blue Return 853,2024,Animation,8.2,1202507,89.7,116.5,Sofia Coppola,81
+Final Dream 622,2008,Documentary,8.1,1279989,1.0,2.1,Quentin Tarantino,97
+Lost Dream 652,1995,Sci-Fi,7.5,1491194,103.5,224.3,Kathryn Bigelow,128
+The Great Code 257,2024,Horror,6.2,1188910,21.3,24.5,Ryan Coogler,87
+A New Shadow 926,1993,Romance,7.0,1978146,1.0,2.7,Ryan Coogler,137
+The Dark Storm 808,2022,Documentary,7.4,147626,1.0,1.7,Ryan Coogler,94
+Eternal Hope 594,2002,Thriller,8.8,1580872,37.2,116.3,Bong Joon-ho,96
+Lost Journey 93,2008,Adventure,8.1,1923859,93.5,181.8,Alfonso Cuarón,102
+Final Fire 766,2001,Sci-Fi,7.7,1130375,79.6,147.7,Christopher Nolan,145
+Hidden Journey 206,2000,Romance,8.6,1852246,1.0,1.1,Ryan Coogler,149
+A New Horizon 898,1995,Action,8.2,236018,50.2,58.8,David Fincher,172
+Lost Horizon 514,2001,Romance,7.6,1000529,1.0,3.3,Greta Gerwig,106
+Final Journey 264,2016,Romance,7.6,1328873,7.6,17.2,Sofia Coppola,116
+Eternal Storm 765,2014,Documentary,7.7,1108929,24.7,59.0,James Cameron,128
+Lost Shadow 480,1992,Action,8.2,577380,102.3,368.3,Denis Villeneuve,143
+The Last Journey 773,1992,Romance,6.6,244907,51.7,35.3,James Cameron,113
+The Great Legacy 991,2009,Horror,8.5,1748088,23.5,62.8,Kathryn Bigelow,97
+Wild Fire 93,2017,Sci-Fi,8.2,1622968,103.8,42.8,David Fincher,143
+Hidden Hope 271,2012,Sci-Fi,7.9,156355,109.9,171.7,David Fincher,153
+Wild Shadow 466,1992,Horror,7.6,1489221,24.7,21.1,Greta Gerwig,123
+Lost Storm 599,2013,Sci-Fi,7.8,1793470,67.7,193.5,Martin Scorsese,96
+Hidden Fire 111,1995,Romance,7.7,973461,52.8,5.8,Kathryn Bigelow,138
+The Great Return 26,2009,Adventure,7.4,29887,51.4,91.0,Steven Spielberg,92
+Blue Horizon 336,2000,Romance,6.8,1488964,38.0,32.0,Christopher Nolan,131
+Blue Dream 664,2021,Documentary,8.6,791787,6.1,7.0,Alfonso Cuarón,139
+The Last Return 932,2016,Animation,8.2,1345421,48.2,62.6,Ridley Scott,121
+Final Legacy 120,2010,Adventure,8.1,173606,100.6,333.9,Kathryn Bigelow,170
+A New Hope 969,2002,Thriller,8.4,252420,27.6,45.9,Ryan Coogler,143
+The Dark Storm 505,2011,Thriller,7.7,1645306,16.3,60.8,Ryan Coogler,145
+The Last Shadow 241,2024,Adventure,7.9,979778,62.4,245.6,Alfonso Cuarón,113
+Wild Journey 398,2011,Romance,7.1,537567,1.0,4.1,Sofia Coppola,174
+Eternal Fire 687,2017,Drama,7.3,1748427,7.8,15.1,Kathryn Bigelow,166
+Wild Legacy 602,2010,Animation,8.0,646026,62.3,137.7,Greta Gerwig,150
+A New Legacy 671,2007,Horror,8.3,1518939,1.0,2.4,Martin Scorsese,143
+The Last Return 631,2020,Romance,7.2,664621,15.8,25.8,Ryan Coogler,112
+Hidden Storm 34,2010,Adventure,9.0,660834,68.6,166.3,Christopher Nolan,91
+Lost Dream 455,2003,Drama,8.8,1665278,27.2,29.0,Bong Joon-ho,155
+Eternal Dream 876,2014,Romance,7.5,1864398,39.6,4.9,Steven Spielberg,98
+Lost Shadow 703,2016,Drama,8.4,421141,25.8,70.0,Christopher Nolan,88
+Lost Horizon 924,2012,Adventure,8.0,345318,88.1,145.4,Martin Scorsese,153
+Lost Hope 408,2020,Romance,7.3,221079,4.3,4.4,David Fincher,96
+Final Dream 992,2018,Action,7.4,1578651,108.9,125.2,Christopher Nolan,129
+The Last Return 94,2019,Sci-Fi,8.2,1292527,96.1,337.8,Sofia Coppola,118
+The Great Code 995,2015,Adventure,8.2,205470,139.8,344.5,James Cameron,120
+The Dark Hope 806,2009,Thriller,7.4,1763113,6.3,3.0,Christopher Nolan,89
+Lost Dream 129,2008,Thriller,8.0,1355444,35.8,29.1,David Fincher,91
+Blue Dream 71,2016,Animation,8.6,1584527,98.3,167.9,Ryan Coogler,158
+Wild Dream 601,2014,Comedy,7.8,410336,11.2,27.7,Denis Villeneuve,174
+The Great Dream 337,2012,Thriller,8.0,1727676,25.3,30.5,Denis Villeneuve,94
+A New Code 3,2018,Comedy,7.7,1544838,37.5,68.5,Sofia Coppola,107
+Final Journey 134,2004,Action,8.4,1182683,87.8,185.7,Denis Villeneuve,83
+Wild Storm 818,1992,Adventure,7.6,625559,101.2,216.1,Ryan Coogler,115
+A New Shadow 677,1999,Drama,6.5,592676,43.2,4.3,Greta Gerwig,144
+The Dark Journey 16,2004,Animation,8.7,1101911,63.1,140.2,Steven Spielberg,177
+Lost Dream 603,2005,Sci-Fi,7.2,44315,128.7,34.4,Alfonso Cuarón,126
+Lost Hope 179,2006,Horror,6.9,892354,1.0,1.7,Steven Spielberg,160
+Final Hope 130,2008,Comedy,8.2,1358347,46.5,69.7,Kathryn Bigelow,118
+Hidden Horizon 117,2000,Sci-Fi,7.0,1451095,122.9,113.2,Kathryn Bigelow,117
+The Last Return 460,1994,Animation,8.6,1552446,54.5,155.0,Kathryn Bigelow,123
+Lost Horizon 608,1994,Animation,7.7,50334,41.0,35.9,Ryan Coogler,130
+The Last Return 516,2003,Thriller,8.7,187964,25.4,37.5,Christopher Nolan,176
+The Great Code 45,2015,Sci-Fi,6.9,1241844,108.1,311.2,Bong Joon-ho,164
+Wild Storm 470,1997,Romance,7.8,1901708,8.3,12.0,Ridley Scott,105
+The Dark Hope 491,1994,Documentary,8.4,1089302,15.0,18.6,Kathryn Bigelow,115
+Hidden Legacy 703,1996,Animation,8.1,1543233,108.8,188.4,Steven Spielberg,148
+The Last Return 730,2005,Comedy,7.1,207823,1.0,2.5,James Cameron,176
+Eternal Shadow 921,2003,Horror,8.2,1754542,1.0,3.4,James Cameron,80
+The Last Fire 623,1993,Horror,8.5,773333,13.6,14.5,Quentin Tarantino,132
+A New Shadow 130,2006,Action,7.3,818126,66.4,76.0,Bong Joon-ho,85
+Final Code 649,1995,Action,7.6,163325,70.4,121.3,James Cameron,116
+Blue Horizon 730,2005,Thriller,7.2,680590,55.3,123.3,Alfonso Cuarón,81

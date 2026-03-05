@@ -165,8 +165,8 @@ print(df.columns.tolist()) # Spaltennamen`
         ],
         notebook_title: 'Zum Notebook',
         notebook_desc: 'Öffnen Sie das Notebook in JupyterLab für praktische Übungen:',
-        notebook_link: 'http://localhost:8888/lab/tree/notebooks/01_CRISP_DM.ipynb',
-        notebook_label: 'Notebook in Docker öffnen →'
+        notebook_link: 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/01_CRISP_DM.ipynb',
+        notebook_label: 'Notebook in Colab öffnen →'
     },
     en: {
         brand: 'DAV Lab', back: '← DAV Lab',
@@ -193,8 +193,8 @@ print(df.columns.tolist()) # Spaltennamen`
         ],
         notebook_title: 'Open Notebook',
         notebook_desc: 'Open the notebook in JupyterLab for hands-on exercises:',
-        notebook_link: 'http://localhost:8888/lab/tree/notebooks/01_CRISP_DM.ipynb',
-        notebook_label: 'Open Notebook in Docker →'
+        notebook_link: 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/01_CRISP_DM.ipynb',
+        notebook_label: 'Open Notebook in Colab →'
     }
 };
 
@@ -387,11 +387,11 @@ function App() {
                             {tr.notebook_label}
                         </a>
                         <div className="notebook-buttons" style={{marginTop:"0.75rem"}}>
-                            <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/docker/notebooks/01_CRISP_DM.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" style={{height:"20px"}}/> CRISP-DM Notebook</a>
+                            <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/01_CRISP_DM.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" style={{height:"20px"}}/> CRISP-DM Notebook</a>
                         </div>
                     </div>
                     <div className="info-box mt-4">
-                        <p className="text-blue-800 text-sm">JupyterLab muss lokal laufen (docker compose up -d). Dann ist es unter localhost:8888 erreichbar.</p>
+                        <p className="text-blue-800 text-sm">Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.</p>
                     </div>
                 </div>
             </main>

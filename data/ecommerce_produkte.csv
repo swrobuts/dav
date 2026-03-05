@@ -1,0 +1,51 @@
+produkt_id,produktname,kategorie,preis_eur,lagermenge
+P001,Bluetooth-Kopfhörer,Elektronik,79.99,145
+P002,USB-C Hub 7-Port,Elektronik,34.99,230
+P003,Smartwatch Fitness,Elektronik,129.99,88
+P004,Tischlampe LED,Elektronik,24.99,312
+P005,Powerbank 20000 mAh,Elektronik,44.99,175
+P006,Webcam Full HD,Elektronik,59.99,95
+P007,Maus kabellos,Elektronik,19.99,420
+P008,Tastatur mechanisch,Elektronik,89.99,67
+P009,Lautsprecher Bluetooth,Elektronik,49.99,143
+P010,E-Book-Reader,Elektronik,109.99,52
+P011,Winterjacke (M),Mode,89.99,78
+P012,Jeans Slim Fit (32/32),Mode,59.99,134
+P013,Sneaker (Gr. 42),Mode,79.99,99
+P014,T-Shirt Basic (L),Mode,14.99,450
+P015,Pullover Strick (M),Mode,39.99,112
+P016,Sommerschuhe (Gr. 38),Mode,49.99,87
+P017,Ledergürtel (Gr. M),Mode,24.99,201
+P018,Handschuhe Leder,Mode,34.99,65
+P019,Mütze Wolle,Mode,19.99,178
+P020,Rucksack 25 l,Mode,54.99,93
+P021,Python für Einsteiger,Bücher,29.99,340
+P022,Data Science Grundlagen,Bücher,34.99,156
+P023,Der Herr der Ringe,Bücher,22.99,289
+P024,Kochbuch vegetarisch,Bücher,24.99,203
+P025,Reiseführer Deutschland,Bücher,19.99,178
+P026,Yogamatte (6 mm),Sport,29.99,215
+P027,Hanteln Set (2x10 kg),Sport,49.99,88
+P028,Laufschuhe (Gr. 42),Sport,89.99,74
+P029,Fahrradhelm,Sport,44.99,112
+P030,Fitnessmatte,Sport,24.99,193
+P031,Springseil,Sport,9.99,310
+P032,Trinkflasche (750 ml),Sport,14.99,425
+P033,Tennisschläger,Sport,69.99,56
+P034,Kaffeemaschine,Haushalt,79.99,63
+P035,Wasserkocher,Haushalt,29.99,187
+P036,Toaster,Haushalt,24.99,210
+P037,Brettset Schneidebrett 3-tlg.,Haushalt,19.99,145
+P038,Pfanne Teflon 28 cm,Haushalt,34.99,162
+P039,Bettüberwurf (200x200),Haushalt,44.99,89
+P040,Bettwäsche-Set,Haushalt,39.99,134
+P041,Handtuch-Set 4-tlg.,Haushalt,29.99,201
+P042,Regenschirm faltbar,Haushalt,19.99,267
+P043,LEGO City Set,Spielzeug,49.99,78
+P044,Puzzle 1000 Teile,Spielzeug,14.99,312
+P045,Plüschtier Bär,Spielzeug,19.99,234
+P046,Gesellschaftsspiel Familien,Spielzeug,29.99,187
+P047,Ferngesteuertes Auto,Spielzeug,39.99,91
+P048,Malset Kinder,Spielzeug,12.99,415
+P049,Puppenwagen,Spielzeug,59.99,43
+P050,Holzpuzzle 3D,Spielzeug,24.99,167

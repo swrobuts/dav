@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mit Google Colab starten – DAV Lab</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-primary: #0389CF;
+            --color-orange: #E8792F;
+            --color-light-blue: #EBF5FF;
+            --color-light-yellow: #FFFBEB;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; margin: 0; }
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-orange { color: var(--color-orange); }
+        .code-block {
+            background-color: #1e293b;
+            border-left: 4px solid var(--color-orange);
+            padding: 1rem; border-radius: 0.5rem; position: relative;
+        }
+        .code-text {
+            color: #e2e8f0; font-family: 'Courier New', monospace;
+            font-size: 0.875rem; margin: 0; white-space: pre-wrap; word-break: break-all;
+        }
+        .copy-button {
+            position: absolute; top: 0.5rem; right: 0.5rem;
+            background-color: var(--color-orange); color: white;
+            padding: 0.25rem 0.75rem; border: none; border-radius: 0.25rem;
+            cursor: pointer; font-size: 0.75rem; transition: opacity 0.2s;
+        }
+        .copy-button:hover { opacity: 0.8; }
+        .step-number {
+            background-color: var(--color-orange); color: white;
+            width: 2rem; height: 2rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0;
+        }
+        .section-header {
+            color: var(--color-primary); font-size: 1.875rem; font-weight: bold;
+            border-left: 4px solid var(--color-orange);
+            padding-left: 1rem; margin: 2rem 0 1.5rem 0;
+        }
+        .nav-sidebar {
+            position: fixed; left: 0; top: 4rem;
+            width: 240px; height: calc(100vh - 4rem);
+            background-color: #f8f9fa; border-right: 1px solid #e0e0e0;
+            overflow-y: auto; z-index: 40;
+        }
+        .nav-item {
+            padding: 0.75rem 1.5rem; cursor: pointer;
+            border-left: 3px solid transparent;
+            color: #374151; transition: all 0.2s;
+            font-size: 0.875rem; font-weight: 500;
+        }
+        .nav-item:hover { background-color: #e1eaf5; border-left-color: rgba(3,137,207,0.3); }
+        .nav-item.active {
+            background-color: rgba(3,137,207,0.07);
+            border-left-color: var(--color-primary);
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        .main-content { margin-left: 240px; padding: 2rem; }
+        .sticky-navbar {
+            position: sticky; top: 0; height: 4rem; background-color: white;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; z-index: 50;
+        }
+        .lang-btn {
+            padding: 0.4rem 0.7rem; border-radius: 0.375rem;
+            border: 2px solid #e5e7eb; background: white;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
+            color: #666; transition: all 0.2s;
+        }
+        .lang-btn.active { background: #E8792F; color: white; border-color: #E8792F; }
+        .lang-btn:hover:not(.active) { border-color: #0389CF; color: #0389CF; }
+        .info-box { background-color: var(--color-light-blue); border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+        .warning-box { background-color: var(--color-light-yellow); border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+        .success-box { background-color: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+        table { width: 100%; border-collapse: collapse; background-color: white; }
+        th { background-color: var(--color-primary); color: white; padding: 1rem; text-align: left; }
+        td { padding: 0.875rem 1rem; border-bottom: 1px solid #e0e0e0; }
+        tr:hover td { background-color: #f8fafc; }
+        .colab-badge-btn {
+            display: inline-flex; align-items: center;
+            border: 2px solid #E8792F; border-radius: 6px;
+            overflow: hidden; text-decoration: none;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .colab-badge-btn:hover { background: #E8792F; transform: translateY(-1px); }
+        .colab-badge-btn img { display: block; height: 22px; }
+        .notebook-card {
+            background: white; border-radius: 10px;
+            border: 1px solid rgba(3,137,207,0.15);
+            padding: 0.9rem 1rem;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 0.75rem; transition: box-shadow 0.2s;
+        }
+        .notebook-card:hover { box-shadow: 0 2px 12px rgba(3,137,207,0.12); }
+        .group-grundlagen { background: rgba(3,137,207,0.04); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; }
+        .group-fallstudien { background: rgba(232,121,47,0.05); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; }
+        .group-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+        .group-label-blue { color: #0389CF; border-color: rgba(3,137,207,0.25); }
+        .group-label-orange { color: #E8792F; border-color: rgba(232,121,47,0.25); }
+        @media (max-width: 768px) { .nav-sidebar { display: none; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const COLAB_BASE = 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/';
+    const BADGE_SRC = 'https://colab.research.google.com/assets/colab-badge.svg';
+
+    const notebooks = {
+        grundlagen: [
+            { file: '00_Willkommen.ipynb', label: '00 Willkommen' },
+            { file: '01_CRISP_DM.ipynb', label: '01 CRISP-DM' },
+            { file: '02_Dateiformate.ipynb', label: '02 Dateiformate' },
+            { file: '03_APIs_WebScraping.ipynb', label: '03 APIs & Web Scraping' },
+            { file: '04_Daten_Inspizieren.ipynb', label: '04 Daten Inspizieren' },
+            { file: '05_Daten_Bereinigen.ipynb', label: '05 Daten Bereinigen' },
+            { file: '06_Daten_Transformieren.ipynb', label: '06 Daten Transformieren' },
+            { file: '07_Daten_Zusammenfuehren.ipynb', label: '07 Daten Zusammenf\u00fcgen' },
+            { file: '08_Visualisierung.ipynb', label: '08 Visualisierung' },
+        ],
+        fallstudien: [
+            { file: '09_Fallstudie_Customer_Churn.ipynb', label: '09 Fallstudie: Customer Churn' },
+            { file: '10_Fallstudie_Movies.ipynb', label: '10 Fallstudie: Movies' },
+            { file: '11_Fallstudie_Used_Cars.ipynb', label: '11 Fallstudie: Used Cars' },
+            { file: '12_Fallstudie_Supermarkt.ipynb', label: '12 Fallstudie: Supermarkt' },
+            { file: '13_Fallstudie_HR_Analytics.ipynb', label: '13 Fallstudie: HR Analytics' },
+            { file: '14_Fallstudie_Energie.ipynb', label: '14 Fallstudie: Energie' },
+            { file: '15_Fallstudie_Ecommerce.ipynb', label: '15 Fallstudie: Ecommerce' },
+            { file: '16_Wissenstests.ipynb', label: '16 Wissenstests' },
+        ]
+    };
+
+    const t = {
+        de: {
+            title: 'Mit Google Colab starten',
+            subtitle: 'Kein Setup. Kein Download. Einfach \u00f6ffnen und loslegen.',
+            brand: '\u2190 DAV Lab',
+            nav: ['\u00dcberblick', 'Warum Colab?', 'Schritt 1: \u00d6ffnen', 'Schritt 2: Ausf\u00fchren', 'Schritt 3: Speichern', 'Alle Notebooks', 'Tipps & Tricks'],
+
+            overview_title: '\u00dcberblick: Google Colab',
+            overview_desc: 'Google Colab ist eine kostenlose, cloudbasierte Jupyter-Umgebung von Google. Keine Installation n\u00f6tig \u2014 Python, pandas und plotly laufen direkt im Browser auf Google-Servern.',
+            features: [
+                { icon: '\u2665', label: 'Kostenlos & sofort', desc: 'Kein Kauf, keine Registrierung mit Kreditkarte. Google-Account reicht.' },
+                { icon: '\u25a0', label: 'Kein Install', desc: 'Kein Python, kein pip, kein Docker. Der Browser ist alles, was Sie brauchen.' },
+                { icon: '\u25b6', label: '\u00dcberall verf\u00fcgbar', desc: 'Windows, Mac, Linux, iPad \u2014 \u00fcberall wo ein moderner Browser l\u00e4uft.' },
+            ],
+
+            why_title: 'Warum Colab? \u2014 Docker vs. Colab',
+            why_desc: 'F\u00fcr die DAV-Vorlesung ist Google Colab die einfachste M\u00f6glichkeit, mit den Notebooks zu arbeiten.',
+            docker_label: 'Docker (fr\u00fcher)',
+            colab_label: 'Google Colab (jetzt)',
+            docker_items: ['Terminal \u00f6ffnen', 'Docker Desktop installieren', '~2 GB Download', 'Lokale Ressourcen', 'Windows / Mac / Linux'],
+            colab_items: ['Browser \u00f6ffnen', 'Google-Account', '0 MB Download', 'Google-Server', '\u00dcberall'],
+
+            step1_title: 'Schritt 1: Notebook \u00f6ffnen',
+            step1_option_a: 'Option A: Direktlink (empfohlen)',
+            step1_option_a_desc: 'Klicken Sie auf einen der Colab-Badges auf den Lab-Seiten oder weiter unten auf dieser Seite. Das Notebook \u00f6ffnet sich direkt in Google Colab \u2014 fertig.',
+            step1_option_b: 'Option B: Manuell \u00fcber GitHub',
+            step1_option_b_steps: [
+                'Gehen Sie zu colab.research.google.com',
+                'Datei \u2192 Notebook \u00f6ffnen',
+                'GitHub-Tab w\u00e4hlen',
+                'Repository eingeben: swrobuts/dav',
+                'Branch: main',
+                'Notebook aus der Liste w\u00e4hlen: notebooks/[Name].ipynb',
+            ],
+
+            step2_title: 'Schritt 2: Zellen ausf\u00fchren',
+            step2_run_all: 'Laufzeit \u2192 Alle ausf\u00fchren (Strg+F9)',
+            step2_run_all_desc: 'F\u00fchrt alle Zellen des Notebooks auf einmal aus.',
+            step2_run_one: 'Oder: \u25b6 Schaltfl\u00e4che links neben jeder Zelle klicken',
+            step2_run_one_desc: 'F\u00fchrt einzelne Zellen aus.',
+            step2_note_title: 'Wichtig: Setup-Zelle zuerst ausf\u00fchren',
+            step2_note_desc: 'Die erste Zelle in jedem Notebook ist die "Setup"-Zelle. Diese installiert die ben\u00f6tigten Pakete und MUSS zuerst ausgef\u00fchrt werden, bevor andere Zellen ausgef\u00fchrt werden.',
+
+            step3_title: 'Schritt 3: Arbeit speichern',
+            step3_gdrive: 'In Google Drive speichern (empfohlen)',
+            step3_gdrive_desc: 'Datei \u2192 In Google Drive speichern. Ihre \u00c4nderungen werden dauerhaft in Ihrem Google Drive abgelegt und sind beim n\u00e4chsten \u00d6ffnen noch da.',
+            step3_download: 'Herunterladen (.ipynb)',
+            step3_download_desc: 'Datei \u2192 Herunterladen \u2192 .ipynb herunterladen. F\u00fcr eine lokale Sicherungskopie auf Ihrem Computer.',
+            step3_warning: 'Colab speichert NICHT automatisch zwischen Sessions. Beim Schlie\u00dfen des Tabs gehen ungespeicherte \u00c4nderungen verloren. Speichern Sie Ihre Arbeit regelm\u00e4\u00dfig!',
+
+            notebooks_title: 'Alle Notebooks \u2014 direkt \u00f6ffnen',
+            notebooks_desc: 'Klicken Sie auf einen Badge, um das Notebook sofort in Google Colab zu \u00f6ffnen.',
+            group_grundlagen: 'Grundlagen (00\u201308)',
+            group_fallstudien: 'Fallstudien (09\u201316)',
+
+            tips_title: 'Tipps & Tricks',
+            tips: [
+                { icon: '\u2714', title: 'Daten werden automatisch geladen', desc: 'Alle DAV-Notebooks verwenden GitHub Raw URLs f\u00fcr den Datenzugriff. Kein manuelles Hochladen von CSV-Dateien n\u00f6tig \u2014 die Daten werden beim Ausf\u00fchren direkt aus GitHub geladen.' },
+                { icon: '\u2714', title: 'GPU nicht n\u00f6tig f\u00fcr DAV', desc: 'Die DAV-\u00dcbungen sind f\u00fcr klassisches Data Analysis ausgelegt und brauchen keine GPU. Die Standard-Laufzeit (CPU) reicht vollkommen aus.' },
+                { icon: '\u26a0', title: 'Session-Trennung nach Inaktivit\u00e4t', desc: 'Colab trennt die Verbindung nach ca. 90 Minuten Inaktivit\u00e4t. Danach m\u00fcssen alle Zellen neu ausgef\u00fchrt werden. Speichern Sie Ihre Arbeit regelm\u00e4\u00dfig in Google Drive.' },
+                { icon: '\u21ba', title: 'Notebook zur\u00fccksetzen', desc: 'Wenn etwas nicht mehr funktioniert: Laufzeit \u2192 Laufzeit neu starten und alle ausf\u00fchren. Das setzt den Kernel-Zustand zur\u00fcck und f\u00fchrt alle Zellen von vorne aus.' },
+            ],
+        },
+        en: {
+            title: 'Start with Google Colab',
+            subtitle: 'No setup. No download. Just open and start.',
+            brand: '\u2190 DAV Lab',
+            nav: ['Overview', 'Why Colab?', 'Step 1: Open', 'Step 2: Run', 'Step 3: Save', 'All Notebooks', 'Tips & Tricks'],
+
+            overview_title: 'Overview: Google Colab',
+            overview_desc: 'Google Colab is a free, cloud-based Jupyter environment by Google. No installation required \u2014 Python, pandas and plotly run directly in your browser on Google\u2019s servers.',
+            features: [
+                { icon: '\u2665', label: 'Free & instant', desc: 'No purchase, no credit card registration. A Google account is all you need.' },
+                { icon: '\u25a0', label: 'No install', desc: 'No Python, no pip, no Docker. The browser is everything you need.' },
+                { icon: '\u25b6', label: 'Available everywhere', desc: 'Windows, Mac, Linux, iPad \u2014 anywhere a modern browser runs.' },
+            ],
+
+            why_title: 'Why Colab? \u2014 Docker vs. Colab',
+            why_desc: 'For the DAV course, Google Colab is the easiest way to work with the notebooks.',
+            docker_label: 'Docker (before)',
+            colab_label: 'Google Colab (now)',
+            docker_items: ['Open terminal', 'Install Docker Desktop', '~2 GB download', 'Local resources', 'Windows / Mac / Linux'],
+            colab_items: ['Open browser', 'Google account', '0 MB download', 'Google servers', 'Everywhere'],
+
+            step1_title: 'Step 1: Open Notebook',
+            step1_option_a: 'Option A: Direct link (recommended)',
+            step1_option_a_desc: 'Click on one of the Colab badges on the lab pages or below on this page. The notebook opens directly in Google Colab \u2014 done.',
+            step1_option_b: 'Option B: Manually via GitHub',
+            step1_option_b_steps: [
+                'Go to colab.research.google.com',
+                'File \u2192 Open notebook',
+                'Select the GitHub tab',
+                'Enter repository: swrobuts/dav',
+                'Branch: main',
+                'Choose a notebook from the list: notebooks/[Name].ipynb',
+            ],
+
+            step2_title: 'Step 2: Run Cells',
+            step2_run_all: 'Runtime \u2192 Run all (Ctrl+F9)',
+            step2_run_all_desc: 'Runs all cells in the notebook at once.',
+            step2_run_one: 'Or: click the \u25b6 button to the left of each cell',
+            step2_run_one_desc: 'Runs individual cells.',
+            step2_note_title: 'Important: Run the setup cell first',
+            step2_note_desc: 'The first cell in every notebook is the "Setup" cell. It installs the required packages and MUST be run before any other cell.',
+
+            step3_title: 'Step 3: Save Your Work',
+            step3_gdrive: 'Save to Google Drive (recommended)',
+            step3_gdrive_desc: 'File \u2192 Save in Drive. Your changes are permanently stored in your Google Drive and will be there the next time you open it.',
+            step3_download: 'Download (.ipynb)',
+            step3_download_desc: 'File \u2192 Download \u2192 Download .ipynb. For a local backup copy on your computer.',
+            step3_warning: 'Colab does NOT automatically save between sessions. Closing the tab will discard unsaved changes. Save your work regularly!',
+
+            notebooks_title: 'All Notebooks \u2014 open directly',
+            notebooks_desc: 'Click a badge to open the notebook instantly in Google Colab.',
+            group_grundlagen: 'Fundamentals (00\u201308)',
+            group_fallstudien: 'Case Studies (09\u201316)',
+
+            tips_title: 'Tips & Tricks',
+            tips: [
+                { icon: '\u2714', title: 'Data loads automatically', desc: 'All DAV notebooks use GitHub Raw URLs for data access. No manual CSV uploading needed \u2014 data is loaded directly from GitHub when you run the cells.' },
+                { icon: '\u2714', title: 'No GPU needed for DAV', desc: 'The DAV exercises are designed for classic data analysis and don\u2019t require a GPU. The standard runtime (CPU) is more than sufficient.' },
+                { icon: '\u26a0', title: 'Session disconnect after inactivity', desc: 'Colab disconnects after approximately 90 minutes of inactivity. After that, all cells need to be re-run. Save your work to Google Drive regularly.' },
+                { icon: '\u21ba', title: 'Reset notebook', desc: 'If something stops working: Runtime \u2192 Restart runtime and run all. This resets the kernel state and runs all cells from scratch.' },
+            ],
+        }
+    };
+
+    const sections = ['overview', 'why', 'step1', 'step2', 'step3', 'notebooks', 'tips'];
+
+    function ColabBadge({ file, label }) {
+        const url = COLAB_BASE + file;
+        return (
+            <div className="notebook-card">
+                <span className="text-sm font-semibold text-gray-700">{label}</span>
+                <a href={url} target="_blank" rel="noopener noreferrer" className="colab-badge-btn" title={'Open ' + label + ' in Colab'}>
+                    <img src={BADGE_SRC} alt="Open in Colab" />
+                </a>
+            </div>
+        );
+    }
+
+    function App() {
+        const [lang, setLang] = useState('de');
+        const [active, setActive] = useState('overview');
+        const tr = t[lang];
+
+        const scrollTo = (id) => {
+            setActive(id);
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        useEffect(() => {
+            const handler = () => {
+                for (const s of sections) {
+                    const el = document.getElementById(s);
+                    if (el) {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.top <= 120 && rect.bottom >= 120) { setActive(s); break; }
+                    }
+                }
+            };
+            window.addEventListener('scroll', handler);
+            return () => window.removeEventListener('scroll', handler);
+        }, []);
+
+        return (
+            <div>
+                {/* Top Navbar */}
+                <div className="sticky-navbar">
+                    <div className="flex items-center gap-4">
+                        <a href="index.html" className="text-sm font-semibold" style={{color:'#0389CF'}}>{tr.brand}</a>
+                        <span style={{color:'#d1d5db'}}>|</span>
+                        <span className="font-bold" style={{color:'#1e293b'}}>{tr.title}</span>
+                    </div>
+                    <div className="flex gap-2">
+                        <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
+                        <button className={`lang-btn ${lang==='en'?'active':''}`} onClick={() => setLang('en')}>EN</button>
+                    </div>
+                </div>
+
+                {/* Sidebar */}
+                <nav className="nav-sidebar">
+                    <div className="py-4">
+                        {sections.map((s, i) => (
+                            <div key={s} className={`nav-item ${active===s?'active':''}`} onClick={() => scrollTo(s)}>
+                                {tr.nav[i]}
+                            </div>
+                        ))}
+                    </div>
+                </nav>
+
+                {/* Main Content */}
+                <main className="main-content max-w-4xl">
+
+                    {/* Hero */}
+                    <div style={{background:'#0389CF'}} className="text-white rounded-2xl p-8 mb-8 flex items-center gap-6">
+                        <div style={{background:'rgba(255,255,255,0.15)', borderRadius:12, padding:'1rem', display:'inline-flex', flexShrink:0}}>
+                            {/* Google Colab / Notebook play icon */}
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="4" width="36" height="36" rx="8" fill="rgba(255,255,255,0.2)" stroke="white" strokeWidth="2"/>
+                                <rect x="8" y="12" width="14" height="2.5" rx="1.25" fill="white" opacity="0.7"/>
+                                <rect x="8" y="18" width="10" height="2.5" rx="1.25" fill="white" opacity="0.5"/>
+                                <rect x="8" y="24" width="12" height="2.5" rx="1.25" fill="white" opacity="0.5"/>
+                                <rect x="8" y="30" width="8" height="2.5" rx="1.25" fill="white" opacity="0.4"/>
+                                <circle cx="33" cy="29" r="8" fill="#E8792F"/>
+                                <polygon points="30.5,25.5 30.5,32.5 37,29" fill="white"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 className="text-3xl font-black mb-2">{tr.title}</h1>
+                            <p className="text-lg opacity-80">{tr.subtitle}</p>
+                        </div>
+                    </div>
+
+                    {/* Overview */}
+                    <section id="overview">
+                        <h2 className="section-header">{tr.overview_title}</h2>
+                        <p className="text-gray-600 mb-6">{tr.overview_desc}</p>
+                        <div className="grid md:grid-cols-3 gap-4 mb-4">
+                            {tr.features.map((f, i) => (
+                                <div key={i} className="rounded-xl p-5 border text-center" style={{borderColor:'rgba(3,137,207,0.2)', background:'rgba(3,137,207,0.03)'}}>
+                                    <div className="text-2xl mb-2" style={{color:'#0389CF'}}>
+                                        {i === 0 && (
+                                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0389CF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{margin:'0 auto'}}><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+                                        )}
+                                        {i === 1 && (
+                                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0389CF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{margin:'0 auto'}}><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                        )}
+                                        {i === 2 && (
+                                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0389CF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{margin:'0 auto'}}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                        )}
+                                    </div>
+                                    <h3 className="font-bold mb-1" style={{color:'#0389CF'}}>{f.label}</h3>
+                                    <p className="text-gray-600 text-sm">{f.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Why Colab */}
+                    <section id="why">
+                        <h2 className="section-header">{tr.why_title}</h2>
+                        <p className="text-gray-600 mb-6">{tr.why_desc}</p>
+                        <div className="grid md:grid-cols-2 gap-4 mb-4">
+                            {/* Docker box */}
+                            <div className="rounded-xl p-5 border" style={{borderColor:'rgba(100,116,139,0.3)', background:'#f8fafc'}}>
+                                <div className="flex items-center gap-2 mb-3">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                    <h3 className="font-bold text-gray-500">{tr.docker_label}</h3>
+                                </div>
+                                <ul className="space-y-2">
+                                    {tr.docker_items.map((item, i) => (
+                                        <li key={i} className="flex items-center gap-2 text-gray-500 text-sm">
+                                            <span className="text-gray-400 font-bold">&#x2715;</span>{item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            {/* Colab box — winner */}
+                            <div className="rounded-xl p-5 border-2" style={{borderColor:'#E8792F', background:'rgba(232,121,47,0.04)'}}>
+                                <div className="flex items-center gap-2 mb-3">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8792F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                                    <h3 className="font-bold" style={{color:'#E8792F'}}>{tr.colab_label}</h3>
+                                    <span className="text-xs font-bold px-2 py-0.5 rounded-full text-white ml-auto" style={{background:'#E8792F'}}>&#10003; Empfohlen</span>
+                                </div>
+                                <ul className="space-y-2">
+                                    {tr.colab_items.map((item, i) => (
+                                        <li key={i} className="flex items-center gap-2 text-sm font-medium" style={{color:'#374151'}}>
+                                            <span className="font-bold" style={{color:'#E8792F'}}>&#x2713;</span>{item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Step 1: Open */}
+                    <section id="step1">
+                        <h2 className="section-header">{tr.step1_title}</h2>
+
+                        {/* Option A */}
+                        <div className="mb-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="step-number">A</div>
+                                <p className="font-semibold text-gray-800">{tr.step1_option_a}</p>
+                            </div>
+                            <div className="success-box ml-10">
+                                <p className="text-green-800 text-sm">{tr.step1_option_a_desc}</p>
+                                <div className="mt-3">
+                                    <a href={COLAB_BASE + '00_Willkommen.ipynb'} target="_blank" rel="noopener noreferrer" className="colab-badge-btn">
+                                        <img src={BADGE_SRC} alt="Open in Colab" />
+                                    </a>
+                                    <span className="text-xs text-gray-500 ml-3">Beispiel: 00 Willkommen</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Option B */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="step-number">B</div>
+                                <p className="font-semibold text-gray-800">{tr.step1_option_b}</p>
+                            </div>
+                            <div className="ml-10">
+                                <ol className="space-y-2">
+                                    {tr.step1_option_b_steps.map((step, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                                            <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5" style={{background:'rgba(3,137,207,0.5)'}}>{i+1}</span>
+                                            {step}
+                                        </li>
+                                    ))}
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Step 2: Run */}
+                    <section id="step2">
+                        <h2 className="section-header">{tr.step2_title}</h2>
+
+                        <div className="grid md:grid-cols-2 gap-4 mb-4">
+                            <div className="rounded-xl p-5 border" style={{borderColor:'rgba(3,137,207,0.2)', background:'rgba(3,137,207,0.03)'}}>
+                                <p className="font-bold text-gray-800 mb-1">{tr.step2_run_all}</p>
+                                <p className="text-gray-600 text-sm">{tr.step2_run_all_desc}</p>
+                                <div className="code-block mt-3">
+                                    <pre className="code-text">{'Runtime \u2192 Run all\n(Ctrl+F9)'}</pre>
+                                </div>
+                            </div>
+                            <div className="rounded-xl p-5 border" style={{borderColor:'rgba(3,137,207,0.2)', background:'rgba(3,137,207,0.03)'}}>
+                                <p className="font-bold text-gray-800 mb-1">{tr.step2_run_one}</p>
+                                <p className="text-gray-600 text-sm">{tr.step2_run_one_desc}</p>
+                                <div className="mt-3 flex items-center gap-2">
+                                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm" style={{background:'#0389CF'}}>&#9654;</span>
+                                    <span className="text-sm text-gray-500">{lang === 'de' ? 'Schaltfl\u00e4che neben der Zelle' : 'Button next to the cell'}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="warning-box">
+                            <p className="font-bold text-yellow-800 text-sm mb-1">&#9888; {tr.step2_note_title}</p>
+                            <p className="text-yellow-700 text-sm">{tr.step2_note_desc}</p>
+                        </div>
+                    </section>
+
+                    {/* Step 3: Save */}
+                    <section id="step3">
+                        <h2 className="section-header">{tr.step3_title}</h2>
+
+                        <div className="grid md:grid-cols-2 gap-4 mb-4">
+                            <div className="rounded-xl p-5 border-2" style={{borderColor:'rgba(34,197,94,0.4)', background:'#f0fdf4'}}>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                                    <p className="font-bold text-green-800">{tr.step3_gdrive}</p>
+                                </div>
+                                <p className="text-green-700 text-sm">{tr.step3_gdrive_desc}</p>
+                            </div>
+                            <div className="rounded-xl p-5 border" style={{borderColor:'rgba(3,137,207,0.2)', background:'rgba(3,137,207,0.03)'}}>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0389CF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <p className="font-bold" style={{color:'#0389CF'}}>{tr.step3_download}</p>
+                                </div>
+                                <p className="text-gray-600 text-sm">{tr.step3_download_desc}</p>
+                            </div>
+                        </div>
+
+                        <div className="warning-box">
+                            <p className="font-bold text-yellow-800 text-sm mb-1">&#9888; {lang === 'de' ? 'Hinweis' : 'Note'}</p>
+                            <p className="text-yellow-700 text-sm">{tr.step3_warning}</p>
+                        </div>
+                    </section>
+
+                    {/* All Notebooks */}
+                    <section id="notebooks">
+                        <h2 className="section-header">{tr.notebooks_title}</h2>
+                        <p className="text-gray-600 mb-6">{tr.notebooks_desc}</p>
+
+                        {/* Grundlagen */}
+                        <div className="group-grundlagen">
+                            <div className="group-label group-label-blue">{tr.group_grundlagen}</div>
+                            <div className="space-y-2">
+                                {notebooks.grundlagen.map((nb) => (
+                                    <ColabBadge key={nb.file} file={nb.file} label={nb.label} />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Fallstudien */}
+                        <div className="group-fallstudien">
+                            <div className="group-label group-label-orange">{tr.group_fallstudien}</div>
+                            <div className="space-y-2">
+                                {notebooks.fallstudien.map((nb) => (
+                                    <ColabBadge key={nb.file} file={nb.file} label={nb.label} />
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Tips & Tricks */}
+                    <section id="tips" className="mb-16">
+                        <h2 className="section-header">{tr.tips_title}</h2>
+                        <div className="space-y-4">
+                            {tr.tips.map((tip, i) => (
+                                <div key={i} className="border rounded-xl overflow-hidden" style={{borderColor:'rgba(3,137,207,0.15)'}}>
+                                    <div className="p-4 flex items-start gap-3" style={{background: i === 2 ? 'rgba(251,191,36,0.08)' : 'rgba(3,137,207,0.05)', borderLeft: `4px solid ${i === 2 ? '#fbbf24' : '#0389CF'}`}}>
+                                        <div className="flex-1">
+                                            <p className="font-bold mb-1" style={{color: i === 2 ? '#92400e' : '#0389CF'}}>{tip.title}</p>
+                                            <p className="text-sm" style={{color: i === 2 ? '#78350f' : '#374151'}}>{tip.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* CTA */}
+                    <section className="mb-16">
+                        <div style={{background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
+                            <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'0.5rem'}}>
+                                {lang === 'de' ? 'Bereit? Jetzt loslegen:' : 'Ready? Start now:'}
+                            </p>
+                            <p style={{color:'rgba(255,255,255,0.75)', fontSize:'0.9rem', marginBottom:'1.25rem'}}>
+                                {lang === 'de' ? 'Starten Sie mit dem Willkommen-Notebook.' : 'Start with the welcome notebook.'}
+                            </p>
+                            <a href={COLAB_BASE + '00_Willkommen.ipynb'}
+                               target="_blank" rel="noopener noreferrer"
+                               style={{display:'inline-flex', alignItems:'center', gap:'0.6rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                                {lang === 'de' ? '00 Willkommen in Colab \u00f6ffnen' : 'Open 00 Welcome in Colab'}
+                            </a>
+                        </div>
+                    </section>
+
+                </main>
+
+                {/* Footer */}
+                <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:240}}>
+                    <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut f\u00fcr BBA Studierende \u00b7 THWS W\u00fcrzburg-Schweinfurt</p>
+                    <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                    <div style={{marginTop:'1rem'}}>
+                        <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>\u2190 DAV Lab</a>
+                    </div>
+                </footer>
+            </div>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

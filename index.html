@@ -267,18 +267,18 @@ const LAB_ICONS = [ICON_LAYERS, ICON_DOWNLOAD, ICON_BARCHART, ICON_FILTER, ICON_
 /* ── Translations ── */
 const T = {
     de: {
-        nav: { labs: 'Module', docker: 'Docker', about: 'Kurs' },
+        nav: { labs: 'Module', docker: 'Colab', about: 'Kurs' },
         hero: {
             badge: 'THWS BBA · Sommersemester 2026',
             headline: 'Datenaufbereitung und -verarbeitung',
             tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
             sub: 'Praktisches Lernen mit Python, pandas und JupyterLab',
-            cta: 'Module erkunden', cta2: 'Docker starten'
+            cta: 'Module erkunden', cta2: 'In Colab öffnen'
         },
         stats: [
             { val: '6',   label: 'Themenmodule' },
-            { val: '12+', label: 'Notebooks' },
-            { val: '3',   label: 'Fallstudien' },
+            { val: '16+', label: 'Notebooks' },
+            { val: '7',   label: 'Fallstudien' },
             { val: 'SQL', label: 'Python + SQL', icon: true }
         ],
         workflow_title: 'Der DAV-Workflow',
@@ -308,14 +308,14 @@ const T = {
         ],
         diffClass: { 'Einstieg': 'diff-einstieg', 'Grundlagen': 'diff-grundlagen', 'Fortgeschritten': 'diff-fortgeschritten' },
         cta_module: 'Zum Modul →',
-        docker_title: 'Lernumgebung starten',
-        docker_sub: 'JupyterLab + Python + PostgreSQL – alles in Docker, läuft auf Windows, Mac & Linux.',
+        docker_title: 'Jetzt mit Google Colab starten',
+        docker_sub: 'Kein Setup. Kein Download. Python direkt im Browser – auf jedem Gerät.',
         docker_steps: [
-            { label: '1. Repository klonen', code: 'git clone https://github.com/swrobuts/dav.git\ncd dav/docker' },
-            { label: '2. Container starten',  code: 'docker compose up -d' },
-            { label: '3. JupyterLab öffnen', code: 'http://localhost:8888' }
+            { label: '1. Notebook öffnen', code: 'colab.research.google.com\noder Colab-Badge klicken →' },
+            { label: '2. Laufzeit starten',  code: 'Laufzeit → Alle ausführen\n(Strg+F9)' },
+            { label: '3. Fertig!', code: 'Alles läuft in der Cloud.\nKein Install nötig.' }
         ],
-        docker_cta: 'Vollständiger Docker Guide →',
+        docker_cta: 'Vollständiger Colab Guide →',
         about_title: 'Über den Kurs',
         about_desc: 'Der Kurs „Datenaufbereitung und -verarbeitung" im BBA-Studiengang an der THWS vermittelt die praktischen Grundlagen der Datenvorbereitung für Analyse und Machine Learning. 80 % der Arbeit eines Data Scientists entfällt auf Datenaufbereitung – dieser Kurs macht Sie damit vertraut.',
         why_title: 'Warum DAV?',
@@ -333,18 +333,18 @@ const T = {
         footer_github: 'GitHub Repository'
     },
     en: {
-        nav: { labs: 'Modules', docker: 'Docker', about: 'Course' },
+        nav: { labs: 'Modules', docker: 'Colab', about: 'Course' },
         hero: {
             badge: 'THWS BBA · Summer Term 2026',
             headline: 'Data Preparation & Processing',
             tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
             sub: 'Practical learning with Python, pandas and JupyterLab',
-            cta: 'Explore Modules', cta2: 'Start Docker'
+            cta: 'Explore Modules', cta2: 'Open in Colab'
         },
         stats: [
             { val: '6',   label: 'Topic Modules' },
-            { val: '12+', label: 'Notebooks' },
-            { val: '3',   label: 'Case Studies' },
+            { val: '16+', label: 'Notebooks' },
+            { val: '7',   label: 'Case Studies' },
             { val: 'SQL', label: 'Python + SQL', icon: true }
         ],
         workflow_title: 'The DAV Workflow',
@@ -374,14 +374,14 @@ const T = {
         ],
         diffClass: { 'Beginner': 'diff-einstieg', 'Foundation': 'diff-grundlagen', 'Advanced': 'diff-fortgeschritten' },
         cta_module: 'Open Module →',
-        docker_title: 'Start Your Environment',
-        docker_sub: 'JupyterLab + Python + PostgreSQL – all in Docker, runs on Windows, Mac & Linux.',
+        docker_title: 'Start with Google Colab Now',
+        docker_sub: 'No setup. No download. Python directly in the browser – on any device.',
         docker_steps: [
-            { label: '1. Clone Repository', code: 'git clone https://github.com/swrobuts/dav.git\ncd dav/docker' },
-            { label: '2. Start Containers',  code: 'docker compose up -d' },
-            { label: '3. Open JupyterLab', code: 'http://localhost:8888' }
+            { label: '1. Open Notebook', code: 'colab.research.google.com\nor click a Colab badge →' },
+            { label: '2. Start Runtime',  code: 'Runtime → Run all\n(Ctrl+F9)' },
+            { label: '3. Done!', code: 'Everything runs in the cloud.\nNo installation needed.' }
         ],
-        docker_cta: 'Full Docker Guide →',
+        docker_cta: 'Full Colab Guide →',
         about_title: 'About the Course',
         about_desc: 'The course "Data Preparation & Processing" in the BBA program at THWS teaches practical foundations of data preparation for analysis and machine learning. 80% of a data scientist\'s work involves data preparation – this course makes you proficient.',
         why_title: 'Why DAV?',
@@ -442,7 +442,7 @@ function App() {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                         <div className="hidden md:flex" style={{ gap: '1.5rem', display: 'flex' }}>
-                            {[['#labs', t.nav.labs], ['#docker', t.nav.docker], ['#about', t.nav.about]].map(([href, label]) => (
+                            {[['#labs', t.nav.labs], ['#docker', t.nav.docker], ['#about', t.nav.about]].map(([href, label]) => (  // #docker section now hosts Colab CTA
                                 <a key={href} href={href} style={{ color: '#64748b', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.15s' }}
                                    onMouseOver={e => e.target.style.color='#0389CF'} onMouseOut={e => e.target.style.color='#64748b'}>{label}</a>
                             ))}
@@ -493,7 +493,7 @@ function App() {
                                onMouseOver={e => e.currentTarget.style.transform='translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform='none'}>
                                 {t.hero.cta} →
                             </a>
-                            <a href="docker-guide.html" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', fontWeight: 700, padding: '0.9rem 2rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none', backdropFilter: 'blur(4px)', transition: 'background 0.15s' }}
+                            <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/00_Willkommen.ipynb" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', fontWeight: 700, padding: '0.9rem 2rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none', backdropFilter: 'blur(4px)', transition: 'background 0.15s' }}
                                onMouseOver={e => e.currentTarget.style.background='rgba(255,255,255,0.22)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.15)'}>
                                 <Icon paths={ICON_PACKAGE} size={18}/> {t.hero.cta2}
                             </a>
@@ -568,7 +568,7 @@ function App() {
                 </div>
             </section>
 
-            {/* ── Docker CTA ── */}
+            {/* ── Colab CTA ── */}
             <section id="docker" style={{ padding: '5rem 1.5rem', background: '#0389CF' }}>
                 <div style={{ maxWidth: 960, margin: '0 auto', color: 'white' }} ref={ref}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
@@ -589,7 +589,7 @@ function App() {
                         ))}
                     </div>
                     <div style={{ textAlign: 'center' }}>
-                        <a href="docker-guide.html" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8792F', color: 'white', fontWeight: 800, padding: '1rem 2.25rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none' }}>
+                        <a href="colab-guide.html" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8792F', color: 'white', fontWeight: 800, padding: '1rem 2.25rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none' }}>
                             {t.docker_cta}
                         </a>
                     </div>
