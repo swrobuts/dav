@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daten transformieren – DAV Lab</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #0389CF; --orange: #E8792F; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; }
+        .header { position: fixed; top: 0; left: 0; right: 0; background: var(--primary); color: white; height: 4rem; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 50; }
+        .sidebar { position: fixed; left: 0; top: 4rem; width: 260px; height: calc(100vh - 4rem); background: #f0f4f8; border-right: 1px solid #ddd; overflow-y: auto; padding: 1.5rem 0; z-index: 40; }
+        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; border-left: 4px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; transition: all 0.2s; }
+        .sidebar-item:hover { background: #e1eaf5; }
+        .sidebar-item.active { background: var(--orange); color: white; border-left-color: var(--orange); }
+        .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
+        .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; font-size: 0.85rem; margin: 1rem 0; white-space: pre; overflow-x: auto; }
+        .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .lang-btn { padding: 0.4rem 0.75rem; border: 2px solid rgba(255,255,255,0.4); background: transparent; border-radius: 0.375rem; cursor: pointer; font-weight: 600; font-size: 0.8rem; color: white; }
+        .lang-btn.active { background: var(--orange); border-color: var(--orange); }
+        .quiz-option { display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; font-size: 0.9rem; text-align: left; background: white; transition: all 0.2s; }
+        .quiz-option:hover { border-color: var(--primary); background: #eff6ff; }
+        .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; }
+        .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; }
+        h2 { color: var(--primary); font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+        h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+        p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
+        @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+const sectionIds = ['overview','reshape','encoding','scaling','engineering','merging','quiz','notebook'];
+
+function QuizSection({ questions, title, intro }) {
+    const [answers, setAnswers] = useState({});
+    const [checked, setChecked] = useState({});
+    const [score, setScore] = useState(null);
+    const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
+    const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
+    return (
+        <div><h2>{title}</h2><p>{intro}</p>
+        {questions.map((q,qi) => (
+            <div key={qi} className="mb-6 p-4 bg-white rounded-xl border border-gray-200">
+                <p className="font-semibold text-gray-800 mb-3">{qi+1}. {q.q}</p>
+                {q.opts.map((opt,oi) => <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>)}
+            </div>
+        ))}
+        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+        {score !== null && <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}><p className="text-2xl font-black">{score}/{questions.length}</p><p>{score>=questions.length*0.8?'✓ Sehr gut!':'Nochmal lesen!'}</p></div>}
+        </div>
+    );
+}
+
+const quiz_questions = [
+    { q: 'Für welches Problem ist "One-Hot-Encoding" eine gängige Lösung?', opts: ['Behandlung von fehlenden Daten','Umwandlung kategorialer Daten in eine maschinenlesbare Form','Reduktion der Dimensionalität von Datensätzen','Erkennung und Korrektur von Ausreißern'], ans: 1 },
+    { q: 'Was ist "Feature Scaling"?', opts: ['Die Auswahl der wichtigsten Merkmale für das maschinelle Lernen','Die Anpassung der Größe von Grafiken','Die Normalisierung oder Standardisierung von Merkmalen in einem Datensatz','Die Erzeugung neuer Merkmale aus bestehenden Daten'], ans: 2 },
+    { q: 'Was beschreibt den Prozess der "Feature Extraction" am besten?', opts: ['Auswahl existierender Merkmale aus dem Datensatz','Erzeugung neuer Merkmale aus den vorhandenen Daten zur Verbesserung der Modellleistung','Reduktion der Merkmalsdimension durch Eliminierung','Bereinigung der Merkmalswerte'], ans: 1 },
+    { q: 'Was ist kein direktes Ziel der Datentransformation?', opts: ['Konvertierung von Daten in ein einheitliches Format','Normalisierung der Daten','Erzeugung von Mehrwert durch Datenanreicherung','Aggregation von Daten'], ans: 2 },
+    { q: 'Was beschreibt "Data Integration" im Rahmen der Datenaufbereitung?', opts: ['Die Analyse und Interpretation von Daten','Die Zusammenführung von Daten aus diversen Quellen zu einem einheitlichen Datenbestand','Das Löschen aller Daten, die nicht sofort analysiert werden können','Die Erstellung von Berichten ohne vorherige Datenbereinigung'], ans: 1 }
+];
+
+function App() {
+    const [lang, setLang] = useState('de');
+    const [active, setActive] = useState('overview');
+    const scrollTo = (id) => { setActive(id); document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); };
+    const sections_de = ['Überblick','Reshape','Encoding','Feature Scaling','Feature Engineering','Merging & Joining','Quiz','Notebooks'];
+    const sections_en = ['Overview','Reshape','Encoding','Feature Scaling','Feature Engineering','Merging & Joining','Quiz','Notebooks'];
+    const sections = lang === 'de' ? sections_de : sections_en;
+
+    return (
+        <div>
+            <div className="header">
+                <div className="flex items-center gap-4">
+                    <a href="index.html" className="text-white opacity-75 hover:opacity-100 text-sm">{lang==='de'?'← Zurück':'← Back'}</a>
+                    <span className="text-white opacity-30">|</span>
+                    <span className="text-white font-bold">{lang==='de'?'Daten transformieren':'Data Transformation'}</span>
+                </div>
+                <div className="flex gap-2">
+                    <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
+                    <button className={`lang-btn ${lang==='en'?'active':''}`} onClick={() => setLang('en')}>EN</button>
+                </div>
+            </div>
+            <nav className="sidebar">
+                {sectionIds.map((id,i) => <div key={id} className={`sidebar-item ${active===id?'active':''}`} onClick={() => scrollTo(id)}>{sections[i]}</div>)}
+            </nav>
+            <main className="main-content">
+                <div id="overview" className="mb-12">
+                    <h2>{lang==='de'?'Daten transformieren & strukturieren':'Data Transformation & Structuring'}</h2>
+                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Bereite den Datensatz für ein ML-Modell vor. Rohe Daten müssen in das richtige Format gebracht werden – reshape, encode, scale, engineer.':'Prepare the dataset for an ML model. Raw data must be brought into the right format – reshape, encode, scale, engineer.'}</p>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {['melt() / pivot()','One-Hot-Encoding','Label-Encoding','MinMaxScaler','StandardScaler','pd.merge() / concat()'].map((m,i) => (
+                            <div key={i} className="bg-white rounded-xl p-3 border border-gray-200 font-mono text-sm font-bold" style={{color:'#E8792F'}}>{m}</div>
+                        ))}
+                    </div>
+                </div>
+
+                <div id="reshape" className="mb-12">
+                    <h2>{lang==='de'?'Reshape: melt(), pivot(), stack()':'Reshape: melt(), pivot(), stack()'}</h2>
+                    <p className="text-gray-600 text-sm">{lang==='de'?'Manchmal müssen Daten von "wide" zu "long" Format umgewandelt werden (oder umgekehrt).':'Sometimes data needs to be converted from "wide" to "long" format (or vice versa).'}</p>
+                    <div className="code-block">{`import pandas as pd
+
+# Beispiel: Umsatzdaten nach Quartal
+df_wide = pd.DataFrame({
+    'produkt': ['A', 'B', 'C'],
+    'Q1': [100, 200, 150],
+    'Q2': [120, 180, 160],
+    'Q3': [130, 220, 140],
+    'Q4': [110, 190, 170]
+})
+
+# --- melt(): wide → long ---
+df_long = df_wide.melt(
+    id_vars=['produkt'],    # Spalten, die bleiben
+    var_name='quartal',     # Name der neuen Variable-Spalte
+    value_name='umsatz'     # Name der Wert-Spalte
+)
+print(df_long.head(8))
+
+# --- pivot(): long → wide ---
+df_back_wide = df_long.pivot(
+    index='produkt', columns='quartal', values='umsatz'
+)
+df_back_wide.columns.name = None  # Spaltennamen-Label entfernen
+print(df_back_wide)
+
+# --- pivot_table(): mit Aggregation ---
+df_pt = df_long.pivot_table(
+    index='produkt', columns='quartal',
+    values='umsatz', aggfunc='sum', fill_value=0
+)
+
+# --- stack() / unstack() ---
+# stack(): Spalten → Zeilen (wird MultiIndex)
+stacked = df_wide.set_index('produkt').stack()
+print(stacked.head())
+unstacked = stacked.unstack()  # zurück zu wide`}</div>
+                </div>
+
+                <div id="encoding" className="mb-12">
+                    <h2>{lang==='de'?'Encoding kategorischer Variablen':'Encoding Categorical Variables'}</h2>
+                    <div className="code-block">{`import pandas as pd
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+df = pd.read_csv('../data/customer_churn.csv')
+
+# --- One-Hot-Encoding (für nominale Kategorien) ---
+# pd.get_dummies() – einfach und direkt
+df_encoded = pd.get_dummies(df, columns=['contract_type', 'internet_service'],
+                            prefix=['contract', 'internet'],
+                            drop_first=True)  # erste Kategorie weglassen (Multikollinearität)
+
+# Ergebnis: neue binäre Spalten
+# contract_One year, contract_Two year, internet_DSL, internet_Fiber optic
+
+# --- Label-Encoding (für ordinale Kategorien) ---
+le = LabelEncoder()
+df['contract_encoded'] = le.fit_transform(df['contract_type'])
+print(dict(zip(le.classes_, le.transform(le.classes_))))
+# {'Month-to-month': 0, 'One year': 1, 'Two year': 2}
+
+# --- sklearn OneHotEncoder (für Pipelines) ---
+ohe = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
+encoded = ohe.fit_transform(df[['contract_type']])
+feature_names = ohe.get_feature_names_out(['contract_type'])
+df_ohe = pd.DataFrame(encoded, columns=feature_names)
+
+print("Encoding abgeschlossen!")
+print(f"Spalten vorher: {len(df.columns)}, nachher: {len(df_encoded.columns)}")`}</div>
+                    <div className="info-box"><p className="text-blue-800 text-sm"><b>One-Hot vs. Label-Encoding:</b> One-Hot für nominale Kategorien ohne Reihenfolge (Stadt, Farbe). Label-Encoding für ordinale Kategorien mit natürlicher Reihenfolge (Klein &lt; Mittel &lt; Groß).</p></div>
+                </div>
+
+                <div id="scaling" className="mb-12">
+                    <h2>{lang==='de'?'Feature Scaling: Normalisierung vs. Standardisierung':'Feature Scaling: Normalization vs. Standardization'}</h2>
+                    <div className="code-block">{`import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+df = pd.read_csv('../data/customer_churn.csv')
+numeric_cols = ['monthly_charge', 'total_charges', 'tenure_months']
+
+# --- MinMaxScaler: Normalisierung [0, 1] ---
+# Formel: (x - min) / (max - min)
+scaler_mm = MinMaxScaler()
+df_normalized = df.copy()
+df_normalized[numeric_cols] = scaler_mm.fit_transform(df[numeric_cols])
+print("Nach Normalisierung:")
+print(df_normalized[numeric_cols].describe())
+
+# --- StandardScaler: Standardisierung (Z-Score) ---
+# Formel: (x - mean) / std → Mittelwert=0, StdAbw=1
+scaler_std = StandardScaler()
+df_standardized = df.copy()
+df_standardized[numeric_cols] = scaler_std.fit_transform(df[numeric_cols])
+print("\\nNach Standardisierung:")
+print(df_standardized[numeric_cols].describe())
+
+# Wann welches Verfahren?
+# MinMax: wenn Werte im Bereich [0,1] nötig (z.B. Neural Networks)
+# Standard: wenn Normalverteilung angenommen (z.B. lineare Regression, SVM)
+# Wichtig: Scaler NUR auf Trainingsdaten fit, dann auf Test anwenden!
+
+# Rücktransformation
+df_original = pd.DataFrame(
+    scaler_mm.inverse_transform(df_normalized[numeric_cols]),
+    columns=numeric_cols
+)`}</div>
+                    <div className="tip-box"><p className="text-yellow-800 text-sm">💡 Immer: <code>fit()</code> nur auf Trainingsdaten, dann <code>transform()</code> auf Training und Test. Sonst Data Leakage!</p></div>
+                </div>
+
+                <div id="engineering" className="mb-12">
+                    <h2>{lang==='de'?'Feature Engineering':'Feature Engineering'}</h2>
+                    <div className="code-block">{`import pandas as pd
+import numpy as np
+
+df = pd.read_csv('../data/customer_churn.csv')
+
+# --- Neue Features aus bestehenden Daten ableiten ---
+
+# 1. Alter aus Datum berechnen
+from datetime import datetime
+df['kunde_seit'] = pd.to_datetime(df['start_date'])
+df['alter_monate'] = (datetime.now() - df['kunde_seit']).dt.days // 30
+
+# 2. Kategorien aus numerischen Werten erstellen (Binning)
+df['alter_gruppe'] = pd.cut(df['age'],
+    bins=[0, 25, 40, 60, 100],
+    labels=['Jung', 'Mittel', 'Senior', 'Alt']
+)
+
+# 3. Interaktionsfeatures
+df['total_charges_per_month'] = df['total_charges'] / df['tenure_months'].replace(0, 1)
+df['charge_ratio'] = df['monthly_charge'] / df['total_charges'].replace(0, 1)
+
+# 4. Boolean-Features
+df['ist_langzeitkunde'] = df['tenure_months'] > 24
+df['hohe_kosten'] = df['monthly_charge'] > df['monthly_charge'].quantile(0.75)
+
+# 5. Textfeature Engineering
+df['name_laenge'] = df['name'].str.len()
+df['hat_email_gmail'] = df['email'].str.contains('@gmail.com', na=False)
+
+print("Neue Features:", [c for c in df.columns if c not in ['customer_id']][:10])`}</div>
+                </div>
+
+                <div id="merging" className="mb-12">
+                    <h2>{lang==='de'?'Merging & Joining: Daten zusammenführen':'Merging & Joining: Combining Data'}</h2>
+                    <div className="code-block">{`import pandas as pd
+
+# Beispiel-Datensätze laden
+kunden = pd.read_csv('../data/customers.csv')     # Kundenstammdaten
+bestellungen = pd.read_csv('../data/orders.csv')   # Bestellungen
+produkte = pd.read_csv('../data/products.csv')     # Produktkatalog
+
+# --- pd.merge(): SQL-style Joins ---
+# Inner Join (nur Übereinstimmungen)
+df_inner = pd.merge(kunden, bestellungen, on='customer_id', how='inner')
+
+# Left Join (alle Kunden, auch ohne Bestellungen)
+df_left = pd.merge(kunden, bestellungen, on='customer_id', how='left')
+
+# Right Join
+df_right = pd.merge(kunden, bestellungen, on='customer_id', how='right')
+
+# Outer Join (alles)
+df_outer = pd.merge(kunden, bestellungen, on='customer_id', how='outer')
+
+# Verschiedene Schlüsselnamen
+df = pd.merge(bestellungen, produkte,
+    left_on='product_id', right_on='id', how='left')
+
+# Mehrere Schlüssel
+df = pd.merge(df1, df2, on=['kunden_id', 'datum'])
+
+# SQL-Äquivalent:
+# SELECT * FROM kunden k LEFT JOIN bestellungen b ON k.customer_id = b.customer_id
+
+# --- pd.concat(): Stapeln ---
+# Zeilenweise (neues Zeilen anfügen)
+df_all = pd.concat([kunden_2023, kunden_2024], axis=0, ignore_index=True)
+
+# Spaltenweise
+df_combined = pd.concat([df_basis, df_features], axis=1)
+
+print(f"Ergebnis: {df_inner.shape}")`}</div>
+                    <div className="info-box"><p className="text-blue-800 text-sm"><b>Merge vs. Concat:</b> merge() für Joins auf gemeinsamen Schlüsselspalten (wie SQL). concat() für einfaches Stapeln von DataFrames.</p></div>
+                </div>
+
+                <div id="quiz" className="mb-12"><QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Daten transformieren':'Quiz: Data Transformation'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} /></div>
+
+                <div id="notebook" className="mb-12">
+                    <h2>{lang==='de'?'Notebooks öffnen':'Open Notebooks'}</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {['06_Daten_Transformieren','07_Daten_Zusammenfuehren'].map(nb => (
+                            <a key={nb} href={`http://localhost:8888/lab/tree/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
+                               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
+                                📓 {nb}.ipynb
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </main>
+        </div>
+    );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

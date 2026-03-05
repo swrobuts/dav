@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fallstudien & Use Cases – DAV Lab</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #0389CF; --orange: #E8792F; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; }
+        .header { position: fixed; top: 0; left: 0; right: 0; background: var(--primary); color: white; height: 4rem; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 50; }
+        .sidebar { position: fixed; left: 0; top: 4rem; width: 260px; height: calc(100vh - 4rem); background: #f0f4f8; border-right: 1px solid #ddd; overflow-y: auto; padding: 1.5rem 0; z-index: 40; }
+        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; border-left: 4px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; transition: all 0.2s; }
+        .sidebar-item:hover { background: #e1eaf5; }
+        .sidebar-item.active { background: var(--orange); color: white; border-left-color: var(--orange); }
+        .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
+        .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; font-size: 0.85rem; margin: 1rem 0; white-space: pre; overflow-x: auto; }
+        .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .lang-btn { padding: 0.4rem 0.75rem; border: 2px solid rgba(255,255,255,0.4); background: transparent; border-radius: 0.375rem; cursor: pointer; font-weight: 600; font-size: 0.8rem; color: white; }
+        .lang-btn.active { background: var(--orange); border-color: var(--orange); }
+        .quiz-option { display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; font-size: 0.9rem; text-align: left; background: white; transition: all 0.2s; }
+        .quiz-option:hover { border-color: var(--primary); background: #eff6ff; }
+        .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; }
+        .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; }
+        h2 { color: var(--primary); font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+        h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+        p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
+        @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+const sectionIds = ['overview','churn','movies','cars','workflow','quiz','notebooks'];
+
+function QuizSection({ questions, title, intro }) {
+    const [answers, setAnswers] = useState({});
+    const [checked, setChecked] = useState({});
+    const [score, setScore] = useState(null);
+    const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
+    const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
+    return (
+        <div><h2>{title}</h2><p>{intro}</p>
+        {questions.map((q,qi) => (
+            <div key={qi} className="mb-6 p-4 bg-white rounded-xl border border-gray-200">
+                <p className="font-semibold text-gray-800 mb-3">{qi+1}. {q.q}</p>
+                {q.opts.map((opt,oi) => <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>)}
+            </div>
+        ))}
+        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+        {score !== null && <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}><p className="text-2xl font-black">{score}/{questions.length}</p><p>{score>=questions.length*0.8?'✓ Sehr gut!':'Nochmal lesen!'}</p></div>}
+        </div>
+    );
+}
+
+const quiz_questions = [
+    { q: 'Was ist eine "Data Pipeline"?', opts: ['Eine physische Infrastruktur für den Transport von Datenmedien','Ein Prozessablauf, der Rohdaten sammelt, verarbeitet und für Analysezwecke bereitstellt','Eine spezielle Datenstruktur in der Programmierung','Ein Werkzeug zur Visualisierung von Datenflüssen'], ans: 1 },
+    { q: 'Was beschreibt "Data Augmentation"?', opts: ['Die Erhöhung der Datenqualität durch Bereinigungsverfahren','Die Erweiterung vorhandener Datensätze durch synthetische Daten zur Verbesserung der Modellgenauigkeit','Die Reduktion der Datenmenge zur Beschleunigung des Analyseprozesses','Die Aggregation von Daten für summarische Berichte'], ans: 1 },
+    { q: 'Was ist ein "Data Lake"?', opts: ['Eine spezielle Datenbank für die Speicherung relationaler Daten','Ein Tool zur Datenvisualisierung','Eine Speicherlösung, die eine große Menge an rohen, unstrukturierten Daten schemalos speichert','Ein Algorithmus zur Datenbereinigung'], ans: 2 },
+    { q: 'Welche Aussage über "Sparse Data" ist korrekt?', opts: ['Es handelt sich um Daten mit einer hohen Dichte an Nullwerten oder Leerstellen.','Es sind Daten, die ausschließlich aus Textdaten bestehen.','Es sind Daten, die in sehr kurzen Zeitabständen gesammelt werden.','Es beschreibt Daten mit einer geringen Anzahl von Ausreißern.'], ans: 0 },
+    { q: 'Was versteht man unter "Temporal Data"?', opts: ['Daten, die zeitabhängige Informationen enthalten','Temporär gespeicherte Daten, die regelmäßig gelöscht werden','Daten, die aus Temperaturmessungen bestehen','Daten, die in temporären Speicherstrukturen gehalten werden'], ans: 0 }
+];
+
+function App() {
+    const [lang, setLang] = useState('de');
+    const [active, setActive] = useState('overview');
+    const scrollTo = (id) => { setActive(id); document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); };
+    const sections = lang === 'de'
+        ? ['Überblick','Fallstudie 1: Churn','Fallstudie 2: Movies','Fallstudie 3: Cars','CRISP-DM Workflow','Quiz','Notebooks']
+        : ['Overview','Case 1: Churn','Case 2: Movies','Case 3: Cars','CRISP-DM Workflow','Quiz','Notebooks'];
+
+    const crisp_phases = [
+        { name: 'Business Understanding', icon: '🎯', desc: lang==='de'?'Was wollen wir herausfinden? KPI definieren.':'What do we want to find out? Define KPIs.' },
+        { name: 'Data Understanding', icon: '🔍', desc: lang==='de'?'EDA: Verteilungen, Korrelationen, Fehlerbilder.':'EDA: Distributions, correlations, error patterns.' },
+        { name: 'Data Preparation', icon: '🧹', desc: lang==='de'?'Bereinigen, transformieren, encoden, skalieren.':'Clean, transform, encode, scale.' },
+        { name: 'Modeling', icon: '🤖', desc: lang==='de'?'Modell wählen, Features vorbereiten, trainieren.':'Choose model, prepare features, train.' },
+        { name: 'Evaluation', icon: '📊', desc: lang==='de'?'Ergebnisse bewerten, Hypothesen prüfen.':'Evaluate results, check hypotheses.' },
+        { name: 'Deployment', icon: '🚀', desc: lang==='de'?'Erkenntnisse kommunizieren, Modell deployen.':'Communicate insights, deploy model.' }
+    ];
+
+    return (
+        <div>
+            <div className="header">
+                <div className="flex items-center gap-4">
+                    <a href="index.html" className="text-white opacity-75 hover:opacity-100 text-sm">{lang==='de'?'← Zurück':'← Back'}</a>
+                    <span className="text-white opacity-30">|</span>
+                    <span className="text-white font-bold">{lang==='de'?'Fallstudien & Use Cases':'Case Studies & Use Cases'}</span>
+                </div>
+                <div className="flex gap-2">
+                    <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
+                    <button className={`lang-btn ${lang==='en'?'active':''}`} onClick={() => setLang('en')}>EN</button>
+                </div>
+            </div>
+            <nav className="sidebar">
+                {sectionIds.map((id,i) => <div key={id} className={`sidebar-item ${active===id?'active':''}`} onClick={() => scrollTo(id)}>{sections[i]}</div>)}
+            </nav>
+            <main className="main-content">
+
+                {/* Overview */}
+                <div id="overview" className="mb-12">
+                    <h2>{lang==='de'?'Fallstudien & Use Cases':'Case Studies & Use Cases'}</h2>
+                    <p className="text-gray-600">{lang==='de'?'In den 3 Fallstudien wenden Sie alle DAV-Techniken auf echte Szenarien an – von Rohdaten bis zur Analyse. Jede Fallstudie folgt dem vollständigen CRISP-DM-Workflow.':'In the 3 case studies, you apply all DAV techniques to real scenarios – from raw data to analysis. Each case study follows the complete CRISP-DM workflow.'}</p>
+                    <div className="grid md:grid-cols-3 gap-4 mt-4">
+                        {[
+                            { nb: '09', title: lang==='de'?'Customer Churn':'Customer Churn', icon: '📉', desc: lang==='de'?'Telekommunikationsunternehmen: Welche Kunden werden abwandern?':'Telecom: Which customers will churn?', rows: '1.000', cols: '9' },
+                            { nb: '10', title: lang==='de'?'Filmanalyse':'Movie Analysis', icon: '🎬', desc: lang==='de'?'Streaming-Plattform: Welches Genre ist am profitabelsten?':'Streaming: Which genre is most profitable?', rows: '500', cols: '9' },
+                            { nb: '11', title: lang==='de'?'Gebrauchtwagen':'Used Cars', icon: '🚗', desc: lang==='de'?'Händler: Welche Faktoren bestimmen den Preis?':'Dealer: What factors determine price?', rows: '1.000+', cols: '10+' }
+                        ].map((c,i) => (
+                            <div key={i} className="bg-white rounded-2xl p-5 border-2 border-gray-100 hover:border-orange-300 transition-all">
+                                <div className="text-3xl mb-2">{c.icon}</div>
+                                <div className="text-xs font-bold text-gray-400 mb-1">Notebook {c.nb}</div>
+                                <h3 className="text-base font-bold mb-1" style={{color:'#0389CF', marginTop:0}}>{c.title}</h3>
+                                <p className="text-sm text-gray-500 mb-2">{c.desc}</p>
+                                <div className="flex gap-2 text-xs text-gray-400">
+                                    <span>{c.rows} {lang==='de'?'Zeilen':'rows'}</span>
+                                    <span>•</span>
+                                    <span>{c.cols} {lang==='de'?'Spalten':'cols'}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Churn */}
+                <div id="churn" className="mb-12">
+                    <h2>📉 {lang==='de'?'Fallstudie 1: Customer Churn':'Case Study 1: Customer Churn'}</h2>
+                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du bist Data Analyst bei einem Telekommunikationsunternehmen. Auftrag: Analysiere, welche Kunden das Unternehmen verlassen ("Churn"), und bereite die Daten für ein ML-Modell vor.':'You are a Data Analyst at a telecom company. Task: Analyze which customers leave the company ("churn") and prepare data for an ML model.'}</p>
+                    </div>
+                    <div className="code-block">{`import pandas as pd
+import numpy as np
+import plotly.express as px
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+# --- 1. Business Understanding ---
+# Frage: Welche Faktoren beeinflussen Churn?
+# KPI: Churn Rate, Feature Importance
+
+# --- 2. Daten laden & inspizieren ---
+df = pd.read_csv('../data/customer_churn.csv')
+print(f"Shape: {df.shape}")
+print(f"Churn Rate: {df['churn'].mean()*100:.1f}%")
+print(df.info())
+
+# --- 3. EDA ---
+# Churn-Verteilung
+fig = px.bar(df['churn'].value_counts().reset_index(),
+    x='churn', y='count', title='Churn-Verteilung',
+    color='churn', color_discrete_map={0:'#0389CF', 1:'#E8792F'})
+fig.show()
+
+# Monatliche Kosten nach Churn
+fig2 = px.box(df, x='churn', y='monthly_charge',
+    title='Monthly Charge by Churn',
+    color='churn', color_discrete_map={0:'#0389CF', 1:'#E8792F'})
+fig2.show()
+
+# Korrelation
+numeric = df.select_dtypes('number')
+corr_with_churn = numeric.corr()['churn'].sort_values(ascending=False)
+print("\\nKorrelation mit Churn:")
+print(corr_with_churn)
+
+# --- 4. Daten bereinigen ---
+df_clean = df.dropna()
+df_clean = df_clean.drop_duplicates()
+
+# --- 5. Transformieren & Feature Engineering ---
+le = LabelEncoder()
+df_clean['contract_encoded'] = le.fit_transform(df_clean['contract_type'])
+df_encoded = pd.get_dummies(df_clean,
+    columns=['internet_service'], drop_first=True)
+
+scaler = StandardScaler()
+num_cols = ['monthly_charge', 'total_charges', 'tenure_months']
+df_encoded[num_cols] = scaler.fit_transform(df_encoded[num_cols])
+
+# --- 6. In PostgreSQL laden ---
+from sqlalchemy import create_engine
+engine = create_engine('postgresql://dav:dav2026@postgres:5432/davdb')
+df_encoded.to_sql('customer_churn_prepared', engine,
+    if_exists='replace', index=False)
+print("Daten in PostgreSQL geladen!")`}</div>
+                </div>
+
+                {/* Movies */}
+                <div id="movies" className="mb-12">
+                    <h2>🎬 {lang==='de'?'Fallstudie 2: Filmanalyse':'Case Study 2: Movie Analysis'}</h2>
+                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du analysierst Filmdaten für eine Streaming-Plattform. Fragen: Welches Genre ist am profitabelsten? Gibt es eine Korrelation zwischen Budget und Umsatz?':'You analyze movie data for a streaming platform. Questions: Which genre is most profitable? Is there a correlation between budget and revenue?'}</p>
+                    </div>
+                    <div className="code-block">{`import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
+df = pd.read_csv('../data/movies.csv')
+
+# --- Feature Engineering für Filme ---
+# Dekade berechnen
+df['decade'] = (df['year'] // 10) * 10
+
+# Profit-Ratio
+df['profit_ratio'] = df['revenue_mio'] / df['budget_mio'].replace(0, 1)
+df['profit_mio'] = df['revenue_mio'] - df['budget_mio']
+
+# Rating-Kategorie
+df['rating_cat'] = pd.cut(df['rating'],
+    bins=[0, 5, 7, 8, 10],
+    labels=['Schlecht', 'Gut', 'Sehr gut', 'Ausgezeichnet'])
+
+# --- Frage 1: Welches Genre ist profitabelst? ---
+genre_profit = df.groupby('genre').agg({
+    'profit_mio': 'mean',
+    'rating': 'mean',
+    'title': 'count'
+}).rename(columns={'title': 'anzahl'}).sort_values('profit_mio', ascending=False)
+print(genre_profit)
+
+fig = px.bar(genre_profit.reset_index(),
+    x='genre', y='profit_mio',
+    title='Durchschnittlicher Profit nach Genre (Mio. $)',
+    color='profit_mio', color_continuous_scale='Blues')
+fig.show()
+
+# --- Frage 2: Budget vs. Revenue Korrelation ---
+fig2 = px.scatter(df, x='budget_mio', y='revenue_mio',
+    color='genre', size='votes',
+    hover_data=['title', 'year'],
+    title='Budget vs. Revenue (Größe = Votes)',
+    trendline='ols')
+fig2.show()
+
+print(f"\\nKorrelation Budget↔Revenue: {df['budget_mio'].corr(df['revenue_mio']):.3f}")`}</div>
+                </div>
+
+                {/* Cars */}
+                <div id="cars" className="mb-12">
+                    <h2>🚗 {lang==='de'?'Fallstudie 3: Gebrauchtwagen-Preise':'Case Study 3: Used Car Prices'}</h2>
+                    <div className="tip-box"><p className="font-semibold text-yellow-800">📋 {lang==='de'?'Szenario':'Scenario'}</p>
+                        <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du arbeitest für einen Gebrauchtwagenhändler. Ziel: Bereite den Datensatz für ein Preisvorhersage-Modell vor. Nutze cars.xlsx aus dem Kurs.':'You work for a used car dealer. Goal: Prepare the dataset for a price prediction model. Use cars.xlsx from the course.'}</p>
+                    </div>
+                    <div className="code-block">{`import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+
+# --- Daten laden (echte Kursdaten!) ---
+df = pd.read_excel('../data/cars.xlsx')
+print(df.head())
+print(df.info())
+
+# --- EDA ---
+print("\\nNumerische Statistiken:")
+print(df.describe())
+
+print("\\nFehlende Werte:")
+print(df.isnull().sum()[df.isnull().sum() > 0])
+
+# --- Bereinigung ---
+df_clean = df.copy()
+
+# Fehlende Werte behandeln
+for col in df_clean.select_dtypes('number').columns:
+    df_clean[col] = df_clean[col].fillna(df_clean[col].median())
+
+for col in df_clean.select_dtypes('object').columns:
+    df_clean[col] = df_clean[col].fillna(df_clean[col].mode()[0])
+
+# Ausreißer beim Preis entfernen
+Q1, Q3 = df_clean['price'].quantile([0.01, 0.99])
+df_clean = df_clean[(df_clean['price'] >= Q1) & (df_clean['price'] <= Q3)]
+
+# --- Feature Engineering ---
+df_clean['fahrzeugalter'] = 2026 - df_clean['year']
+df_clean['preis_pro_km'] = df_clean['price'] / df_clean['mileage'].replace(0, 1)
+
+# --- Encoding ---
+le = LabelEncoder()
+for col in df_clean.select_dtypes('object').columns:
+    df_clean[col + '_encoded'] = le.fit_transform(df_clean[col].astype(str))
+
+# --- Skalierung ---
+scaler = MinMaxScaler()
+num_features = ['mileage', 'fahrzeugalter', 'engine_size']
+df_clean[num_features] = scaler.fit_transform(df_clean[num_features])
+
+print(f"\\nML-bereit: {df_clean.shape}")
+df_clean.to_csv('../data/used_cars_prepared.csv', index=False)`}</div>
+                </div>
+
+                {/* Workflow */}
+                <div id="workflow" className="mb-12">
+                    <h2>{lang==='de'?'"Putting it all together": Der vollständige DAV-Workflow':'"Putting it all together": The Complete DAV Workflow'}</h2>
+                    <p className="text-gray-600">{lang==='de'?'Alle 6 CRISP-DM-Phasen für ein vollständiges Data-Science-Projekt:':'All 6 CRISP-DM phases for a complete data science project:'}</p>
+                    <div className="space-y-3 mt-4">
+                        {crisp_phases.map((ph, i) => (
+                            <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-200">
+                                <span className="text-2xl">{ph.icon}</span>
+                                <div>
+                                    <div className="font-bold" style={{color:'#0389CF'}}>{i+1}. {ph.name}</div>
+                                    <p className="text-gray-500 text-sm mt-0.5">{ph.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="concept-box mt-4">
+                        <p className="font-semibold" style={{color:'#0389CF'}}>DAV-Anteil am Workflow:</p>
+                        <p className="text-sm text-gray-600 mt-1">{lang==='de'?'Phasen 2+3 (Data Understanding + Data Preparation) machen 60-80% der gesamten Projektzeit aus. Ohne saubere Daten scheitert jedes ML-Modell.':'Phases 2+3 (Data Understanding + Data Preparation) make up 60-80% of total project time. Without clean data, every ML model fails.'}</p>
+                    </div>
+                </div>
+
+                <div id="quiz" className="mb-12"><QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Fallstudien & Konzepte':'Quiz: Case Studies & Concepts'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} /></div>
+
+                <div id="notebooks" className="mb-12">
+                    <h2>{lang==='de'?'Notebooks öffnen':'Open Notebooks'}</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {['09_Fallstudie_Customer_Churn','10_Fallstudie_Movies','11_Fallstudie_Used_Cars'].map(nb => (
+                            <a key={nb} href={`http://localhost:8888/lab/tree/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
+                               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
+                                📓 {nb}.ipynb
+                            </a>
+                        ))}
+                    </div>
+                    <div className="info-box mt-4"><p className="text-blue-800 text-sm">💡 {lang==='de'?'Datensätze werden mit Python generiert (generate_data.py). Starte mit: cd docker && python data/generate_data.py':'Datasets are generated with Python (generate_data.py). Start with: cd docker && python data/generate_data.py'}</p></div>
+                </div>
+            </main>
+        </div>
+    );
+}
+
+const crisp_phases = [
+    { name: 'Business Understanding', icon: '🎯', desc: '' },
+    { name: 'Data Understanding', icon: '🔍', desc: '' },
+    { name: 'Data Preparation', icon: '🧹', desc: '' },
+    { name: 'Modeling', icon: '🤖', desc: '' },
+    { name: 'Evaluation', icon: '📊', desc: '' },
+    { name: 'Deployment', icon: '🚀', desc: '' }
+];
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

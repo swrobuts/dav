@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAV Lernumgebung starten – Docker Guide</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-primary: #0389CF;
+            --color-orange: #E8792F;
+            --color-light-blue: #EBF5FF;
+            --color-light-yellow: #FFFBEB;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-orange { color: var(--color-orange); }
+        .hero-section { background-color: var(--color-primary); }
+        .code-block {
+            background-color: #1e293b;
+            border-left: 4px solid var(--color-orange);
+            padding: 1rem; border-radius: 0.5rem; position: relative;
+        }
+        .code-text {
+            color: #e2e8f0; font-family: 'Courier New', monospace;
+            font-size: 0.875rem; margin: 0; white-space: pre-wrap; word-break: break-all;
+        }
+        .copy-button {
+            position: absolute; top: 0.5rem; right: 0.5rem;
+            background-color: var(--color-orange); color: white;
+            padding: 0.25rem 0.75rem; border: none; border-radius: 0.25rem;
+            cursor: pointer; font-size: 0.75rem; transition: opacity 0.2s;
+        }
+        .copy-button:hover { opacity: 0.8; }
+        .step-number {
+            background-color: var(--color-orange); color: white;
+            width: 2rem; height: 2rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0;
+        }
+        .section-header {
+            color: var(--color-primary); font-size: 1.875rem; font-weight: bold;
+            border-left: 4px solid var(--color-orange);
+            padding-left: 1rem; margin: 2rem 0 1.5rem 0;
+        }
+        .nav-sidebar {
+            position: fixed; left: 0; top: 4rem;
+            width: 240px; height: calc(100vh - 4rem);
+            background-color: #f8f9fa; border-right: 1px solid #e0e0e0;
+            overflow-y: auto; z-index: 40;
+        }
+        .nav-item {
+            padding: 0.75rem 1.5rem; cursor: pointer;
+            border-left: 3px solid transparent;
+            color: var(--color-primary); transition: all 0.2s;
+        }
+        .nav-item:hover { background-color: #e8f4f8; border-left-color: var(--color-orange); }
+        .nav-item.active { background-color: var(--color-light-blue); border-left-color: var(--color-orange); font-weight: 600; }
+        .main-content { margin-left: 240px; padding: 2rem; }
+        .sticky-navbar {
+            position: sticky; top: 0; height: 4rem; background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; z-index: 50;
+        }
+        .lang-btn {
+            padding: 0.5rem 1rem; border: 1px solid #d0d0d0; background-color: white;
+            border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem;
+            transition: all 0.2s; color: var(--color-primary);
+        }
+        .lang-btn.active { background-color: var(--color-orange); color: white; border-color: var(--color-orange); }
+        .lang-btn:hover { border-color: var(--color-orange); }
+        .info-box { background-color: var(--color-light-blue); border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+        .warning-box { background-color: var(--color-light-yellow); border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+        .success-box { background-color: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+        table { width: 100%; border-collapse: collapse; background-color: white; }
+        th { background-color: var(--color-primary); color: white; padding: 1rem; text-align: left; }
+        td { padding: 0.875rem 1rem; border-bottom: 1px solid #e0e0e0; }
+        tr:hover td { background-color: #f8fafc; }
+        @media (max-width: 768px) { .nav-sidebar { display: none; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const t = {
+        de: {
+            title: 'DAV Lernumgebung starten',
+            brand: '← DAV Lab',
+            nav: ['Überblick', 'Voraussetzungen', 'Installation', 'Repository', 'Starten', 'JupyterLab', 'Stoppen', 'Fehlerbehebung', 'Befehle'],
+            overview_title: 'Überblick: Was wird gestartet?',
+            overview_desc: 'Die DAV-Lernumgebung besteht aus zwei Docker-Containern, die gemeinsam starten:',
+            containers: [
+                { name: 'jupyter', desc: 'JupyterLab mit Python 3.11, pandas, numpy, matplotlib, seaborn, plotly, scikit-learn und allen weiteren DAV-Paketen. Port 8888.', badge: 'Hauptcontainer' },
+                { name: 'postgres', desc: 'PostgreSQL 15 Datenbank für SQL-Übungen. Port 5432. Zugangsdaten: dav / dav2026.', badge: 'Datenbank' }
+            ],
+            prereq_title: 'Voraussetzungen',
+            prereq_desc: 'Sie brauchen nur zwei Dinge:',
+            prereq_items: [
+                { title: 'Docker Desktop', desc: 'Die kostenlose Docker-Anwendung für Windows, Mac und Linux. Lädt Docker-Images herunter und verwaltet Container.', link: 'https://www.docker.com/products/docker-desktop/', linkText: 'Docker Desktop herunterladen' },
+                { title: 'Git (optional)', desc: 'Zum Klonen des Repositories. Alternativ kann der ZIP-Download verwendet werden.', link: 'https://git-scm.com/downloads', linkText: 'Git herunterladen' }
+            ],
+            install_title: 'Docker Desktop installieren',
+            install_steps: [
+                { title: 'Download', desc: 'Laden Sie Docker Desktop von der offiziellen Website herunter (Link oben). Wählen Sie die Version für Ihr Betriebssystem.' },
+                { title: 'Installation', desc: 'Führen Sie den Installer aus. Windows-Nutzer: WSL 2 Backend wird empfohlen (der Installer fragt danach).' },
+                { title: 'Starten', desc: 'Starten Sie Docker Desktop. Das Walsymbol in der Taskbar/Menüleiste zeigt an, dass Docker läuft.' },
+                { title: 'Überprüfen', desc: 'Öffnen Sie ein Terminal und geben Sie ein:' }
+            ],
+            install_verify: 'docker --version\ndocker compose version',
+            install_verify_note: 'Sie sollten Docker version 24+ und Docker Compose version 2+ sehen.',
+            repo_title: 'Repository klonen',
+            repo_option1: 'Option 1: Mit Git (empfohlen)',
+            repo_option2: 'Option 2: ZIP herunterladen',
+            repo_zip: 'Gehen Sie zu github.com/swrobuts/dav-lab, klicken Sie auf "Code" → "Download ZIP", entpacken Sie das Archiv.',
+            repo_clone: 'git clone https://github.com/swrobuts/dav-lab.git\ncd dav-lab/docker',
+            start_title: 'Lernumgebung starten',
+            start_desc: 'Im Verzeichnis dav-lab/docker:',
+            start_cmd: 'docker compose up -d',
+            start_steps: [
+                'Docker lädt beim ersten Start alle Images herunter (~2 GB, dauert 3–10 Minuten je nach Verbindung)',
+                'Bei späteren Starts dauert es nur 15–30 Sekunden',
+                'Das -d Flag startet die Container im Hintergrund (detached mode)',
+                'Überprüfen Sie den Status mit: docker compose ps'
+            ],
+            start_status: 'docker compose ps',
+            start_logs: 'docker compose logs -f jupyter',
+            jupyter_title: 'JupyterLab öffnen',
+            jupyter_url: 'http://localhost:8888',
+            jupyter_desc: 'Öffnen Sie Ihren Browser und navigieren Sie zu:',
+            jupyter_note: 'Kein Passwort, kein Token nötig – JupyterLab öffnet sich direkt.',
+            jupyter_structure: 'Die Verzeichnisstruktur in JupyterLab:',
+            jupyter_dirs: [
+                { dir: 'notebooks/', desc: '13 Jupyter Notebooks (00_Willkommen bis 12_Wissenstests)' },
+                { dir: 'data/', desc: 'Alle Datendateien (CSV, Excel, JSON, SQLite)' }
+            ],
+            jupyter_first: 'Starten Sie mit notebooks/00_Willkommen.ipynb!',
+            stop_title: 'Lernumgebung stoppen',
+            stop_desc: 'Wenn Sie mit dem Arbeiten fertig sind:',
+            stop_cmd: 'docker compose down',
+            stop_note: 'Ihre Notebooks und Daten bleiben erhalten (sie liegen in den lokalen Verzeichnissen, nicht im Container).',
+            stop_restart: 'Beim nächsten Mal einfach wieder starten:',
+            trouble_title: 'Häufige Probleme',
+            trouble_items: [
+                {
+                    problem: 'Port 8888 bereits belegt',
+                    solution: 'Ein anderes Programm nutzt Port 8888. Beenden Sie es oder ändern Sie in docker-compose.yml "8888:8888" auf z.B. "8890:8888" und öffnen Sie localhost:8890.'
+                },
+                {
+                    problem: 'Docker Desktop nicht gestartet',
+                    solution: 'Starten Sie Docker Desktop und warten Sie, bis das Walsymbol ruhig leuchtet (nicht animiert). Dann erneut versuchen.'
+                },
+                {
+                    problem: '"Cannot connect to the Docker daemon"',
+                    solution: 'Docker Desktop läuft nicht. Starten Sie es und versuchen Sie es erneut.'
+                },
+                {
+                    problem: 'Container startet nicht (Exit 1)',
+                    solution: 'Logs ansehen: docker compose logs jupyter. Häufig fehlen Berechtigungen oder ein Port ist belegt.'
+                },
+                {
+                    problem: 'JupyterLab lädt nicht',
+                    solution: 'Warten Sie 30 Sekunden nach dem Start. Überprüfen Sie mit docker compose ps, ob der Container "Up" ist.'
+                }
+            ],
+            cmds_title: 'Wichtige Docker-Befehle',
+            cmds: [
+                { cmd: 'docker compose up -d', desc: 'Alle Container starten (Hintergrund)' },
+                { cmd: 'docker compose down', desc: 'Alle Container stoppen' },
+                { cmd: 'docker compose ps', desc: 'Status aller Container anzeigen' },
+                { cmd: 'docker compose logs -f jupyter', desc: 'Live-Logs des Jupyter-Containers' },
+                { cmd: 'docker compose restart jupyter', desc: 'Nur Jupyter-Container neu starten' },
+                { cmd: 'docker compose build --no-cache', desc: 'Image neu bauen (nach Änderungen)' },
+                { cmd: 'docker exec -it docker-jupyter-1 bash', desc: 'Shell im Container öffnen' }
+            ]
+        },
+        en: {
+            title: 'Start DAV Learning Environment',
+            brand: '← DAV Lab',
+            nav: ['Overview', 'Prerequisites', 'Installation', 'Repository', 'Start', 'JupyterLab', 'Stop', 'Troubleshooting', 'Commands'],
+            overview_title: 'Overview: What Gets Started?',
+            overview_desc: 'The DAV learning environment consists of two Docker containers that start together:',
+            containers: [
+                { name: 'jupyter', desc: 'JupyterLab with Python 3.11, pandas, numpy, matplotlib, seaborn, plotly, scikit-learn and all other DAV packages. Port 8888.', badge: 'Main Container' },
+                { name: 'postgres', desc: 'PostgreSQL 15 database for SQL exercises. Port 5432. Credentials: dav / dav2026.', badge: 'Database' }
+            ],
+            prereq_title: 'Prerequisites',
+            prereq_desc: 'You only need two things:',
+            prereq_items: [
+                { title: 'Docker Desktop', desc: 'The free Docker application for Windows, Mac and Linux. Downloads Docker images and manages containers.', link: 'https://www.docker.com/products/docker-desktop/', linkText: 'Download Docker Desktop' },
+                { title: 'Git (optional)', desc: 'For cloning the repository. Alternatively, a ZIP download can be used.', link: 'https://git-scm.com/downloads', linkText: 'Download Git' }
+            ],
+            install_title: 'Install Docker Desktop',
+            install_steps: [
+                { title: 'Download', desc: 'Download Docker Desktop from the official website (link above). Choose the version for your operating system.' },
+                { title: 'Installation', desc: 'Run the installer. Windows users: WSL 2 backend is recommended (the installer will ask).' },
+                { title: 'Launch', desc: 'Start Docker Desktop. The whale icon in the taskbar/menu bar indicates Docker is running.' },
+                { title: 'Verify', desc: 'Open a terminal and type:' }
+            ],
+            install_verify: 'docker --version\ndocker compose version',
+            install_verify_note: 'You should see Docker version 24+ and Docker Compose version 2+.',
+            repo_title: 'Clone Repository',
+            repo_option1: 'Option 1: With Git (recommended)',
+            repo_option2: 'Option 2: Download ZIP',
+            repo_zip: 'Go to github.com/swrobuts/dav-lab, click "Code" → "Download ZIP", extract the archive.',
+            repo_clone: 'git clone https://github.com/swrobuts/dav-lab.git\ncd dav-lab/docker',
+            start_title: 'Start Learning Environment',
+            start_desc: 'In the dav-lab/docker directory:',
+            start_cmd: 'docker compose up -d',
+            start_steps: [
+                'Docker downloads all images on first start (~2 GB, takes 3-10 minutes depending on connection)',
+                'Subsequent starts take only 15-30 seconds',
+                'The -d flag starts containers in background (detached mode)',
+                'Check status with: docker compose ps'
+            ],
+            start_status: 'docker compose ps',
+            start_logs: 'docker compose logs -f jupyter',
+            jupyter_title: 'Open JupyterLab',
+            jupyter_url: 'http://localhost:8888',
+            jupyter_desc: 'Open your browser and navigate to:',
+            jupyter_note: 'No password, no token needed – JupyterLab opens directly.',
+            jupyter_structure: 'The directory structure in JupyterLab:',
+            jupyter_dirs: [
+                { dir: 'notebooks/', desc: '13 Jupyter Notebooks (00_Welcome through 12_Quiz)' },
+                { dir: 'data/', desc: 'All data files (CSV, Excel, JSON, SQLite)' }
+            ],
+            jupyter_first: 'Start with notebooks/00_Willkommen.ipynb!',
+            stop_title: 'Stop Learning Environment',
+            stop_desc: 'When you are done working:',
+            stop_cmd: 'docker compose down',
+            stop_note: 'Your notebooks and data are preserved (they are in local directories, not inside the container).',
+            stop_restart: 'Next time, simply start again:',
+            trouble_title: 'Common Problems',
+            trouble_items: [
+                {
+                    problem: 'Port 8888 already in use',
+                    solution: 'Another program uses port 8888. Stop it, or change "8888:8888" to e.g. "8890:8888" in docker-compose.yml and open localhost:8890.'
+                },
+                {
+                    problem: 'Docker Desktop not started',
+                    solution: 'Start Docker Desktop and wait until the whale icon glows steadily (not animated). Then try again.'
+                },
+                {
+                    problem: '"Cannot connect to the Docker daemon"',
+                    solution: 'Docker Desktop is not running. Start it and try again.'
+                },
+                {
+                    problem: 'Container does not start (Exit 1)',
+                    solution: 'View logs: docker compose logs jupyter. Often missing permissions or a port is in use.'
+                },
+                {
+                    problem: 'JupyterLab does not load',
+                    solution: 'Wait 30 seconds after starting. Check with docker compose ps that the container is "Up".'
+                }
+            ],
+            cmds_title: 'Important Docker Commands',
+            cmds: [
+                { cmd: 'docker compose up -d', desc: 'Start all containers (background)' },
+                { cmd: 'docker compose down', desc: 'Stop all containers' },
+                { cmd: 'docker compose ps', desc: 'Show status of all containers' },
+                { cmd: 'docker compose logs -f jupyter', desc: 'Live logs of Jupyter container' },
+                { cmd: 'docker compose restart jupyter', desc: 'Restart only the Jupyter container' },
+                { cmd: 'docker compose build --no-cache', desc: 'Rebuild image (after changes)' },
+                { cmd: 'docker exec -it docker-jupyter-1 bash', desc: 'Open shell in container' }
+            ]
+        }
+    };
+
+    function CopyBtn({ text }) {
+        const [copied, setCopied] = useState(false);
+        return (
+            <button className="copy-button" onClick={() => {
+                navigator.clipboard.writeText(text);
+                setCopied(true); setTimeout(() => setCopied(false), 2000);
+            }}>{copied ? '✓' : 'Kopieren'}</button>
+        );
+    }
+
+    const sections = ['overview','prereq','install','repo','start','jupyter','stop','trouble','cmds'];
+
+    function App() {
+        const [lang, setLang] = useState('de');
+        const [active, setActive] = useState('overview');
+        const tr = t[lang];
+
+        const scrollTo = (id) => {
+            setActive(id);
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        useEffect(() => {
+            const handler = () => {
+                for (const s of sections) {
+                    const el = document.getElementById(s);
+                    if (el) {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.top <= 120 && rect.bottom >= 120) { setActive(s); break; }
+                    }
+                }
+            };
+            window.addEventListener('scroll', handler);
+            return () => window.removeEventListener('scroll', handler);
+        }, []);
+
+        return (
+            <div>
+                {/* Top Navbar */}
+                <div className="sticky-navbar">
+                    <div className="flex items-center gap-4">
+                        <a href="index.html" className="text-sm font-semibold" style={{color:'#0389CF'}}>{tr.brand}</a>
+                        <span className="text-gray-300">|</span>
+                        <span className="font-bold" style={{color:'#0389CF'}}>{tr.title}</span>
+                    </div>
+                    <div className="flex gap-2">
+                        <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
+                        <button className={`lang-btn ${lang==='en'?'active':''}`} onClick={() => setLang('en')}>EN</button>
+                    </div>
+                </div>
+
+                {/* Sidebar */}
+                <nav className="nav-sidebar">
+                    <div className="py-4">
+                        {sections.map((s, i) => (
+                            <div key={s} className={`nav-item ${active===s?'active':''}`} onClick={() => scrollTo(s)}>
+                                {tr.nav[i]}
+                            </div>
+                        ))}
+                    </div>
+                </nav>
+
+                {/* Main Content */}
+                <main className="main-content max-w-4xl">
+
+                    {/* Hero */}
+                    <div className="hero-section text-white rounded-2xl p-8 mb-8 flex items-center gap-6">
+                        <div className="text-6xl">🐳</div>
+                        <div>
+                            <h1 className="text-3xl font-black mb-2">{tr.title}</h1>
+                            <p className="text-lg opacity-80">JupyterLab + Python + PostgreSQL in Docker</p>
+                        </div>
+                    </div>
+
+                    {/* Overview */}
+                    <section id="overview">
+                        <h2 className="section-header">{tr.overview_title}</h2>
+                        <p className="text-gray-600 mb-4">{tr.overview_desc}</p>
+                        <div className="grid md:grid-cols-2 gap-4 mb-4">
+                            {tr.containers.map((c, i) => (
+                                <div key={i} className="border rounded-xl p-4" style={{borderColor:'rgba(3,137,207,0.2)'}}>
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <span className="font-mono font-bold" style={{color:'#0389CF'}}>{c.name}</span>
+                                        <span className="text-xs px-2 py-0.5 rounded-full text-white" style={{background:'#E8792F'}}>{c.badge}</span>
+                                    </div>
+                                    <p className="text-gray-600 text-sm">{c.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Prerequisites */}
+                    <section id="prereq">
+                        <h2 className="section-header">{tr.prereq_title}</h2>
+                        <p className="text-gray-600 mb-4">{tr.prereq_desc}</p>
+                        <div className="grid md:grid-cols-2 gap-4">
+                            {tr.prereq_items.map((p, i) => (
+                                <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                                    <h3 className="font-bold mb-2" style={{color:'#0389CF'}}>{p.title}</h3>
+                                    <p className="text-gray-600 text-sm mb-3">{p.desc}</p>
+                                    <a href={p.link} target="_blank" rel="noopener noreferrer"
+                                       className="inline-block text-sm font-semibold px-4 py-2 rounded-lg text-white"
+                                       style={{background:'#E8792F'}}>{p.linkText} →</a>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Installation */}
+                    <section id="install">
+                        <h2 className="section-header">{tr.install_title}</h2>
+                        {tr.install_steps.map((s, i) => (
+                            <div key={i} className="flex gap-4 mb-4">
+                                <div className="step-number">{i + 1}</div>
+                                <div className="flex-1 pt-1">
+                                    <p className="font-semibold text-gray-800 mb-1">{s.title}</p>
+                                    <p className="text-gray-600 text-sm">{s.desc}</p>
+                                    {i === 3 && (
+                                        <div className="code-block mt-2">
+                                            <pre className="code-text">{tr.install_verify}</pre>
+                                            <CopyBtn text={tr.install_verify} />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                        <div className="info-box">
+                            <p className="text-sm text-blue-800">{tr.install_verify_note}</p>
+                        </div>
+                    </section>
+
+                    {/* Repository */}
+                    <section id="repo">
+                        <h2 className="section-header">{tr.repo_title}</h2>
+                        <p className="font-semibold text-gray-700 mb-2">{tr.repo_option1}</p>
+                        <div className="code-block mb-4">
+                            <pre className="code-text">{tr.repo_clone}</pre>
+                            <CopyBtn text={tr.repo_clone} />
+                        </div>
+                        <div className="warning-box">
+                            <p className="font-semibold text-yellow-800 text-sm">{tr.repo_option2}</p>
+                            <p className="text-yellow-700 text-sm mt-1">{tr.repo_zip}</p>
+                        </div>
+                    </section>
+
+                    {/* Start */}
+                    <section id="start">
+                        <h2 className="section-header">{tr.start_title}</h2>
+                        <p className="text-gray-600 mb-3">{tr.start_desc}</p>
+                        <div className="code-block mb-4">
+                            <pre className="code-text">{tr.start_cmd}</pre>
+                            <CopyBtn text={tr.start_cmd} />
+                        </div>
+                        <ul className="space-y-2 mb-4">
+                            {tr.start_steps.map((s, i) => (
+                                <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
+                                    <span className="text-green-500 mt-0.5">✓</span>{s}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="text-gray-600 text-sm mb-2 font-semibold">Status prüfen:</p>
+                        <div className="code-block mb-4">
+                            <pre className="code-text">{tr.start_status}</pre>
+                            <CopyBtn text={tr.start_status} />
+                        </div>
+                        <p className="text-gray-600 text-sm mb-2 font-semibold">Logs ansehen:</p>
+                        <div className="code-block">
+                            <pre className="code-text">{tr.start_logs}</pre>
+                            <CopyBtn text={tr.start_logs} />
+                        </div>
+                    </section>
+
+                    {/* JupyterLab */}
+                    <section id="jupyter">
+                        <h2 className="section-header">{tr.jupyter_title}</h2>
+                        <p className="text-gray-600 mb-3">{tr.jupyter_desc}</p>
+                        <div className="code-block mb-4">
+                            <pre className="code-text">{tr.jupyter_url}</pre>
+                            <CopyBtn text={tr.jupyter_url} />
+                        </div>
+                        <div className="success-box">
+                            <p className="text-green-800 font-semibold text-sm">{tr.jupyter_note}</p>
+                        </div>
+                        <p className="text-gray-600 mb-3">{tr.jupyter_structure}</p>
+                        <div className="bg-gray-50 rounded-xl p-4 font-mono text-sm">
+                            {tr.jupyter_dirs.map((d, i) => (
+                                <div key={i} className="flex gap-4 py-1">
+                                    <span className="font-semibold" style={{color:'#0389CF', minWidth:'120px'}}>{d.dir}</span>
+                                    <span className="text-gray-600">{d.desc}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="info-box mt-4">
+                            <p className="text-blue-800 font-semibold">💡 {tr.jupyter_first}</p>
+                        </div>
+                    </section>
+
+                    {/* Stop */}
+                    <section id="stop">
+                        <h2 className="section-header">{tr.stop_title}</h2>
+                        <p className="text-gray-600 mb-3">{tr.stop_desc}</p>
+                        <div className="code-block mb-4">
+                            <pre className="code-text">{tr.stop_cmd}</pre>
+                            <CopyBtn text={tr.stop_cmd} />
+                        </div>
+                        <div className="info-box">
+                            <p className="text-blue-800 text-sm">{tr.stop_note}</p>
+                        </div>
+                        <p className="text-gray-600 text-sm mt-4 mb-2">{tr.stop_restart}</p>
+                        <div className="code-block">
+                            <pre className="code-text">docker compose up -d</pre>
+                            <CopyBtn text="docker compose up -d" />
+                        </div>
+                    </section>
+
+                    {/* Troubleshooting */}
+                    <section id="trouble">
+                        <h2 className="section-header">{tr.trouble_title}</h2>
+                        <div className="space-y-4">
+                            {tr.trouble_items.map((item, i) => (
+                                <div key={i} className="border rounded-xl overflow-hidden">
+                                    <div className="p-4" style={{background:'rgba(232,121,47,0.08)', borderLeft:'4px solid #E8792F'}}>
+                                        <p className="font-semibold" style={{color:'#E8792F'}}>❌ {item.problem}</p>
+                                    </div>
+                                    <div className="p-4 bg-white">
+                                        <p className="text-gray-600 text-sm"><span className="font-semibold text-green-600">✓ Lösung: </span>{item.solution}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Commands */}
+                    <section id="cmds" className="mb-16">
+                        <h2 className="section-header">{tr.cmds_title}</h2>
+                        <div className="overflow-x-auto rounded-xl border border-gray-200">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Befehl / Command</th>
+                                        <th>Beschreibung / Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tr.cmds.map((c, i) => (
+                                        <tr key={i}>
+                                            <td><code className="font-mono text-sm" style={{color:'#0389CF'}}>{c.cmd}</code></td>
+                                            <td className="text-gray-600 text-sm">{c.desc}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

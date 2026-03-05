@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/notebooks
+      - ./data:/home/jovyan/data
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=davdb
+      - POSTGRES_USER=dav
+      - POSTGRES_PASSWORD=dav2026
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: davdb
+      POSTGRES_USER: dav
+      POSTGRES_PASSWORD: dav2026
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

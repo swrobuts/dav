@@ -1,0 +1,604 @@
+{
+    "kunden": [
+        {
+            "id": 1,
+            "name": "Max Wagner",
+            "email": "kunde_1@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 27",
+                "stadt": "Musterstadt",
+                "plz": "10456",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "1000",
+                    "datum": "2024-02-23",
+                    "gesamtbetrag": "480.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "1001",
+                            "name": "ElektronikWelt Maus 11",
+                            "preis": "82.00€"
+                        },
+                        {
+                            "produkt_id": "1002",
+                            "name": "FutureGadgets Maus 12",
+                            "preis": "235.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Laura Schneider",
+            "email": "kunde_2@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 40",
+                "stadt": "Musterstadt",
+                "plz": "10543",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "2000",
+                    "datum": "2024-02-18",
+                    "gesamtbetrag": "185.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "2001",
+                            "name": "HighTech Tastatur 21",
+                            "preis": "123.00€"
+                        },
+                        {
+                            "produkt_id": "2002",
+                            "name": "HighTech Tastatur 22",
+                            "preis": "343.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Julia Wagner",
+            "email": "kunde_3@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 78",
+                "stadt": "Musterstadt",
+                "plz": "10423",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "3000",
+                    "datum": "2024-02-22",
+                    "gesamtbetrag": "120.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "3001",
+                            "name": "FutureGadgets Kopfhörer 31",
+                            "preis": "84.00€"
+                        },
+                        {
+                            "produkt_id": "3002",
+                            "name": "ElektronikWelt Monitor 32",
+                            "preis": "203.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Niklas Wagner",
+            "email": "kunde_4@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 37",
+                "stadt": "Musterstadt",
+                "plz": "10319",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "4000",
+                    "datum": "2024-02-9",
+                    "gesamtbetrag": "420.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "4001",
+                            "name": "FutureGadgets Kopfhörer 41",
+                            "preis": "67.00€"
+                        },
+                        {
+                            "produkt_id": "4002",
+                            "name": "HighTech Maus 42",
+                            "preis": "427.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Max Schmidt",
+            "email": "kunde_5@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 40",
+                "stadt": "Musterstadt",
+                "plz": "10659",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "5000",
+                    "datum": "2024-02-25",
+                    "gesamtbetrag": "555.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "5001",
+                            "name": "TechPlus Kopfhörer 51",
+                            "preis": "32.00€"
+                        },
+                        {
+                            "produkt_id": "5002",
+                            "name": "TechPlus Kopfhörer 52",
+                            "preis": "223.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "David Wagner",
+            "email": "kunde_6@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 5",
+                "stadt": "Musterstadt",
+                "plz": "10291",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "6000",
+                    "datum": "2024-02-9",
+                    "gesamtbetrag": "180.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "6001",
+                            "name": "HighTech Kopfhörer 61",
+                            "preis": "81.00€"
+                        },
+                        {
+                            "produkt_id": "6002",
+                            "name": "FutureGadgets Laptop 62",
+                            "preis": "223.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Max Schmidt",
+            "email": "kunde_7@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 87",
+                "stadt": "Musterstadt",
+                "plz": "10636",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "7000",
+                    "datum": "2024-02-16",
+                    "gesamtbetrag": "480.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "7001",
+                            "name": "TechPlus Laptop 71",
+                            "preis": "100.00€"
+                        },
+                        {
+                            "produkt_id": "7002",
+                            "name": "ElektronikWelt Tablet 72",
+                            "preis": "447.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Mara Weber",
+            "email": "kunde_8@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 50",
+                "stadt": "Musterstadt",
+                "plz": "10527",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "8000",
+                    "datum": "2024-02-27",
+                    "gesamtbetrag": "255.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "8001",
+                            "name": "FutureGadgets Monitor 81",
+                            "preis": "105.00€"
+                        },
+                        {
+                            "produkt_id": "8002",
+                            "name": "ElektronikWelt Laptop 82",
+                            "preis": "455.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Lukas Müller",
+            "email": "kunde_9@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 73",
+                "stadt": "Musterstadt",
+                "plz": "10515",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "9000",
+                    "datum": "2024-02-21",
+                    "gesamtbetrag": "125.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "9001",
+                            "name": "TechPlus Monitor 91",
+                            "preis": "46.00€"
+                        },
+                        {
+                            "produkt_id": "9002",
+                            "name": "HighTech Monitor 92",
+                            "preis": "139.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "David Weber",
+            "email": "kunde_10@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 1",
+                "stadt": "Musterstadt",
+                "plz": "10583",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "10000",
+                    "datum": "2024-02-8",
+                    "gesamtbetrag": "555.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "10001",
+                            "name": "HighTech Tastatur 101",
+                            "preis": "35.00€"
+                        },
+                        {
+                            "produkt_id": "10002",
+                            "name": "TechPlus Tastatur 102",
+                            "preis": "179.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Heike Meyer",
+            "email": "kunde_11@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 82",
+                "stadt": "Musterstadt",
+                "plz": "10332",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "11000",
+                    "datum": "2024-02-24",
+                    "gesamtbetrag": "590.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "11001",
+                            "name": "ElektronikWelt Tastatur 111",
+                            "preis": "104.00€"
+                        },
+                        {
+                            "produkt_id": "11002",
+                            "name": "FutureGadgets Kopfhörer 112",
+                            "preis": "319.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Joelle Wagner",
+            "email": "kunde_12@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 74",
+                "stadt": "Musterstadt",
+                "plz": "10976",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "12000",
+                    "datum": "2024-02-22",
+                    "gesamtbetrag": "415.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "12001",
+                            "name": "HighTech Monitor 121",
+                            "preis": "99.00€"
+                        },
+                        {
+                            "produkt_id": "12002",
+                            "name": "HighTech Smartphone 122",
+                            "preis": "99.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Lisa Becker",
+            "email": "kunde_13@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 39",
+                "stadt": "Musterstadt",
+                "plz": "10172",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "13000",
+                    "datum": "2024-02-28",
+                    "gesamtbetrag": "155.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "13001",
+                            "name": "HighTech Maus 131",
+                            "preis": "121.00€"
+                        },
+                        {
+                            "produkt_id": "13002",
+                            "name": "ElektronikWelt Kopfhörer 132",
+                            "preis": "399.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Mouad ElGhazi",
+            "email": "kunde_14@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 91",
+                "stadt": "Musterstadt",
+                "plz": "10068",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "14000",
+                    "datum": "2024-02-17",
+                    "gesamtbetrag": "525.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "14001",
+                            "name": "HighTech Laptop 141",
+                            "preis": "98.00€"
+                        },
+                        {
+                            "produkt_id": "14002",
+                            "name": "HighTech Smartphone 142",
+                            "preis": "167.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Julia Sobene",
+            "email": "kunde_15@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 31",
+                "stadt": "Musterstadt",
+                "plz": "10428",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "15000",
+                    "datum": "2024-02-19",
+                    "gesamtbetrag": "475.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "15001",
+                            "name": "TechPlus Laptop 151",
+                            "preis": "123.00€"
+                        },
+                        {
+                            "produkt_id": "15002",
+                            "name": "ElektronikWelt Laptop 152",
+                            "preis": "363.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Niklas Molitor",
+            "email": "kunde_16@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 88",
+                "stadt": "Musterstadt",
+                "plz": "10620",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "16000",
+                    "datum": "2024-02-20",
+                    "gesamtbetrag": "390.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "16001",
+                            "name": "ElektronikWelt Monitor 161",
+                            "preis": "104.00€"
+                        },
+                        {
+                            "produkt_id": "16002",
+                            "name": "FutureGadgets Monitor 162",
+                            "preis": "191.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Franziska Meyer",
+            "email": "kunde_17@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 83",
+                "stadt": "Musterstadt",
+                "plz": "10348",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "17000",
+                    "datum": "2024-02-23",
+                    "gesamtbetrag": "495.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "17001",
+                            "name": "HighTech Tastatur 171",
+                            "preis": "89.00€"
+                        },
+                        {
+                            "produkt_id": "17002",
+                            "name": "TechPlus Monitor 172",
+                            "preis": "187.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Aileen Meyer",
+            "email": "kunde_18@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 40",
+                "stadt": "Musterstadt",
+                "plz": "10317",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "18000",
+                    "datum": "2024-02-23",
+                    "gesamtbetrag": "510.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "18001",
+                            "name": "HighTech Maus 181",
+                            "preis": "58.00€"
+                        },
+                        {
+                            "produkt_id": "18002",
+                            "name": "FutureGadgets Smartphone 182",
+                            "preis": "279.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Sophie Öztürk",
+            "email": "kunde_19@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 91",
+                "stadt": "Musterstadt",
+                "plz": "10907",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "19000",
+                    "datum": "2024-02-26",
+                    "gesamtbetrag": "350.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "19001",
+                            "name": "HighTech Monitor 191",
+                            "preis": "104.00€"
+                        },
+                        {
+                            "produkt_id": "19002",
+                            "name": "ElektronikWelt Smartphone 192",
+                            "preis": "351.00€"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "Hanz de Fuko",
+            "email": "kunde_20@beispiel.com",
+            "adresse": {
+                "straße": "Musterstraße 61",
+                "stadt": "Musterstadt",
+                "plz": "10075",
+                "land": "Deutschland"
+            },
+            "bestellungen": [
+                {
+                    "bestellnummer": "20000",
+                    "datum": "2024-02-2",
+                    "gesamtbetrag": "305.00€",
+                    "produkte": [
+                        {
+                            "produkt_id": "20001",
+                            "name": "FutureGadgets Maus 201",
+                            "preis": "64.00€"
+                        },
+                        {
+                            "produkt_id": "20002",
+                            "name": "ElektronikWelt Maus 202",
+                            "preis": "315.00€"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daten sammeln – DAV Lab</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #0389CF; --orange: #E8792F; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; color: #1e293b; }
+        .header { position: fixed; top: 0; left: 0; right: 0; background: var(--primary); color: white; height: 4rem; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 50; }
+        .sidebar { position: fixed; left: 0; top: 4rem; width: 260px; height: calc(100vh - 4rem); background: #f0f4f8; border-right: 1px solid #ddd; overflow-y: auto; padding: 1.5rem 0; z-index: 40; }
+        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; transition: all 0.2s; border-left: 4px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; }
+        .sidebar-item:hover { background: #e1eaf5; }
+        .sidebar-item.active { background: var(--orange); color: white; border-left-color: var(--orange); }
+        .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
+        .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.85rem; margin: 1rem 0; white-space: pre; }
+        .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .lang-btn { padding: 0.4rem 0.75rem; border: 2px solid rgba(255,255,255,0.4); background: transparent; border-radius: 0.375rem; cursor: pointer; font-weight: 600; font-size: 0.8rem; color: white; transition: all 0.2s; }
+        .lang-btn.active { background: var(--orange); border-color: var(--orange); }
+        .quiz-option { display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; font-size: 0.9rem; text-align: left; background: white; }
+        .quiz-option:hover { border-color: var(--primary); background: #eff6ff; }
+        .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; }
+        .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; }
+        h2 { color: var(--primary); font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+        h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+        p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
+        .format-card { background: white; border-radius: 0.75rem; padding: 1rem; border: 1px solid #e5e7eb; }
+        .format-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 0.25rem; font-family: monospace; font-weight: 700; font-size: 0.8rem; }
+        @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+
+const sectionIds = ['overview','csv','json','xml','excel','parquet','api','scraping','db','quiz','notebook'];
+
+const de = {
+    back: '← Zurück', title: 'Daten sammeln',
+    sections: ['Überblick', 'CSV', 'JSON', 'XML', 'Excel', 'Parquet', 'REST-APIs', 'Web Scraping', 'Datenbanken', 'Quiz', 'Notebooks'],
+    overview: {
+        title: 'Daten sammeln – Dateiformate & Quellen',
+        scenario: 'Szenario: Du arbeitest als Data Analyst bei einem Handelsunternehmen. Deine Aufgabe: Daten aus verschiedenen Quellen zusammenführen – eine CSV-Datei vom ERP-System, eine JSON-API für Produktkataloge, Excel-Reports aus dem Controlling und Datenbankabfragen aus dem CRM.',
+        formats: ['CSV – Comma-Separated Values', 'JSON – JavaScript Object Notation', 'XML – Extensible Markup Language', 'Excel – .xlsx Tabellen', 'Parquet – Spaltenbasiertes Format', 'REST-APIs', 'Web Scraping', 'SQL-Datenbanken']
+    },
+    csv_title: 'CSV – Comma-Separated Values',
+    csv_desc: 'CSV ist das am häufigsten verwendete Format für tabellarische Daten. Einfach, menschenlesbar, plattformübergreifend.',
+    csv_code: `import pandas as pd
+
+# Einfaches CSV einlesen
+df = pd.read_csv('../data/flights.csv')
+
+# Mit Optionen
+df = pd.read_csv('../data/muster_csv.csv',
+    sep=';',           # Semikolon als Trennzeichen
+    encoding='utf-8',  # Zeichensatz
+    decimal=',',       # Deutsches Dezimalzeichen
+    parse_dates=['datum'],  # Datumsspalten
+    na_values=['N/A', '-', '']  # Fehlende-Wert-Marker
+)
+
+# CSV schreiben
+df.to_csv('../data/output.csv', index=False, sep=';', encoding='utf-8')
+
+print(f"Eingelesen: {df.shape[0]} Zeilen, {df.shape[1]} Spalten")`,
+    json_title: 'JSON – JavaScript Object Notation',
+    json_desc: 'JSON ist das Standardformat für Web-APIs. Es unterstützt verschachtelte Strukturen und ist ideal für semi-strukturierte Daten.',
+    json_code: `import pandas as pd
+import json
+
+# Flaches JSON
+df = pd.read_json('../data/muster_json.json')
+
+# Verschachteltes JSON mit json.loads()
+with open('../data/complex_muster_json.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+# JSON normalisieren (verschachtelte Daten flatten)
+df = pd.json_normalize(data,
+    record_path=['items'],
+    meta=['order_id', 'customer_name'],
+    sep='_'
+)
+
+# JSON aus String parsen (z.B. aus API-Response)
+json_str = '{"name": "Max", "age": 30, "city": "Würzburg"}'
+parsed = json.loads(json_str)
+print(parsed['name'])  # Max`,
+    xml_title: 'XML – Extensible Markup Language',
+    xml_desc: 'XML ist im Enterprise-Umfeld weit verbreitet (z.B. SAP-Exporte). Python bietet mehrere Parser-Bibliotheken.',
+    xml_code: `import xml.etree.ElementTree as ET
+import pandas as pd
+
+# XML parsen
+tree = ET.parse('../data/dataset.xml')
+root = tree.getroot()
+
+# Daten extrahieren
+records = []
+for item in root.findall('.//item'):
+    record = {child.tag: child.text for child in item}
+    records.append(record)
+
+df = pd.DataFrame(records)
+print(df.head())
+
+# Mit lxml (mächtiger, XPath-Support)
+from lxml import etree
+tree = etree.parse('../data/dataset.xml')
+names = tree.xpath('//name/text()')
+print(names[:5])`,
+    excel_title: 'Excel – .xlsx Tabellen',
+    excel_desc: 'Excel-Dateien sind im Business-Umfeld allgegenwärtig. pandas kann sie direkt lesen – inklusive mehrerer Sheets.',
+    excel_code: `import pandas as pd
+
+# Einfaches Excel einlesen
+df = pd.read_excel('../data/muster_xlsx.xlsx')
+
+# Bestimmtes Sheet
+df = pd.read_excel('../data/cars.xlsx', sheet_name='Sheet1')
+
+# Alle Sheets auf einmal
+all_sheets = pd.read_excel('../data/muster_xlsx.xlsx', sheet_name=None)
+for sheet_name, df in all_sheets.items():
+    print(f"Sheet: {sheet_name}, Zeilen: {len(df)}")
+
+# Verkaufsdaten mit Problemen (Übung!)
+df_prob = pd.read_excel('../data/verkaufsdaten_mit_problemen.xlsx')
+print("Fehlende Werte:", df_prob.isnull().sum())
+
+# Excel schreiben
+with pd.ExcelWriter('../data/output.xlsx') as writer:
+    df.to_excel(writer, sheet_name='Daten', index=False)`,
+    parquet_title: 'Parquet – Spaltenbasiertes Format',
+    parquet_desc: 'Parquet ist ideal für große Datensätze: komprimiert, schnell lesbar, typsicher. Standard in Spark und Cloud-Umgebungen.',
+    parquet_code: `import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
+
+# DataFrame in Parquet speichern
+df = pd.read_csv('../data/flights.csv')
+df.to_parquet('../data/flights.parquet', index=False)
+
+# Parquet einlesen
+df_parquet = pd.read_parquet('../data/flights.parquet')
+
+# Nur bestimmte Spalten lesen (Vorteil von Parquet!)
+df_partial = pd.read_parquet('../data/flights.parquet',
+                              columns=['origin', 'dest', 'dep_delay'])
+
+# Größenvergleich
+import os
+csv_size = os.path.getsize('../data/flights.csv')
+pq_size = os.path.getsize('../data/flights.parquet')
+print(f"CSV: {csv_size/1024:.1f} KB, Parquet: {pq_size/1024:.1f} KB")`,
+    api_title: 'REST-APIs abfragen',
+    api_desc: 'Viele Datenquellen bieten REST-APIs an. Mit der requests-Bibliothek können Sie HTTP-Anfragen senden und JSON-Antworten verarbeiten.',
+    api_code: `import requests
+import pandas as pd
+
+# Öffentliche API ohne Key (JSONPlaceholder für Tests)
+url = "https://jsonplaceholder.typicode.com/posts"
+response = requests.get(url)
+
+# Status prüfen
+print(f"Status: {response.status_code}")  # 200 = OK
+
+# JSON parsen
+data = response.json()
+df = pd.DataFrame(data)
+print(df.head())
+
+# Mit Parametern
+url = "https://jsonplaceholder.typicode.com/posts"
+params = {"userId": 1}
+response = requests.get(url, params=params)
+posts_user1 = response.json()
+
+# In SQLite speichern
+import sqlite3
+conn = sqlite3.connect('../data/dav_sample.db')
+df.to_sql('api_posts', conn, if_exists='replace', index=False)
+conn.close()
+print("Daten in SQLite gespeichert!")`,
+    scraping_title: 'Web Scraping mit BeautifulSoup',
+    scraping_desc: 'Web Scraping extrahiert Daten von Webseiten. Wichtig: Immer robots.txt prüfen und Nutzungsbedingungen beachten!',
+    scraping_code: `import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+# WICHTIG: robots.txt zuerst prüfen!
+# https://www.example.com/robots.txt
+
+# Wikipedia-Tabelle scrapen (öffentlich, erlaubt)
+url = "https://de.wikipedia.org/wiki/Liste_der_gr%C3%B6%C3%9Ften_Unternehmen_der_Welt"
+headers = {"User-Agent": "DAV-Lab-Student (educational use)"}
+response = requests.get(url, headers=headers)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Tabelle finden
+table = soup.find('table', class_='wikitable')
+
+# Mit pandas direkt (einfacherer Weg für HTML-Tabellen)
+tables = pd.read_html(url)
+df = tables[0]  # Erste Tabelle
+print(df.head())
+
+# Ethische Grundsätze:
+# 1. robots.txt respektieren
+# 2. Requests begrenzen (time.sleep zwischen Anfragen)
+# 3. Nutzungsbedingungen lesen
+# 4. Keine personenbezogenen Daten ohne Einwilligung`,
+    db_title: 'Datenbankverbindungen',
+    db_desc: 'SQL-Datenbanken sind in Unternehmen allgegenwärtig. SQLAlchemy bietet eine einheitliche Schnittstelle für viele Datenbanksysteme.',
+    db_code: `import pandas as pd
+import sqlite3
+from sqlalchemy import create_engine
+
+# SQLite (lokal, kein Server nötig)
+conn = sqlite3.connect('../data/mac_computer.db')
+df = pd.read_sql("SELECT * FROM products LIMIT 10", conn)
+print(df)
+conn.close()
+
+# SQLAlchemy Engine (flexibler)
+engine = create_engine('sqlite:///../data/dav_sample.db')
+df = pd.read_sql("SELECT * FROM customers WHERE city = 'München'", engine)
+
+# PostgreSQL (im Docker-Container)
+import os
+pg_host = os.environ.get('POSTGRES_HOST', 'localhost')
+pg_engine = create_engine(f'postgresql://dav:dav2026@{pg_host}:5432/davdb')
+
+# DataFrame in Datenbank schreiben
+df.to_sql('meine_tabelle', pg_engine, if_exists='replace', index=False)
+
+# SQL-Abfrage mit Parametern (sicher gegen SQL Injection)
+query = "SELECT * FROM kunden WHERE plz = :plz"
+df = pd.read_sql(query, engine, params={'plz': '97070'})`,
+    quiz_title: 'Quiz: Daten sammeln',
+    quiz_intro: 'Testen Sie Ihr Wissen – 5 Fragen.',
+    quiz: [
+        { q: 'Welches Format ist ideal für große Datensätze in Cloud-Umgebungen (komprimiert, spaltenbasiert)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
+        { q: 'Was sollten Sie vor dem Web Scraping immer prüfen?', opts: ['Die Dateigrößer der Webseite', 'Die robots.txt und Nutzungsbedingungen', 'Den HTTP-Status 404', 'Die JavaScript-Version'], ans: 1 },
+        { q: 'Welche pandas-Funktion liest eine CSV-Datei mit Semikolon-Trennzeichen?', opts: ['pd.read_csv(file, delimiter=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")', 'pd.load_csv(file, sep=";")'], ans: 1 },
+        { q: 'Was gibt response.status_code bei einer erfolgreichen HTTP-Anfrage zurück?', opts: ['404', '500', '200', '302'], ans: 2 },
+        { q: 'Welche Bibliothek ermöglicht einheitliche Datenbankverbindungen in Python?', opts: ['requests', 'beautifulsoup4', 'sqlalchemy', 'pyarrow'], ans: 2 }
+    ],
+    nb_title: 'Notebooks öffnen',
+    nb_desc: 'Für praktische Übungen zu diesem Modul:',
+};
+
+const en = {
+    back: '← Back', title: 'Data Acquisition',
+    sections: ['Overview', 'CSV', 'JSON', 'XML', 'Excel', 'Parquet', 'REST APIs', 'Web Scraping', 'Databases', 'Quiz', 'Notebooks'],
+    overview: {
+        title: 'Data Acquisition – File Formats & Sources',
+        scenario: 'Scenario: You work as a Data Analyst at a trading company. Your task: Merge data from various sources – a CSV file from the ERP system, a JSON API for product catalogs, Excel reports from controlling, and database queries from the CRM.',
+        formats: ['CSV – Comma-Separated Values', 'JSON – JavaScript Object Notation', 'XML – Extensible Markup Language', 'Excel – .xlsx Spreadsheets', 'Parquet – Columnar Format', 'REST APIs', 'Web Scraping', 'SQL Databases']
+    },
+    csv_title: 'CSV – Comma-Separated Values', csv_desc: 'CSV is the most commonly used format for tabular data. Simple, human-readable, cross-platform.', csv_code: de.csv_code,
+    json_title: 'JSON – JavaScript Object Notation', json_desc: 'JSON is the standard format for web APIs. It supports nested structures and is ideal for semi-structured data.', json_code: de.json_code,
+    xml_title: 'XML – Extensible Markup Language', xml_desc: 'XML is widely used in enterprise environments (e.g. SAP exports). Python offers several parser libraries.', xml_code: de.xml_code,
+    excel_title: 'Excel – .xlsx Spreadsheets', excel_desc: 'Excel files are ubiquitous in business. pandas can read them directly – including multiple sheets.', excel_code: de.excel_code,
+    parquet_title: 'Parquet – Columnar Format', parquet_desc: 'Parquet is ideal for large datasets: compressed, fast to read, type-safe. Standard in Spark and cloud environments.', parquet_code: de.parquet_code,
+    api_title: 'Querying REST APIs', api_desc: 'Many data sources offer REST APIs. With the requests library, you can send HTTP requests and process JSON responses.', api_code: de.api_code,
+    scraping_title: 'Web Scraping with BeautifulSoup', scraping_desc: 'Web scraping extracts data from websites. Important: Always check robots.txt and respect terms of service!', scraping_code: de.scraping_code,
+    db_title: 'Database Connections', db_desc: 'SQL databases are ubiquitous in enterprises. SQLAlchemy provides a unified interface for many database systems.', db_code: de.db_code,
+    quiz_title: 'Quiz: Data Acquisition', quiz_intro: 'Test your knowledge – 5 questions.',
+    quiz: [
+        { q: 'Which format is ideal for large datasets in cloud environments (compressed, columnar)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
+        { q: 'What should you always check before web scraping?', opts: ['The file size of the website', 'The robots.txt and terms of service', 'The HTTP 404 status', 'The JavaScript version'], ans: 1 },
+        { q: 'Which pandas function reads a CSV file with semicolon separator?', opts: ['pd.read_csv(file, delimiter=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")','pd.load_csv(file, sep=";")'], ans: 1 },
+        { q: 'What does response.status_code return for a successful HTTP request?', opts: ['404', '500', '200', '302'], ans: 2 },
+        { q: 'Which library enables unified database connections in Python?', opts: ['requests', 'beautifulsoup4', 'sqlalchemy', 'pyarrow'], ans: 2 }
+    ],
+    nb_title: 'Open Notebooks', nb_desc: 'For hands-on exercises for this module:',
+};
+
+function QuizSection({ questions, title, intro }) {
+    const [answers, setAnswers] = useState({});
+    const [checked, setChecked] = useState({});
+    const [score, setScore] = useState(null);
+    const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
+    const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
+    return (
+        <div>
+            <h2>{title}</h2><p>{intro}</p>
+            {questions.map((q,qi) => (
+                <div key={qi} className="mb-6 p-4 bg-white rounded-xl border border-gray-200">
+                    <p className="font-semibold text-gray-800 mb-3">{qi+1}. {q.q}</p>
+                    {q.opts.map((opt,oi) => (
+                        <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>
+                    ))}
+                </div>
+            ))}
+            <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+            {score !== null && <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}><p className="text-2xl font-black">{score}/{questions.length}</p></div>}
+        </div>
+    );
+}
+
+function App() {
+    const [lang, setLang] = useState('de');
+    const [active, setActive] = useState('overview');
+    const tr = lang === 'de' ? de : en;
+    const scrollTo = (id) => { setActive(id); document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); };
+
+    const sections = [
+        {id:'overview', content: () => (
+            <div>
+                <h2>{tr.overview.title}</h2>
+                <div className="tip-box"><p className="font-semibold text-yellow-800">📋 Szenario / Scenario</p><p className="text-yellow-700 text-sm mt-1">{tr.overview.scenario}</p></div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                    {tr.overview.formats.map((f,i) => <div key={i} className="bg-white rounded-xl p-3 border border-gray-200 text-sm font-medium" style={{color:'#0389CF'}}>{f}</div>)}
+                </div>
+            </div>
+        )},
+        {id:'csv', content: () => <div><h2>{tr.csv_title}</h2><p>{tr.csv_desc}</p><div className="code-block">{tr.csv_code}</div></div>},
+        {id:'json', content: () => <div><h2>{tr.json_title}</h2><p>{tr.json_desc}</p><div className="code-block">{tr.json_code}</div></div>},
+        {id:'xml', content: () => <div><h2>{tr.xml_title}</h2><p>{tr.xml_desc}</p><div className="code-block">{tr.xml_code}</div></div>},
+        {id:'excel', content: () => <div><h2>{tr.excel_title}</h2><p>{tr.excel_desc}</p><div className="code-block">{tr.excel_code}</div></div>},
+        {id:'parquet', content: () => <div><h2>{tr.parquet_title}</h2><p>{tr.parquet_desc}</p><div className="code-block">{tr.parquet_code}</div></div>},
+        {id:'api', content: () => <div><h2>{tr.api_title}</h2><p>{tr.api_desc}</p><div className="code-block">{tr.api_code}</div></div>},
+        {id:'scraping', content: () => (
+            <div><h2>{tr.scraping_title}</h2><p>{tr.scraping_desc}</p>
+            <div className="tip-box"><p className="font-bold text-yellow-800">⚠️ Ethische Grundsätze / Ethical Guidelines</p>
+                <ul className="text-yellow-700 text-sm mt-1 space-y-1">
+                    <li>• robots.txt immer prüfen / Always check robots.txt</li>
+                    <li>• Nutzungsbedingungen lesen / Read Terms of Service</li>
+                    <li>• Keine personenbezogenen Daten ohne Einwilligung / No personal data without consent</li>
+                    <li>• Requests begrenzen (Rate Limiting) / Limit request rate</li>
+                </ul>
+            </div>
+            <div className="code-block">{tr.scraping_code}</div></div>
+        )},
+        {id:'db', content: () => <div><h2>{tr.db_title}</h2><p>{tr.db_desc}</p><div className="code-block">{tr.db_code}</div></div>},
+        {id:'quiz', content: () => <QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} />},
+        {id:'notebook', content: () => (
+            <div><h2>{tr.nb_title}</h2><p>{tr.nb_desc}</p>
+                <div className="flex flex-wrap gap-3 mt-4">
+                    {['02_Dateiformate','03_APIs_WebScraping'].map(nb => (
+                        <a key={nb} href={`http://localhost:8888/lab/tree/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
+                           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
+                            📓 {nb}.ipynb
+                        </a>
+                    ))}
+                </div>
+                <div className="info-box mt-4"><p className="text-blue-800 text-sm">💡 JupyterLab muss lokal laufen (docker compose up -d).</p></div>
+            </div>
+        )}
+    ];
+
+    return (
+        <div>
+            <div className="header">
+                <div className="flex items-center gap-4">
+                    <a href="index.html" className="text-white opacity-75 hover:opacity-100 text-sm">{tr.back}</a>
+                    <span className="text-white opacity-30">|</span>
+                    <span className="text-white font-bold">{tr.title}</span>
+                </div>
+                <div className="flex gap-2">
+                    <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
+                    <button className={`lang-btn ${lang==='en'?'active':''}`} onClick={() => setLang('en')}>EN</button>
+                </div>
+            </div>
+            <nav className="sidebar">
+                {sectionIds.map((id,i) => <div key={id} className={`sidebar-item ${active===id?'active':''}`} onClick={() => scrollTo(id)}>{tr.sections[i]}</div>)}
+            </nav>
+            <main className="main-content">
+                {sections.map(s => <div key={s.id} id={s.id} className="mb-12">{s.content()}</div>)}
+            </main>
+        </div>
+    );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
