@@ -8,13 +8,15 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        * { scroll-behavior: smooth; }
+        * { scroll-behavior: smooth; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             overflow-x: hidden;
+            margin: 0;
         }
+
+        /* ── Hero ── */
         .hero-gradient {
             background: #0389CF;
             position: relative;
@@ -22,435 +24,623 @@
         }
         .animated-bg {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0.12;
+            opacity: 0.10;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(232, 121, 47, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 50%);
-            animation: float 15s ease-in-out infinite;
+                radial-gradient(circle at 20% 50%, rgba(232,121,47,0.5) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 50%);
+            animation: floatBg 18s ease-in-out infinite;
         }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
+        @keyframes floatBg {
+            0%, 100% { transform: translate(0,0); }
+            50% { transform: translate(20px,-20px); }
         }
-        .fade-in { animation: fadeIn 0.8s ease-in; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        /* ── Navbar ── */
+        .navbar {
+            background: white;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+            position: sticky; top: 0; z-index: 50;
+            height: 60px;
         }
-        .slide-in-left { animation: slideInLeft 0.8s ease-out; }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
+
+        /* ── Stats bar ── */
+        .stat-bar {
+            background: white;
+            box-shadow: 0 -1px 0 rgba(3,137,207,0.08), 0 4px 20px rgba(0,0,0,0.05);
+            flex-shrink: 0;
         }
-        .slide-in-right { animation: slideInRight 0.8s ease-out; }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(40px); }
-            to { opacity: 1; transform: translateX(0); }
+        .stat-item {
+            text-align: center;
+            padding: 1.75rem 1.5rem;
+            position: relative;
         }
-        .pulse-float { animation: pulseFloat 3s ease-in-out infinite; }
-        @keyframes pulseFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .stat-item + .stat-item::before {
+            content: '';
+            position: absolute; left: 0; top: 25%; height: 50%;
+            width: 1px; background: rgba(3,137,207,0.12);
         }
         .stat-number {
-            font-size: 3rem; font-weight: 900;
+            font-size: 2.75rem; font-weight: 900;
             color: #E8792F; font-variant-numeric: tabular-nums;
+            line-height: 1;
         }
-        .lab-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
+        .stat-label {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: #0389CF; margin-top: 0.4rem;
         }
-        .lab-card:hover {
-            transform: translateY(-8px);
-            border-color: #E8792F;
-            box-shadow: 0 20px 40px rgba(232, 121, 47, 0.15);
-        }
-        .code-block {
-            background: #1e293b;
-            border-left: 4px solid #E8792F;
-            color: #e2e8f0;
-            font-family: 'Monaco', 'Courier New', monospace;
-            padding: 1.5rem; border-radius: 0.5rem; overflow-x: auto;
-        }
-        .copy-button { background: #E8792F; transition: background 0.2s; }
-        .copy-button:hover { background: #d4652b; }
-        .icon-wrapper {
-            width: 4rem; height: 4rem;
-            background: rgba(232, 121, 47, 0.9);
-            border-radius: 0.75rem;
-            display: flex; align-items: center; justify-content: center; color: white;
+
+        /* ── Animations ── */
+        .fade-in { animation: fadeIn 0.8s ease-in both; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
         .scroll-reveal {
-            opacity: 0; transform: translateY(30px);
+            opacity: 0; transform: translateY(24px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
-        .navbar {
-            background: white;
-            box-shadow: 0 1px 12px rgba(0, 0, 0, 0.05);
-            position: sticky; top: 0; z-index: 50;
-        }
-        .logo {
-            font-size: 1.5rem; font-weight: 800;
-            background: linear-gradient(135deg, #0389CF 0%, #0566A0 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
+
+        /* ── Language toggle ── */
         .lang-btn {
-            padding: 0.5rem 0.75rem; border-radius: 0.375rem;
+            padding: 0.4rem 0.7rem; border-radius: 0.375rem;
             border: 2px solid #e5e7eb; background: white;
-            cursor: pointer; font-weight: 600; font-size: 0.875rem;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
             color: #666; transition: all 0.2s;
         }
-        .lang-btn.active { background: #E8792F; color: white; border-color: #E8792F; }
-        .lang-btn:hover { border-color: #E8792F; }
-        .stat-bar { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        .stat-item { text-align: center; padding: 2rem 1.5rem; position: relative; }
-        .stat-item + .stat-item::before {
-            content: ''; position: absolute; left: 0; top: 25%; height: 50%;
-            width: 1px; background: rgba(3,137,207,0.1);
+        .lang-btn.active  { background: #E8792F; color: white; border-color: #E8792F; }
+        .lang-btn:hover:not(.active) { border-color: #0389CF; color: #0389CF; }
+
+        /* ── Workflow ── */
+        .workflow-row {
+            display: flex; align-items: center;
+            gap: 0; flex-wrap: nowrap;
+            overflow-x: auto; padding-bottom: 4px;
         }
-        .data-flow { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-        .data-flow-item {
-            background: white; border: 1px solid rgba(3,137,207,0.3);
-            border-radius: 0.5rem; padding: 1rem 1.5rem;
-            font-weight: 600; color: #0389CF;
-            flex: 1; min-width: 120px; text-align: center;
+        .workflow-box {
+            background: white;
+            border: 1.5px solid rgba(3,137,207,0.3);
+            border-radius: 6px;
+            padding: 0.9rem 1.4rem;
+            font-weight: 700; font-size: 0.9rem;
+            color: #0369A1;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-align: center;
+            min-width: 110px;
         }
-        .data-flow-arrow {
-            font-size: 1.5rem; color: #E8792F; font-weight: bold;
-            animation: arrowPulse 2s ease-in-out infinite;
+        .workflow-arrow {
+            color: #E8792F; font-size: 1.2rem; font-weight: 900;
+            flex-shrink: 0; padding: 0 0.6rem;
+            animation: arrowPulse 2.5s ease-in-out infinite;
         }
         @keyframes arrowPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; transform: translateX(5px); }
+            0%, 100% { opacity: 1; transform: translateX(0); }
+            50%       { opacity: 0.55; transform: translateX(4px); }
         }
-        @media (max-width: 768px) {
-            .stat-number { font-size: 2.5rem; }
-            .data-flow { flex-direction: column; }
-            .data-flow-arrow { transform: rotate(90deg); }
+
+        /* ── Lab Cards ── */
+        .lab-card {
+            background: white;
+            border: 1.5px solid rgba(3,137,207,0.14);
+            border-top: 3px solid #0389CF;
+            border-radius: 10px;
+            padding: 1.75rem;
+            transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+            display: flex; flex-direction: column;
+            min-height: 240px;
+            text-decoration: none; color: inherit;
+            position: relative;
+        }
+        .lab-card:hover {
+            transform: translateY(-6px);
+            border-color: #E8792F;
+            border-top-color: #E8792F;
+            box-shadow: 0 16px 32px rgba(232,121,47,0.12);
+        }
+        .lab-card-num {
+            position: absolute; top: 1rem; right: 1.25rem;
+            font-size: 2.2rem; font-weight: 900;
+            color: rgba(3,137,207,0.08);
+            line-height: 1; font-variant-numeric: tabular-nums;
+            pointer-events: none; user-select: none;
+        }
+        .lab-icon-box {
+            width: 40px; height: 40px;
+            background: #0389CF;
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-bottom: 1rem;
+        }
+        .lab-icon-box svg { color: white; }
+        .lab-title {
+            font-size: 1rem; font-weight: 800;
+            color: #0369A1; line-height: 1.25;
+            margin-bottom: 0.2rem;
+        }
+        .lab-subtitle {
+            font-size: 0.78rem; color: #94a3b8;
+            font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.04em; margin-bottom: 0.85rem;
+        }
+        .lab-desc {
+            font-size: 0.84rem; color: #4b5563;
+            line-height: 1.6; flex: 1;
+            margin-bottom: 1.1rem;
+        }
+        .lab-footer {
+            display: flex; align-items: center;
+            justify-content: space-between; margin-top: auto;
+        }
+        .diff-badge {
+            font-size: 0.72rem; font-weight: 700;
+            padding: 0.25rem 0.65rem; border-radius: 4px;
+        }
+        .diff-einstieg    { background: #dcfce7; color: #166534; }
+        .diff-grundlagen  { background: #fef3c7; color: #92400e; }
+        .diff-fortgeschritten { background: #fee2e2; color: #991b1b; }
+        .lab-cta {
+            font-size: 0.82rem; font-weight: 700;
+            color: #E8792F;
+        }
+
+        /* ── Code blocks ── */
+        .code-block {
+            background: #0f172a;
+            border-left: 3px solid #E8792F;
+            color: #e2e8f0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            padding: 1rem 1.25rem; border-radius: 6px;
+            font-size: 0.83rem; line-height: 1.6;
+            white-space: pre; overflow-x: auto;
+        }
+        .copy-btn {
+            background: #E8792F; color: white;
+            border: none; border-radius: 6px;
+            padding: 0.4rem 0.85rem; font-size: 0.8rem;
+            font-weight: 700; cursor: pointer;
+            transition: background 0.15s;
+        }
+        .copy-btn:hover { background: #d4652b; }
+
+        /* ── Docker steps ── */
+        .docker-step {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 1.25rem;
+            backdrop-filter: blur(4px);
+        }
+        .docker-step-label {
+            font-size: 0.72rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.6); margin-bottom: 0.6rem;
+        }
+        .docker-step-code {
+            font-family: 'Monaco','Courier New', monospace;
+            font-size: 0.82rem; color: #fff;
+            background: rgba(0,0,0,0.25); border-radius: 6px;
+            padding: 0.65rem 0.85rem; line-height: 1.5;
+            word-break: break-all;
+        }
+
+        /* ── Geometric deco ── */
+        .geo-deco {
+            position: absolute; right: 2.5rem; top: 2rem;
+            opacity: 0.09; pointer-events: none;
         }
     </style>
 </head>
 <body>
 <div id="root"></div>
+
 <script type="text/babel">
-    const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useRef } = React;
 
-    const translations = {
-        de: {
-            nav: { home: 'Start', labs: 'Module', docker: 'Docker', about: 'Kurs' },
-            hero: {
-                headline: 'Datenaufbereitung und -verarbeitung',
-                tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
-                sub: 'Praktisches Lernen mit Python, pandas und JupyterLab',
-                cta: 'Module erkunden', cta2: 'Docker starten'
-            },
-            stats: { modules: '6 Themenmodule', notebooks: '12+ Notebooks', cases: '3 Fallstudien', tools: 'Python + SQL' },
-            labs_title: 'Die 6 Lernmodule',
-            labs_sub: 'Jedes Modul enthält Theorie, runnable Python-Notebooks und Quizfragen.',
-            labs: [
-                { emoji: '🧭', name: 'Grundlagen & CRISP-DM', subtitle: 'Datenaufbereitung verstehen', desc: 'Was ist Datenaufbereitung? CRISP-DM-Prozessmodell, Garbage in – Garbage out, Warum Python?', link: 'lab-grundlagen.html', diff: 'Einstieg' },
-                { emoji: '📥', name: 'Daten sammeln', subtitle: 'Dateiformate, APIs, Web Scraping', desc: 'CSV, JSON, XML, Excel, Parquet einlesen. REST-APIs abfragen. Web Scraping mit BeautifulSoup. Datenbankverbindungen.', link: 'lab-data-acquisition.html', diff: 'Einstieg' },
-                { emoji: '🔍', name: 'Daten inspizieren & EDA', subtitle: 'Explorative Datenanalyse', desc: 'df.info(), df.describe(), Fehlende Werte visualisieren, Verteilungen, Korrelationen, Ausreißer erkennen.', link: 'lab-eda.html', diff: 'Grundlagen' },
-                { emoji: '🧹', name: 'Daten bereinigen', subtitle: 'Data Cleansing systematisch', desc: 'Missing Values, Duplikate, Inkonsistenzen, Imputation-Strategien, Datentypen korrigieren. Echte Problemdaten!', link: 'lab-cleansing.html', diff: 'Grundlagen' },
-                { emoji: '🔄', name: 'Daten transformieren', subtitle: 'Strukturieren & kodieren', desc: 'melt(), pivot(), One-Hot-Encoding, Feature Scaling, Feature Engineering, Merging & Joining.', link: 'lab-transformation.html', diff: 'Fortgeschritten' },
-                { emoji: '🎯', name: 'Fallstudien & Use Cases', subtitle: 'Komplette DAV-Workflows', desc: 'Customer Churn, Filmanalyse, Gebrauchtwagen-Preise – von Rohdaten bis zur Analyse.', link: 'lab-usecases.html', diff: 'Fortgeschritten' }
-            ],
-            diff_colors: { 'Einstieg': 'bg-green-100 text-green-800', 'Grundlagen': 'bg-yellow-100 text-yellow-800', 'Fortgeschritten': 'bg-red-100 text-red-800' },
-            docker_title: 'Starte deine Lernumgebung in 3 Minuten',
-            docker_sub: 'JupyterLab + Python + PostgreSQL – alles in Docker, läuft auf Windows, Mac & Linux.',
-            docker_step1: '1. Repository klonen',
-            docker_step2: '2. Container starten',
-            docker_step3: '3. JupyterLab öffnen',
-            docker_cta: 'Vollständiger Docker Guide',
-            workflow_title: 'Der DAV-Workflow',
-            workflow_sub: 'Von der Datenquelle zur sauberen, analysierbaren Tabelle.',
-            workflow: ['Datenquellen', '→', 'Einlesen', '→', 'Inspizieren', '→', 'Bereinigen', '→', 'Transformieren', '→', 'Analyse'],
-            about_title: 'Über den Kurs',
-            about_desc: 'Der Kurs "Datenaufbereitung und -verarbeitung" im BBA-Studiengang an der THWS vermittelt die praktischen Grundlagen der Datenvorbereitung für Analyse und Machine Learning. 80% der Arbeit eines Data Scientists entfällt auf Datenaufbereitung – dieser Kurs macht Sie damit vertraut.',
-            about_p1_title: 'Warum DAV?',
-            about_p1: 'Rohdaten sind fast nie analysefertig. Sie haben fehlende Werte, Inkonsistenzen, falsche Datentypen und versteckte Ausreißer. DAV lehrt Sie, diese Probleme systematisch zu erkennen und zu beheben.',
-            about_p2_title: 'Lernziele',
-            about_p2_items: [
-                'Verschiedene Datenquellen einlesen und verarbeiten (CSV, JSON, XML, Excel, APIs)',
-                'Datenqualität beurteilen und Fehlerbilder erkennen',
-                'Fehlende Werte, Duplikate und Ausreißer systematisch behandeln',
-                'Daten für ML-Modelle transformieren und kodieren',
-                'Vollständige Data-Prep-Workflows mit Python/pandas umsetzen'
-            ],
-            footer_built: 'Gebaut mit ♥ für BBA Studenten',
-            footer_prof: 'Prof. Dr. Robert Butscher',
-            footer_thws: 'THWS – Technische Hochschule Würzburg-Schweinfurt',
-            footer_github: 'GitHub Repository'
+/* ── Lucide-style SVG icon renderer ── */
+const Icon = ({ paths, size = 20, strokeWidth = 2, className = '' }) => (
+    <svg
+        width={size} height={size} viewBox="0 0 24 24"
+        fill="none" stroke="currentColor"
+        strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"
+        className={className}
+    >
+        {(Array.isArray(paths) ? paths : [paths]).map((d, i) => (
+            typeof d === 'string' ? <path key={i} d={d}/> : d
+        ))}
+    </svg>
+);
+
+/* ── SVG paths for each module ── */
+const ICON_LAYERS   = ['M12 2 2 7l10 5 10-5-10-5z','M2 17l10 5 10-5','M2 12l10 5 10-5'];
+const ICON_DOWNLOAD = ['M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4','M7 10l5 5 5-5','M12 15V3'];
+const ICON_BARCHART = ['M18 20V10','M12 20V4','M6 20v-6'];
+const ICON_FILTER   = ['M22 3H2l8 9.46V19l4 2v-8.54L22 3'];
+const ICON_REFRESH  = ['M23 4v6h-6','M1 20v-6h6','M3.51 9a9 9 0 0 1 14.85-3.36L23 10','M1 14l4.64 4.36A9 9 0 0 0 20.49 15'];
+const ICON_TARGET   = [<circle key="c1" cx="12" cy="12" r="10"/>,<circle key="c2" cx="12" cy="12" r="6"/>,<circle key="c3" cx="12" cy="12" r="2"/>];
+const ICON_CODE     = ['M10 20l4-16','M4.93 4.93l4.24 4.24-4.24 4.24','M19.07 4.93l-4.24 4.24 4.24 4.24'];
+const ICON_PACKAGE  = ['M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z','M3.27 6.96L12 12.01l8.73-5.05','M12 22.08V12'];
+const ICON_TERMINAL = ['M4 17l6-6-6-6','M12 19h8'];
+const ICON_GITHUB   = ['M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4','M9 18c-4.51 2-5-2-7-2'];
+
+const LAB_ICONS = [ICON_LAYERS, ICON_DOWNLOAD, ICON_BARCHART, ICON_FILTER, ICON_REFRESH, ICON_TARGET];
+
+/* ── Translations ── */
+const T = {
+    de: {
+        nav: { labs: 'Module', docker: 'Docker', about: 'Kurs' },
+        hero: {
+            badge: 'THWS BBA · Sommersemester 2026',
+            headline: 'Datenaufbereitung und -verarbeitung',
+            tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
+            sub: 'Praktisches Lernen mit Python, pandas und JupyterLab',
+            cta: 'Module erkunden', cta2: 'Docker starten'
         },
-        en: {
-            nav: { home: 'Home', labs: 'Modules', docker: 'Docker', about: 'Course' },
-            hero: {
-                headline: 'Data Preparation & Processing',
-                tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
-                sub: 'Practical learning with Python, pandas and JupyterLab',
-                cta: 'Explore Modules', cta2: 'Start Docker'
-            },
-            stats: { modules: '6 Topic Modules', notebooks: '12+ Notebooks', cases: '3 Case Studies', tools: 'Python + SQL' },
-            labs_title: 'The 6 Learning Modules',
-            labs_sub: 'Each module contains theory, runnable Python notebooks and quiz questions.',
-            labs: [
-                { emoji: '🧭', name: 'Fundamentals & CRISP-DM', subtitle: 'Understanding Data Preparation', desc: 'What is data preparation? CRISP-DM process model, Garbage in – Garbage out, Why Python?', link: 'lab-grundlagen.html', diff: 'Beginner' },
-                { emoji: '📥', name: 'Data Acquisition', subtitle: 'File formats, APIs, Web Scraping', desc: 'Reading CSV, JSON, XML, Excel, Parquet. Querying REST APIs. Web Scraping with BeautifulSoup. Database connections.', link: 'lab-data-acquisition.html', diff: 'Beginner' },
-                { emoji: '🔍', name: 'Data Inspection & EDA', subtitle: 'Exploratory Data Analysis', desc: 'df.info(), df.describe(), visualizing missing values, distributions, correlations, outlier detection.', link: 'lab-eda.html', diff: 'Foundation' },
-                { emoji: '🧹', name: 'Data Cleansing', subtitle: 'Systematic Data Cleaning', desc: 'Missing values, duplicates, inconsistencies, imputation strategies, fixing data types. Real problem data!', link: 'lab-cleansing.html', diff: 'Foundation' },
-                { emoji: '🔄', name: 'Data Transformation', subtitle: 'Structure & Encode', desc: 'melt(), pivot(), One-Hot-Encoding, Feature Scaling, Feature Engineering, Merging & Joining.', link: 'lab-transformation.html', diff: 'Advanced' },
-                { emoji: '🎯', name: 'Case Studies & Use Cases', subtitle: 'Complete DAV Workflows', desc: 'Customer Churn, Movie Analysis, Used Cars – from raw data to insights.', link: 'lab-usecases.html', diff: 'Advanced' }
-            ],
-            diff_colors: { 'Beginner': 'bg-green-100 text-green-800', 'Foundation': 'bg-yellow-100 text-yellow-800', 'Advanced': 'bg-red-100 text-red-800' },
-            docker_title: 'Start Your Learning Environment in 3 Minutes',
-            docker_sub: 'JupyterLab + Python + PostgreSQL – all in Docker, runs on Windows, Mac & Linux.',
-            docker_step1: '1. Clone Repository',
-            docker_step2: '2. Start Containers',
-            docker_step3: '3. Open JupyterLab',
-            docker_cta: 'Full Docker Guide',
-            workflow_title: 'The DAV Workflow',
-            workflow_sub: 'From raw data source to clean, analysis-ready tables.',
-            workflow: ['Data Sources', '→', 'Load', '→', 'Inspect', '→', 'Clean', '→', 'Transform', '→', 'Analyse'],
-            about_title: 'About the Course',
-            about_desc: 'The course "Data Preparation & Processing" in the BBA program at THWS teaches the practical foundations of data preparation for analysis and machine learning. 80% of a data scientist\'s work involves data preparation – this course gets you ready.',
-            about_p1_title: 'Why DAV?',
-            about_p1: 'Raw data is almost never analysis-ready. It has missing values, inconsistencies, wrong data types and hidden outliers. DAV teaches you to systematically identify and fix these problems.',
-            about_p2_title: 'Learning Objectives',
-            about_p2_items: [
-                'Read and process various data sources (CSV, JSON, XML, Excel, APIs)',
-                'Assess data quality and identify error patterns',
-                'Systematically handle missing values, duplicates and outliers',
-                'Transform and encode data for ML models',
-                'Implement complete data prep workflows with Python/pandas'
-            ],
-            footer_built: 'Built with ♥ for BBA students',
-            footer_prof: 'Prof. Dr. Robert Butscher',
-            footer_thws: 'THWS – Technische Hochschule Würzburg-Schweinfurt',
-            footer_github: 'GitHub Repository'
-        }
-    };
-
-    function CopyButton({ text, label }) {
-        const [copied, setCopied] = useState(false);
-        const handleCopy = () => {
-            navigator.clipboard.writeText(text).then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            });
-        };
-        return (
-            <button onClick={handleCopy} className="copy-button text-white text-sm font-semibold px-4 py-2 rounded-lg">
-                {copied ? '✓ Kopiert' : label || 'Kopieren'}
-            </button>
-        );
+        stats: [
+            { val: '6',   label: 'Themenmodule' },
+            { val: '12+', label: 'Notebooks' },
+            { val: '3',   label: 'Fallstudien' },
+            { val: 'SQL', label: 'Python + SQL', icon: true }
+        ],
+        workflow_title: 'Der DAV-Workflow',
+        workflow_sub: 'Von der Datenquelle zur sauberen, analysierbaren Tabelle.',
+        workflow: ['Datenquellen','Einlesen','Inspizieren','Bereinigen','Transformieren','Analyse'],
+        labs_title: 'Die 6 Lernmodule',
+        labs_sub: 'Jedes Modul enthält Theorie, runnable Python-Notebooks und interaktive Quizfragen.',
+        labs: [
+            { name: 'Grundlagen & CRISP-DM', subtitle: 'Datenaufbereitung verstehen',
+              desc: 'Was ist Datenaufbereitung? CRISP-DM-Prozessmodell, Garbage in – Garbage out, Warum Python?',
+              link: 'lab-grundlagen.html', diff: 'Einstieg' },
+            { name: 'Daten sammeln', subtitle: 'Dateiformate · APIs · Web Scraping',
+              desc: 'CSV, JSON, XML, Excel, Parquet einlesen. REST-APIs abfragen. Web Scraping mit BeautifulSoup. Datenbankverbindungen.',
+              link: 'lab-data-acquisition.html', diff: 'Einstieg' },
+            { name: 'Daten inspizieren & EDA', subtitle: 'Explorative Datenanalyse',
+              desc: 'df.info(), df.describe(), Fehlende Werte visualisieren, Verteilungen, Korrelationen, Ausreißer erkennen.',
+              link: 'lab-eda.html', diff: 'Grundlagen' },
+            { name: 'Daten bereinigen', subtitle: 'Data Cleansing systematisch',
+              desc: 'Missing Values, Duplikate, Inkonsistenzen, Imputation-Strategien, Datentypen korrigieren – an echten Problemdatensätzen.',
+              link: 'lab-cleansing.html', diff: 'Grundlagen' },
+            { name: 'Daten transformieren', subtitle: 'Strukturieren & kodieren',
+              desc: 'melt(), pivot(), One-Hot-Encoding, Feature Scaling, Feature Engineering, Merging & Joining.',
+              link: 'lab-transformation.html', diff: 'Fortgeschritten' },
+            { name: 'Fallstudien & Use Cases', subtitle: 'Komplette DAV-Workflows',
+              desc: 'Customer Churn, Filmanalyse, Gebrauchtwagen-Preise – von Rohdaten bis zur analysierbaren Datenbasis.',
+              link: 'lab-usecases.html', diff: 'Fortgeschritten' }
+        ],
+        diffClass: { 'Einstieg': 'diff-einstieg', 'Grundlagen': 'diff-grundlagen', 'Fortgeschritten': 'diff-fortgeschritten' },
+        cta_module: 'Zum Modul →',
+        docker_title: 'Lernumgebung starten',
+        docker_sub: 'JupyterLab + Python + PostgreSQL – alles in Docker, läuft auf Windows, Mac & Linux.',
+        docker_steps: [
+            { label: '1. Repository klonen', code: 'git clone https://github.com/swrobuts/dav.git\ncd dav/docker' },
+            { label: '2. Container starten',  code: 'docker compose up -d' },
+            { label: '3. JupyterLab öffnen', code: 'http://localhost:8888' }
+        ],
+        docker_cta: 'Vollständiger Docker Guide →',
+        about_title: 'Über den Kurs',
+        about_desc: 'Der Kurs „Datenaufbereitung und -verarbeitung" im BBA-Studiengang an der THWS vermittelt die praktischen Grundlagen der Datenvorbereitung für Analyse und Machine Learning. 80 % der Arbeit eines Data Scientists entfällt auf Datenaufbereitung – dieser Kurs macht Sie damit vertraut.',
+        why_title: 'Warum DAV?',
+        why_text: 'Rohdaten sind fast nie analysefertig. Sie haben fehlende Werte, Inkonsistenzen, falsche Datentypen und versteckte Ausreißer. DAV lehrt Sie, diese Probleme systematisch zu erkennen und zu beheben.',
+        goals_title: 'Lernziele',
+        goals: [
+            'Verschiedene Datenquellen einlesen und verarbeiten (CSV, JSON, XML, Excel, APIs)',
+            'Datenqualität beurteilen und Fehlerbilder erkennen',
+            'Fehlende Werte, Duplikate und Ausreißer systematisch behandeln',
+            'Daten für ML-Modelle transformieren und kodieren',
+            'Vollständige Data-Prep-Workflows mit Python/pandas umsetzen'
+        ],
+        footer_built: 'Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt',
+        footer_prof: 'Prof. Dr. Robert Butscher',
+        footer_github: 'GitHub Repository'
+    },
+    en: {
+        nav: { labs: 'Modules', docker: 'Docker', about: 'Course' },
+        hero: {
+            badge: 'THWS BBA · Summer Term 2026',
+            headline: 'Data Preparation & Processing',
+            tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
+            sub: 'Practical learning with Python, pandas and JupyterLab',
+            cta: 'Explore Modules', cta2: 'Start Docker'
+        },
+        stats: [
+            { val: '6',   label: 'Topic Modules' },
+            { val: '12+', label: 'Notebooks' },
+            { val: '3',   label: 'Case Studies' },
+            { val: 'SQL', label: 'Python + SQL', icon: true }
+        ],
+        workflow_title: 'The DAV Workflow',
+        workflow_sub: 'From raw data source to clean, analysis-ready tables.',
+        workflow: ['Data Sources','Load','Inspect','Clean','Transform','Analyse'],
+        labs_title: 'The 6 Learning Modules',
+        labs_sub: 'Each module contains theory, runnable Python notebooks and interactive quiz questions.',
+        labs: [
+            { name: 'Fundamentals & CRISP-DM', subtitle: 'Understanding Data Prep',
+              desc: 'What is data preparation? CRISP-DM process model, Garbage in – Garbage out, Why Python?',
+              link: 'lab-grundlagen.html', diff: 'Beginner' },
+            { name: 'Data Acquisition', subtitle: 'File formats · APIs · Scraping',
+              desc: 'Reading CSV, JSON, XML, Excel, Parquet. Querying REST APIs. Web scraping with BeautifulSoup. Database connections.',
+              link: 'lab-data-acquisition.html', diff: 'Beginner' },
+            { name: 'Data Inspection & EDA', subtitle: 'Exploratory Data Analysis',
+              desc: 'df.info(), df.describe(), visualizing missing values, distributions, correlations, outlier detection.',
+              link: 'lab-eda.html', diff: 'Foundation' },
+            { name: 'Data Cleansing', subtitle: 'Systematic Data Cleaning',
+              desc: 'Missing values, duplicates, inconsistencies, imputation strategies, fixing data types – on real problem datasets.',
+              link: 'lab-cleansing.html', diff: 'Foundation' },
+            { name: 'Data Transformation', subtitle: 'Structure & Encode',
+              desc: 'melt(), pivot(), One-Hot-Encoding, Feature Scaling, Feature Engineering, Merging & Joining.',
+              link: 'lab-transformation.html', diff: 'Advanced' },
+            { name: 'Case Studies & Use Cases', subtitle: 'Complete DAV Workflows',
+              desc: 'Customer Churn, Movie Analysis, Used Cars – from raw data to analysis-ready dataset.',
+              link: 'lab-usecases.html', diff: 'Advanced' }
+        ],
+        diffClass: { 'Beginner': 'diff-einstieg', 'Foundation': 'diff-grundlagen', 'Advanced': 'diff-fortgeschritten' },
+        cta_module: 'Open Module →',
+        docker_title: 'Start Your Environment',
+        docker_sub: 'JupyterLab + Python + PostgreSQL – all in Docker, runs on Windows, Mac & Linux.',
+        docker_steps: [
+            { label: '1. Clone Repository', code: 'git clone https://github.com/swrobuts/dav.git\ncd dav/docker' },
+            { label: '2. Start Containers',  code: 'docker compose up -d' },
+            { label: '3. Open JupyterLab', code: 'http://localhost:8888' }
+        ],
+        docker_cta: 'Full Docker Guide →',
+        about_title: 'About the Course',
+        about_desc: 'The course "Data Preparation & Processing" in the BBA program at THWS teaches practical foundations of data preparation for analysis and machine learning. 80% of a data scientist\'s work involves data preparation – this course makes you proficient.',
+        why_title: 'Why DAV?',
+        why_text: 'Raw data is almost never analysis-ready. It has missing values, inconsistencies, wrong data types and hidden outliers. DAV teaches you to systematically identify and fix these issues.',
+        goals_title: 'Learning Objectives',
+        goals: [
+            'Read and process various data sources (CSV, JSON, XML, Excel, APIs)',
+            'Assess data quality and identify error patterns',
+            'Systematically handle missing values, duplicates and outliers',
+            'Transform and encode data for ML models',
+            'Implement complete data prep workflows with Python/pandas'
+        ],
+        footer_built: 'Built for BBA Students · THWS Würzburg-Schweinfurt',
+        footer_prof: 'Prof. Dr. Robert Butscher',
+        footer_github: 'GitHub Repository'
     }
+};
 
-    function App() {
-        const [lang, setLang] = useState('de');
-        const t = translations[lang];
-        const revealRefs = useRef([]);
+/* ── Copy Button ── */
+function CopyBtn({ text }) {
+    const [ok, setOk] = useState(false);
+    return (
+        <button className="copy-btn" onClick={() => {
+            navigator.clipboard.writeText(text).then(() => { setOk(true); setTimeout(() => setOk(false), 2000); });
+        }}>{ok ? '✓ Kopiert' : 'Kopieren'}</button>
+    );
+}
 
-        useEffect(() => {
-            document.documentElement.lang = lang;
-        }, [lang]);
+/* ── Main App ── */
+function App() {
+    const [lang, setLang] = useState('de');
+    const t = T[lang];
+    const revealRefs = useRef([]);
 
-        useEffect(() => {
-            const observer = new IntersectionObserver(
-                (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
-                { threshold: 0.1 }
-            );
-            revealRefs.current.forEach(el => el && observer.observe(el));
-            return () => observer.disconnect();
-        }, []);
+    useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
-        const addReveal = (el) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
+    useEffect(() => {
+        const obs = new IntersectionObserver(
+            entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+            { threshold: 0.08 }
+        );
+        revealRefs.current.forEach(el => el && obs.observe(el));
+        return () => obs.disconnect();
+    }, [lang]);
 
-        return (
-            <div>
-                {/* Navbar */}
-                <nav className="navbar">
-                    <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style={{background:'#0389CF'}}>DAV</div>
-                            <span className="logo">DAV Lab</span>
+    const ref = el => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
+
+    return (
+        <div>
+            {/* ── Navbar ── */}
+            <nav className="navbar">
+                <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ width: 32, height: 32, background: '#0389CF', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Icon paths={ICON_CODE} size={16} className="" style={{color:'white', stroke:'white'}}/>
                         </div>
-                        <div className="hidden md:flex items-center gap-6">
-                            <a href="#labs" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">{t.nav.labs}</a>
-                            <a href="#docker" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">{t.nav.docker}</a>
-                            <a href="#about" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">{t.nav.about}</a>
+                        <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0369A1', letterSpacing: '-0.02em' }}>DAV Lab</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                        <div className="hidden md:flex" style={{ gap: '1.5rem', display: 'flex' }}>
+                            {[['#labs', t.nav.labs], ['#docker', t.nav.docker], ['#about', t.nav.about]].map(([href, label]) => (
+                                <a key={href} href={href} style={{ color: '#64748b', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.15s' }}
+                                   onMouseOver={e => e.target.style.color='#0389CF'} onMouseOut={e => e.target.style.color='#64748b'}>{label}</a>
+                            ))}
                         </div>
-                        <div className="flex gap-2">
+                        <div style={{ display: 'flex', gap: '0.4rem' }}>
                             <button className={`lang-btn ${lang === 'de' ? 'active' : ''}`} onClick={() => setLang('de')}>DE</button>
                             <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
                         </div>
                     </div>
-                </nav>
+                </div>
+            </nav>
+
+            {/* ── Hero + Stats = one viewport ── */}
+            <div style={{ minHeight: 'calc(100vh - 60px)', display: 'flex', flexDirection: 'column' }}>
 
                 {/* Hero */}
-                <section className="hero-gradient text-white py-24 px-6">
+                <section className="hero-gradient fade-in" style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 1.5rem' }}>
                     <div className="animated-bg"></div>
-                    <div className="relative z-10 max-w-5xl mx-auto text-center fade-in">
-                        <div className="inline-flex items-center gap-2 bg-white bg-opacity-15 rounded-full px-4 py-2 text-sm font-medium mb-6 backdrop-blur-sm">
-                            <span>🎓</span>
-                            <span>THWS BBA – Sommersemester 2026</span>
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight">{t.hero.headline}</h1>
-                        <p className="text-xl md:text-2xl font-medium mb-2 opacity-90">{t.hero.tagline}</p>
-                        <p className="text-lg opacity-75 mb-10">{t.hero.sub}</p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="#labs" className="inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl text-lg transition-all hover:-translate-y-1" style={{background:'#E8792F', color:'white'}}>
-                                {t.hero.cta} →
-                            </a>
-                            <a href="docker-guide.html" className="inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl text-lg bg-white bg-opacity-15 hover:bg-opacity-25 transition-all hover:-translate-y-1 backdrop-blur-sm">
-                                🐳 {t.hero.cta2}
-                            </a>
-                        </div>
+
+                    {/* Bauhaus geometric decoration */}
+                    <div className="geo-deco">
+                        <svg width="240" height="240" viewBox="0 0 240 240">
+                            <rect x="10" y="10" width="80" height="80" fill="white" rx="4"/>
+                            <rect x="100" y="10" width="80" height="80" fill="white" rx="4" opacity="0.6"/>
+                            <rect x="10" y="100" width="80" height="80" fill="white" rx="4" opacity="0.5"/>
+                            <rect x="100" y="100" width="80" height="80" fill="white" rx="4" opacity="0.25"/>
+                            <circle cx="210" cy="210" r="22" fill="white" opacity="0.35"/>
+                        </svg>
                     </div>
 
-                    {/* Geometric decoration */}
-                    <div className="absolute right-10 top-10 opacity-10 hidden lg:block">
-                        <svg width="200" height="200" viewBox="0 0 200 200">
-                            <rect x="20" y="20" width="60" height="60" fill="white" rx="4"/>
-                            <rect x="90" y="20" width="60" height="60" fill="white" rx="4" opacity="0.6"/>
-                            <rect x="20" y="90" width="60" height="60" fill="white" rx="4" opacity="0.6"/>
-                            <rect x="90" y="90" width="60" height="60" fill="white" rx="4" opacity="0.3"/>
-                            <circle cx="170" cy="170" r="20" fill="white" opacity="0.4"/>
-                        </svg>
+                    <div style={{ position: 'relative', zIndex: 10, maxWidth: 760, textAlign: 'center' }}>
+                        {/* Badge */}
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', borderRadius: 999, padding: '0.4rem 1rem', marginBottom: '1.5rem', backdropFilter: 'blur(8px)', fontSize: '0.82rem', fontWeight: 600, color: 'rgba(255,255,255,0.9)' }}>
+                            <Icon paths={['M22 10v6M2 10l10-5 10 5-10 5z','M6 12v5c3 3 9 3 12 0v-5']} size={14}/>
+                            {t.hero.badge}
+                        </div>
+                        <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.75rem)', fontWeight: 900, color: 'white', lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+                            {t.hero.headline}
+                        </h1>
+                        <p style={{ fontSize: '1.15rem', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: '0.5rem' }}>
+                            {t.hero.tagline}
+                        </p>
+                        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.65)', marginBottom: '2.5rem' }}>
+                            {t.hero.sub}
+                        </p>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                            <a href="#labs" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8792F', color: 'white', fontWeight: 700, padding: '0.9rem 2rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none', transition: 'transform 0.15s' }}
+                               onMouseOver={e => e.currentTarget.style.transform='translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform='none'}>
+                                {t.hero.cta} →
+                            </a>
+                            <a href="docker-guide.html" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', fontWeight: 700, padding: '0.9rem 2rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none', backdropFilter: 'blur(4px)', transition: 'background 0.15s' }}
+                               onMouseOver={e => e.currentTarget.style.background='rgba(255,255,255,0.22)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.15)'}>
+                                <Icon paths={ICON_PACKAGE} size={18}/> {t.hero.cta2}
+                            </a>
+                        </div>
                     </div>
                 </section>
 
-                {/* Stats Bar */}
+                {/* Stats Bar – anchored at bottom of viewport */}
                 <section className="stat-bar">
-                    <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
-                        {[
-                            { val: '6', label: t.stats.modules },
-                            { val: '12+', label: t.stats.notebooks },
-                            { val: '3', label: t.stats.cases },
-                            { val: '🐍', label: t.stats.tools }
-                        ].map((s, i) => (
+                    <div style={{ maxWidth: 900, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+                        {t.stats.map((s, i) => (
                             <div key={i} className="stat-item">
-                                <div className="stat-number">{s.val}</div>
-                                <div className="text-xs font-bold uppercase tracking-widest mt-1" style={{color:'#0389CF'}}>{s.label}</div>
+                                {s.icon
+                                    ? <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.35rem' }}>
+                                        <Icon paths={ICON_TERMINAL} size={36} className="" style={{ color: '#E8792F', stroke: '#E8792F' }}/>
+                                      </div>
+                                    : <div className="stat-number">{s.val}</div>
+                                }
+                                <div className="stat-label">{s.label}</div>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Workflow */}
-                <section className="py-16 px-6 bg-gray-50">
-                    <div className="max-w-5xl mx-auto" ref={addReveal}>
-                        <h2 className="text-2xl font-bold text-center mb-2" style={{color:'#0389CF'}}>{t.workflow_title}</h2>
-                        <p className="text-center text-gray-500 mb-8">{t.workflow_sub}</p>
-                        <div className="data-flow justify-center">
-                            {t.workflow.map((item, i) => (
-                                item === '→' ?
-                                    <span key={i} className="data-flow-arrow hidden md:block">→</span> :
-                                    <div key={i} className="data-flow-item text-sm">{item}</div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+            </div>{/* end viewport-height wrapper */}
 
-                {/* Labs */}
-                <section id="labs" className="py-20 px-6 bg-white">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center mb-14" ref={addReveal}>
-                            <h2 className="text-3xl md:text-4xl font-black mb-3" style={{color:'#0389CF'}}>{t.labs_title}</h2>
-                            <p className="text-gray-500 max-w-2xl mx-auto">{t.labs_sub}</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {t.labs.map((lab, i) => (
-                                <a key={i} href={lab.link} className="lab-card block bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg" ref={addReveal}>
-                                    <div className="flex items-start gap-4 mb-4">
-                                        <div className="text-3xl">{lab.emoji}</div>
-                                        <div>
-                                            <h3 className="font-bold text-lg leading-tight" style={{color:'#0389CF'}}>{lab.name}</h3>
-                                            <p className="text-sm text-gray-500">{lab.subtitle}</p>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{lab.desc}</p>
-                                    <div className="flex items-center justify-between">
-                                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${(t.diff_colors || {})[lab.diff] || 'bg-gray-100 text-gray-600'}`}>
-                                            {lab.diff}
-                                        </span>
-                                        <span className="text-sm font-semibold" style={{color:'#E8792F'}}>Zum Modul →</span>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
+            {/* ── Workflow ── */}
+            <section style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
+                <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+                    <h2 style={{ textAlign: 'center', fontSize: '1.6rem', fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem' }}>{t.workflow_title}</h2>
+                    <p style={{ textAlign: 'center', color: '#94a3b8', marginBottom: '2.5rem', fontSize: '0.95rem' }}>{t.workflow_sub}</p>
+                    <div className="workflow-row" style={{ justifyContent: 'center' }}>
+                        {t.workflow.map((item, i) => (
+                            <React.Fragment key={i}>
+                                <div className="workflow-box">{item}</div>
+                                {i < t.workflow.length - 1 && <span className="workflow-arrow">→</span>}
+                            </React.Fragment>
+                        ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Docker CTA */}
-                <section id="docker" className="py-20 px-6" style={{background:'#0389CF'}}>
-                    <div className="max-w-4xl mx-auto text-white" ref={addReveal}>
-                        <div className="text-center mb-12">
-                            <div className="text-5xl mb-4">🐳</div>
-                            <h2 className="text-3xl md:text-4xl font-black mb-3">{t.docker_title}</h2>
-                            <p className="text-lg opacity-80">{t.docker_sub}</p>
-                        </div>
-                        <div className="grid md:grid-cols-3 gap-6 mb-10">
-                            {[
-                                { step: t.docker_step1, code: 'git clone https://github.com/swrobuts/dav-lab.git\ncd dav-lab/docker' },
-                                { step: t.docker_step2, code: 'docker compose up -d' },
-                                { step: t.docker_step3, code: 'http://localhost:8888' }
-                            ].map((s, i) => (
-                                <div key={i} className="bg-white bg-opacity-10 rounded-xl p-5 backdrop-blur-sm">
-                                    <div className="text-sm font-bold opacity-70 mb-2">{s.step}</div>
-                                    <div className="font-mono text-sm bg-black bg-opacity-20 rounded-lg p-3">{s.code}</div>
+            {/* ── Lab Cards ── */}
+            <section id="labs" style={{ padding: '5rem 1.5rem', background: 'white' }}>
+                <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '3rem' }} ref={ref}>
+                        <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 900, color: '#0369A1', marginBottom: '0.6rem', letterSpacing: '-0.02em' }}>{t.labs_title}</h2>
+                        <p style={{ color: '#94a3b8', maxWidth: 560, margin: '0 auto', fontSize: '0.95rem' }}>{t.labs_sub}</p>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>
+                        {t.labs.map((lab, i) => (
+                            <a key={i} href={lab.link} className="lab-card" ref={ref}>
+                                {/* Ghost module number */}
+                                <span className="lab-card-num">0{i+1}</span>
+                                {/* Icon */}
+                                <div className="lab-icon-box">
+                                    <Icon paths={LAB_ICONS[i]} size={20}/>
                                 </div>
-                            ))}
-                        </div>
-                        <div className="text-center">
-                            <a href="docker-guide.html" className="inline-flex items-center gap-2 font-bold px-8 py-4 rounded-xl text-lg transition-all hover:-translate-y-1" style={{background:'#E8792F', color:'white'}}>
-                                {t.docker_cta} →
+                                {/* Title */}
+                                <div className="lab-title">{lab.name}</div>
+                                <div className="lab-subtitle">{lab.subtitle}</div>
+                                {/* Description */}
+                                <p className="lab-desc">{lab.desc}</p>
+                                {/* Footer */}
+                                <div className="lab-footer">
+                                    <span className={`diff-badge ${(t.diffClass||{})[lab.diff]||'diff-einstieg'}`}>{lab.diff}</span>
+                                    <span className="lab-cta">{t.cta_module}</span>
+                                </div>
                             </a>
-                        </div>
+                        ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* About */}
-                <section id="about" className="py-20 px-6 bg-gray-50">
-                    <div className="max-w-5xl mx-auto" ref={addReveal}>
-                        <h2 className="text-3xl font-black mb-6" style={{color:'#0389CF'}}>{t.about_title}</h2>
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <p className="text-gray-600 leading-relaxed mb-6">{t.about_desc}</p>
-                                <div className="rounded-xl p-5 mb-4" style={{background:'rgba(3,137,207,0.08)', borderLeft:'4px solid #0389CF'}}>
-                                    <h3 className="font-bold mb-2" style={{color:'#0389CF'}}>{t.about_p1_title}</h3>
-                                    <p className="text-gray-600 text-sm leading-relaxed">{t.about_p1}</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 className="font-bold mb-4" style={{color:'#0389CF'}}>{t.about_p2_title}</h3>
-                                <ul className="space-y-3">
-                                    {t.about_p2_items.map((item, i) => (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <span className="mt-1 text-green-500 font-bold flex-shrink-0">✓</span>
-                                            <span className="text-gray-600 text-sm">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+            {/* ── Docker CTA ── */}
+            <section id="docker" style={{ padding: '5rem 1.5rem', background: '#0389CF' }}>
+                <div style={{ maxWidth: 960, margin: '0 auto', color: 'white' }} ref={ref}>
+                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                            <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 12, padding: '1rem', display: 'inline-flex' }}>
+                                <Icon paths={ICON_PACKAGE} size={32}/>
                             </div>
                         </div>
+                        <h2 style={{ fontSize: 'clamp(1.6rem,3vw,2.25rem)', fontWeight: 900, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>{t.docker_title}</h2>
+                        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem' }}>{t.docker_sub}</p>
                     </div>
-                </section>
-
-                {/* Footer */}
-                <footer className="py-10 px-6 text-center text-sm text-gray-500" style={{background:'#1e293b', color:'#94a3b8'}}>
-                    <p className="font-semibold text-white mb-1">{t.footer_built}</p>
-                    <p>{t.footer_prof}</p>
-                    <p>{t.footer_thws}</p>
-                    <div className="mt-4">
-                        <a href="https://github.com/swrobuts/dav-lab" className="text-blue-400 hover:text-blue-300">{t.footer_github}</a>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(250px,1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
+                        {t.docker_steps.map((s, i) => (
+                            <div key={i} className="docker-step">
+                                <div className="docker-step-label">{s.label}</div>
+                                <div className="docker-step-code">{s.code}</div>
+                            </div>
+                        ))}
                     </div>
-                </footer>
-            </div>
-        );
-    }
+                    <div style={{ textAlign: 'center' }}>
+                        <a href="docker-guide.html" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8792F', color: 'white', fontWeight: 800, padding: '1rem 2.25rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none' }}>
+                            {t.docker_cta}
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+            {/* ── About ── */}
+            <section id="about" style={{ padding: '5rem 1.5rem', background: '#f8fafc' }}>
+                <div style={{ maxWidth: 960, margin: '0 auto' }} ref={ref}>
+                    <h2 style={{ fontSize: '1.75rem', fontWeight: 900, color: '#0369A1', marginBottom: '2rem', letterSpacing: '-0.02em' }}>{t.about_title}</h2>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: '3rem' }}>
+                        <div>
+                            <p style={{ color: '#4b5563', lineHeight: 1.75, marginBottom: '1.5rem', fontSize: '0.95rem' }}>{t.about_desc}</p>
+                            <div style={{ background: 'rgba(3,137,207,0.07)', borderLeft: '4px solid #0389CF', borderRadius: '0 8px 8px 0', padding: '1.25rem 1.5rem' }}>
+                                <h3 style={{ fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem', fontSize: '0.95rem' }}>{t.why_title}</h3>
+                                <p style={{ color: '#4b5563', fontSize: '0.88rem', lineHeight: 1.7, margin: 0 }}>{t.why_text}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style={{ fontWeight: 800, color: '#0369A1', marginBottom: '1.25rem', fontSize: '0.95rem' }}>{t.goals_title}</h3>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                                {t.goals.map((g, i) => (
+                                    <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                                        <span style={{ color: '#16a34a', fontWeight: 800, fontSize: '0.9rem', flexShrink: 0, marginTop: '0.1rem' }}>✓</span>
+                                        <span style={{ color: '#4b5563', fontSize: '0.88rem', lineHeight: 1.65 }}>{g}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Footer ── */}
+            <footer style={{ padding: '2.5rem 1.5rem', background: '#0f172a', textAlign: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                    <Icon paths={ICON_CODE} size={20} className="" style={{ color: '#475569', stroke: '#475569' }}/>
+                </div>
+                <p style={{ fontWeight: 700, color: '#e2e8f0', marginBottom: '0.3rem', fontSize: '0.9rem' }}>{t.footer_built}</p>
+                <p style={{ color: '#64748b', fontSize: '0.82rem', marginBottom: '0.25rem' }}>{t.footer_prof}</p>
+                <div style={{ marginTop: '1.25rem' }}>
+                    <a href="https://github.com/swrobuts/dav" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#60a5fa', fontSize: '0.82rem', textDecoration: 'none' }}>
+                        <Icon paths={ICON_GITHUB} size={14}/> {t.footer_github}
+                    </a>
+                </div>
+            </footer>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
 </html>
