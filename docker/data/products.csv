@@ -1,0 +1,51 @@
+product_id,produktname,kategorie,preis,lagerbestand,lieferant
+1,Gadget Plus A0,Bücher,362.7,440,Lieferant B
+2,Widget Pro B1,Kosmetik,300.75,516,Lieferant A
+3,SuperItem C2,Lebensmittel,323.29,915,Lieferant D
+4,MegaProduct D3,Elektronik,291.28,229,Lieferant A
+5,Gadget Plus E4,Sport,18.3,868,Lieferant B
+6,MegaProduct F5,Lebensmittel,499.8,848,Lieferant A
+7,MegaProduct G6,Bücher,21.64,113,Lieferant C
+8,UltraGear H7,Lebensmittel,200.6,515,Lieferant B
+9,Widget Pro I8,Spielzeug,57.03,183,Lieferant B
+10,Widget Pro J9,Lebensmittel,52.98,724,Lieferant A
+11,Widget Pro K10,Kleidung,397.8,758,Lieferant D
+12,SuperItem L11,Lebensmittel,215.83,33,Lieferant D
+13,Gadget Plus M12,Kosmetik,401.56,295,Lieferant B
+14,Gadget Plus N13,Elektronik,140.03,452,Lieferant B
+15,UltraGear O14,Bücher,131.95,707,Lieferant A
+16,UltraGear P15,Möbel,129.36,504,Lieferant B
+17,UltraGear Q16,Kleidung,309.99,405,Lieferant B
+18,MegaProduct R17,Möbel,408.42,126,Lieferant D
+19,Widget Pro S18,Lebensmittel,228.87,141,Lieferant B
+20,SuperItem T19,Spielzeug,192.73,963,Lieferant A
+21,Gadget Plus U20,Sport,486.92,647,Lieferant B
+22,SuperItem V21,Elektronik,62.79,127,Lieferant B
+23,Widget Pro W22,Elektronik,245.88,834,Lieferant B
+24,Widget Pro X23,Spielzeug,207.2,685,Lieferant C
+25,Gadget Plus Y24,Elektronik,53.57,924,Lieferant B
+26,MegaProduct Z25,Spielzeug,137.76,729,Lieferant A
+27,UltraGear A26,Kleidung,19.08,625,Lieferant D
+28,MegaProduct B27,Spielzeug,439.09,886,Lieferant D
+29,Widget Pro C28,Kosmetik,305.89,349,Lieferant C
+30,Widget Pro D29,Spielzeug,408.43,523,Lieferant A
+31,MegaProduct E30,Lebensmittel,263.17,462,Lieferant D
+32,UltraGear F31,Elektronik,301.76,243,Lieferant D
+33,UltraGear G32,Lebensmittel,351.92,563,Lieferant B
+34,Widget Pro H33,Sport,454.47,185,Lieferant B
+35,UltraGear I34,Spielzeug,50.42,232,Lieferant B
+36,UltraGear J35,Lebensmittel,168.82,513,Lieferant C
+37,Gadget Plus K36,Möbel,355.97,0,Lieferant B
+38,Gadget Plus L37,Lebensmittel,479.38,238,Lieferant A
+39,SuperItem M38,Lebensmittel,490.5,54,Lieferant C
+40,MegaProduct N39,Spielzeug,320.86,494,Lieferant D
+41,Widget Pro O40,Kosmetik,100.83,731,Lieferant D
+42,UltraGear P41,Bücher,64.01,615,Lieferant A
+43,SuperItem Q42,Möbel,473.29,866,Lieferant A
+44,Gadget Plus R43,Kleidung,219.79,417,Lieferant D
+45,UltraGear S44,Spielzeug,101.43,447,Lieferant A
+46,MegaProduct T45,Lebensmittel,467.28,835,Lieferant A
+47,Gadget Plus U46,Elektronik,56.74,337,Lieferant A
+48,Widget Pro V47,Spielzeug,366.14,907,Lieferant B
+49,UltraGear W48,Kosmetik,314.51,817,Lieferant D
+50,SuperItem X49,Bücher,48.43,276,Lieferant A
