@@ -856,7 +856,19 @@ function initDashboard(data) {
     // Show dashboard
     document.getElementById("loading").style.display = "none";
     document.getElementById("mainContent").style.display = "block";
-    updateAll();
+    // Double rAF: ensures browser calculates grid layout widths before Plotly renders.
+    // Without this, charts render at wrong (pre-layout) width and get clipped by overflow:hidden.
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            updateAll();
+            // Secondary resize pass after 200ms for any chart that still has wrong size
+            setTimeout(() => {
+                document.querySelectorAll(".js-plotly-plot").forEach(el => {
+                    if (el.id) Plotly.Plots.resize(el.id);
+                });
+            }, 200);
+        });
+    });
 }
 
 // ===================================================================
