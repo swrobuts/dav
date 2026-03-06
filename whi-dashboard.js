@@ -826,12 +826,16 @@ function initDashboard(data) {
         maxItems: 5,
         plugins: ["remove_button"],
         placeholder: "Länder auswählen…",
-        onItemAdd: function() {
-            selectedCountries = ts.items.slice(0, 5);
+        onItemAdd: function(value) {
+            // Use value arg, not ts.items (may not be updated yet)
+            if (!selectedCountries.includes(value)) {
+                selectedCountries = [...selectedCountries, value].slice(0, 5);
+            }
             updateAll();
         },
-        onItemRemove: function() {
-            selectedCountries = ts.items;
+        onItemRemove: function(value) {
+            // Filter out the removed value directly
+            selectedCountries = selectedCountries.filter(c => c !== value);
             updateAll();
         }
     });
