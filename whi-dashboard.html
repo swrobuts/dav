@@ -162,6 +162,27 @@
         /* Prevent Plotly SVG overflow outside card boundaries */
         #kpiViolinChart .main-svg,
         #worldMap .main-svg { overflow: hidden; }
+
+        /* KPI Card 1 – score/detail spans */
+        .score-highlight { color: #2171b5; font-weight: 600; }
+        .streak-info     { color: #999; font-weight: 400; }
+        .rank-change     { font-size: 0.6875rem; font-weight: 500; display: block; margin-top: 0.15rem; }
+        .rank-change.pos { color: #2ca02c; }
+        .rank-change.neg { color: #666; }
+        .avg-distance    { color: #2171b5; font-weight: 500; font-size: 0.6875rem; display: block; margin-top: 0.1rem; }
+
+        /* KPI Card 2 – Ø/Med toggle (segmented control style) */
+        .stat-toggle { display: inline-flex; background: #f0f0f0; border-radius: 5px; padding: 2px; gap: 1px; }
+        .stat-toggle .toggle-btn {
+            background: transparent; border: none;
+            padding: 2px 8px; font-size: 0.75rem; font-weight: 500;
+            color: #999; cursor: pointer; border-radius: 3px;
+            transition: all 0.12s; font-family: Inter, sans-serif;
+        }
+        .stat-toggle .toggle-btn.active {
+            background: white; color: #2171b5;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
         .kpi-bottom { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 0.6875rem; }
         .bottom-label { color: #999; }
         .bottom-country { font-weight: 500; color: #d62728; }
@@ -253,10 +274,19 @@
             </div>
             <!-- Durchschnitt -->
             <div class="kpi-card">
-                <div class="kpi-tag">Globaler Durchschnitt</div>
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                    <div class="stat-toggle">
+                        <button class="toggle-btn active" id="btnMean" onclick="setStatMode('mean')">Ø</button>
+                        <button class="toggle-btn" id="btnMedian" onclick="setStatMode('median')">Med</button>
+                    </div>
+                    <div class="kpi-tag" id="kpiAvgLabel" style="margin-bottom:0">Durchschnitt</div>
+                </div>
                 <div class="kpi-value" id="kpiAvg">–</div>
                 <div class="kpi-trend" id="kpiAvgTrend"></div>
-                <div class="kpi-detail" id="kpiAvgDetail"></div>
+                <div id="kpiSparkline" style="height:70px;margin-top:8px;overflow:hidden"></div>
+                <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.08);font-size:0.6875rem;color:#999">
+                    Globaler Mittelwert aller Länder im Zeitverlauf
+                </div>
             </div>
             <!-- Verteilung -->
             <div class='kpi-card'>

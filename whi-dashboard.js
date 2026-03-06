@@ -72,6 +72,7 @@ let selectedYear = 2025;
 let selectedRegion = "";
 let selectedCountries = [];
 let mapMode = "selection";
+let statMode = "mean";   // "mean" | "median"
 let ts = null;
 
 // ===================================================================
@@ -144,6 +145,19 @@ function getCountryScore(country, year) {
 }
 
 // ===================================================================
+// Stat Mode Toggle (Ø / Median)
+// ===================================================================
+
+function setStatMode(mode) {
+    statMode = mode;
+    document.getElementById("btnMean").className   = "toggle-btn" + (mode === "mean"   ? " active" : "");
+    document.getElementById("btnMedian").className = "toggle-btn" + (mode === "median" ? " active" : "");
+    document.getElementById("kpiAvgLabel").textContent = mode === "mean" ? "Durchschnitt" : "Median";
+    updateKPIs(getFilteredData());
+    drawSparkline();
+}
+
+// ===================================================================
 // KPI Cards
 // ===================================================================
 
@@ -177,18 +191,24 @@ function updateKPIs(data) {
 
         document.getElementById("kpiBest").textContent       = best.Country;
         document.getElementById("kpiBestRegion").textContent = best.Region || "";
-        const streakText = streak > 1 ? ` · ${streak}× in Folge` : "";
-        document.getElementById("kpiBestScore").textContent  = `${bestScore.toFixed(2)} von 10${streakText}`;
 
+        // Score line: blue score number + gray streak
+        const streakHtml = streak > 1 ? `<span class="streak-info"> · ${streak}× in Folge</span>` : "";
+        document.getElementById("kpiBestScore").innerHTML =
+            `<span class="score-highlight">${bestScore.toFixed(2)}</span> von 10${streakHtml}`;
+
+        // Trend: positive = green, negative = gray (like VPS .rank-change)
         if (bestPrev !== null) {
             const diff = bestScore - bestPrev;
             const el = document.getElementById("kpiBestTrend");
-            el.textContent = `${diff >= 0 ? "↑" : "↓"} ${Math.abs(diff).toFixed(2)} zum Vorjahr`;
-            el.className = "kpi-trend " + (diff >= 0 ? "pos" : "neg");
+            el.innerHTML = `${diff >= 0 ? "↑" : "↓"} ${Math.abs(diff).toFixed(2)} zum Vorjahr`;
+            el.className = "rank-change " + (diff >= 0 ? "pos" : "neg");
         }
+
+        // Detail: blue "+2.16 über Ø (39%)"
         if (avgDist !== null && avgScore !== null) {
-            document.getElementById("kpiBestDetail").textContent =
-                `+${avgDist.toFixed(2)} über Ø (${avgScore}%)`;
+            document.getElementById("kpiBestDetail").innerHTML =
+                `<span class="avg-distance">+${avgDist.toFixed(2)} über Ø (${avgScore}%)</span>`;
         }
 
         // kpi-bottom: Schlusslicht + Spanne
@@ -204,20 +224,28 @@ function updateKPIs(data) {
         }
     }
 
-    // Durchschnitt
-    if (curAvg !== null) {
-        document.getElementById("kpiAvg").textContent = curAvg.toFixed(2);
+    // Durchschnitt / Median (statMode)
+    if (scores.length > 0) {
+        const sortedSc = [...scores].sort((a,b) => a-b);
+        const median = sortedSc.length % 2
+            ? sortedSc[Math.floor(sortedSc.length / 2)]
+            : (sortedSc[sortedSc.length/2 - 1] + sortedSc[sortedSc.length/2]) / 2;
+        const curVal = statMode === "median" ? median : (curAvg || 0);
+
+        document.getElementById("kpiAvg").textContent = curVal.toFixed(2);
+
         const prevScores = prevData.map(d => +d["Happiness Score"]).filter(v => !isNaN(v) && v > 0);
         if (prevScores.length) {
-            const prevAvg = mean(prevScores);
-            const diff = curAvg - prevAvg;
+            const prevSorted = [...prevScores].sort((a,b) => a-b);
+            const prevMedian = prevSorted.length % 2
+                ? prevSorted[Math.floor(prevSorted.length / 2)]
+                : (prevSorted[prevSorted.length/2 - 1] + prevSorted[prevSorted.length/2]) / 2;
+            const prevVal = statMode === "median" ? prevMedian : mean(prevScores);
+            const diff = curVal - prevVal;
             const el = document.getElementById("kpiAvgTrend");
             el.textContent = `${diff >= 0 ? "↑" : "↓"} ${Math.abs(diff).toFixed(2)} zum Vorjahr`;
             el.className = "kpi-trend " + (diff >= 0 ? "pos" : "neg");
         }
-        // Detail zeigt globalen Kontext (kein "Spanne" mehr)
-        const detailEl = document.getElementById("kpiAvgDetail");
-        if (detailEl) detailEl.textContent = "Globaler Mittelwert aller Länder";
     }
 
     // Stichprobe
@@ -697,12 +725,81 @@ function drawHeatmap() {
 }
 
 // ===================================================================
+// Sparkline (KPI Card 2) – global avg/median over years
+// ===================================================================
+
+function drawSparkline() {
+    const el = document.getElementById("kpiSparkline");
+    if (!el || typeof Plotly === "undefined") return;
+
+    const years = [...new Set(allData.map(d => d.Year))].filter(Boolean).sort((a,b) => a-b);
+
+    const vals = years.map(y => {
+        let yd = allData.filter(d => d.Year === y);
+        if (selectedRegion) yd = yd.filter(d => d.Region === selectedRegion);
+        const sc = yd.map(d => +d["Happiness Score"]).filter(v => !isNaN(v) && v > 0);
+        if (!sc.length) return null;
+        if (statMode === "median") {
+            const s = [...sc].sort((a,b) => a-b);
+            return s.length % 2 ? s[Math.floor(s.length/2)] : (s[s.length/2-1] + s[s.length/2]) / 2;
+        }
+        return mean(sc);
+    });
+
+    const pts = years.map((y,i) => ({y, v: vals[i]})).filter(p => p.v !== null);
+    if (!pts.length) return;
+
+    const last = pts[pts.length - 1];
+    const allV = pts.map(p => p.v);
+    const vMin = Math.min(...allV), vMax = Math.max(...allV);
+    const pad  = Math.max((vMax - vMin) * 0.25, 0.08);
+
+    // Even years only for x-axis ticks
+    const tickYears = years.filter(y => y % 2 === 1);
+
+    Plotly.react("kpiSparkline",
+        [
+            {
+                type: "scatter", mode: "lines",
+                x: pts.map(p => p.y), y: pts.map(p => p.v),
+                line: { color: "#2171b5", width: 1.5 },
+                hovertemplate: "%{x}: %{y:.2f}<extra></extra>",
+                showlegend: false
+            },
+            {
+                type: "scatter", mode: "markers",
+                x: [last.y], y: [last.v],
+                marker: { color: "#e74c3c", size: 8, line: { color: "white", width: 1 } },
+                hoverinfo: "skip", showlegend: false
+            }
+        ],
+        {
+            margin: { l: 28, r: 6, t: 4, b: 22 },
+            paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
+            xaxis: {
+                showgrid: false, showline: false, zeroline: false,
+                tickfont: { size: 8, color: "#999" },
+                tickmode: "array", tickvals: tickYears
+            },
+            yaxis: {
+                showgrid: false, showline: false, zeroline: false,
+                tickfont: { size: 8, color: "#999" }, nticks: 3,
+                range: [vMin - pad, vMax + pad]
+            },
+            showlegend: false, hovermode: "x unified"
+        },
+        { displayModeBar: false, responsive: true }
+    );
+}
+
+// ===================================================================
 // Update all charts
 // ===================================================================
 
 function updateAll() {
     const data = getFilteredData();
     updateKPIs(data);
+    drawSparkline();
     drawMap(data);
     drawTrend();
     drawTopFlop(data);
