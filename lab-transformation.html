@@ -25,6 +25,19 @@
         .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
         .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
         .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; font-size: 0.85rem; margin: 1rem 0; white-space: pre; overflow-x: auto; }
+        .code-wrapper { position: relative; }
+        .copy-btn {
+            position: absolute; top: 1.25rem; right: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+            color: #94a3b8; border-radius: 0.375rem;
+            padding: 0.2rem 0.6rem; font-size: 0.72rem; cursor: pointer;
+            transition: all 0.2s; opacity: 0.35;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5; user-select: none;
+        }
+        .code-wrapper:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { background: rgba(255,255,255,0.18); color: #e2e8f0; }
+        .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.4); opacity: 1; }
         .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
@@ -62,6 +75,32 @@
 <script type="text/babel">
 const { useState } = React;
 const sectionIds = ['overview','reshape','encoding','scaling','engineering','merging','quiz','notebook'];
+
+function CodeBlock({ code }) {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }).catch(() => {
+            const ta = document.createElement("textarea");
+            ta.value = code; ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta); ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
+    return (
+        <div className="code-wrapper">
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
+                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            </button>
+            <div className="code-block">{code}</div>
+        </div>
+    );
+}
 
 function QuizSection({ questions, title, intro }) {
     const [answers, setAnswers] = useState({});
@@ -137,7 +176,7 @@ function App() {
                 <div id="reshape" className="mb-12">
                     <h2>{lang==='de'?'Reshape: melt(), pivot(), stack()':'Reshape: melt(), pivot(), stack()'}</h2>
                     <p className="text-gray-600 text-sm">{lang==='de'?'Manchmal müssen Daten von "wide" zu "long" Format umgewandelt werden (oder umgekehrt).':'Sometimes data needs to be converted from "wide" to "long" format (or vice versa).'}</p>
-                    <div className="code-block">{`import pandas as pd
+                    <CodeBlock code={`import pandas as pd
 
 # Beispiel: Umsatzdaten nach Quartal
 df_wide = pd.DataFrame({
@@ -173,12 +212,12 @@ df_pt = df_long.pivot_table(
 # stack(): Spalten → Zeilen (wird MultiIndex)
 stacked = df_wide.set_index('produkt').stack()
 print(stacked.head())
-unstacked = stacked.unstack()  # zurück zu wide`}</div>
+unstacked = stacked.unstack()  # zurück zu wide`} />
                 </div>
 
                 <div id="encoding" className="mb-12">
                     <h2>{lang==='de'?'Encoding kategorischer Variablen':'Encoding Categorical Variables'}</h2>
-                    <div className="code-block">{`import pandas as pd
+                    <CodeBlock code={`import pandas as pd
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 df = pd.read_csv('../data/customer_churn.csv')
@@ -205,7 +244,7 @@ feature_names = ohe.get_feature_names_out(['contract_type'])
 df_ohe = pd.DataFrame(encoded, columns=feature_names)
 
 print("Encoding abgeschlossen!")
-print(f"Spalten vorher: {len(df.columns)}, nachher: {len(df_encoded.columns)}")`}</div>
+print(f"Spalten vorher: {len(df.columns)}, nachher: {len(df_encoded.columns)}")`} />
                     <div className="info-box">
                         <p className="text-blue-800 text-sm"><b>One-Hot vs. Label-Encoding:</b> One-Hot für nominale Kategorien ohne Reihenfolge (Stadt, Farbe). Label-Encoding für ordinale Kategorien mit natürlicher Reihenfolge (Klein &lt; Mittel &lt; Groß).</p>
                     </div>
@@ -213,7 +252,7 @@ print(f"Spalten vorher: {len(df.columns)}, nachher: {len(df_encoded.columns)}")`
 
                 <div id="scaling" className="mb-12">
                     <h2>{lang==='de'?'Feature Scaling: Normalisierung vs. Standardisierung':'Feature Scaling: Normalization vs. Standardization'}</h2>
-                    <div className="code-block">{`import pandas as pd
+                    <CodeBlock code={`import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
@@ -245,7 +284,7 @@ print(df_standardized[numeric_cols].describe())
 df_original = pd.DataFrame(
     scaler_mm.inverse_transform(df_normalized[numeric_cols]),
     columns=numeric_cols
-)`}</div>
+)`} />
                     <div className="tip-box">
                         <p className="text-yellow-800 text-sm">Immer: <code>fit()</code> nur auf Trainingsdaten, dann <code>transform()</code> auf Training und Test. Sonst Data Leakage!</p>
                     </div>
@@ -253,7 +292,7 @@ df_original = pd.DataFrame(
 
                 <div id="engineering" className="mb-12">
                     <h2>Feature Engineering</h2>
-                    <div className="code-block">{`import pandas as pd
+                    <CodeBlock code={`import pandas as pd
 import numpy as np
 
 df = pd.read_csv('../data/customer_churn.csv')
@@ -283,12 +322,12 @@ df['hohe_kosten'] = df['monthly_charge'] > df['monthly_charge'].quantile(0.75)
 df['name_laenge'] = df['name'].str.len()
 df['hat_email_gmail'] = df['email'].str.contains('@gmail.com', na=False)
 
-print("Neue Features:", [c for c in df.columns if c not in ['customer_id']][:10])`}</div>
+print("Neue Features:", [c for c in df.columns if c not in ['customer_id']][:10])`} />
                 </div>
 
                 <div id="merging" className="mb-12">
                     <h2>{lang==='de'?'Merging & Joining: Daten zusammenführen':'Merging & Joining: Combining Data'}</h2>
-                    <div className="code-block">{`import pandas as pd
+                    <CodeBlock code={`import pandas as pd
 
 # Beispiel-Datensätze laden
 kunden = pd.read_csv('../data/customers.csv')     # Kundenstammdaten
@@ -325,7 +364,7 @@ df_all = pd.concat([kunden_2023, kunden_2024], axis=0, ignore_index=True)
 # Spaltenweise
 df_combined = pd.concat([df_basis, df_features], axis=1)
 
-print(f"Ergebnis: {df_inner.shape}")`}</div>
+print(f"Ergebnis: {df_inner.shape}")`} />
                     <div className="info-box">
                         <p className="text-blue-800 text-sm"><b>Merge vs. Concat:</b> merge() für Joins auf gemeinsamen Schlüsselspalten (wie SQL). concat() für einfaches Stapeln von DataFrames.</p>
                     </div>

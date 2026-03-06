@@ -25,6 +25,19 @@
         .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
         .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
         .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.875rem; margin: 1rem 0; white-space: pre; }
+        .code-wrapper { position: relative; }
+        .copy-btn {
+            position: absolute; top: 1.25rem; right: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+            color: #94a3b8; border-radius: 0.375rem;
+            padding: 0.2rem 0.6rem; font-size: 0.72rem; cursor: pointer;
+            transition: all 0.2s; opacity: 0.35;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5; user-select: none;
+        }
+        .code-wrapper:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { background: rgba(255,255,255,0.18); color: #e2e8f0; }
+        .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.4); opacity: 1; }
         .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
@@ -87,7 +100,18 @@ const t = {
             dim_items: ['Vollständigkeit – Sind alle Werte vorhanden?', 'Richtigkeit – Sind die Werte korrekt?', 'Konsistenz – Stimmen die Werte überein?', 'Aktualität – Sind die Daten aktuell?', 'Eindeutigkeit – Gibt es keine Duplikate?', 'Validität – Entsprechen Werte erlaubten Formaten?'],
             gartner: 'Definition nach Gartner: "Data preparation is the process of collecting, cleaning, and consolidating data into one file or data table, primarily for use in analysis."',
             steps: 'Typische Schritte der Datenaufbereitung:',
-            step_items: ['Daten sammeln (Collection)', 'Daten inspizieren (Inspection)', 'Daten bereinigen (Cleansing)', 'Daten transformieren (Transformation)', 'Daten integrieren (Integration)']
+            step_items: ['Daten sammeln (Collection)', 'Daten inspizieren (Inspection)', 'Daten bereinigen (Cleansing)', 'Daten transformieren (Transformation)', 'Daten integrieren (Integration)'],
+            quality_code: `import pandas as pd
+
+df = pd.read_csv("../data/flights.csv")
+
+# Datenqualität prüfen / Check data quality
+print("Shape:", df.shape)
+print("\\nFehlende Werte / Missing values:")
+print(df.isnull().sum())
+print("\\nDuplikate / Duplicates:", df.duplicated().sum())
+print("\\nDatentypen / Data types:")
+print(df.dtypes)`
         },
         crisp: {
             title: 'Das CRISP-DM Modell',
@@ -133,7 +157,16 @@ print(df.head())          # Erste 5 Zeilen
 print(df.info())          # Datentypen, fehlende Werte
 print(df.describe())      # Statistische Kennzahlen
 print(df.shape)           # (Zeilen, Spalten)
-print(df.columns.tolist()) # Spaltennamen`
+print(df.columns.tolist()) # Spaltennamen`,
+            code2: `# Häufigkeitsanalyse / Frequency analysis
+print(df["origin"].value_counts().head())
+
+# Eindeutige Werte / Unique values
+print(df.nunique())
+
+# Einfache Filterung / Simple filtering
+df_delayed = df[df["dep_delay"] > 60]
+print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")`
         },
         goals: {
             title: 'Lernziele des DAV-Kurses',
@@ -177,10 +210,28 @@ print(df.columns.tolist()) # Spaltennamen`
             desc: 'Before starting practical data preparation, it is important to understand the conceptual framework: What exactly is data preparation, and how is it embedded in the overall data analysis process?',
             goals: ['Understand the term "Data Preparation" and its significance', 'Learn the CRISP-DM process model', 'Internalize the "Garbage in, Garbage out" principle', 'Get to know Python as the primary tool', 'Overview of DAV course learning objectives']
         },
-        what: { title: 'What is Data Preparation?', p1: 'Data preparation (also: Data Wrangling) refers to all activities necessary to bring raw data into a form suitable for analysis.', quote: '"80% of a data scientist\'s work falls on data preparation."', quote_src: '— Gartner Research, ComputerWeekly', p2: 'Raw data, as it comes from reality, is almost never analysis-ready. It contains missing values, typos, inconsistent formatting, duplicate entries and unsuitable data types.', dimensions: 'The 6 dimensions of data quality:', dim_items: ['Completeness – Are all values present?', 'Accuracy – Are the values correct?', 'Consistency – Do values agree?', 'Timeliness – Is the data current?', 'Uniqueness – Are there no duplicates?', 'Validity – Do values match allowed formats?'], gartner: 'Definition by Gartner: "Data preparation is the process of collecting, cleaning, and consolidating data into one file or data table, primarily for use in analysis."', steps: 'Typical data preparation steps:', step_items: ['Data Collection', 'Data Inspection', 'Data Cleansing', 'Data Transformation', 'Data Integration'] },
+        what: { title: 'What is Data Preparation?', p1: 'Data preparation (also: Data Wrangling) refers to all activities necessary to bring raw data into a form suitable for analysis.', quote: '"80% of a data scientist\'s work falls on data preparation."', quote_src: '— Gartner Research, ComputerWeekly', p2: 'Raw data, as it comes from reality, is almost never analysis-ready. It contains missing values, typos, inconsistent formatting, duplicate entries and unsuitable data types.', dimensions: 'The 6 dimensions of data quality:', dim_items: ['Completeness – Are all values present?', 'Accuracy – Are the values correct?', 'Consistency – Do values agree?', 'Timeliness – Is the data current?', 'Uniqueness – Are there no duplicates?', 'Validity – Do values match allowed formats?'], gartner: 'Definition by Gartner: "Data preparation is the process of collecting, cleaning, and consolidating data into one file or data table, primarily for use in analysis."', steps: 'Typical data preparation steps:', step_items: ['Data Collection', 'Data Inspection', 'Data Cleansing', 'Data Transformation', 'Data Integration'], quality_code: `import pandas as pd
+
+df = pd.read_csv("../data/flights.csv")
+
+# Datenqualität prüfen / Check data quality
+print("Shape:", df.shape)
+print("\\nFehlende Werte / Missing values:")
+print(df.isnull().sum())
+print("\\nDuplikate / Duplicates:", df.duplicated().sum())
+print("\\nDatentypen / Data types:")
+print(df.dtypes)` },
         crisp: { title: 'The CRISP-DM Model', p1: 'CRISP-DM stands for Cross-Industry Standard Process for Data Mining. It is the most widely used process model for data science projects.', phases: [{ name: 'Business Understanding', color: '#0389CF', desc: 'What is the business goal? What questions need to be answered?' }, { name: 'Data Understanding', color: '#06b6d4', desc: 'What data is available? First exploratory analysis.' }, { name: 'Data Preparation', color: '#E8792F', desc: 'Clean, transform, integrate data. ← That\'s DAV!' }, { name: 'Modeling', color: '#8b5cf6', desc: 'Train and optimize machine learning models.' }, { name: 'Evaluation', color: '#22c55e', desc: 'Evaluate model: Does it answer the business goal?' }, { name: 'Deployment', color: '#f59e0b', desc: 'Bring results into practice, deploy model to production.' }], focus: 'DAV focuses on phases 2 and 3 – Data Understanding and Data Preparation. These phases are iterative: Often you discover while cleaning that you don\'t fully understand the data yet.', iterative: 'CRISP-DM is not a linear process! You jump between phases. Typical: You discover during modeling that further data cleaning is needed.' },
         garbage: { title: '"Garbage in, Garbage out"', p1: 'This principle describes a fundamental truth of data processing: If bad data is entered into a system, bad results come out – regardless of how good the algorithm is.', example: 'Real-world example: A company trains a churn prediction model with faulty customer data (wrong contract types, missing usage times). The model has high training accuracy, but its real-world predictions are worthless. The cause: Garbage in, Garbage out.', consequences: 'Consequences of poor data quality:', cons_items: ['Wrong business decisions', 'Faulty ML models', 'Regulatory risks', 'Loss of trust in data products'], solution: 'The solution: Systematic data preparation with clear quality criteria – exactly what you learn in the DAV course.' },
-        python: { title: 'Why Python?', p1: 'Python is the language of data science. The ecosystem of libraries is unmatched:', libs: [{ name: 'pandas', desc: 'Data manipulation and analysis. DataFrames as the central data structure.' }, { name: 'numpy', desc: 'Numerical computations, array operations.' }, { name: 'matplotlib / seaborn', desc: 'Data visualization.' }, { name: 'scikit-learn', desc: 'ML Preprocessing (scaling, encoding, imputation).' }, { name: 'sqlalchemy', desc: 'Database connections, SQL in Python.' }], quickstart: 'Quick Start: First steps in pandas', code: `import pandas as pd\nimport numpy as np\n\n# Read CSV\ndf = pd.read_csv('../data/flights.csv')\n\n# First looks\nprint(df.head())           # First 5 rows\nprint(df.info())           # Data types, missing values\nprint(df.describe())       # Statistical summaries\nprint(df.shape)            # (rows, columns)\nprint(df.columns.tolist()) # Column names` },
+        python: { title: 'Why Python?', p1: 'Python is the language of data science. The ecosystem of libraries is unmatched:', libs: [{ name: 'pandas', desc: 'Data manipulation and analysis. DataFrames as the central data structure.' }, { name: 'numpy', desc: 'Numerical computations, array operations.' }, { name: 'matplotlib / seaborn', desc: 'Data visualization.' }, { name: 'scikit-learn', desc: 'ML Preprocessing (scaling, encoding, imputation).' }, { name: 'sqlalchemy', desc: 'Database connections, SQL in Python.' }], quickstart: 'Quick Start: First steps in pandas', code: `import pandas as pd\nimport numpy as np\n\n# Read CSV\ndf = pd.read_csv('../data/flights.csv')\n\n# First looks\nprint(df.head())           # First 5 rows\nprint(df.info())           # Data types, missing values\nprint(df.describe())       # Statistical summaries\nprint(df.shape)            # (rows, columns)\nprint(df.columns.tolist()) # Column names`, code2: `# Häufigkeitsanalyse / Frequency analysis
+print(df["origin"].value_counts().head())
+
+# Eindeutige Werte / Unique values
+print(df.nunique())
+
+# Einfache Filterung / Simple filtering
+df_delayed = df[df["dep_delay"] > 60]
+print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")` },
         goals: { title: 'Course Learning Objectives', intro: 'After completing the course, you will be able to:', items: ['Read various data sources (CSV, JSON, XML, Excel, REST APIs, SQL)', 'Assess data quality and systematically identify error patterns', 'Deliberately handle missing values, duplicates and outliers', 'Transform and encode data for ML models', 'Independently implement complete data prep workflows with Python/pandas', 'Visualize and communicate results'], module_map: 'Module structure:', modules: ['01 CRISP-DM & Basics', '02 File Formats', '03 APIs & Web Scraping', '04 Data Inspection', '05 Data Cleansing', '06 Data Transformation', '07 Data Merging', '08 Visualization', '09–11 Case Studies', '12 Knowledge Tests'] },
         quiz_title: 'Quiz: Fundamentals',
         quiz_intro: 'Test your understanding – 5 questions.',
@@ -199,6 +250,32 @@ print(df.columns.tolist()) # Spaltennamen`
 };
 
 const sectionIds = ['overview','what','crisp','garbage','python','goals','quiz','notebook'];
+
+function CodeBlock({ code }) {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }).catch(() => {
+            const ta = document.createElement("textarea");
+            ta.value = code; ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta); ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
+    return (
+        <div className="code-wrapper">
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
+                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            </button>
+            <div className="code-block">{code}</div>
+        </div>
+    );
+}
 
 function QuizSection({ questions, title, intro }) {
     const [answers, setAnswers] = useState({});
@@ -298,6 +375,7 @@ function App() {
                             <div key={i} className="bg-white rounded-xl p-3 border border-gray-200 text-sm text-gray-700">{d}</div>
                         ))}
                     </div>
+                    <CodeBlock code={tr.what.quality_code} />
                     <div className="info-box mt-4">
                         <p className="text-sm text-blue-800 italic">{tr.what.gartner}</p>
                     </div>
@@ -353,7 +431,8 @@ function App() {
                         ))}
                     </div>
                     <h3>{tr.python.quickstart}</h3>
-                    <div className="code-block">{tr.python.code}</div>
+                    <CodeBlock code={tr.python.code} />
+                    <CodeBlock code={tr.python.code2} />
                 </div>
 
                 <div id="goals" className="mb-12">

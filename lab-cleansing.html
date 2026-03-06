@@ -25,6 +25,19 @@
         .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
         .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
         .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; font-size: 0.85rem; margin: 1rem 0; white-space: pre; overflow-x: auto; }
+        .code-wrapper { position: relative; }
+        .copy-btn {
+            position: absolute; top: 1.25rem; right: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+            color: #94a3b8; border-radius: 0.375rem;
+            padding: 0.2rem 0.6rem; font-size: 0.72rem; cursor: pointer;
+            transition: all 0.2s; opacity: 0.35;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5; user-select: none;
+        }
+        .code-wrapper:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { background: rgba(255,255,255,0.18); color: #e2e8f0; }
+        .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.4); opacity: 1; }
         .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
@@ -216,6 +229,32 @@ scores_after, total_after = data_quality_score(df_clean)
 print(f"Qualitätsscore NACHHER: {total_after:.1f}/100")
 print(f"\\nVerbesserung: +{total_after - total_before:.1f} Punkte")`;
 
+function CodeBlock({ code }) {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }).catch(() => {
+            const ta = document.createElement("textarea");
+            ta.value = code; ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta); ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
+    return (
+        <div className="code-wrapper">
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
+                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            </button>
+            <div className="code-block">{code}</div>
+        </div>
+    );
+}
+
 function QuizSection({ questions, title, intro }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
@@ -318,26 +357,26 @@ function App() {
                 <div id="missing" className="mb-12">
                     <h2>{lang==='de'?'Fehlende Werte behandeln':'Handling Missing Values'}</h2>
                     <p className="text-gray-600 text-sm">{lang==='de'?'Strategien je nach Anteil fehlender Werte und Domänenwissen:':'Strategies depending on the proportion of missing values and domain knowledge:'}</p>
-                    <div className="code-block">{code_missing}</div>
+                    <CodeBlock code={code_missing} />
                 </div>
                 <div id="duplicates" className="mb-12">
                     <h2>{lang==='de'?'Duplikate entfernen':'Removing Duplicates'}</h2>
-                    <div className="code-block">{code_duplicates}</div>
+                    <CodeBlock code={code_duplicates} />
                 </div>
                 <div id="strings" className="mb-12">
                     <h2>{lang==='de'?'Strings bereinigen':'Cleaning Strings'}</h2>
-                    <div className="code-block">{code_strings}</div>
+                    <CodeBlock code={code_strings} />
                 </div>
                 <div id="datatypes" className="mb-12">
                     <h2>{lang==='de'?'Datentypen korrigieren':'Fixing Data Types'}</h2>
-                    <div className="code-block">{code_datatypes}</div>
+                    <CodeBlock code={code_datatypes} />
                     <div className="tip-box">
                         <p className="text-yellow-800 text-sm">{lang==='de'?'Kategorische Spalten als "category"-Typ speichern spart oft 60-70% Speicher!':'Saving categorical columns as "category" type often saves 60-70% memory!'}</p>
                     </div>
                 </div>
                 <div id="outlier_handling" className="mb-12">
                     <h2>{lang==='de'?'Ausreißer behandeln':'Handling Outliers'}</h2>
-                    <div className="code-block">{`import pandas as pd
+                    <CodeBlock code={`import pandas as pd
 import numpy as np
 
 df = pd.read_excel('../data/verkaufsdaten_mit_problemen.xlsx')
@@ -358,11 +397,11 @@ df_clean = df[(df['preis'] >= Q1 - 1.5*IQR) & (df['preis'] <= Q3 + 1.5*IQR)]
 df_clean = df[df['preis'] > 0]          # Preis muss positiv sein
 df_clean = df_clean[df_clean['menge'] >= 0]  # Menge nicht negativ
 
-print(f"Vorher: {len(df)} | Nachher: {len(df_clean)} ({len(df)-len(df_clean)} entfernt)")`}</div>
+print(f"Vorher: {len(df)} | Nachher: {len(df_clean)} ({len(df)-len(df_clean)} entfernt)")`} />
                 </div>
                 <div id="quality_score" className="mb-12">
                     <h2>{lang==='de'?'Vorher/Nachher Qualitätsscore':'Before/After Quality Score'}</h2>
-                    <div className="code-block">{code_quality}</div>
+                    <CodeBlock code={code_quality} />
                     <div className="challenge-box">
                         <p className="font-bold text-green-800">Challenge</p>
                         <p className="text-green-700 text-sm mt-1">{lang==='de'?'Lade verkaufsdaten_mit_problemen.xlsx und erstelle eine vollständige Bereinigungspipeline. Erstelle am Ende einen "Vorher/Nachher"-Report.':'Load verkaufsdaten_mit_problemen.xlsx and create a complete cleaning pipeline. Create a "Before/After" report at the end.'}</p>
