@@ -1039,7 +1039,6 @@ function initDashboard(data) {
         .sort((a,b) => +a["Happiness Rank"] - +b["Happiness Rank"]);
     selectedCountries = yearData.slice(0, 3).map(d => d.Country);
     selectedCountries.forEach(c => tomSelect.addItem(c, true));
-    tomSelect.refreshItems();
 
     // Events
     yearSel.addEventListener("change", () => {
