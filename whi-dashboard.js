@@ -359,61 +359,39 @@ function drawMap(yearData) {
     updateMapSubtitle();
     const highlightSet = new Set(selectedCountries);
     const valid = yearData.filter(d => ISO_CODES[d.Country]);
-    let traces = [];
 
-    if (mapMode === "all" || selectedCountries.length === 0) {
-        traces.push({
-            type: "choropleth", locationmode: "ISO-3",
-            locations: valid.map(d => ISO_CODES[d.Country]),
-            z: valid.map(d => +d["Happiness Score"]),
-            text: valid.map(d =>
-                `<b>${d.Country}</b><br>Score: ${(+d["Happiness Score"]).toFixed(2)}<br>Rang: ${d["Happiness Rank"]}<br>${d.Region||""}`
-            ),
-            hovertemplate: "%{text}<extra></extra>",
-            colorscale: COLOR_SCALE, zmin: 2, zmax: 8,
-            marker: { line: { color: "#ffffff", width: 0.5 } },
-            colorbar: { len: 0.65, thickness: 12, x: 1.01, xanchor: "left",
-                        tickfont: {size:9}, title:{text:"Score",font:{size:9}} }
-        });
-    } else {
-        // Grey base
-        traces.push({
-            type:"choropleth", locationmode:"ISO-3",
-            locations: valid.map(d => ISO_CODES[d.Country]),
-            z: valid.map(() => 1),
-            colorscale:[[0,"#e8e8e8"],[1,"#e8e8e8"]], showscale:false, zmin:0, zmax:1,
-            text: valid.map(d => d.Country), hovertemplate:"%{text}<extra></extra>",
-            marker:{line:{color:"#ffffff",width:0.5}}
-        });
-        // Highlighted countries
-        const sel = valid.filter(d => highlightSet.has(d.Country));
-        if (sel.length) {
-            traces.push({
-                type:"choropleth", locationmode:"ISO-3",
-                locations: sel.map(d => ISO_CODES[d.Country]),
-                z: sel.map(d => +d["Happiness Score"]),
-                text: sel.map(d =>
-                    `<b>${d.Country}</b><br>Score: ${(+d["Happiness Score"]).toFixed(2)}<br>Rang: ${d["Happiness Rank"]}`
-                ),
-                hovertemplate:"%{text}<extra></extra>",
-                colorscale: COLOR_SCALE, zmin:2, zmax:8,
-                marker:{line:{color:"#ffffff",width:1.5}},
-                colorbar:{len:0.65,thickness:12,x:1.01,xanchor:"left",tickfont:{size:9},title:{text:"Score",font:{size:9}}}
-            });
-        }
-    }
+    // Single trace: NaN for non-selected in selection mode → renders as landcolor (gray).
+    // One trace = colorbar always renders reliably (no 2-trace colorbar conflict).
+    const useSelection = mapMode === "selection" && selectedCountries.length > 0;
+
+    const traces = [{
+        type: "choropleth", locationmode: "ISO-3",
+        locations: valid.map(d => ISO_CODES[d.Country]),
+        z: valid.map(d =>
+            useSelection && !highlightSet.has(d.Country) ? NaN : +d["Happiness Score"]
+        ),
+        text: valid.map(d =>
+            (!useSelection || highlightSet.has(d.Country))
+                ? `<b>${d.Country}</b><br>Score: ${(+d["Happiness Score"]).toFixed(2)}<br>Rang: ${d["Happiness Rank"]}<br>${d.Region || ""}`
+                : d.Country
+        ),
+        hovertemplate: "%{text}<extra></extra>",
+        colorscale: COLOR_SCALE, zmin: 2, zmax: 8,
+        marker: { line: { color: "#ffffff", width: 0.5 } },
+        colorbar: { len: 0.65, thickness: 12,
+                    tickfont: {size: 9}, title: {text: "Score", font: {size: 9}} }
+    }];
 
     Plotly.react("worldMap", traces, {
         ...LAYOUT_BASE,
-        margin:{l:0,r:55,t:0,b:0},
+        margin: {l: 0, r: 70, t: 0, b: 0},
         geo: {
-            showframe:false, showcoastlines:true, coastlinecolor:"#cccccc",
-            showland:true, landcolor:"#f0f0f0",
-            showocean:true, oceancolor:"#e8f4f8",
-            showlakes:false, projection:{type:"natural earth"},
-            domain:{x:[0,1], y:[0,1]}
+            showframe: false, showcoastlines: true, coastlinecolor: "#cccccc",
+            showland: true, landcolor: "#f0f0f0",
+            showocean: true, oceancolor: "#e8f4f8",
+            showlakes: false, projection: {type: "natural earth"}
         },
-        showlegend:false
+        showlegend: false
     }, PLOTLY_CFG);
 }
 
@@ -774,7 +752,7 @@ function drawSparkline() {
             }
         ],
         {
-            margin: { l: 28, r: 6, t: 4, b: 22 },
+            margin: { l: 28, r: 14, t: 4, b: 22 },
             paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
             xaxis: {
                 showgrid: false, showline: false, zeroline: false,
