@@ -14,23 +14,27 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: #f5f5f5; font-family: Inter, sans-serif; color: #1a1a1a; }
 
-        /* ── Header (white, like VPS) ── */
+        /* ── Header – scrollt mit (wie VPS, kein fixed) ── */
         header {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             background: white; color: #1a1a1a;
             border-bottom: 1px solid #e0e0e0;
-            padding: 0.75rem 1.5rem;
+            padding: 1.5rem 1rem 1rem;
         }
-        .header-top { display: flex; align-items: flex-start; justify-content: space-between; }
-        .header-title { font-size: 1.1rem; font-weight: 600; }
-        .header-sub { font-size: 0.78rem; color: #666; margin-top: 0.15rem; }
-        .header-meta { font-size: 0.7rem; color: #999; margin-top: 0.3rem; border-top: 1px solid #f0f0f0; padding-top: 0.3rem; }
+        .header-text { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+        .header-title { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em; }
+        .header-sub { font-size: 0.8125rem; color: #666; margin-bottom: 0.75rem; }
+        .header-meta {
+            display: flex; gap: 0.5rem; flex-wrap: wrap;
+            max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;
+        }
+        .meta-item { font-size: 0.6875rem; color: #999; }
+        .meta-sep  { color: #e0e0e0; }
 
-        /* ── Filter bar ── */
+        /* ── Filter bar – sticky at top (after header scrolls away) ── */
         .filter-bar {
-            position: sticky; top: 72px; z-index: 90;
+            position: sticky; top: 0; z-index: 90;
             background: white; border-bottom: 1px solid #e0e0e0;
-            padding: 0.65rem 1.5rem; display: flex; gap: 1.5rem; align-items: flex-end;
+            padding: 1rem 1.5rem; display: flex; gap: 1.5rem; align-items: flex-end;
             flex-wrap: wrap;
         }
         .filter-group { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -39,104 +43,119 @@
             text-transform: uppercase; letter-spacing: 0.06em;
         }
         select {
-            border: 1px solid #e0e0e0; border-radius: 6px;
-            padding: 0.3rem 0.65rem; font-size: 0.82rem; font-family: Inter, sans-serif;
+            border: 1px solid #e0e0e0; border-radius: 3px;
+            padding: 0.3rem 0.65rem; font-size: 0.8125rem; font-family: Inter, sans-serif;
             background: white; color: #1a1a1a; cursor: pointer;
-            outline: none; transition: border-color 0.15s;
+            outline: none; transition: border-color 0.15s; height: 34px;
         }
-        select:focus { border-color: #0389CF; }
+        select:focus { border-color: #2171b5; }
 
-        /* Tom Select custom styles to match VPS */
+        /* Tom Select – match VPS orange chip style */
         .ts-wrapper { min-width: 260px; }
         .ts-control {
-            border-color: #e0e0e0 !important;
+            border: 1px solid #e0e0e0 !important; border-radius: 3px !important;
             font-family: Inter, sans-serif !important;
-            font-size: 0.82rem !important;
+            font-size: 0.8125rem !important;
             min-height: 34px !important;
-            padding: 3px 8px !important;
+            padding: 2px 4px !important;
+            box-shadow: none !important;
         }
-        .ts-control input { font-family: Inter, sans-serif !important; }
+        .ts-control input { font-family: Inter, sans-serif !important; font-size: 0.8125rem !important; }
         .ts-control .item {
-            background: #0389CF !important;
-            color: white !important;
-            border-radius: 4px !important;
-            font-size: 0.75rem !important;
-            padding: 1px 5px !important;
+            background: rgba(255,127,14,0.25) !important;
+            border: 1px solid rgba(255,127,14,0.5) !important;
+            color: #b35400 !important;
+            border-radius: 3px !important;
+            font-size: 0.6875rem !important;
+            font-weight: 500 !important;
+            padding: 1px 6px !important;
+            margin: 2px !important;
         }
-        .ts-dropdown { font-family: Inter, sans-serif !important; font-size: 0.82rem !important; }
-        .ts-dropdown .option:hover, .ts-dropdown .option.active { background: #eff6ff !important; color: #0389CF !important; }
+        .ts-control .item .remove {
+            color: #b35400 !important;
+            border-left: 1px solid rgba(255,127,14,0.3) !important;
+            font-weight: 600 !important;
+        }
+        .ts-dropdown { font-family: Inter, sans-serif !important; font-size: 0.8125rem !important; border: 1px solid #e0e0e0 !important; border-radius: 3px !important; }
+        .ts-dropdown .option.active { background: #f5f5f5 !important; color: #1a1a1a !important; }
+        .ts-dropdown .option:hover  { background: #f5f5f5 !important; color: #1a1a1a !important; }
+        .ts-dropdown .option.selected { background: #2171b5 !important; color: white !important; }
 
-        .body-wrap { margin-top: 72px; }
+        .body-wrap { }
 
         .main {
-            padding: 1.25rem 1.5rem 2rem;
-            max-width: 1440px; margin: 0 auto;
+            padding: 1rem 1.5rem 2rem;
+            max-width: 1400px; margin: 0 auto;
         }
 
         /* ── KPI Cards ── */
         .kpi-row {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 1rem; margin-bottom: 1.25rem;
+            gap: 1rem; margin-bottom: 1rem;
         }
         .kpi-card {
-            background: white; border-radius: 10px;
-            padding: 1rem 1.25rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            background: white; border-radius: 3px;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
         }
         .kpi-tag {
-            font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.06em; color: #aaa; margin-bottom: 0.4rem;
+            font-size: 0.6875rem; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 0.04em; color: #999; margin-bottom: 0.5rem;
         }
-        .kpi-value { font-size: 1.75rem; font-weight: 600; color: #1a1a1a; line-height: 1.1; }
-        .kpi-label { font-size: 0.75rem; color: #666; margin-top: 0.2rem; }
-        .kpi-sub { font-size: 0.7rem; color: #999; margin-top: 0.15rem; }
-        .kpi-trend { font-size: 0.72rem; font-weight: 600; margin-top: 0.25rem; }
+        .kpi-value { font-size: 1.5rem; font-weight: 600; color: #1a1a1a; line-height: 1; }
+        .kpi-label { font-size: 0.6875rem; color: #666; margin-top: 0.15rem; }
+        .kpi-sub { font-size: 0.6875rem; color: #999; margin-top: 0.1rem; }
+        .kpi-trend { font-size: 0.6875rem; font-weight: 500; margin-top: 0.2rem; }
         .kpi-trend.pos { color: #2ca02c; }
         .kpi-trend.neg { color: #d62728; }
-        .kpi-detail { font-size: 0.68rem; color: #888; margin-top: 0.1rem; }
+        .kpi-detail { font-size: 0.6875rem; color: #2171b5; font-weight: 500; margin-top: 0.1rem; }
 
         /* ── Chart Cards ── */
         .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .card {
-            background: white; border-radius: 12px;
-            padding: 1.25rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            background: white; border-radius: 3px;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
         }
         .chart-header {
-            display: flex; align-items: flex-start;
-            justify-content: space-between; margin-bottom: 0.5rem; gap: 0.5rem;
+            display: flex; align-items: baseline;
+            justify-content: space-between; margin-bottom: 0.75rem; gap: 0.5rem;
         }
         .chart-title {
-            font-size: 0.75rem; font-weight: 700; color: #1a1a1a;
-            text-transform: uppercase; letter-spacing: 0.05em;
+            font-size: 0.75rem; font-weight: 600; color: #666666;
+            text-transform: uppercase; letter-spacing: 0.01em;
         }
-        .chart-subtitle { font-size: 0.7rem; color: #999; margin-top: 0.15rem; }
-        .chart-footer { font-size: 0.68rem; color: #aaa; margin-top: 0.4rem; }
+        .chart-subtitle { font-size: 0.6875rem; color: #999; margin-top: 0.15rem; font-weight: 400; text-transform: none; letter-spacing: 0; }
+        .chart-footer { font-size: 0.6875rem; color: #999; margin-top: 0.5rem; }
 
-        /* ── Map toggle group ── */
-        .toggle-group { display: flex; gap: 0; flex-shrink: 0; }
+        /* ── Map toggle group – match VPS style ── */
+        .toggle-group { display: flex; gap: 2px; flex-shrink: 0; }
         .toggle-btn {
-            font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.6rem;
-            border: 1px solid #ddd; cursor: pointer;
-            background: white; color: #666; transition: all 0.15s;
-            font-family: Inter, sans-serif; white-space: nowrap;
+            border: none; background: transparent;
+            padding: 3px 8px; font-size: 0.6875rem; font-weight: 500;
+            color: #999; cursor: pointer; border-radius: 2px;
+            transition: all 0.15s; font-family: Inter, sans-serif; white-space: nowrap;
         }
-        .toggle-btn:first-child { border-radius: 4px 0 0 4px; }
-        .toggle-btn:last-child  { border-radius: 0 4px 4px 0; border-left: none; }
-        .toggle-btn:hover:not(.active) { border-color: #0389CF; color: #0389CF; }
-        .toggle-btn.active { background: #0389CF; color: white; border-color: #0389CF; }
+        .toggle-btn:hover { color: #1a1a1a; }
+        .toggle-btn.active {
+            background: white; color: #2171b5;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
 
-        /* ── Footer ── */
+        /* ── Footer – white like VPS ── */
         footer {
-            background: #1a1a1a; color: #888;
-            padding: 1.25rem 1.5rem; text-align: center; font-size: 0.78rem;
+            background: white; color: #666;
+            border-top: 1px solid #e0e0e0;
+            padding: 1rem 1.5rem; margin-top: 1.5rem;
+            font-size: 0.75rem; line-height: 1.6;
         }
-        footer a { color: #60a5fa; text-decoration: none; }
+        footer a { color: #2171b5; text-decoration: none; }
         footer a:hover { text-decoration: underline; }
+        .footer-methodology { margin-top: 0.5rem; color: #999; }
 
         /* ── Loading ── */
         #loading {
-            position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: #f5f5f5; display: flex; align-items: center;
             justify-content: center; z-index: 80;
         }
@@ -160,14 +179,14 @@
 
 <!-- ── Header ── -->
 <header>
-    <div class="header-top">
-        <div>
-            <div class="header-title">World Happiness Report</div>
-            <div class="header-sub">Weltweite Analyse der Lebenszufriedenheit</div>
-        </div>
+    <div class="header-text">
+        <h1 class="header-title">World Happiness Report</h1>
+        <p class="header-sub">Weltweite Analyse der Lebenszufriedenheit</p>
     </div>
     <div class="header-meta">
-        Daten: World Happiness Report 2015–2025 &nbsp;·&nbsp; Methodik: Gallup World Poll (Cantril-Leiter 0–10)
+        <span class="meta-item">Daten: World Happiness Report 2015–2025</span>
+        <span class="meta-sep">·</span>
+        <span class="meta-item">Methodik: Gallup World Poll (Cantril-Leiter 0–10)</span>
     </div>
 </header>
 
@@ -317,13 +336,15 @@
     </div><!-- end main -->
 
     <footer>
-        <p>Datenquelle: <a href="https://worldhappiness.report/" target="_blank">World Happiness Report</a> &nbsp;·&nbsp; Herausgeber: Sustainable Development Solutions Network</p>
-        <p style="margin-top:0.4rem; color: #666;">Faktoren: BIP (log), Soziale Unterstützung, Lebenserwartung, Freiheit, Großzügigkeit, Korruption</p>
-        <p style="margin-top:0.75rem;">
-            <a href="lab-viz-advanced.html">Tutorial: Dashboard selbst bauen →</a>
-            &nbsp;·&nbsp;
-            <a href="index.html">← DAV Lab</a>
-        </p>
+        <div>
+            <strong>Datenquelle:</strong>
+            <a href="https://worldhappiness.report/" target="_blank" rel="noopener">World Happiness Report</a>
+            &nbsp;·&nbsp; Herausgeber: Sustainable Development Solutions Network
+        </div>
+        <div class="footer-methodology">
+            <strong>Faktoren:</strong>
+            BIP (log), Soziale Unterstützung, Lebenserwartung, Freiheit, Großzügigkeit, Korruption
+        </div>
     </footer>
 
 </div><!-- end body-wrap -->
@@ -712,7 +733,7 @@ function drawTrend() {
         margin:{l:48,r:16,t:16,b:48},
         shapes,
         annotations: annotations.length ? annotations : undefined,
-        legend:{orientation:"h", y:-0.2, font:{size:10}, xanchor:"left", x:0},
+        legend:{orientation:"h", y:1.02, yanchor:"bottom", font:{size:10}, xanchor:"left", x:0},
         xaxis:{
             showgrid:true, gridcolor:"#f0f0f0", showline:true, linecolor:"#e0e0e0",
             tickmode:"array", tickvals: years, tickfont:{size:9}
@@ -859,25 +880,26 @@ function drawScatter(data) {
             type:"scatter", mode:"markers", name:"Alle Länder",
             x: rest.map(d => +d.GDP), y: rest.map(d => +d["Happiness Score"]),
             text: rest.map(d => d.Country),
-            marker:{color:"#c8c8c8", size:5, opacity:0.75,
-                    line:{color:"white",width:0.5}},
-            hovertemplate:"<b>%{text}</b><br>GDP: %{x:.2f}<br>Score: %{y:.2f}<extra></extra>"
+            marker:{color:"#666666", size:8, opacity:0.6,
+                    line:{color:"white",width:1}},
+            hovertemplate:"<b>%{text}</b><br>BIP: %{x:.2f}<br>Score: %{y:.2f}<extra></extra>",
+            showlegend:false
         },
         {
             type:"scatter", mode:"lines", name:"Trendlinie",
             x:[xMin,xMax], y:[m*xMin+b, m*xMax+b],
-            line:{color:"#0389CF",width:1.5,dash:"dash"}, hoverinfo:"skip"
+            line:{color:"#999999",width:2,dash:"dash"}, hoverinfo:"skip", showlegend:false
         }
     ];
 
     if (sel.length) {
         traces.push({
-            type:"scatter", mode:"markers+text",
+            type:"scatter", mode:"markers",
             x: sel.map(d => +d.GDP), y: sel.map(d => +d["Happiness Score"]),
             text: sel.map(d => d.Country),
-            textposition:"top center", textfont:{size:9},
-            marker:{color:"#E8792F",size:9,line:{color:"white",width:1.5}},
-            hovertemplate:"<b>%{text}</b><br>GDP: %{x:.2f}<br>Score: %{y:.2f}<extra></extra>"
+            hovertemplate:"<b>%{text}</b><br>BIP: %{x:.2f}<br>Score: %{y:.2f}<extra></extra>",
+            marker:{color:"#e74c3c", size:12, line:{color:"white",width:2}},
+            showlegend:false
         });
     }
 
