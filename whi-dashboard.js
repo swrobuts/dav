@@ -287,7 +287,6 @@ function updateKPIs(data) {
                         customdata: selRows.map(d => [d["Happiness Rank"], d.Region || ""]),
                         hovertemplate: "<b>%{text}</b><br>Score: %{x:.2f}<br>Rang: %{customdata[0]}<br>Region: %{customdata[1]}<extra></extra>",
                         showlegend: false,
-                        cliponaxis: false,
                         name: ""
                     });
                 }
@@ -343,7 +342,8 @@ function drawMap(yearData) {
             hovertemplate: "%{text}<extra></extra>",
             colorscale: COLOR_SCALE, zmin: 2, zmax: 8,
             marker: { line: { color: "#ffffff", width: 0.5 } },
-            colorbar: { len: 0.65, thickness: 12, tickfont: {size:9}, title:{text:"Score",font:{size:9}} }
+            colorbar: { len: 0.65, thickness: 12, x: 1.01, xanchor: "left",
+                        tickfont: {size:9}, title:{text:"Score",font:{size:9}} }
         });
     } else {
         // Grey base
@@ -368,19 +368,20 @@ function drawMap(yearData) {
                 hovertemplate:"%{text}<extra></extra>",
                 colorscale: COLOR_SCALE, zmin:2, zmax:8,
                 marker:{line:{color:"#ffffff",width:1.5}},
-                colorbar:{len:0.65,thickness:12,tickfont:{size:9},title:{text:"Score",font:{size:9}}}
+                colorbar:{len:0.65,thickness:12,x:1.01,xanchor:"left",tickfont:{size:9},title:{text:"Score",font:{size:9}}}
             });
         }
     }
 
     Plotly.react("worldMap", traces, {
         ...LAYOUT_BASE,
-        margin:{l:0,r:0,t:0,b:0},
+        margin:{l:0,r:55,t:0,b:0},
         geo: {
             showframe:false, showcoastlines:true, coastlinecolor:"#cccccc",
             showland:true, landcolor:"#f0f0f0",
             showocean:true, oceancolor:"#e8f4f8",
-            showlakes:false, projection:{type:"natural earth"}
+            showlakes:false, projection:{type:"natural earth"},
+            domain:{x:[0,1], y:[0,1]}
         },
         showlegend:false
     }, PLOTLY_CFG);

@@ -159,6 +159,9 @@
         .footer-methodology { margin-top: 0.5rem; color: #999; }
 
         .chart-footnote.warning { color: #d62728; }
+        /* Prevent Plotly SVG overflow outside card boundaries */
+        #kpiViolinChart .main-svg,
+        #worldMap .main-svg { overflow: hidden; }
         .kpi-bottom { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 0.6875rem; }
         .bottom-label { color: #999; }
         .bottom-country { font-weight: 500; color: #d62728; }
@@ -261,7 +264,7 @@
                 <span class='kpi-tag' style='margin-bottom:0'>Verteilung</span>
                 <span class='chart-subtitle' id='kpiViolinContext'></span>
               </div>
-              <div id='kpiViolinChart' style='height:100px;margin-top:4px'></div>
+              <div id='kpiViolinChart' style='height:100px;margin-top:4px;overflow:hidden'></div>
               <div style='margin-top:8px;font-size:0.6875rem;color:#666'>
                 <div><span style='color:#999'>Gini: </span><span id='kpiGini'></span><span style='color:#999'> (0=gleich, 1=ungleich)</span></div>
                 <div style='margin-top:2px'><span style='color:#999'>90/10-Ratio: </span><span id='kpiRatio'></span></div>
@@ -301,7 +304,7 @@
                         <button class="toggle-btn" id="btnAlle" onclick="setMapMode('all')">Alle</button>
                     </div>
                 </div>
-                <div id="worldMap" style="height:340px;"></div>
+                <div id="worldMap" style="height:340px;overflow:hidden;"></div>
                 <div class="chart-footer">Skala: 0–10 (dunkel = höher)</div>
             </div>
 
