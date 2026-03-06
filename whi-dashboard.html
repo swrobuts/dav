@@ -20,12 +20,12 @@
             border-bottom: 1px solid #e0e0e0;
             padding: 1.5rem 1rem 1rem;
         }
-        .header-text { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+        .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
         .header-title { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em; }
         .header-sub { font-size: 0.8125rem; color: #666; margin-bottom: 0.75rem; }
         .header-meta {
             display: flex; gap: 0.5rem; flex-wrap: wrap;
-            max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;
+            margin-top: 0.75rem;
         }
         .meta-item { font-size: 0.6875rem; color: #999; }
         .meta-sep  { color: #e0e0e0; }
@@ -34,7 +34,12 @@
         .filter-bar {
             position: sticky; top: 0; z-index: 90;
             background: white; border-bottom: 1px solid #e0e0e0;
-            padding: 1rem 1.5rem; display: flex; gap: 1.5rem; align-items: flex-end;
+            padding: 0;
+        }
+        .filter-bar-inner {
+            max-width: 1400px; margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex; gap: 1.5rem; align-items: flex-end;
             flex-wrap: wrap;
         }
         .filter-group { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -187,14 +192,14 @@
 
 <!-- -- Header -- -->
 <header>
-    <div class="header-text">
+    <div class="header-inner">
         <h1 class="header-title">World Happiness Report</h1>
         <p class="header-sub">Weltweite Analyse der Lebenszufriedenheit</p>
-    </div>
-    <div class="header-meta">
-        <span class="meta-item">Daten: World Happiness Report 2015–2025</span>
-        <span class="meta-sep">·</span>
-        <span class="meta-item">Methodik: Gallup World Poll (Cantril-Leiter 0–10)</span>
+        <div class="header-meta">
+            <span class="meta-item">Daten: World Happiness Report 2015–2025</span>
+            <span class="meta-sep">·</span>
+            <span class="meta-item">Methodik: Gallup World Poll (Cantril-Leiter 0–10)</span>
+        </div>
     </div>
 </header>
 
@@ -202,6 +207,7 @@
 
     <!-- -- Filter bar -- -->
     <div class="filter-bar">
+      <div class="filter-bar-inner">
         <div class="filter-group">
             <label class="filter-label">Jahr</label>
             <select id="yearSelect"></select>
@@ -216,6 +222,7 @@
             <label class="filter-label">Ländervergleich (max. 5)</label>
             <select id="countrySelect" multiple placeholder="Länder auswählen…"></select>
         </div>
+      </div>
     </div>
 
     <!-- -- Loading -- -->
@@ -250,8 +257,8 @@
             </div>
             <!-- Verteilung -->
             <div class='kpi-card'>
-              <div class='kpi-label' style='display:flex;align-items:baseline;justify-content:space-between'>
-                <span>VERTEILUNG</span>
+              <div style='display:flex;align-items:baseline;justify-content:space-between;margin-bottom:0.5rem'>
+                <span class='kpi-tag' style='margin-bottom:0'>Verteilung</span>
                 <span class='chart-subtitle' id='kpiViolinContext'></span>
               </div>
               <div id='kpiViolinChart' style='height:100px;margin-top:4px'></div>
@@ -262,7 +269,7 @@
             </div>
             <!-- Stichprobe -->
             <div class='kpi-card'>
-              <div class='kpi-label'>STICHPROBE</div>
+              <div class='kpi-tag'>Stichprobe</div>
               <div class='kpi-value' id='kpiSampleN'>–</div>
               <div style='font-size:0.75rem;color:#666;margin-bottom:4px'>von 193 UN-Staaten <span id='kpiSamplePct' style='color:#2171b5;font-weight:500'></span></div>
               <div style='margin-top:10px'>

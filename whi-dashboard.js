@@ -163,10 +163,22 @@ function updateKPIs(data) {
         const bestScore = +best["Happiness Score"];
         const bestPrev  = getCountryScore(best.Country, prevYear);
         const avgScore  = curAvg ? ((bestScore - curAvg) / curAvg * 100).toFixed(0) : null;
+        const avgDist   = curAvg ? (bestScore - curAvg) : null;
+
+        // Calculate streak (how many consecutive years on top)
+        let streak = 0;
+        const allYears = [...new Set(allData.map(d => d.Year))].filter(Boolean).sort((a,b) => b-a);
+        for (const y of allYears) {
+            const yData = allData.filter(r => r.Year === y && r["Happiness Score"]);
+            if (!yData.length) break;
+            const yTop = yData.reduce((a,b) => +a["Happiness Score"] > +b["Happiness Score"] ? a : b);
+            if (yTop.Country === best.Country) { streak++; } else { break; }
+        }
 
         document.getElementById("kpiBest").textContent       = best.Country;
         document.getElementById("kpiBestRegion").textContent = best.Region || "";
-        document.getElementById("kpiBestScore").textContent  = `${bestScore.toFixed(2)} von 10 · Rang 1`;
+        const streakText = streak > 1 ? ` · ${streak}× in Folge` : "";
+        document.getElementById("kpiBestScore").textContent  = `${bestScore.toFixed(2)} von 10${streakText}`;
 
         if (bestPrev !== null) {
             const diff = bestScore - bestPrev;
@@ -174,9 +186,9 @@ function updateKPIs(data) {
             el.textContent = `${diff >= 0 ? "↑" : "↓"} ${Math.abs(diff).toFixed(2)} zum Vorjahr`;
             el.className = "kpi-trend " + (diff >= 0 ? "pos" : "neg");
         }
-        if (avgScore !== null) {
+        if (avgDist !== null && avgScore !== null) {
             document.getElementById("kpiBestDetail").textContent =
-                `+${avgScore}% über globalem Ø`;
+                `+${avgDist.toFixed(2)} über Ø (${avgScore}%)`;
         }
 
         // kpi-bottom: Schlusslicht + Spanne
@@ -203,11 +215,9 @@ function updateKPIs(data) {
             el.textContent = `${diff >= 0 ? "↑" : "↓"} ${Math.abs(diff).toFixed(2)} zum Vorjahr`;
             el.className = "kpi-trend " + (diff >= 0 ? "pos" : "neg");
         }
-        if (scores.length > 1) {
-            const maxS = Math.max(...scores), minS = Math.min(...scores);
-            document.getElementById("kpiAvgDetail").textContent =
-                `Spanne: ${(maxS - minS).toFixed(2)} Punkte`;
-        }
+        // Detail zeigt globalen Kontext (kein "Spanne" mehr)
+        const detailEl = document.getElementById("kpiAvgDetail");
+        if (detailEl) detailEl.textContent = "Globaler Mittelwert aller Länder";
     }
 
     // Stichprobe
@@ -239,53 +249,62 @@ function updateKPIs(data) {
         const ratioEl = document.getElementById("kpiRatio");
         if (ratioEl) ratioEl.textContent = ratio.toFixed(2) + "×";
 
-        // Violin chart
+        // Violin chart – horizontal orientation, exactly like VPS
         const violinEl = document.getElementById("kpiViolinChart");
         if (violinEl && typeof Plotly !== "undefined") {
+            const emptyY = scores.map(() => "");
             const traces = [
                 {
                     type: "violin",
-                    y: scores,
-                    box: { visible: true },
-                    meanline: { visible: true },
-                    fillcolor: "rgba(33,113,181,0.15)",
-                    line: { color: "#2171b5", width: 1 },
+                    x: scores,
+                    y: emptyY,
+                    orientation: "h",
+                    side: "both",
+                    line_color: "#2171b5",
+                    fillcolor: "rgba(33,113,181,0.25)",
+                    meanline_visible: true,
+                    meanline_color: "#2171b5",
                     points: false,
-                    spanmode: "hard",
-                    name: "",
+                    spanmode: "soft",
+                    width: 0.8,
+                    hoverinfo: "skip",
                     showlegend: false,
-                    hoverinfo: "y",
-                    width: 0.6
+                    name: ""
                 }
             ];
-            // Selected countries as red dots
+            // Selected countries as red dots – same categorical y position as violin
             if (selectedCountries && selectedCountries.length > 0) {
-                const selectedScores = data
-                    .filter(d => selectedCountries.includes(d.Country))
-                    .map(d => ({ country: d.Country, score: +d["Happiness Score"] }))
-                    .filter(d => !isNaN(d.score));
-                if (selectedScores.length > 0) {
+                const selRows = data.filter(d => selectedCountries.includes(d.Country));
+                if (selRows.length > 0) {
                     traces.push({
                         type: "scatter",
-                        x: selectedScores.map(() => 0),
-                        y: selectedScores.map(d => d.score),
+                        x: selRows.map(d => +d["Happiness Score"]),
+                        y: selRows.map(() => ""),
                         mode: "markers",
-                        marker: { color: "#e74c3c", size: 7, line: { color: "white", width: 1.5 } },
-                        text: selectedScores.map(d => d.country + ": " + d.score.toFixed(2)),
-                        hovertemplate: "%{text}<extra></extra>",
+                        marker: { color: "#e74c3c", size: 10, symbol: "circle",
+                                  line: { color: "white", width: 1.5 }, opacity: 1 },
+                        text: selRows.map(d => d.Country),
+                        customdata: selRows.map(d => [d["Happiness Rank"], d.Region || ""]),
+                        hovertemplate: "<b>%{text}</b><br>Score: %{x:.2f}<br>Rang: %{customdata[0]}<br>Region: %{customdata[1]}<extra></extra>",
                         showlegend: false,
+                        cliponaxis: false,
                         name: ""
                     });
                 }
             }
             Plotly.react("kpiViolinChart", traces, {
-                margin: { l: 20, r: 4, t: 4, b: 4 },
+                margin: { l: 30, r: 10, t: 25, b: 22 },
                 paper_bgcolor: "rgba(0,0,0,0)",
                 plot_bgcolor: "rgba(0,0,0,0)",
-                xaxis: { visible: false },
-                yaxis: { showgrid: false, showline: false, tickfont: { size: 9, color: "#999" }, range: [1, 9] },
+                xaxis: {
+                    showgrid: true, gridcolor: "#f0f0f0",
+                    showline: true, linecolor: "#e0e0e0", linewidth: 1,
+                    tickfont: { size: 8, color: "#999" },
+                    range: [0, 10], dtick: 2
+                },
+                yaxis: { showgrid: false, showline: false, showticklabels: false, zeroline: false },
                 showlegend: false,
-                height: 100
+                hovermode: "closest"
             }, { displayModeBar: false, responsive: true });
         }
     }
@@ -299,12 +318,16 @@ function setMapMode(mode) {
     mapMode = mode;
     document.getElementById("btnAuswahl").className = "toggle-btn" + (mode === "selection" ? " active" : "");
     document.getElementById("btnAlle").className    = "toggle-btn" + (mode === "all" ? " active" : "");
-    document.getElementById("mapSubtitle").textContent =
-        mode === "all" ? "Alle Länder" : "Ausgewählte Länder hervorgehoben";
     drawMap(getFilteredData());
 }
 
+function updateMapSubtitle() {
+    const regionLabel = selectedRegion || "Alle Regionen";
+    document.getElementById("mapSubtitle").textContent = `${selectedYear} · ${regionLabel}`;
+}
+
 function drawMap(yearData) {
+    updateMapSubtitle();
     const highlightSet = new Set(selectedCountries);
     const valid = yearData.filter(d => ISO_CODES[d.Country]);
     let traces = [];
