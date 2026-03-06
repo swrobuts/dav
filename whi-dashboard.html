@@ -14,7 +14,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: #f5f5f5; font-family: Inter, sans-serif; color: #1a1a1a; }
 
-        /* ── Header – scrollt mit (wie VPS, kein fixed) ── */
+        /* -- Header – scrollt mit (wie VPS, kein fixed) -- */
         header {
             background: white; color: #1a1a1a;
             border-bottom: 1px solid #e0e0e0;
@@ -30,7 +30,7 @@
         .meta-item { font-size: 0.6875rem; color: #999; }
         .meta-sep  { color: #e0e0e0; }
 
-        /* ── Filter bar – sticky at top (after header scrolls away) ── */
+        /* -- Filter bar – sticky at top (after header scrolls away) -- */
         .filter-bar {
             position: sticky; top: 0; z-index: 90;
             background: white; border-bottom: 1px solid #e0e0e0;
@@ -88,7 +88,7 @@
             max-width: 1400px; margin: 0 auto;
         }
 
-        /* ── KPI Cards ── */
+        /* -- KPI Cards -- */
         .kpi-row {
             display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 1rem; margin-bottom: 1rem;
@@ -110,7 +110,7 @@
         .kpi-trend.neg { color: #d62728; }
         .kpi-detail { font-size: 0.6875rem; color: #2171b5; font-weight: 500; margin-top: 0.1rem; }
 
-        /* ── Chart Cards ── */
+        /* -- Chart Cards -- */
         .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .card {
             background: white; border-radius: 3px;
@@ -128,7 +128,7 @@
         .chart-subtitle { font-size: 0.6875rem; color: #999; margin-top: 0.15rem; font-weight: 400; text-transform: none; letter-spacing: 0; }
         .chart-footer { font-size: 0.6875rem; color: #999; margin-top: 0.5rem; }
 
-        /* ── Map toggle group – match VPS style ── */
+        /* -- Map toggle group – match VPS style -- */
         .toggle-group { display: flex; gap: 2px; flex-shrink: 0; }
         .toggle-btn {
             border: none; background: transparent;
@@ -142,7 +142,7 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* ── Footer – white like VPS ── */
+        /* -- Footer – white like VPS -- */
         footer {
             background: white; color: #666;
             border-top: 1px solid #e0e0e0;
@@ -153,7 +153,7 @@
         footer a:hover { text-decoration: underline; }
         .footer-methodology { margin-top: 0.5rem; color: #999; }
 
-        /* ── Loading ── */
+        /* -- Loading -- */
         #loading {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: #f5f5f5; display: flex; align-items: center;
@@ -177,7 +177,7 @@
 </head>
 <body>
 
-<!-- ── Header ── -->
+<!-- -- Header -- -->
 <header>
     <div class="header-text">
         <h1 class="header-title">World Happiness Report</h1>
@@ -192,7 +192,7 @@
 
 <div class="body-wrap">
 
-    <!-- ── Filter bar ── -->
+    <!-- -- Filter bar -- -->
     <div class="filter-bar">
         <div class="filter-group">
             <label class="filter-label">Jahr</label>
@@ -210,7 +210,7 @@
         </div>
     </div>
 
-    <!-- ── Loading ── -->
+    <!-- -- Loading -- -->
     <div id="loading">
         <div style="text-align:center;">
             <div class="spinner"></div>
@@ -218,7 +218,7 @@
         </div>
     </div>
 
-    <!-- ── Main content ── -->
+    <!-- -- Main content -- -->
     <div class="main" id="mainContent" style="display:none;">
 
         <!-- KPI Row -->
@@ -350,9 +350,9 @@
 </div><!-- end body-wrap -->
 
 <script>
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Constants
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 const COLOR_SCALE = [
     [0,    "#67001f"],
@@ -415,9 +415,9 @@ const LAYOUT_BASE = {
 };
 const PLOTLY_CFG = { displayModeBar: false, responsive: true };
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // State
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 let allData = [];
 let selectedYear = 2025;
@@ -426,9 +426,9 @@ let selectedCountries = [];
 let mapMode = "selection";
 let tomSelect = null;
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Helpers
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function mean(arr) {
     return arr.length ? arr.reduce((a,b) => a+b, 0) / arr.length : 0;
@@ -495,9 +495,9 @@ function getCountryScore(country, year) {
     return row ? +row["Happiness Score"] : null;
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // KPI Cards
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function updateKPIs(data) {
     const sorted = [...data]
@@ -592,9 +592,9 @@ function updateKPIs(data) {
     }
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // World Map
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function setMapMode(mode) {
     mapMode = mode;
@@ -664,9 +664,9 @@ function drawMap(yearData) {
     }, PLOTLY_CFG);
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Trend Chart – dots only, like VPS
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function drawTrend() {
     if (selectedCountries.length === 0) {
@@ -749,9 +749,9 @@ function drawTrend() {
         !has2024 ? "2024: Keine Daten verfügbar" : "";
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Top / Flop – Finland at TOP
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function drawTopFlop(data) {
     const sorted = [...data]
@@ -788,9 +788,9 @@ function drawTopFlop(data) {
     }, PLOTLY_CFG);
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Regional Analysis
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function drawRegional(data) {
     const regionMap = {};
@@ -836,9 +836,9 @@ function drawRegional(data) {
     }, PLOTLY_CFG);
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Scatter – with fallback year for GDP data
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function drawScatter(data) {
     const factorYear = getLatestFactorYear();
@@ -920,9 +920,9 @@ function drawScatter(data) {
     }, PLOTLY_CFG);
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Correlation Heatmap – uses ALL years with factor data (like VPS)
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function drawHeatmap() {
     // Use ALL data with valid GDP (all years with factor data)
@@ -968,9 +968,9 @@ function drawHeatmap() {
     }, PLOTLY_CFG);
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Update all charts
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function updateAll() {
     const data = getFilteredData();
@@ -983,9 +983,9 @@ function updateAll() {
     drawHeatmap();     // heatmap uses ALL data internally
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Dashboard init
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 function initDashboard(data) {
     allData = data;
@@ -1056,9 +1056,9 @@ function initDashboard(data) {
     updateAll();
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 // Load CSV
-// ═══════════════════════════════════════════════════════════════════
+// ===================================================================
 
 Papa.parse("https://raw.githubusercontent.com/swrobuts/dav/main/data/whr_combined_2015_2025.csv", {
     download: true, header: true, dynamicTyping: true,
