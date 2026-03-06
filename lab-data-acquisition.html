@@ -175,7 +175,7 @@ const de = {
     overview: {
         title: 'Daten sammeln – Dateiformate & Quellen',
         scenario: 'Szenario: Du arbeitest als Data Analyst bei einem Handelsunternehmen. Deine Aufgabe: Daten aus verschiedenen Quellen zusammenführen – eine CSV-Datei vom ERP-System, eine JSON-API für Produktkataloge, Excel-Reports aus dem Controlling und Datenbankabfragen aus dem CRM.',
-        formats: ['CSV – Comma-Separated Values','JSON – JavaScript Object Notation','XML – Extensible Markup Language','Excel – .xlsx Tabellen','Parquet – Spaltenbasiertes Format','REST-APIs','Web Scraping','SQL-Datenbanken','NoSQL-Datenbanken','Cloud-Speicher (S3/Azure)','Big-Data-Quellen (→ Big Data Kurs)']
+        formats: ['CSV – Comma-Separated Values','JSON – JavaScript Object Notation','XML – Extensible Markup Language','Excel – .xlsx Tabellen','Parquet – Spaltenbasiertes Format','REST-APIs','Web Scraping','SQL-Datenbanken','NoSQL-Datenbanken','Cloud-Speicher (S3/Azure)','Big-Data-Quellen (→ Vertiefung BA · Big Data)']
     },
     csv_title: 'CSV – Comma-Separated Values',
     csv_desc: 'CSV ist das am häufigsten verwendete Format für tabellarische Daten. Einfach, menschenlesbar, plattformübergreifend.',
@@ -383,8 +383,8 @@ df = pd.read_sql(query, engine, params={'plz': '97070'})`,
     cloud_desc: 'Moderne Daten liegen zunehmend in der Cloud. AWS S3, Azure Blob Storage und Google Cloud Storage sind die häufigsten Plattformen – Python kann diese direkt als Datenquelle nutzen.',
     cloud_code: CODE_CLOUD,
     bigdata_title: 'Big-Data-Quellen',
-    bigdata_badge: '→ Big Data Kurs',
-    bigdata_note: 'Diese Themen werden im weiterführenden Big-Data-Kurs behandelt.',
+    bigdata_badge: '→ Vertiefung Business Analytics · Big Data (Butscher)',
+    bigdata_note: 'Diese Themen werden im Modul “Big Data” (Prof. Dr. Butscher) im Rahmen der Vertiefung Business Analytics (6. Semester) behandelt.',
     bigdata_desc: 'Die folgenden Technologien sind für die Verarbeitung sehr großer Datenmengen (Petabyte-Skala) ausgelegt und gehen über den Scope dieses Kurses hinaus. Hier bekommst du einen Überblick.',
     bigdata_examples: [
         { tech: 'Apache Hadoop / HDFS', desc: 'Verteiltes Dateisystem für Petabyte-Daten auf Standard-Hardware' },
@@ -393,7 +393,7 @@ df = pd.read_sql(query, engine, params={'plz': '97070'})`,
         { tech: 'Elasticsearch', desc: 'Verteilte Such- und Analyseplattform für Logs und Texte' },
         { tech: 'Apache Cassandra', desc: 'Verteilte Wide-Column-Datenbank für sehr hohe Schreiblasten' }
     ],
-    bigdata_course_label: 'Im Big-Data-Kurs werden diese Technologien praktisch eingesetzt:',
+    bigdata_course_label: 'Im Modul “Big Data” (Vertiefung Business Analytics, 6. Sem.) werden diese Technologien praktisch eingesetzt:',
     quiz_title: 'Quiz: Daten sammeln',
     quiz_intro: 'Testen Sie Ihr Wissen – 5 Fragen.',
     quiz: [
@@ -413,7 +413,7 @@ const en = {
     overview: {
         title: 'Data Acquisition – File Formats & Sources',
         scenario: 'Scenario: You work as a Data Analyst at a trading company. Your task: Merge data from various sources – a CSV file from the ERP system, a JSON API for product catalogs, Excel reports from controlling, and database queries from the CRM.',
-        formats: ['CSV – Comma-Separated Values','JSON – JavaScript Object Notation','XML – Extensible Markup Language','Excel – .xlsx Spreadsheets','Parquet – Columnar Format','REST APIs','Web Scraping','SQL Databases','NoSQL Databases','Cloud Storage (S3/Azure)','Big Data Sources (→ Big Data Course)']
+        formats: ['CSV – Comma-Separated Values','JSON – JavaScript Object Notation','XML – Extensible Markup Language','Excel – .xlsx Spreadsheets','Parquet – Columnar Format','REST APIs','Web Scraping','SQL Databases','NoSQL Databases','Cloud Storage (S3/Azure)','Big Data Sources (→ BA Advanced · Big Data)']
     },
     csv_title: 'CSV – Comma-Separated Values', csv_desc: 'CSV is the most commonly used format for tabular data. Simple, human-readable, cross-platform.', csv_code: de.csv_code,
     json_title: 'JSON – JavaScript Object Notation', json_desc: 'JSON is the standard format for web APIs. It supports nested structures and is ideal for semi-structured data.', json_code: de.json_code,
@@ -436,8 +436,8 @@ const en = {
     cloud_desc: 'Modern data increasingly resides in the cloud. AWS S3, Azure Blob Storage and Google Cloud Storage are the most common platforms – Python can directly use these as data sources.',
     cloud_code: CODE_CLOUD,
     bigdata_title: 'Big Data Sources',
-    bigdata_badge: '→ Big Data Course',
-    bigdata_note: 'These topics are covered in the advanced Big Data course.',
+    bigdata_badge: '→ Business Analytics Advanced · Big Data (Butscher)',
+    bigdata_note: 'These topics are covered in the module “Big Data” (Prof. Dr. Butscher) as part of the Business Analytics Advanced track (6th semester).',
     bigdata_desc: 'The following technologies are designed for processing very large amounts of data (petabyte scale) and go beyond the scope of this course. Here is an overview.',
     bigdata_examples: [
         { tech: 'Apache Hadoop / HDFS', desc: 'Distributed file system for petabyte-scale data on commodity hardware' },
@@ -446,7 +446,7 @@ const en = {
         { tech: 'Elasticsearch', desc: 'Distributed search and analytics platform for logs and text' },
         { tech: 'Apache Cassandra', desc: 'Distributed wide-column database for very high write loads' }
     ],
-    bigdata_course_label: 'These technologies are used hands-on in the Big Data course:',
+    bigdata_course_label: 'These technologies are covered in the module “Big Data” (Business Analytics Advanced, 6th sem.):',
     quiz_title: 'Quiz: Data Acquisition', quiz_intro: 'Test your knowledge – 5 questions.',
     quiz: [
         { q: 'Which format is ideal for large datasets in cloud environments (compressed, columnar)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
