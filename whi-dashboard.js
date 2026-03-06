@@ -178,6 +178,18 @@ function updateKPIs(data) {
             document.getElementById("kpiBestDetail").textContent =
                 `+${avgScore}% über globalem Ø`;
         }
+
+        // kpi-bottom: Schlusslicht + Spanne
+        const worst = sorted[sorted.length - 1];
+        const worstScore = +worst["Happiness Score"];
+        const gap = bestScore - worstScore;
+        const el = document.getElementById("kpiTopBottom");
+        if (el) {
+            el.innerHTML = '<span class="bottom-label">Schlusslicht: </span>' +
+                '<span class="bottom-country">' + worst.Country + '</span>' +
+                '<span class="bottom-score"> (' + worstScore.toFixed(2) + ')</span>' +
+                '<br><span class="gap-info">Spanne: ' + gap.toFixed(2) + ' Punkte</span>';
+        }
     }
 
     // Durchschnitt
@@ -198,44 +210,83 @@ function updateKPIs(data) {
         }
     }
 
-    // Länder
-    document.getElementById("kpiCountries").textContent = data.length;
+    // Stichprobe
+    const sampleEl = document.getElementById("kpiSampleN");
+    if (sampleEl) sampleEl.textContent = data.length;
+    const pctEl = document.getElementById("kpiSamplePct");
+    if (pctEl) pctEl.textContent = "(" + Math.round(data.length / 193 * 100) + "%)";
+
+    // Violin context label
+    const violinCtx = document.getElementById("kpiViolinContext");
+    if (violinCtx) violinCtx.textContent = data.length + " Länder (" + selectedYear + ")";
+
+    // Gini coefficient + 90/10 ratio + Violin chart
     if (scores.length > 1) {
-        const maxS = Math.max(...scores), minS = Math.min(...scores);
-        document.getElementById("kpiSpan").textContent =
-            `Ø ${curAvg ? curAvg.toFixed(2) : "–"} · Spanne: ${(maxS-minS).toFixed(2)}`;
-    }
+        const sorted_scores = [...scores].sort((a,b) => a-b);
+        const n_s = sorted_scores.length;
+        const sumY = sorted_scores.reduce((a,b) => a+b, 0);
+        let gini = 0;
+        if (sumY > 0) {
+            gini = (2 * sorted_scores.reduce((acc,v,i) => acc + (i+1)*v, 0)) / (n_s * sumY) - (n_s+1)/n_s;
+            gini = Math.abs(gini);
+        }
+        const p10 = scores.length >= 10 ? sorted_scores[Math.floor(sorted_scores.length * 0.10)] : sorted_scores[0];
+        const p90 = scores.length >= 10 ? sorted_scores[Math.floor(sorted_scores.length * 0.90)] : sorted_scores[sorted_scores.length-1];
+        const ratio = p10 > 0 ? p90/p10 : 0;
 
-    // Mini bar chart (Verteilung)
-    const bins = [0,0,0,0,0,0,0,0]; // 1-2, 2-3, ..., 8-9
-    scores.forEach(s => { const b = Math.min(7, Math.max(0, Math.floor(s) - 1)); bins[b]++; });
-    Plotly.react("kpiMiniChart",
-        [{type:"bar", x:[2,3,4,5,6,7,8,9], y:bins,
-          marker:{color: [2,3,4,5,6,7,8,9].map(v => scoreToColor(v))},
-          hoverinfo:"skip"}],
-        {margin:{l:0,r:0,t:0,b:0}, paper_bgcolor:"rgba(0,0,0,0)", plot_bgcolor:"rgba(0,0,0,0)",
-         xaxis:{showticklabels:false,showgrid:false,showline:false},
-         yaxis:{showticklabels:false,showgrid:false,showline:false},
-         showlegend:false},
-        {displayModeBar:false,responsive:true}
-    );
+        const giniEl = document.getElementById("kpiGini");
+        if (giniEl) giniEl.textContent = gini.toFixed(3);
+        const ratioEl = document.getElementById("kpiRatio");
+        if (ratioEl) ratioEl.textContent = ratio.toFixed(2) + "×";
 
-    // Schlusslicht
-    if (sorted.length > 0) {
-        const worst = sorted[sorted.length-1];
-        const worstScore = +worst["Happiness Score"];
-        const worstPrev  = getCountryScore(worst.Country, prevYear);
-
-        document.getElementById("kpiWorst").textContent       = worst.Country;
-        document.getElementById("kpiWorstRegion").textContent = worst.Region || "";
-        document.getElementById("kpiWorstScore").textContent  =
-            `${worstScore.toFixed(2)} von 10 · Rang ${worst["Happiness Rank"]}`;
-
-        if (worstPrev !== null) {
-            const diff = worstScore - worstPrev;
-            const el = document.getElementById("kpiWorstTrend");
-            el.textContent = `${diff >= 0 ? "↑" : "↓"} ${Math.abs(diff).toFixed(2)} zum Vorjahr`;
-            el.className = "kpi-trend " + (diff >= 0 ? "pos" : "neg");
+        // Violin chart
+        const violinEl = document.getElementById("kpiViolinChart");
+        if (violinEl && typeof Plotly !== "undefined") {
+            const traces = [
+                {
+                    type: "violin",
+                    y: scores,
+                    box: { visible: true },
+                    meanline: { visible: true },
+                    fillcolor: "rgba(33,113,181,0.15)",
+                    line: { color: "#2171b5", width: 1 },
+                    points: false,
+                    spanmode: "hard",
+                    name: "",
+                    showlegend: false,
+                    hoverinfo: "y",
+                    width: 0.6
+                }
+            ];
+            // Selected countries as red dots
+            if (selectedCountries && selectedCountries.length > 0) {
+                const selectedScores = data
+                    .filter(d => selectedCountries.includes(d.Country))
+                    .map(d => ({ country: d.Country, score: +d["Happiness Score"] }))
+                    .filter(d => !isNaN(d.score));
+                if (selectedScores.length > 0) {
+                    traces.push({
+                        type: "scatter",
+                        x: selectedScores.map(() => 0),
+                        y: selectedScores.map(d => d.score),
+                        mode: "markers",
+                        marker: { color: "#e74c3c", size: 7, line: { color: "white", width: 1.5 } },
+                        text: selectedScores.map(d => d.country + ": " + d.score.toFixed(2)),
+                        hovertemplate: "%{text}<extra></extra>",
+                        showlegend: false,
+                        name: ""
+                    });
+                }
+            }
+            Plotly.react("kpiViolinChart", traces, {
+                margin: { l: 20, r: 4, t: 4, b: 4 },
+                paper_bgcolor: "rgba(0,0,0,0)",
+                plot_bgcolor: "rgba(0,0,0,0)",
+                xaxis: { visible: false },
+                yaxis: { showgrid: false, showline: false, tickfont: { size: 9, color: "#999" }, range: [1, 9] },
+                showlegend: false,
+                height: 100
+            }, { displayModeBar: false, responsive: true });
         }
     }
 }
@@ -393,8 +444,13 @@ function drawTrend() {
         hovermode:"closest"
     }, PLOTLY_CFG);
 
-    document.getElementById("trendFooter").textContent =
-        !has2024 ? "2024: Keine Daten verfügbar" : "";
+    const trendFooterEl = document.getElementById("trendFooter");
+    if (!has2024) {
+        trendFooterEl.innerHTML = '<span class="chart-footnote warning">2024: Keine Daten verfügbar</span>';
+    } else {
+        const yAxisInfo = `Y-Achse: ${yMin.toFixed(1)}–${yMax.toFixed(1)}`;
+        trendFooterEl.innerHTML = '<span class="chart-footnote">' + yAxisInfo + '</span>';
+    }
 }
 
 // ===================================================================

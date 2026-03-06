@@ -153,6 +153,14 @@
         footer a:hover { text-decoration: underline; }
         .footer-methodology { margin-top: 0.5rem; color: #999; }
 
+        .chart-footnote.warning { color: #d62728; }
+        .kpi-bottom { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 0.6875rem; }
+        .bottom-label { color: #999; }
+        .bottom-country { font-weight: 500; color: #d62728; }
+        .bottom-score { color: #999; }
+        .gap-info { color: #666; }
+        .streak-info { font-size: 0.6875rem; color: #999; }
+
         /* -- Loading -- */
         #loading {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -231,6 +239,7 @@
                 <div class="kpi-sub" id="kpiBestScore"></div>
                 <div class="kpi-trend" id="kpiBestTrend"></div>
                 <div class="kpi-detail" id="kpiBestDetail"></div>
+                <div class='kpi-bottom' id='kpiTopBottom'></div>
             </div>
             <!-- Durchschnitt -->
             <div class="kpi-card">
@@ -240,20 +249,33 @@
                 <div class="kpi-detail" id="kpiAvgDetail"></div>
             </div>
             <!-- Verteilung -->
-            <div class="kpi-card">
-                <div class="kpi-tag">Verteilung</div>
-                <div class="kpi-value" id="kpiCountries">–</div>
-                <div class="kpi-label">Länder im Datensatz</div>
-                <div class="kpi-detail" id="kpiSpan"></div>
-                <div style="height:40px; margin-top:0.5rem;" id="kpiMiniChart"></div>
+            <div class='kpi-card'>
+              <div class='kpi-label' style='display:flex;align-items:baseline;justify-content:space-between'>
+                <span>VERTEILUNG</span>
+                <span class='chart-subtitle' id='kpiViolinContext'></span>
+              </div>
+              <div id='kpiViolinChart' style='height:100px;margin-top:4px'></div>
+              <div style='margin-top:8px;font-size:0.6875rem;color:#666'>
+                <div><span style='color:#999'>Gini: </span><span id='kpiGini'></span><span style='color:#999'> (0=gleich, 1=ungleich)</span></div>
+                <div style='margin-top:2px'><span style='color:#999'>90/10-Ratio: </span><span id='kpiRatio'></span></div>
+              </div>
             </div>
-            <!-- Schlusslicht -->
-            <div class="kpi-card">
-                <div class="kpi-tag">Schlusslicht</div>
-                <div class="kpi-value" id="kpiWorst" style="font-size:1.4rem;">–</div>
-                <div class="kpi-label" id="kpiWorstRegion">–</div>
-                <div class="kpi-sub" id="kpiWorstScore"></div>
-                <div class="kpi-trend" id="kpiWorstTrend"></div>
+            <!-- Stichprobe -->
+            <div class='kpi-card'>
+              <div class='kpi-label'>STICHPROBE</div>
+              <div class='kpi-value' id='kpiSampleN'>–</div>
+              <div style='font-size:0.75rem;color:#666;margin-bottom:4px'>von 193 UN-Staaten <span id='kpiSamplePct' style='color:#2171b5;font-weight:500'></span></div>
+              <div style='margin-top:10px'>
+                <div style='font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:#999;margin-bottom:4px'>Methodik:</div>
+                <ul style='font-size:0.6875rem;color:#666;padding-left:14px;line-height:1.7;margin:0'>
+                  <li>~1.000 Befragte pro Land (Gallup World Poll)</li>
+                  <li>Lebenszufriedenheit 0–10 (Cantril-Leiter)</li>
+                  <li>Jährliche Erhebung seit 2005</li>
+                </ul>
+              </div>
+              <div style='margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.08);font-size:0.6875rem;color:#999'>
+                Zeitraum: 2015–2025
+              </div>
             </div>
         </div>
 
@@ -330,6 +352,9 @@
                     </div>
                 </div>
                 <div id="heatmapChart" style="height:320px;"></div>
+                <div class='chart-footer'>
+                  <span class='chart-footnote'>Pearson-Korrelation: -1 (negativ) bis +1 (positiv)</span>
+                </div>
             </div>
 
         </div><!-- end charts-grid -->
