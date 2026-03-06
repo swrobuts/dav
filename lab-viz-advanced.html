@@ -459,8 +459,12 @@ const de = {
         ]
     },
     notebook: {
-        title: 'Notebook: Visualisierung',
-        desc: 'Das zugehörige Python-Notebook zeigt, wie dieselben Analysen mit pandas und Plotly in Python umgesetzt werden:',
+        title: 'Lokale Python-Version',
+        desc08: 'Das Notebook 08_Visualisierung behandelt allgemeine Plotly-Grundlagen (Diagrammtypen, Layouts, Farben) – unabhängig vom WHI-Dashboard.',
+        descLocal: 'Die vollständige Dash-Anwendung (identisch mit der Online-Version) steht als ZIP zur lokalen Ausführung zur Verfügung. Voraussetzung: Python 3.9+.',
+        steps: ['ZIP entpacken', 'Terminal öffnen im Ordner', 'start.sh (macOS/Linux) bzw. start.bat (Windows) ausführen', 'Browser: http://localhost:8050'],
+        downloadLabel: 'whi-dashboard-local.zip herunterladen',
+        notebookLabel: '08_Visualisierung.ipynb – Plotly-Grundlagen',
     }
 };
 
@@ -594,8 +598,12 @@ const en = {
         ]
     },
     notebook: {
-        title: 'Notebook: Visualization',
-        desc: 'The accompanying Python notebook shows how the same analyses are implemented with pandas and Plotly in Python:',
+        title: 'Local Python Version',
+        desc08: 'The notebook 08_Visualisierung covers general Plotly fundamentals (chart types, layouts, colours) – independent of the WHI dashboard.',
+        descLocal: 'The complete Dash application (identical to the online version) is available as a ZIP for local execution. Requirement: Python 3.9+.',
+        steps: ['Unzip the archive', 'Open terminal in the folder', 'Run start.sh (macOS/Linux) or start.bat (Windows)', 'Browser: http://localhost:8050'],
+        downloadLabel: 'Download whi-dashboard-local.zip',
+        notebookLabel: '08_Visualisierung.ipynb – Plotly Fundamentals',
     }
 };
 
@@ -930,42 +938,51 @@ function App() {
             />
         )},
 
-        // ── Notebook ─────────────────────────────────────────────────────────
+        // ── Notebook / Local ─────────────────────────────────────────────────
         { id: 'notebook', content: () => (
             <div>
                 <h2>{tr.notebook.title}</h2>
-                <p>{tr.notebook.desc}</p>
-                <div style={{marginTop:'1rem', marginBottom:'1rem'}}>
-                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/08_Visualisierung.ipynb"
-                       target="_blank" rel="noopener noreferrer"
-                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold"
-                       style={{background:'#E8792F', display:'inline-flex', alignItems:'center', gap:'0.5rem', padding:'0.7rem 1.5rem', borderRadius:8, textDecoration:'none'}}>
-                        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:'18px'}} />
-                        08_Visualisierung.ipynb
+
+                {/* Lokale Dash-Version */}
+                <div className="concept-box" style={{marginBottom:'1.5rem'}}>
+                    <p className="font-bold" style={{color:'#0369A1', marginBottom:'0.5rem'}}>
+                        {lang==='de' ? 'Vollständige Dash-Anwendung (Python, lokal)' : 'Complete Dash Application (Python, local)'}
+                    </p>
+                    <p style={{color:'#374151', fontSize:'0.9rem', marginBottom:'1rem'}}>{tr.notebook.descLocal}</p>
+                    <ol style={{paddingLeft:'1.25rem', margin:'0 0 1.25rem 0'}}>
+                        {tr.notebook.steps.map((s,i) => (
+                            <li key={i} style={{color:'#374151', fontSize:'0.88rem', marginBottom:'0.3rem'}}>{i+1}. {s}</li>
+                        ))}
+                    </ol>
+                    <a href="downloads/whi-dashboard-local.zip"
+                       download
+                       style={{display:'inline-flex', alignItems:'center', gap:'0.6rem',
+                               padding:'0.65rem 1.4rem', borderRadius:6, fontWeight:700,
+                               textDecoration:'none', fontSize:'0.9rem',
+                               background:'#0389CF', color:'white'}}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        {tr.notebook.downloadLabel}
                     </a>
+                    <span style={{display:'block', color:'#94a3b8', fontSize:'0.78rem', marginTop:'0.5rem'}}>
+                        ZIP · ~67 KB · app.py, data_loader.py, CSV, assets, start.sh / start.bat
+                    </span>
                 </div>
-                <div className="info-box">
-                    <p className="text-blue-800 text-sm">
-                        {lang==='de'
-                            ? 'Notebook direkt in Google Colab öffnen – kein lokales Setup nötig. Im Notebook werden dieselben Analysen in Python/pandas durchgeführt.'
-                            : 'Open the notebook directly in Google Colab – no local setup required. The notebook performs the same analyses in Python/pandas.'
-                        }
+
+                {/* 08_Visualisierung – Plotly-Grundlagen */}
+                <div className="tip-box">
+                    <p className="font-bold" style={{color:'#92400e', marginBottom:'0.4rem'}}>
+                        {lang==='de' ? 'Notebook 08: Plotly-Grundlagen (nicht WHI-spezifisch)' : 'Notebook 08: Plotly Fundamentals (not WHI-specific)'}
                     </p>
-                </div>
-                <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
-                    <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                        {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
-                    </p>
+                    <p style={{color:'#78350f', fontSize:'0.88rem', marginBottom:'0.85rem'}}>{tr.notebook.desc08}</p>
                     <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/08_Visualisierung.ipynb"
                        target="_blank" rel="noopener noreferrer"
-                       style={{
-                           display:'inline-flex', alignItems:'center', gap:'0.5rem',
-                           padding:'0.7rem 1.5rem', borderRadius:8, fontWeight:700,
-                           textDecoration:'none', fontSize:'0.9rem', transition:'all 0.2s',
-                           border:'2px solid #E8792F', color:'#E8792F', background:'white'
-                       }}>
-                        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:'18px'}} />
-                        08 Visualisierung
+                       style={{display:'inline-flex', alignItems:'center', gap:'0.5rem',
+                               textDecoration:'none', border:'1.5px solid #92400e',
+                               borderRadius:6, padding:'0.4rem 0.9rem'}}>
+                        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:'16px'}} />
+                        <span style={{color:'#92400e', fontWeight:600, fontSize:'0.85rem'}}>{tr.notebook.notebookLabel}</span>
                     </a>
                 </div>
             </div>
