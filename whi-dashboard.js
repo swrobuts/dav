@@ -85,10 +85,17 @@ function mean(arr) {
 
 function scoreToColor(s) {
     const norm = Math.max(0, Math.min(1, (s - 2) / 6));
-    for (let i = COLOR_SCALE.length - 1; i >= 0; i--) {
-        if (norm >= COLOR_SCALE[i][0]) return COLOR_SCALE[i][1];
+    // Linear interpolation between stops – matches Plotly Python sample_colorscale()
+    const cs = COLOR_SCALE;
+    let lo = cs[0], hi = cs[cs.length - 1];
+    for (let i = 0; i < cs.length - 1; i++) {
+        if (norm >= cs[i][0] && norm <= cs[i + 1][0]) { lo = cs[i]; hi = cs[i + 1]; break; }
     }
-    return COLOR_SCALE[0][1];
+    const t = (hi[0] === lo[0]) ? 0 : (norm - lo[0]) / (hi[0] - lo[0]);
+    const hex = h => [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
+    const [r1,g1,b1] = hex(lo[1]), [r2,g2,b2] = hex(hi[1]);
+    return '#' + [r1+t*(r2-r1), g1+t*(g2-g1), b1+t*(b2-b1)]
+        .map(v => Math.round(v).toString(16).padStart(2,'0')).join('');
 }
 
 function linearRegression(xs, ys) {
