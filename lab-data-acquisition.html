@@ -24,11 +24,25 @@
         .sidebar-item:hover { background: #e1eaf5; }
         .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
         .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
+        .code-wrapper { position: relative; }
         .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.85rem; margin: 1rem 0; white-space: pre; }
+        .copy-btn {
+            position: absolute; top: 1.25rem; right: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+            color: #94a3b8; border-radius: 0.375rem;
+            padding: 0.2rem 0.6rem; font-size: 0.72rem; cursor: pointer;
+            transition: all 0.2s; opacity: 0.35;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5; user-select: none;
+        }
+        .code-wrapper:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { background: rgba(255,255,255,0.18); color: #e2e8f0; }
+        .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.4); opacity: 1; }
         .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .future-box { background: #faf5ff; border-left: 4px solid #a855f7; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
         .lang-btn {
             padding: 0.4rem 0.7rem; border-radius: 0.375rem;
             border: 2px solid #e5e7eb; background: white;
@@ -47,7 +61,6 @@
         .notebook-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.2s; background: var(--orange); color: white; font-size: 1rem; }
         .notebook-cta:hover { opacity: 0.9; transform: translateY(-2px); }
         @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
-    
         .colab-btn {
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 700;
@@ -57,7 +70,13 @@
         .colab-btn:hover { background: #E8792F; color: white; }
         .colab-btn img { height: 20px; }
         .notebook-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.5rem; }
-
+        .nosql-type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+        .nosql-type-card { background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 0.9rem; }
+        .nosql-type-card .type-name { font-weight: 700; font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+        .nosql-type-card .type-example { font-weight: 800; color: var(--primary); font-size: 1rem; margin: 0.2rem 0; }
+        .nosql-type-card .type-use { font-size: 0.8rem; color: #6b7280; }
+        .bigdata-item { display: flex; gap: 1rem; padding: 0.9rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; margin-bottom: 0.5rem; }
+        .bigdata-item .tech-badge { background: #a855f7; color: white; font-weight: 700; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px; white-space: nowrap; align-self: flex-start; margin-top: 0.1rem; }
     </style>
 </head>
 <body>
@@ -65,15 +84,98 @@
 <script type="text/babel">
 const { useState } = React;
 
-const sectionIds = ['overview','csv','json','xml','excel','parquet','api','scraping','db','quiz','notebook'];
+const sectionIds = ['overview','csv','json','xml','excel','parquet','api','scraping','db','nosql','cloud','bigdata','quiz','notebook'];
+
+// ── Shared code examples (language-independent) ──────────────────────────────
+
+const CODE_NOSQL = `# ── MongoDB – Dokumentenorientierte Datenbank ──────────────────
+from pymongo import MongoClient
+import pandas as pd
+
+client = MongoClient('mongodb://localhost:27017/')
+db = client['webshop']
+orders = db['bestellungen']
+
+# Dokument einfügen
+orders.insert_one({
+    "kunden_id": 42,
+    "artikel": [{"name": "Laptop", "preis": 1299.99}],
+    "status": "versandt"
+})
+
+# Abfrage: Artikel mit Preis > 1000
+cursor = orders.find({"artikel.preis": {"$gt": 1000}})
+df = pd.DataFrame(list(cursor)).drop(columns=['_id'], errors='ignore')
+print(df.head())
+
+# Aggregation: Umsatz pro Status
+pipeline = [
+    {"$unwind": "$artikel"},
+    {"$group": {"_id": "$status", "umsatz": {"$sum": "$artikel.preis"}}},
+    {"$sort": {"umsatz": -1}}
+]
+print(list(orders.aggregate(pipeline)))
+
+# ── Redis – Key-Value-Store (Caching, Sessions) ────────────────
+import redis
+r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+
+r.set('letzter_sync', '2026-03-06')
+r.expire('letzter_sync', 3600)          # Ablauf nach 1 Stunde
+print(r.get('letzter_sync'))            # 2026-03-06
+
+# Hash speichern (strukturierte Daten)
+r.hset('user:42', mapping={"name": "Anna", "email": "anna@example.com"})
+print(r.hgetall('user:42'))`;
+
+const CODE_CLOUD = `import pandas as pd
+from io import StringIO, BytesIO
+
+# ── AWS S3 (pip install boto3) ─────────────────────────────────
+import boto3
+
+s3 = boto3.client('s3',
+    aws_access_key_id='AKIAIOSFODNN7EXAMPLE',
+    aws_secret_access_key='wJalrXUtnFEMI/K7MDENG',
+    region_name='eu-central-1'
+)
+
+# CSV von S3 einlesen
+obj = s3.get_object(Bucket='mein-datenbucket', Key='sales/2026-Q1.csv')
+df = pd.read_csv(obj['Body'])
+print(f"Eingelesen: {df.shape}")
+
+# Parquet von S3 einlesen (effizienter!)
+obj = s3.get_object(Bucket='mein-datenbucket', Key='sales/2026-Q1.parquet')
+df = pd.read_parquet(BytesIO(obj['Body'].read()))
+
+# DataFrame nach S3 hochladen
+buf = StringIO()
+df.to_csv(buf, index=False)
+s3.put_object(Bucket='mein-datenbucket', Key='exports/result.csv',
+              Body=buf.getvalue())
+
+# ── Azure Blob Storage (pip install azure-storage-blob) ────────
+from azure.storage.blob import BlobServiceClient
+
+conn_str = "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=...;"
+blob_service = BlobServiceClient.from_connection_string(conn_str)
+container = blob_service.get_container_client("rohdaten")
+
+blob = container.get_blob_client("flights.parquet")
+content = blob.download_blob().readall()
+df = pd.read_parquet(BytesIO(content))
+print(df.dtypes)`;
+
+// ── Translations ─────────────────────────────────────────────────────────────
 
 const de = {
     back: '← DAV Lab', title: 'Daten sammeln',
-    sections: ['Überblick', 'CSV', 'JSON', 'XML', 'Excel', 'Parquet', 'REST-APIs', 'Web Scraping', 'Datenbanken', 'Quiz', 'Notebooks'],
+    sections: ['Überblick','CSV','JSON','XML','Excel','Parquet','REST-APIs','Web Scraping','SQL-Datenbanken','NoSQL-Datenbanken','Cloud-Speicher','Big-Data-Quellen','Quiz','Notebooks'],
     overview: {
         title: 'Daten sammeln – Dateiformate & Quellen',
         scenario: 'Szenario: Du arbeitest als Data Analyst bei einem Handelsunternehmen. Deine Aufgabe: Daten aus verschiedenen Quellen zusammenführen – eine CSV-Datei vom ERP-System, eine JSON-API für Produktkataloge, Excel-Reports aus dem Controlling und Datenbankabfragen aus dem CRM.',
-        formats: ['CSV – Comma-Separated Values', 'JSON – JavaScript Object Notation', 'XML – Extensible Markup Language', 'Excel – .xlsx Tabellen', 'Parquet – Spaltenbasiertes Format', 'REST-APIs', 'Web Scraping', 'SQL-Datenbanken']
+        formats: ['CSV – Comma-Separated Values','JSON – JavaScript Object Notation','XML – Extensible Markup Language','Excel – .xlsx Tabellen','Parquet – Spaltenbasiertes Format','REST-APIs','Web Scraping','SQL-Datenbanken','NoSQL-Datenbanken','Cloud-Speicher (S3/Azure)','Big-Data-Quellen (→ Big Data Kurs)']
     },
     csv_title: 'CSV – Comma-Separated Values',
     csv_desc: 'CSV ist das am häufigsten verwendete Format für tabellarische Daten. Einfach, menschenlesbar, plattformübergreifend.',
@@ -203,7 +305,6 @@ df = pd.DataFrame(data)
 print(df.head())
 
 # Mit Parametern
-url = "https://jsonplaceholder.typicode.com/posts"
 params = {"userId": 1}
 response = requests.get(url, params=params)
 posts_user1 = response.json()
@@ -242,7 +343,7 @@ print(df.head())
 # 2. Requests begrenzen (time.sleep zwischen Anfragen)
 # 3. Nutzungsbedingungen lesen
 # 4. Keine personenbezogenen Daten ohne Einwilligung`,
-    db_title: 'Datenbankverbindungen',
+    db_title: 'SQL-Datenbankverbindungen',
     db_desc: 'SQL-Datenbanken sind in Unternehmen allgegenwärtig. SQLAlchemy bietet eine einheitliche Schnittstelle für viele Datenbanksysteme.',
     db_code: `import pandas as pd
 import sqlite3
@@ -269,11 +370,35 @@ df.to_sql('meine_tabelle', pg_engine, if_exists='replace', index=False)
 # SQL-Abfrage mit Parametern (sicher gegen SQL Injection)
 query = "SELECT * FROM kunden WHERE plz = :plz"
 df = pd.read_sql(query, engine, params={'plz': '97070'})`,
+    nosql_title: 'NoSQL-Datenbanken (MongoDB, Redis)',
+    nosql_desc: 'NoSQL-Datenbanken speichern Daten ohne festes Schema – ideal für unstrukturierte oder semi-strukturierte Daten und skalierbare Anwendungen. Es gibt vier Haupttypen:',
+    nosql_types: [
+        { name: 'Dokument-Store', example: 'MongoDB', use: 'Bestellungen, Nutzerprofile, Produktkataloge' },
+        { name: 'Key-Value-Store', example: 'Redis', use: 'Caching, Sessions, Echtzeit-Rankings' },
+        { name: 'Wide-Column-Store', example: 'Cassandra', use: 'Zeitreihendaten, IoT, hohe Schreiblast' },
+        { name: 'Graph-Datenbank', example: 'Neo4j', use: 'Soziale Netze, Empfehlungen, Wissensgraphen' }
+    ],
+    nosql_code: CODE_NOSQL,
+    cloud_title: 'Cloud-Speicher (S3 / Azure Blob)',
+    cloud_desc: 'Moderne Daten liegen zunehmend in der Cloud. AWS S3, Azure Blob Storage und Google Cloud Storage sind die häufigsten Plattformen – Python kann diese direkt als Datenquelle nutzen.',
+    cloud_code: CODE_CLOUD,
+    bigdata_title: 'Big-Data-Quellen',
+    bigdata_badge: '→ Big Data Kurs',
+    bigdata_note: 'Diese Themen werden im weiterführenden Big-Data-Kurs behandelt.',
+    bigdata_desc: 'Die folgenden Technologien sind für die Verarbeitung sehr großer Datenmengen (Petabyte-Skala) ausgelegt und gehen über den Scope dieses Kurses hinaus. Hier bekommst du einen Überblick.',
+    bigdata_examples: [
+        { tech: 'Apache Hadoop / HDFS', desc: 'Verteiltes Dateisystem für Petabyte-Daten auf Standard-Hardware' },
+        { tech: 'Apache Kafka', desc: 'Echtzeit-Datenstrom-Plattform (Event Streaming, Log-Aggregation)' },
+        { tech: 'Apache Spark', desc: 'Verteilte in-memory Datenverarbeitung, Python-kompatibel (PySpark)' },
+        { tech: 'Elasticsearch', desc: 'Verteilte Such- und Analyseplattform für Logs und Texte' },
+        { tech: 'Apache Cassandra', desc: 'Verteilte Wide-Column-Datenbank für sehr hohe Schreiblasten' }
+    ],
+    bigdata_course_label: 'Im Big-Data-Kurs werden diese Technologien praktisch eingesetzt:',
     quiz_title: 'Quiz: Daten sammeln',
     quiz_intro: 'Testen Sie Ihr Wissen – 5 Fragen.',
     quiz: [
         { q: 'Welches Format ist ideal für große Datensätze in Cloud-Umgebungen (komprimiert, spaltenbasiert)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
-        { q: 'Was sollten Sie vor dem Web Scraping immer prüfen?', opts: ['Die Dateigrößer der Webseite', 'Die robots.txt und Nutzungsbedingungen', 'Den HTTP-Status 404', 'Die JavaScript-Version'], ans: 1 },
+        { q: 'Was sollten Sie vor dem Web Scraping immer prüfen?', opts: ['Die Dateigröße der Webseite', 'Die robots.txt und Nutzungsbedingungen', 'Den HTTP-Status 404', 'Die JavaScript-Version'], ans: 1 },
         { q: 'Welche pandas-Funktion liest eine CSV-Datei mit Semikolon-Trennzeichen?', opts: ['pd.read_csv(file, delimiter=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")', 'pd.load_csv(file, sep=";")'], ans: 1 },
         { q: 'Was gibt response.status_code bei einer erfolgreichen HTTP-Anfrage zurück?', opts: ['404', '500', '200', '302'], ans: 2 },
         { q: 'Welche Bibliothek ermöglicht einheitliche Datenbankverbindungen in Python?', opts: ['requests', 'beautifulsoup4', 'sqlalchemy', 'pyarrow'], ans: 2 }
@@ -284,11 +409,11 @@ df = pd.read_sql(query, engine, params={'plz': '97070'})`,
 
 const en = {
     back: '← DAV Lab', title: 'Data Acquisition',
-    sections: ['Overview', 'CSV', 'JSON', 'XML', 'Excel', 'Parquet', 'REST APIs', 'Web Scraping', 'Databases', 'Quiz', 'Notebooks'],
+    sections: ['Overview','CSV','JSON','XML','Excel','Parquet','REST APIs','Web Scraping','SQL Databases','NoSQL Databases','Cloud Storage','Big Data Sources','Quiz','Notebooks'],
     overview: {
         title: 'Data Acquisition – File Formats & Sources',
         scenario: 'Scenario: You work as a Data Analyst at a trading company. Your task: Merge data from various sources – a CSV file from the ERP system, a JSON API for product catalogs, Excel reports from controlling, and database queries from the CRM.',
-        formats: ['CSV – Comma-Separated Values', 'JSON – JavaScript Object Notation', 'XML – Extensible Markup Language', 'Excel – .xlsx Spreadsheets', 'Parquet – Columnar Format', 'REST APIs', 'Web Scraping', 'SQL Databases']
+        formats: ['CSV – Comma-Separated Values','JSON – JavaScript Object Notation','XML – Extensible Markup Language','Excel – .xlsx Spreadsheets','Parquet – Columnar Format','REST APIs','Web Scraping','SQL Databases','NoSQL Databases','Cloud Storage (S3/Azure)','Big Data Sources (→ Big Data Course)']
     },
     csv_title: 'CSV – Comma-Separated Values', csv_desc: 'CSV is the most commonly used format for tabular data. Simple, human-readable, cross-platform.', csv_code: de.csv_code,
     json_title: 'JSON – JavaScript Object Notation', json_desc: 'JSON is the standard format for web APIs. It supports nested structures and is ideal for semi-structured data.', json_code: de.json_code,
@@ -297,7 +422,31 @@ const en = {
     parquet_title: 'Parquet – Columnar Format', parquet_desc: 'Parquet is ideal for large datasets: compressed, fast to read, type-safe. Standard in Spark and cloud environments.', parquet_code: de.parquet_code,
     api_title: 'Querying REST APIs', api_desc: 'Many data sources offer REST APIs. With the requests library, you can send HTTP requests and process JSON responses.', api_code: de.api_code,
     scraping_title: 'Web Scraping with BeautifulSoup', scraping_desc: 'Web scraping extracts data from websites. Important: Always check robots.txt and respect terms of service!', scraping_code: de.scraping_code,
-    db_title: 'Database Connections', db_desc: 'SQL databases are ubiquitous in enterprises. SQLAlchemy provides a unified interface for many database systems.', db_code: de.db_code,
+    db_title: 'SQL Database Connections', db_desc: 'SQL databases are ubiquitous in enterprises. SQLAlchemy provides a unified interface for many database systems.', db_code: de.db_code,
+    nosql_title: 'NoSQL Databases (MongoDB, Redis)',
+    nosql_desc: 'NoSQL databases store data without a fixed schema – ideal for unstructured, semi-structured, or scalable use cases. There are four main types:',
+    nosql_types: [
+        { name: 'Document Store', example: 'MongoDB', use: 'Orders, user profiles, product catalogs' },
+        { name: 'Key-Value Store', example: 'Redis', use: 'Caching, sessions, real-time rankings' },
+        { name: 'Wide-Column Store', example: 'Cassandra', use: 'Time series, IoT, high write loads' },
+        { name: 'Graph Database', example: 'Neo4j', use: 'Social networks, recommendations, knowledge graphs' }
+    ],
+    nosql_code: CODE_NOSQL,
+    cloud_title: 'Cloud Storage (S3 / Azure Blob)',
+    cloud_desc: 'Modern data increasingly resides in the cloud. AWS S3, Azure Blob Storage and Google Cloud Storage are the most common platforms – Python can directly use these as data sources.',
+    cloud_code: CODE_CLOUD,
+    bigdata_title: 'Big Data Sources',
+    bigdata_badge: '→ Big Data Course',
+    bigdata_note: 'These topics are covered in the advanced Big Data course.',
+    bigdata_desc: 'The following technologies are designed for processing very large amounts of data (petabyte scale) and go beyond the scope of this course. Here is an overview.',
+    bigdata_examples: [
+        { tech: 'Apache Hadoop / HDFS', desc: 'Distributed file system for petabyte-scale data on commodity hardware' },
+        { tech: 'Apache Kafka', desc: 'Real-time event streaming platform (event streaming, log aggregation)' },
+        { tech: 'Apache Spark', desc: 'Distributed in-memory data processing, Python-compatible (PySpark)' },
+        { tech: 'Elasticsearch', desc: 'Distributed search and analytics platform for logs and text' },
+        { tech: 'Apache Cassandra', desc: 'Distributed wide-column database for very high write loads' }
+    ],
+    bigdata_course_label: 'These technologies are used hands-on in the Big Data course:',
     quiz_title: 'Quiz: Data Acquisition', quiz_intro: 'Test your knowledge – 5 questions.',
     quiz: [
         { q: 'Which format is ideal for large datasets in cloud environments (compressed, columnar)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
@@ -308,6 +457,37 @@ const en = {
     ],
     nb_title: 'Open Notebooks', nb_desc: 'For hands-on exercises for this module:',
 };
+
+// ── CodeBlock with copy button ───────────────────────────────────────────────
+
+function CodeBlock({ code }) {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const ta = document.createElement('textarea');
+            ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
+    return (
+        <div className="code-wrapper">
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
+                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            </button>
+            <div className="code-block">{code}</div>
+        </div>
+    );
+}
+
+// ── Quiz ─────────────────────────────────────────────────────────────────────
 
 function QuizSection({ questions, title, intro }) {
     const [answers, setAnswers] = useState({});
@@ -337,6 +517,8 @@ function QuizSection({ questions, title, intro }) {
     );
 }
 
+// ── App ───────────────────────────────────────────────────────────────────────
+
 function App() {
     const [lang, setLang] = useState('de');
     const [active, setActive] = useState('overview');
@@ -356,12 +538,12 @@ function App() {
                 </div>
             </div>
         )},
-        {id:'csv', content: () => <div><h2>{tr.csv_title}</h2><p>{tr.csv_desc}</p><div className="code-block">{tr.csv_code}</div></div>},
-        {id:'json', content: () => <div><h2>{tr.json_title}</h2><p>{tr.json_desc}</p><div className="code-block">{tr.json_code}</div></div>},
-        {id:'xml', content: () => <div><h2>{tr.xml_title}</h2><p>{tr.xml_desc}</p><div className="code-block">{tr.xml_code}</div></div>},
-        {id:'excel', content: () => <div><h2>{tr.excel_title}</h2><p>{tr.excel_desc}</p><div className="code-block">{tr.excel_code}</div></div>},
-        {id:'parquet', content: () => <div><h2>{tr.parquet_title}</h2><p>{tr.parquet_desc}</p><div className="code-block">{tr.parquet_code}</div></div>},
-        {id:'api', content: () => <div><h2>{tr.api_title}</h2><p>{tr.api_desc}</p><div className="code-block">{tr.api_code}</div></div>},
+        {id:'csv',      content: () => <div><h2>{tr.csv_title}</h2><p>{tr.csv_desc}</p><CodeBlock code={tr.csv_code} /></div>},
+        {id:'json',     content: () => <div><h2>{tr.json_title}</h2><p>{tr.json_desc}</p><CodeBlock code={tr.json_code} /></div>},
+        {id:'xml',      content: () => <div><h2>{tr.xml_title}</h2><p>{tr.xml_desc}</p><CodeBlock code={tr.xml_code} /></div>},
+        {id:'excel',    content: () => <div><h2>{tr.excel_title}</h2><p>{tr.excel_desc}</p><CodeBlock code={tr.excel_code} /></div>},
+        {id:'parquet',  content: () => <div><h2>{tr.parquet_title}</h2><p>{tr.parquet_desc}</p><CodeBlock code={tr.parquet_code} /></div>},
+        {id:'api',      content: () => <div><h2>{tr.api_title}</h2><p>{tr.api_desc}</p><CodeBlock code={tr.api_code} /></div>},
         {id:'scraping', content: () => (
             <div><h2>{tr.scraping_title}</h2><p>{tr.scraping_desc}</p>
             <div className="tip-box">
@@ -373,9 +555,61 @@ function App() {
                     <li>• Requests begrenzen (Rate Limiting) / Limit request rate</li>
                 </ul>
             </div>
-            <div className="code-block">{tr.scraping_code}</div></div>
+            <CodeBlock code={tr.scraping_code} /></div>
         )},
-        {id:'db', content: () => <div><h2>{tr.db_title}</h2><p>{tr.db_desc}</p><div className="code-block">{tr.db_code}</div></div>},
+        {id:'db',  content: () => <div><h2>{tr.db_title}</h2><p>{tr.db_desc}</p><CodeBlock code={tr.db_code} /></div>},
+        {id:'nosql', content: () => (
+            <div>
+                <h2>{tr.nosql_title}</h2>
+                <p>{tr.nosql_desc}</p>
+                <div className="nosql-type-grid">
+                    {tr.nosql_types.map((t,i) => (
+                        <div key={i} className="nosql-type-card">
+                            <div className="type-name">{t.name}</div>
+                            <div className="type-example">{t.example}</div>
+                            <div className="type-use">{t.use}</div>
+                        </div>
+                    ))}
+                </div>
+                <CodeBlock code={tr.nosql_code} />
+            </div>
+        )},
+        {id:'cloud', content: () => (
+            <div>
+                <h2>{tr.cloud_title}</h2>
+                <p>{tr.cloud_desc}</p>
+                <div className="info-box">
+                    <p className="text-blue-800 text-sm font-semibold">
+                        {lang==='de' ? '💡 Tipp: In den Notebooks werden lokale Daten verwendet – für Cloud-Zugriff benötigst du eigene Zugangsdaten (AWS/Azure Account).' : '💡 Tip: Notebooks use local data – for cloud access you need your own credentials (AWS/Azure account).'}
+                    </p>
+                </div>
+                <CodeBlock code={tr.cloud_code} />
+            </div>
+        )},
+        {id:'bigdata', content: () => (
+            <div>
+                <h2>{tr.bigdata_title} <span style={{background:'#a855f7', color:'white', fontSize:'0.7rem', fontWeight:700, padding:'0.2rem 0.7rem', borderRadius:999, verticalAlign:'middle', marginLeft:'0.5rem'}}>{tr.bigdata_badge}</span></h2>
+                <div className="future-box">
+                    <p className="font-bold" style={{color:'#7e22ce'}}>{tr.bigdata_note}</p>
+                    <p className="text-sm mt-1" style={{color:'#6b21a8'}}>{tr.bigdata_desc}</p>
+                </div>
+                <div className="mt-4 space-y-2">
+                    {tr.bigdata_examples.map((ex,i) => (
+                        <div key={i} className="bigdata-item">
+                            <span className="tech-badge">{ex.tech}</span>
+                            <span className="text-sm text-gray-600" style={{alignSelf:'center'}}>{ex.desc}</span>
+                        </div>
+                    ))}
+                </div>
+                <div className="tip-box mt-4">
+                    <p className="font-semibold text-yellow-800">{tr.bigdata_course_label}</p>
+                    <a href="https://swrobuts.github.io/bigdata/" target="_blank" rel="noopener noreferrer"
+                       className="text-blue-600 font-semibold underline text-sm">
+                        swrobuts.github.io/bigdata/ →
+                    </a>
+                </div>
+            </div>
+        )},
         {id:'quiz', content: () => <QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} />},
         {id:'notebook', content: () => (
             <div>
@@ -391,14 +625,9 @@ function App() {
                 <div className="info-box mt-4"><p className="text-blue-800 text-sm">Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.</p></div>
                 <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
                     <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                        {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
+                        {lang==='de' ? 'Notebooks in Colab öffnen:' : 'Open Notebooks in Colab:'}
                     </p>
-                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/02_Dateiformate.ipynb"
-                       target="_blank" rel="noopener noreferrer"
-                       style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                        Notebook in Colab öffnen →
-                    </a>
-                    <div className="notebook-cta-group">
+                    <div className="notebook-buttons" style={{justifyContent:'center'}}>
                         <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/02_Dateiformate.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 02 Dateiformate</a>
                         <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/03_APIs_WebScraping.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 03 APIs WebScraping</a>
                     </div>
@@ -426,8 +655,6 @@ function App() {
             <main className="main-content">
                 {sections.map(s => <div key={s.id} id={s.id} className="mb-12">{s.content()}</div>)}
             </main>
-
-            {/* Footer */}
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
                 <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
                 <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
