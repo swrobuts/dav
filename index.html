@@ -328,6 +328,14 @@ const T = {
             'Daten für ML-Modelle transformieren und kodieren',
             'Vollständige Data-Prep-Workflows mit Python/pandas umsetzen'
         ],
+        bonus: {
+            badge: '⭐ Bonus',
+            title: 'Advanced Visualization',
+            subtitle: 'Plotly.js · GitHub Pages · Dashboard',
+            desc: 'Baue ein vollständiges interaktives Dashboard für den World Happiness Report – mit Choropleth-Weltkarte, Trendlinien und Korrelationsanalyse. Statisch auf GitHub Pages deployt.',
+            link: 'lab-viz-advanced.html',
+            diff: 'Bonus'
+        },
         footer_built: 'Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt',
         footer_prof: 'Prof. Dr. Robert Butscher',
         footer_github: 'GitHub Repository'
@@ -394,6 +402,14 @@ const T = {
             'Transform and encode data for ML models',
             'Implement complete data prep workflows with Python/pandas'
         ],
+        bonus: {
+            badge: '⭐ Bonus',
+            title: 'Advanced Visualization',
+            subtitle: 'Plotly.js · GitHub Pages · Dashboard',
+            desc: 'Build a full interactive dashboard for the World Happiness Report – with choropleth world map, trend lines, and correlation analysis. Deployed statically on GitHub Pages.',
+            link: 'lab-viz-advanced.html',
+            diff: 'Bonus'
+        },
         footer_built: 'Built for BBA Students · THWS Würzburg-Schweinfurt',
         footer_prof: 'Prof. Dr. Robert Butscher',
         footer_github: 'GitHub Repository'
@@ -565,6 +581,53 @@ function App() {
                             </a>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* ── Bonus Card ── */}
+            <section style={{ padding: '0 1.5rem 4rem', background: 'white' }}>
+                <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+                    <a href={t.bonus.link}
+                       style={{
+                           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                           gap: '2rem', flexWrap: 'wrap',
+                           background: 'linear-gradient(135deg, #1a1a1a 0%, #0f2744 100%)',
+                           borderRadius: 14, padding: '2rem 2.25rem',
+                           textDecoration: 'none', color: 'inherit',
+                           boxShadow: '0 8px 32px rgba(3,137,207,0.18)',
+                           transition: 'transform 0.2s, box-shadow 0.2s',
+                           border: '1.5px solid rgba(3,137,207,0.35)'
+                       }}
+                       onMouseOver={e => { e.currentTarget.style.transform='translateY(-4px)'; e.currentTarget.style.boxShadow='0 16px 40px rgba(3,137,207,0.28)'; }}
+                       onMouseOut={e  => { e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 8px 32px rgba(3,137,207,0.18)'; }}
+                       ref={ref}>
+                        <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+                                <span style={{ background: '#E8792F', color: 'white', fontWeight: 800, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
+                                    {t.bonus.badge}
+                                </span>
+                                <span style={{ background: 'rgba(3,137,207,0.25)', color: '#60a5fa', fontWeight: 700, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
+                                    {t.bonus.subtitle}
+                                </span>
+                            </div>
+                            <div style={{ fontSize: '1.3rem', fontWeight: 900, color: 'white', marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
+                                {t.bonus.title}
+                            </div>
+                            <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: 600, margin: 0 }}>
+                                {t.bonus.desc}
+                            </p>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.75rem', flexShrink: 0 }}>
+                            <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                {['🗺️', '📈', '📊', '🔗'].map((e, i) => (
+                                    <span key={i} style={{ fontSize: '1.6rem' }}>{e}</span>
+                                ))}
+                            </div>
+                            <span style={{ color: '#E8792F', fontWeight: 800, fontSize: '0.9rem' }}>
+                                {t.cta_module}
+                            </span>
+                        </div>
+                    </a>
                 </div>
             </section>
 

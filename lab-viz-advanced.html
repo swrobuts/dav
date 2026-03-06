@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Visualization – DAV Lab</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #0389CF; --orange: #E8792F; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafbfc; color: #1e293b; margin: 0; }
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: white;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+            height: 4rem; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between; z-index: 50;
+        }
+        .sidebar { position: fixed; left: 0; top: 4rem; width: 260px; height: calc(100vh - 4rem); background: #f0f4f8; border-right: 1px solid #ddd; overflow-y: auto; padding: 1.5rem 0; z-index: 40; }
+        .sidebar-item { padding: 0.75rem 1.5rem; cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; font-weight: 500; font-size: 0.875rem; color: #374151; }
+        .sidebar-item:hover { background: #e1eaf5; }
+        .sidebar-item.active { background: rgba(3,137,207,0.07); color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
+        .main-content { margin-left: 260px; padding: 5rem 3rem 3rem 3rem; max-width: 1000px; }
+        .code-wrapper { position: relative; }
+        .code-block { background: #1e293b; border-left: 4px solid var(--orange); color: #e2e8f0; font-family: 'Courier New', monospace; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.85rem; margin: 1rem 0; white-space: pre; }
+        .copy-btn {
+            position: absolute; top: 1.25rem; right: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+            color: #94a3b8; border-radius: 0.375rem;
+            padding: 0.2rem 0.6rem; font-size: 0.72rem; cursor: pointer;
+            transition: all 0.2s; opacity: 0.35;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5; user-select: none;
+        }
+        .code-wrapper:hover .copy-btn { opacity: 1; }
+        .copy-btn:hover { background: rgba(255,255,255,0.18); color: #e2e8f0; }
+        .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.4); opacity: 1; }
+        .tip-box { background: #fffbeb; border-left: 4px solid #fbbf24; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .challenge-box { background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .concept-box { background: rgba(3,137,207,0.06); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .future-box { background: #faf5ff; border-left: 4px solid #a855f7; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; }
+        .lang-btn {
+            padding: 0.4rem 0.7rem; border-radius: 0.375rem;
+            border: 2px solid #e5e7eb; background: white;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
+            color: #666; transition: all 0.2s;
+        }
+        .lang-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+        .lang-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+        .quiz-option { display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s; font-size: 0.9rem; text-align: left; background: white; }
+        .quiz-option:hover { border-color: var(--primary); background: #eff6ff; }
+        .quiz-option.correct { border-color: #22c55e; background: #f0fdf4; }
+        .quiz-option.wrong { border-color: #ef4444; background: #fef2f2; }
+        h2 { color: var(--primary); font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+        h3 { color: var(--primary); font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+        p { color: #4b5563; line-height: 1.7; margin-bottom: 0.75rem; }
+        .notebook-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; text-decoration: none; transition: all 0.2s; background: var(--orange); color: white; font-size: 1rem; }
+        .notebook-cta:hover { opacity: 0.9; transform: translateY(-2px); }
+        @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; } }
+        .colab-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 700;
+            text-decoration: none; font-size: 0.9rem; transition: all 0.2s;
+            border: 2px solid #E8792F; color: #E8792F; background: white;
+        }
+        .colab-btn:hover { background: #E8792F; color: white; }
+        .demo-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 700;
+            text-decoration: none; font-size: 0.95rem; transition: all 0.2s;
+            background: var(--primary); color: white;
+        }
+        .demo-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+        .step-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--orange); color: white;
+            font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
+        }
+        .tech-pill {
+            display: inline-block; padding: 0.2rem 0.65rem; border-radius: 999px;
+            background: rgba(3,137,207,0.1); color: var(--primary);
+            font-size: 0.75rem; font-weight: 600; margin: 0.15rem;
+        }
+        .preview-card {
+            background: #1a1a1a; border-radius: 12px;
+            padding: 1.5rem; margin: 1rem 0;
+            display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+        }
+        .preview-card-text h3 { color: white; margin-top: 0; }
+        .preview-card-text p  { color: #999; margin-bottom: 0; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+
+const sectionIds = ["overview","setup","data","map","charts","interactivity","deployment","demo","rainforest","quiz","notebook"];
+
+// ── Code snippets ─────────────────────────────────────────────────────────────
+
+const CODE_SETUP = `mkdir whi-dashboard && cd whi-dashboard
+git init
+
+# index.html erstellen — das ist unser Dashboard
+touch index.html
+
+# GitHub-Repository erstellen und verbinden
+git remote add origin https://github.com/DEIN-NAME/whi-dashboard.git
+
+# GitHub Pages aktivieren:
+# Settings → Pages → Deploy from branch: main → / (root) → Save
+# Live nach ~1 Minute unter: https://DEIN-NAME.github.io/whi-dashboard/`;
+
+const CODE_DATA = `<!-- In <head>: PapaParse laden -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"><\/script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"><\/script>
+
+<script>
+Papa.parse("https://raw.githubusercontent.com/swrobuts/dav/main/data/whr_combined_2015_2025.csv", {
+    download: true,
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+        // Leere Zeilen entfernen
+        const data = results.data.filter(d => d.Country);
+        console.log(\`\${data.length} Datensätze geladen\`);
+        // z.B.: 1500 Datensätze geladen
+        buildDashboard(data);
+    },
+    error: function(err) {
+        console.error("Fehler:", err.message);
+    }
+});
+<\/script>`;
+
+const CODE_MAP = `// ISO-Codes für Plotly (Land → 3-stelliger Alpha-3-Code)
+const ISO_CODES = {
+    "Finland": "FIN", "Germany": "DEU", "France": "FRA",
+    "United States": "USA", "Brazil": "BRA",
+    // ... weitere Länder (100+ Einträge im vollständigen Dashboard)
+};
+
+// Farbskala: Rot (unglücklich) → Weiß → Blau (glücklich)
+const COLOR_SCALE = [
+    [0, "#67001f"], [0.17, "#b2182b"], [0.33, "#d6604d"],
+    [0.5, "#f7f7f7"], [0.67, "#92c5de"], [0.83, "#2166ac"], [1, "#053061"]
+];
+
+// Daten für ausgewähltes Jahr filtern
+const yearData = data.filter(d => d.Year === selectedYear);
+
+// Choropleth erstellen
+Plotly.newPlot("world-map", [{
+    type: "choropleth",
+    locationmode: "ISO-3",
+    locations: yearData.map(d => ISO_CODES[d.Country]).filter(Boolean),
+    z:    yearData.filter(d => ISO_CODES[d.Country]).map(d => d["Happiness Score"]),
+    text: yearData.filter(d => ISO_CODES[d.Country]).map(d =>
+        \`\${d.Country}<br>Score: \${d["Happiness Score"]}<br>Rang: \${d["Happiness Rank"]}\`
+    ),
+    hovertemplate: "%{text}<extra></extra>",
+    colorscale: COLOR_SCALE,
+    zmin: 2, zmax: 8,
+    marker: { line: { color: "#ffffff", width: 0.5 } }
+}], {
+    paper_bgcolor: "rgba(0,0,0,0)",
+    geo: {
+        showframe: false,
+        showcoastlines: true,
+        projection: { type: "natural earth" }
+    },
+    margin: { l: 0, r: 0, t: 0, b: 0 }
+});`;
+
+const CODE_TREND = `// Trendlinie: Happiness Score über Zeit für ausgewählte Länder
+const COLOR_COUNTRIES = ["#1f77b4", "#ff7f0e", "#2ca02c", "#9467bd", "#8c564b"];
+const years = [...new Set(allData.map(d => d.Year))].sort();
+
+const traces = selectedCountries.map((country, i) => {
+    const pts = years.map(y => {
+        const row = allData.find(d => d.Country === country && d.Year === y);
+        return row ? row["Happiness Score"] : null;
+    });
+    return {
+        type: "scatter", mode: "lines+markers",
+        name: country,
+        x: years, y: pts,
+        line:   { color: COLOR_COUNTRIES[i], width: 2.5 },
+        marker: { size: 5 },
+        connectgaps: true
+    };
+});
+Plotly.newPlot("trend-chart", traces, { ...layout });`;
+
+const CODE_TOPFLOP = `// Top 5 und Flop 5 als horizontales Balkendiagramm
+const sorted = [...yearData]
+    .filter(d => d["Happiness Score"])
+    .sort((a,b) => b["Happiness Score"] - a["Happiness Score"]);
+
+const top5  = sorted.slice(0, 5);
+const flop5 = sorted.slice(-5).reverse();
+const combined = [...flop5, ...top5];
+
+Plotly.newPlot("top-flop", [{
+    type: "bar", orientation: "h",
+    y: combined.map(d => d.Country),
+    x: combined.map(d => d["Happiness Score"]),
+    marker: { color: combined.map(d => scoreToColor(d["Happiness Score"])) },
+    text: combined.map(d => d["Happiness Score"].toFixed(2)),
+    textposition: "outside"
+}], { ...layout });`;
+
+const CODE_REGIONAL = `// Regionale Analyse: Mittelwert + Fehlerbalken (Min/Max)
+const regionMap = {};
+yearData.forEach(d => {
+    if (!regionMap[d.Region]) regionMap[d.Region] = [];
+    regionMap[d.Region].push(d["Happiness Score"]);
+});
+
+const entries = Object.entries(regionMap).map(([region, scores]) => ({
+    region,
+    mean: scores.reduce((a,b)=>a+b,0) / scores.length,
+    min:  Math.min(...scores),
+    max:  Math.max(...scores)
+})).sort((a,b) => a.mean - b.mean);
+
+Plotly.newPlot("region-chart", [{
+    type: "bar", orientation: "h",
+    y: entries.map(e => e.region),
+    x: entries.map(e => e.mean),
+    error_x: {
+        type: "data", symmetric: false,
+        array:      entries.map(e => e.max - e.mean),
+        arrayminus: entries.map(e => e.mean - e.min)
+    }
+}], { ...layout });`;
+
+const CODE_SCATTER = `// Scatter: BIP vs. Happiness Score + lineare Regression
+function linearRegression(xs, ys) {
+    const mx = xs.reduce((a,b)=>a+b,0)/xs.length;
+    const my = ys.reduce((a,b)=>a+b,0)/ys.length;
+    let num=0, den=0;
+    xs.forEach((x,i) => { num+=(x-mx)*(ys[i]-my); den+=(x-mx)**2; });
+    const m = den ? num/den : 0, b = my - m*mx;
+    const r2 = 1 - ys.reduce((s,y,i)=>s+(y-(m*xs[i]+b))**2,0)
+                    / ys.reduce((s,y)=>s+(y-my)**2,0);
+    return { m, b, r2, r: Math.sign(m)*Math.sqrt(r2) };
+}
+
+const xs = yearData.map(d => d.GDP).filter(Boolean);
+const ys = yearData.map(d => d["Happiness Score"]).filter(Boolean);
+const { m, b, r, r2 } = linearRegression(xs, ys);
+
+// Punkte + Trendlinie
+Plotly.newPlot("scatter", [
+    { type:"scatter", mode:"markers", x:xs, y:ys, marker:{color:"#ccc"} },
+    { type:"scatter", mode:"lines",
+      x:[Math.min(...xs), Math.max(...xs)],
+      y:[m*Math.min(...xs)+b, m*Math.max(...xs)+b],
+      line:{dash:"dash", color:"#0389CF"} }
+], { ...layout });
+
+// r und R² im Subtitle anzeigen
+subtitle.textContent = \`r = \${r.toFixed(2)} · R² = \${r2.toFixed(2)}\`;`;
+
+const CODE_INTERACTIVITY = `// HTML: Dropdowns
+<select id="yearSelect"></select>
+<select id="regionSelect"><option value="">Alle Regionen</option></select>
+<select id="countrySelect" multiple></select>
+
+// JavaScript: State
+let selectedYear    = 2024;
+let selectedRegion  = "";
+let selectedCountries = [];
+
+// Alle Charts neu rendern wenn Filter sich ändert
+function updateAllCharts() {
+    const filteredData = allData
+        .filter(d => d.Year === selectedYear)
+        .filter(d => !selectedRegion || d.Region === selectedRegion);
+
+    drawMap(filteredData);
+    drawTrend();           // nutzt allData für alle Jahre
+    drawTopFlop(filteredData);
+    drawRegional(filteredData);
+    drawScatter(filteredData);
+    drawHeatmap(filteredData);
+    updateKPIs(filteredData);
+}
+
+// Event Listener
+document.getElementById("yearSelect").addEventListener("change", e => {
+    selectedYear = +e.target.value;
+    updateAllCharts();
+});
+
+document.getElementById("regionSelect").addEventListener("change", e => {
+    selectedRegion = e.target.value;
+    updateAllCharts();
+});
+
+document.getElementById("countrySelect").addEventListener("change", e => {
+    // Max 5 Länder
+    const sel = Array.from(e.target.selectedOptions).map(o => o.value);
+    selectedCountries = sel.slice(0, 5);
+    updateAllCharts();
+});`;
+
+const CODE_DEPLOY = `# Alle Dateien committen und pushen
+git add index.html
+git commit -m "feat: WHI Dashboard v1"
+git push origin main
+
+# GitHub: Settings → Pages → Branch: main → Verzeichnis: / (root) → Save
+# Live nach ca. 1 Minute unter:
+# https://DEIN-NAME.github.io/whi-dashboard/
+
+# Jede Änderung wird automatisch deployed:
+git add index.html
+git commit -m "fix: improve chart colors"
+git push origin main
+# → Seite aktualisiert sich automatisch`;
+
+// ── Translations ──────────────────────────────────────────────────────────────
+
+const de = {
+    back: '← DAV Lab', title: 'Advanced Visualization',
+    sections: [
+        'Überblick', 'Schritt 1: Setup', 'Schritt 2: Daten', 'Schritt 3: Weltkarte',
+        'Schritt 4: Charts', 'Schritt 5: Interaktivität', 'Schritt 6: Deployment',
+        'Live Demo', 'Inspiration: Rainforest', 'Quiz', 'Notebook'
+    ],
+    overview: {
+        title: 'Interaktives Dashboard mit Plotly.js',
+        subtitle: 'Advanced Use Case – DAV',
+        intro: 'In diesem Modul bauen wir ein produktionsreifes, interaktives Dashboard für den World Happiness Report (2015–2025) – vollständig als statische HTML-Seite, deploybar auf GitHub Pages. Kein Server, kein Backend, keine Frameworks – nur HTML, CSS und JavaScript.',
+        previewLabel: 'Live Demo: WHI Dashboard',
+        previewSub: '6 Charts · 4 KPIs · Filterbar nach Jahr, Region, Land',
+        skills_title: 'Was du in diesem Modul lernst:',
+        skills: [
+            'CSV-Daten direkt im Browser laden (PapaParse)',
+            'Interaktive Charts mit Plotly.js (Choropleth, Scatter, Heatmap, Bar)',
+            'Lineare Regression und Korrelation mit Vanilla JS',
+            'Dynamische Filter mit nativen HTML-Dropdowns',
+            'Statisches Deployment auf GitHub Pages',
+        ],
+        prereq_title: 'Voraussetzungen aus DAV:',
+        prereqs: ['Pandas & Datenstrukturen (Modul 1–4)', 'Visualisierung mit Matplotlib/Plotly (Modul 7)', 'CSV & APIs (Modul 2)', 'GitHub & Git Basics'],
+        advanced_badge: 'Advanced',
+    },
+    setup: {
+        title: 'Schritt 1: Projekt aufsetzen',
+        desc: 'Wir brauchen nur einen Ordner und eine HTML-Datei. Kein npm, kein build tool.',
+        tip: 'GitHub Pages hostet statische Dateien kostenlos – ideal für Dashboards ohne Backend.',
+        pages_steps_title: 'GitHub Pages aktivieren:',
+        pages_steps: [
+            'Neues Repository auf github.com erstellen',
+            'Settings → Pages → Branch: main → / (root)',
+            'Save klicken – fertig!',
+        ],
+    },
+    data: {
+        title: 'Schritt 2: CSV-Daten laden',
+        desc: 'PapaParse lädt CSV direkt aus dem GitHub-Repository – ohne Server, ohne eigene API.',
+        tip: 'Die CSV-Datei liegt bereits im DAV-Repository. Du kannst sie direkt referenzieren – kein eigener Download nötig.',
+        cols_title: 'Spalten im Datensatz:',
+        cols: ['Country', 'Year', 'Region', 'Happiness Rank', 'Happiness Score', 'GDP', 'Social Support', 'Life Expectancy', 'Freedom', 'Generosity', 'Corruption'],
+    },
+    map: {
+        title: 'Schritt 3: Choropleth-Weltkarte',
+        desc: 'Plotly benötigt ISO-3-Codes (3-stellige Ländercodes) um Länder auf der Karte zu platzieren. Die Farbskala bildet Happiness Scores (2–8) auf Rot→Weiß→Blau ab.',
+        tip: 'ISO-Codes sind standardisiert (ISO 3166-1 alpha-3). Du musst eine Mapping-Tabelle von Ländernamen auf ISO-Codes erstellen.',
+    },
+    charts: {
+        title: 'Schritt 4: Weitere Charts',
+        trend_title: 'Trendlinien (Scatter + Lines)',
+        trend_desc: 'Zeigt den Happiness Score ausgewählter Länder über alle Jahre. Für bis zu 5 Länder, jedes in einer anderen Farbe.',
+        topflop_title: 'Top & Flop (Horizontal Bar)',
+        topflop_desc: 'Top 5 und Flop 5 Länder des ausgewählten Jahres, absteigend sortiert, eingefärbt nach Score.',
+        regional_title: 'Regionale Analyse (Bar + Error Bars)',
+        regional_desc: 'Mittlerer Happiness Score pro Region, mit Fehlerbalken für Min/Max. Gestrichelte Linie für den globalen Durchschnitt.',
+        scatter_title: 'Scatter + Lineare Regression',
+        scatter_desc: 'BIP (x) vs. Happiness Score (y). Grau = alle Länder, Orange = ausgewählte. Dazu Trendlinie und r/R²-Werte.',
+    },
+    interactivity: {
+        title: 'Schritt 5: Interaktivität',
+        desc: 'Alle Filter sind native HTML-Dropdowns. Bei jeder Änderung wird updateAllCharts() aufgerufen, das alle Plotly-Charts neu rendert.',
+        tip: 'Verwende Plotly.react() statt Plotly.newPlot() für Updates – es ist schneller und vermeidet Flackern.',
+    },
+    deployment: {
+        title: 'Schritt 6: Deployment auf GitHub Pages',
+        desc: 'Ein git push genügt – GitHub Pages deployed automatisch. Keine Serverkosten, keine Konfiguration.',
+        info: 'GitHub Pages ist kostenlos für öffentliche Repositories. Updates erscheinen i.d.R. innerhalb von 30–60 Sekunden nach dem Push.',
+        url_note: 'URL-Muster: https://DEIN-GITHUB-NAME.github.io/REPO-NAME/',
+    },
+    demo: {
+        title: 'Live Demo',
+        desc: 'Das vollständige Dashboard direkt hier eingebettet:',
+        fullscreen: 'Vollbild öffnen →',
+    },
+    rainforest: {
+        title: 'Inspiration: Rainforest Dashboard',
+        desc: 'Das Rainforest-Dashboard zeigt, was mit fortgeschrittenen Tools möglich ist: Live-Satellitendaten, GeoJSON-Karten, KI-Insights – auf einem eigenen VPS deployed.',
+        challenge_title: 'Was dort möglich ist:',
+        challenge_items: [
+            'Live INPE-Brandrodungsdaten (Brasilien) über REST-API',
+            'GeoJSON-Choropleth mit Bundesstaaten-Grenzen',
+            'Echtzeit-Simulation mit animierten Charts',
+            'Docker + Traefik Deployment auf eigenem VPS',
+            'Supabase (PostgreSQL) als Backend',
+            'KI-Insights via Anthropic Claude API',
+        ],
+        stack_title: 'Tech Stack:',
+        stack: ['Dash + Plotly (Python)', 'PostGIS / Supabase', 'PRODES / TerraBrasilis API', 'Docker + Traefik', 'Anthropic Claude API'],
+        btn: 'Rainforest Dashboard öffnen →',
+        compare_title: 'Vergleich: Unser Dashboard vs. Rainforest',
+        compare: [
+            { our: 'Vanilla JS + Plotly.js', rf: 'Python Dash + Plotly' },
+            { our: 'Statisch (GitHub Pages)', rf: 'Server (VPS + Docker)' },
+            { our: 'CSV (statische Daten)', rf: 'Live-API + Supabase DB' },
+            { our: 'Gratis, kein Backend', rf: 'VPS-Kosten, mehr Kontrolle' },
+        ],
+    },
+    quiz: {
+        title: 'Quiz: Advanced Visualization',
+        intro: 'Testen Sie Ihr Wissen – 5 Fragen.',
+        questions: [
+            {
+                q: 'Welche JavaScript-Bibliothek verwenden wir zum Laden von CSV-Dateien im Browser?',
+                opts: ['D3.js', 'PapaParse', 'Axios', 'Fetch API'],
+                ans: 1
+            },
+            {
+                q: 'Welcher Chart-Typ wird für die Weltkarte verwendet?',
+                opts: ['Scatter', 'Bar', 'Choropleth', 'Heatmap'],
+                ans: 2
+            },
+            {
+                q: 'Warum eignet sich GitHub Pages gut für statische Dashboards?',
+                opts: ['Es unterstützt Python-Backends', 'Es ist kostenlos und benötigt keinen Server', 'Es hat eingebaute Datenbankunterstützung', 'Es führt automatisch Datenanalysen durch'],
+                ans: 1
+            },
+            {
+                q: 'Was misst R² (Bestimmtheitsmaß) in einer linearen Regression?',
+                opts: ['Die Steigung der Trendlinie', 'Den y-Achsenabschnitt', 'Den Anteil der erklärten Varianz', 'Die Anzahl der Datenpunkte'],
+                ans: 2
+            },
+            {
+                q: 'Was ist die Cantril-Leiter (Cantril Ladder), auf der der Happiness Score basiert?',
+                opts: ['Ein Wirtschaftsindikator für BIP-Wachstum', 'Eine selbst eingeschätzte Lebenszufriedenheitsskala von 0 bis 10', 'Eine Messung der Lebenserwartung', 'Ein politischer Freiheitsindex'],
+                ans: 1
+            }
+        ]
+    },
+    notebook: {
+        title: 'Notebook: Visualisierung',
+        desc: 'Das zugehörige Python-Notebook zeigt, wie dieselben Analysen mit pandas und Plotly in Python umgesetzt werden:',
+    }
+};
+
+const en = {
+    back: '← DAV Lab', title: 'Advanced Visualization',
+    sections: [
+        'Overview', 'Step 1: Setup', 'Step 2: Data', 'Step 3: World Map',
+        'Step 4: Charts', 'Step 5: Interactivity', 'Step 6: Deployment',
+        'Live Demo', 'Inspiration: Rainforest', 'Quiz', 'Notebook'
+    ],
+    overview: {
+        title: 'Interactive Dashboard with Plotly.js',
+        subtitle: 'Advanced Use Case – DAV',
+        intro: 'In this module we build a production-quality interactive dashboard for the World Happiness Report (2015–2025) – fully as a static HTML page, deployable on GitHub Pages. No server, no backend, no frameworks – just HTML, CSS and JavaScript.',
+        previewLabel: 'Live Demo: WHI Dashboard',
+        previewSub: '6 Charts · 4 KPIs · Filterable by year, region, country',
+        skills_title: 'What you will learn in this module:',
+        skills: [
+            'Load CSV data directly in the browser (PapaParse)',
+            'Interactive charts with Plotly.js (Choropleth, Scatter, Heatmap, Bar)',
+            'Linear regression and correlation with Vanilla JS',
+            'Dynamic filters with native HTML dropdowns',
+            'Static deployment on GitHub Pages',
+        ],
+        prereq_title: 'Prerequisites from DAV:',
+        prereqs: ['Pandas & Data Structures (Modules 1–4)', 'Visualization with Matplotlib/Plotly (Module 7)', 'CSV & APIs (Module 2)', 'GitHub & Git Basics'],
+        advanced_badge: 'Advanced',
+    },
+    setup: {
+        title: 'Step 1: Project Setup',
+        desc: 'We only need a folder and one HTML file. No npm, no build tool.',
+        tip: 'GitHub Pages hosts static files for free – perfect for dashboards without a backend.',
+        pages_steps_title: 'Activate GitHub Pages:',
+        pages_steps: [
+            'Create a new repository on github.com',
+            'Settings → Pages → Branch: main → / (root)',
+            'Click Save – done!',
+        ],
+    },
+    data: {
+        title: 'Step 2: Load CSV Data',
+        desc: 'PapaParse loads CSV directly from the GitHub repository – without a server, without an API.',
+        tip: 'The CSV file is already in the DAV repository. You can reference it directly – no separate download needed.',
+        cols_title: 'Columns in the dataset:',
+        cols: ['Country', 'Year', 'Region', 'Happiness Rank', 'Happiness Score', 'GDP', 'Social Support', 'Life Expectancy', 'Freedom', 'Generosity', 'Corruption'],
+    },
+    map: {
+        title: 'Step 3: Choropleth World Map',
+        desc: 'Plotly requires ISO-3 codes (3-letter country codes) to place countries on the map. The color scale maps Happiness Scores (2–8) to Red→White→Blue.',
+        tip: 'ISO codes are standardized (ISO 3166-1 alpha-3). You need to create a mapping table from country names to ISO codes.',
+    },
+    charts: {
+        title: 'Step 4: Further Charts',
+        trend_title: 'Trend Lines (Scatter + Lines)',
+        trend_desc: 'Shows the Happiness Score of selected countries over all years. For up to 5 countries, each in a different color.',
+        topflop_title: 'Top & Flop (Horizontal Bar)',
+        topflop_desc: 'Top 5 and Flop 5 countries of the selected year, sorted descending, colored by score.',
+        regional_title: 'Regional Analysis (Bar + Error Bars)',
+        regional_desc: 'Mean Happiness Score per region, with error bars for min/max. Dashed line for the global average.',
+        scatter_title: 'Scatter + Linear Regression',
+        scatter_desc: 'GDP (x) vs. Happiness Score (y). Grey = all countries, orange = selected. Plus trend line and r/R² values.',
+    },
+    interactivity: {
+        title: 'Step 5: Interactivity',
+        desc: 'All filters are native HTML dropdowns. On every change, updateAllCharts() is called, which re-renders all Plotly charts.',
+        tip: 'Use Plotly.react() instead of Plotly.newPlot() for updates – it is faster and avoids flickering.',
+    },
+    deployment: {
+        title: 'Step 6: Deployment to GitHub Pages',
+        desc: 'One git push is enough – GitHub Pages deploys automatically. No server costs, no configuration.',
+        info: 'GitHub Pages is free for public repositories. Updates appear within 30–60 seconds after the push.',
+        url_note: 'URL pattern: https://YOUR-GITHUB-NAME.github.io/REPO-NAME/',
+    },
+    demo: {
+        title: 'Live Demo',
+        desc: 'The complete dashboard embedded directly here:',
+        fullscreen: 'Open fullscreen →',
+    },
+    rainforest: {
+        title: 'Inspiration: Rainforest Dashboard',
+        desc: 'The Rainforest Dashboard shows what is possible with advanced tools: live satellite data, GeoJSON maps, AI insights – deployed on its own VPS.',
+        challenge_title: 'What is possible there:',
+        challenge_items: [
+            'Live INPE deforestation data (Brazil) via REST API',
+            'GeoJSON choropleth with state boundaries',
+            'Real-time simulation with animated charts',
+            'Docker + Traefik deployment on own VPS',
+            'Supabase (PostgreSQL) as backend',
+            'AI insights via Anthropic Claude API',
+        ],
+        stack_title: 'Tech Stack:',
+        stack: ['Dash + Plotly (Python)', 'PostGIS / Supabase', 'PRODES / TerraBrasilis API', 'Docker + Traefik', 'Anthropic Claude API'],
+        btn: 'Open Rainforest Dashboard →',
+        compare_title: 'Comparison: Our Dashboard vs. Rainforest',
+        compare: [
+            { our: 'Vanilla JS + Plotly.js', rf: 'Python Dash + Plotly' },
+            { our: 'Static (GitHub Pages)', rf: 'Server (VPS + Docker)' },
+            { our: 'CSV (static data)', rf: 'Live API + Supabase DB' },
+            { our: 'Free, no backend', rf: 'VPS costs, more control' },
+        ],
+    },
+    quiz: {
+        title: 'Quiz: Advanced Visualization',
+        intro: 'Test your knowledge – 5 questions.',
+        questions: [
+            {
+                q: 'Which JavaScript library do we use to load CSV files in the browser?',
+                opts: ['D3.js', 'PapaParse', 'Axios', 'Fetch API'],
+                ans: 1
+            },
+            {
+                q: 'Which chart type is used for the world map?',
+                opts: ['Scatter', 'Bar', 'Choropleth', 'Heatmap'],
+                ans: 2
+            },
+            {
+                q: 'Why is GitHub Pages well-suited for static dashboards?',
+                opts: ['It supports Python backends', 'It is free and requires no server', 'It has built-in database support', 'It automatically performs data analysis'],
+                ans: 1
+            },
+            {
+                q: 'What does R² (coefficient of determination) measure in linear regression?',
+                opts: ['The slope of the trend line', 'The y-intercept', 'The proportion of explained variance', 'The number of data points'],
+                ans: 2
+            },
+            {
+                q: 'What is the Cantril Ladder, on which the Happiness Score is based?',
+                opts: ['An economic indicator for GDP growth', 'A self-reported life satisfaction scale from 0 to 10', 'A measure of life expectancy', 'A political freedom index'],
+                ans: 1
+            }
+        ]
+    },
+    notebook: {
+        title: 'Notebook: Visualization',
+        desc: 'The accompanying Python notebook shows how the same analyses are implemented with pandas and Plotly in Python:',
+    }
+};
+
+// ── CodeBlock ─────────────────────────────────────────────────────────────────
+
+function CodeBlock({ code }) {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
+    return (
+        <div className="code-wrapper">
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
+                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            </button>
+            <div className="code-block">{code}</div>
+        </div>
+    );
+}
+
+// ── QuizSection ───────────────────────────────────────────────────────────────
+
+function QuizSection({ questions, title, intro }) {
+    const [answers, setAnswers] = useState({});
+    const [checked, setChecked] = useState({});
+    const [score, setScore]     = useState(null);
+    const check = (qi, oi) => {
+        if (checked[qi]) return;
+        setAnswers(a => ({...a, [qi]: oi}));
+        setChecked(c => ({...c, [qi]: true}));
+    };
+    const calcScore = () => {
+        let s = 0;
+        questions.forEach((q,i) => { if (answers[i] === q.ans) s++; });
+        setScore(s);
+    };
+    return (
+        <div>
+            <h2>{title}</h2><p>{intro}</p>
+            {questions.map((q, qi) => (
+                <div key={qi} className="mb-6 p-4 bg-white rounded-xl border border-gray-200">
+                    <p className="font-semibold text-gray-800 mb-3">{qi+1}. {q.q}</p>
+                    {q.opts.map((opt, oi) => (
+                        <button key={oi}
+                            className={`quiz-option ${checked[qi] ? (oi===q.ans ? 'correct' : (answers[qi]===oi ? 'wrong' : '')) : ''}`}
+                            onClick={() => check(qi, oi)}>
+                            {opt}
+                        </button>
+                    ))}
+                </div>
+            ))}
+            <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>
+                Auswertung / Results
+            </button>
+            {score !== null && (
+                <div className="mt-4 p-4 rounded-xl text-center" style={{background: score >= questions.length*0.8 ? '#f0fdf4' : '#fef2f2'}}>
+                    <p className="text-2xl font-black">{score}/{questions.length}</p>
+                    <p className="font-semibold">{score >= questions.length*0.8 ? 'Sehr gut!' : 'Nochmal lesen!'}</p>
+                </div>
+            )}
+        </div>
+    );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
+
+function App() {
+    const [lang, setLang]     = useState('de');
+    const [active, setActive] = useState('overview');
+    const tr = lang === 'de' ? de : en;
+    const scrollTo = (id) => { setActive(id); document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); };
+
+    const sections = [
+
+        // ── Overview ──────────────────────────────────────────────────────────
+        { id: 'overview', content: () => (
+            <div>
+                <h2>{tr.overview.title}</h2>
+                <div style={{display:'inline-block', background:'#E8792F', color:'white', fontSize:'0.7rem', fontWeight:800, padding:'0.2rem 0.75rem', borderRadius:999, marginBottom:'1rem'}}>
+                    {tr.overview.advanced_badge}
+                </div>
+                <p>{tr.overview.intro}</p>
+
+                {/* Preview card */}
+                <div className="preview-card">
+                    <div className="preview-card-text">
+                        <h3 style={{color:'white', marginTop:0, marginBottom:'0.4rem'}}>🌍 {tr.overview.previewLabel}</h3>
+                        <p style={{color:'#888', marginBottom:'1rem', fontSize:'0.85rem'}}>{tr.overview.previewSub}</p>
+                        <a href="whi-dashboard.html" target="_blank" rel="noopener noreferrer" className="demo-btn">
+                            Demo öffnen / Open Demo →
+                        </a>
+                    </div>
+                    <div style={{flexShrink:0, textAlign:'right', color:'#444', fontSize:'2rem', lineHeight:1.3}}>
+                        📊<br/>🗺️<br/>📈
+                    </div>
+                </div>
+
+                {/* Skills concept box */}
+                <div className="concept-box mt-4">
+                    <p className="font-bold" style={{color:'#0369A1', marginBottom:'0.5rem'}}>{tr.overview.skills_title}</p>
+                    <ul style={{listStyle:'none', padding:0, margin:0}}>
+                        {tr.overview.skills.map((s,i) => (
+                            <li key={i} style={{display:'flex', gap:'0.5rem', marginBottom:'0.35rem', fontSize:'0.88rem', color:'#374151'}}>
+                                <span style={{color:'#0389CF', fontWeight:800}}>→</span> {s}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Prerequisites */}
+                <div className="tip-box">
+                    <p className="font-bold text-yellow-800" style={{marginBottom:'0.4rem'}}>{tr.overview.prereq_title}</p>
+                    <div style={{display:'flex', flexWrap:'wrap', gap:'0.35rem'}}>
+                        {tr.overview.prereqs.map((p,i) => (
+                            <span key={i} className="tech-pill">{p}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        )},
+
+        // ── Setup ─────────────────────────────────────────────────────────────
+        { id: 'setup', content: () => (
+            <div>
+                <h2>{tr.setup.title}</h2>
+                <p>{tr.setup.desc}</p>
+                <CodeBlock code={CODE_SETUP} />
+                <div className="tip-box">
+                    <p className="font-semibold text-yellow-800">💡 {tr.setup.tip}</p>
+                </div>
+                <div className="info-box">
+                    <p className="font-bold text-blue-800" style={{marginBottom:'0.4rem'}}>{tr.setup.pages_steps_title}</p>
+                    <ol style={{paddingLeft:'1.25rem', margin:0}}>
+                        {tr.setup.pages_steps.map((s,i) => (
+                            <li key={i} style={{color:'#1e40af', fontSize:'0.88rem', marginBottom:'0.3rem'}}>{s}</li>
+                        ))}
+                    </ol>
+                </div>
+            </div>
+        )},
+
+        // ── Data ──────────────────────────────────────────────────────────────
+        { id: 'data', content: () => (
+            <div>
+                <h2>{tr.data.title}</h2>
+                <p>{tr.data.desc}</p>
+                <CodeBlock code={CODE_DATA} />
+                <div className="tip-box">
+                    <p className="font-semibold text-yellow-800">💡 {tr.data.tip}</p>
+                </div>
+                <div className="concept-box">
+                    <p className="font-bold" style={{color:'#0369A1', marginBottom:'0.5rem'}}>{tr.data.cols_title}</p>
+                    <div style={{display:'flex', flexWrap:'wrap', gap:'0.35rem'}}>
+                        {tr.data.cols.map((c,i) => (
+                            <span key={i} className="tech-pill">{c}</span>
+                        ))}
+                    </div>
+                    <p style={{color:'#64748b', fontSize:'0.8rem', marginTop:'0.75rem', marginBottom:0}}>
+                        ~1.500 Zeilen · Jahre 2015–2025 · {'>'}150 Länder
+                    </p>
+                </div>
+            </div>
+        )},
+
+        // ── Map ───────────────────────────────────────────────────────────────
+        { id: 'map', content: () => (
+            <div>
+                <h2>{tr.map.title}</h2>
+                <p>{tr.map.desc}</p>
+                <CodeBlock code={CODE_MAP} />
+                <div className="tip-box">
+                    <p className="font-semibold text-yellow-800">💡 {tr.map.tip}</p>
+                </div>
+                <div className="info-box">
+                    <p className="text-blue-800 font-semibold text-sm">
+                        Farbskala (diverging): Rot = Score ≤ 2 · Weiß = Score 5 · Blau = Score ≥ 8
+                    </p>
+                </div>
+            </div>
+        )},
+
+        // ── Charts ────────────────────────────────────────────────────────────
+        { id: 'charts', content: () => (
+            <div>
+                <h2>{tr.charts.title}</h2>
+
+                <h3>{tr.charts.trend_title}</h3>
+                <p>{tr.charts.trend_desc}</p>
+                <CodeBlock code={CODE_TREND} />
+
+                <h3>{tr.charts.topflop_title}</h3>
+                <p>{tr.charts.topflop_desc}</p>
+                <CodeBlock code={CODE_TOPFLOP} />
+
+                <h3>{tr.charts.regional_title}</h3>
+                <p>{tr.charts.regional_desc}</p>
+                <CodeBlock code={CODE_REGIONAL} />
+
+                <h3>{tr.charts.scatter_title}</h3>
+                <p>{tr.charts.scatter_desc}</p>
+                <CodeBlock code={CODE_SCATTER} />
+            </div>
+        )},
+
+        // ── Interactivity ────────────────────────────────────────────────────
+        { id: 'interactivity', content: () => (
+            <div>
+                <h2>{tr.interactivity.title}</h2>
+                <p>{tr.interactivity.desc}</p>
+                <CodeBlock code={CODE_INTERACTIVITY} />
+                <div className="tip-box">
+                    <p className="font-semibold text-yellow-800">💡 {tr.interactivity.tip}</p>
+                </div>
+            </div>
+        )},
+
+        // ── Deployment ───────────────────────────────────────────────────────
+        { id: 'deployment', content: () => (
+            <div>
+                <h2>{tr.deployment.title}</h2>
+                <p>{tr.deployment.desc}</p>
+                <CodeBlock code={CODE_DEPLOY} />
+                <div className="info-box">
+                    <p className="text-blue-800 font-semibold text-sm">
+                        ✓ {tr.deployment.info}
+                    </p>
+                    <p className="text-blue-700 text-sm mt-2">
+                        🔗 {tr.deployment.url_note}
+                    </p>
+                </div>
+            </div>
+        )},
+
+        // ── Demo ─────────────────────────────────────────────────────────────
+        { id: 'demo', content: () => (
+            <div>
+                <h2>{tr.demo.title}</h2>
+                <p>{tr.demo.desc}</p>
+                <div style={{marginBottom:'1rem'}}>
+                    <a href="whi-dashboard.html" target="_blank" rel="noopener noreferrer" className="demo-btn">
+                        🔗 {tr.demo.fullscreen}
+                    </a>
+                </div>
+                <div style={{
+                    position: 'relative', width: '100%', height: 700,
+                    borderRadius: 12, overflow: 'hidden',
+                    border: '1px solid #e0e0e0',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.08)'
+                }}>
+                    <iframe
+                        src="whi-dashboard.html"
+                        style={{width:'100%', height:'100%', border:'none'}}
+                        title="WHI Dashboard Live Demo"
+                    />
+                </div>
+            </div>
+        )},
+
+        // ── Rainforest ───────────────────────────────────────────────────────
+        { id: 'rainforest', content: () => (
+            <div>
+                <h2>{tr.rainforest.title}</h2>
+                <p>{tr.rainforest.desc}</p>
+
+                <div className="challenge-box">
+                    <p className="font-bold text-green-800" style={{marginBottom:'0.5rem'}}>
+                        🌿 {tr.rainforest.challenge_title}
+                    </p>
+                    <ul style={{listStyle:'none', padding:0, margin:0}}>
+                        {tr.rainforest.challenge_items.map((item,i) => (
+                            <li key={i} style={{display:'flex', gap:'0.5rem', marginBottom:'0.3rem', fontSize:'0.88rem', color:'#166534'}}>
+                                <span style={{fontWeight:800}}>•</span> {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div style={{margin:'1.25rem 0'}}>
+                    <a href="https://rainforest.butscher.cloud/" target="_blank" rel="noopener noreferrer" className="demo-btn" style={{background:'#166534'}}>
+                        {tr.rainforest.btn}
+                    </a>
+                </div>
+
+                <div className="concept-box">
+                    <p className="font-bold" style={{color:'#0369A1', marginBottom:'0.5rem'}}>{tr.rainforest.stack_title}</p>
+                    <div style={{display:'flex', flexWrap:'wrap', gap:'0.35rem'}}>
+                        {tr.rainforest.stack.map((s,i) => (
+                            <span key={i} className="tech-pill">{s}</span>
+                        ))}
+                    </div>
+                </div>
+
+                <h3>{tr.rainforest.compare_title}</h3>
+                <div style={{overflowX:'auto'}}>
+                    <table style={{width:'100%', borderCollapse:'collapse', fontSize:'0.85rem'}}>
+                        <thead>
+                            <tr style={{background:'#f0f4f8'}}>
+                                <th style={{padding:'0.6rem 0.75rem', textAlign:'left', color:'#0369A1', fontWeight:700}}>WHI Dashboard (dieses Modul)</th>
+                                <th style={{padding:'0.6rem 0.75rem', textAlign:'left', color:'#166534', fontWeight:700}}>Rainforest Dashboard</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tr.rainforest.compare.map((row,i) => (
+                                <tr key={i} style={{borderTop:'1px solid #e5e7eb'}}>
+                                    <td style={{padding:'0.55rem 0.75rem', color:'#374151'}}>{row.our}</td>
+                                    <td style={{padding:'0.55rem 0.75rem', color:'#374151'}}>{row.rf}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        )},
+
+        // ── Quiz ─────────────────────────────────────────────────────────────
+        { id: 'quiz', content: () => (
+            <QuizSection
+                questions={tr.quiz.questions}
+                title={tr.quiz.title}
+                intro={tr.quiz.intro}
+            />
+        )},
+
+        // ── Notebook ─────────────────────────────────────────────────────────
+        { id: 'notebook', content: () => (
+            <div>
+                <h2>{tr.notebook.title}</h2>
+                <p>{tr.notebook.desc}</p>
+                <div style={{marginTop:'1rem', marginBottom:'1rem'}}>
+                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/08_Visualisierung.ipynb"
+                       target="_blank" rel="noopener noreferrer"
+                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold"
+                       style={{background:'#E8792F', display:'inline-flex', alignItems:'center', gap:'0.5rem', padding:'0.7rem 1.5rem', borderRadius:8, textDecoration:'none'}}>
+                        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:'18px'}} />
+                        08_Visualisierung.ipynb
+                    </a>
+                </div>
+                <div className="info-box">
+                    <p className="text-blue-800 text-sm">
+                        {lang==='de'
+                            ? 'Notebook direkt in Google Colab öffnen – kein lokales Setup nötig. Im Notebook werden dieselben Analysen in Python/pandas durchgeführt.'
+                            : 'Open the notebook directly in Google Colab – no local setup required. The notebook performs the same analyses in Python/pandas.'
+                        }
+                    </p>
+                </div>
+                <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
+                    <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
+                        {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
+                    </p>
+                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/08_Visualisierung.ipynb"
+                       target="_blank" rel="noopener noreferrer"
+                       style={{
+                           display:'inline-flex', alignItems:'center', gap:'0.5rem',
+                           padding:'0.7rem 1.5rem', borderRadius:8, fontWeight:700,
+                           textDecoration:'none', fontSize:'0.9rem', transition:'all 0.2s',
+                           border:'2px solid #E8792F', color:'#E8792F', background:'white'
+                       }}>
+                        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:'18px'}} />
+                        08 Visualisierung
+                    </a>
+                </div>
+            </div>
+        )}
+    ];
+
+    return (
+        <div>
+            {/* Header */}
+            <div className="header">
+                <div className="flex items-center gap-4">
+                    <a href="index.html" className="text-sm font-semibold" style={{color:'#0389CF'}}>{tr.back}</a>
+                    <span style={{color:'#d1d5db'}}>|</span>
+                    <span className="font-bold" style={{color:'#1e293b'}}>{tr.title}</span>
+                    <span style={{
+                        background:'#E8792F', color:'white',
+                        fontSize:'0.65rem', fontWeight:800,
+                        padding:'0.15rem 0.55rem', borderRadius:999
+                    }}>Advanced</span>
+                </div>
+                <div className="flex gap-2">
+                    <button className={`lang-btn ${lang==='de'?'active':''}`} onClick={() => setLang('de')}>DE</button>
+                    <button className={`lang-btn ${lang==='en'?'active':''}`} onClick={() => setLang('en')}>EN</button>
+                </div>
+            </div>
+
+            {/* Sidebar */}
+            <nav className="sidebar">
+                {sectionIds.map((id, i) => (
+                    <div
+                        key={id}
+                        className={`sidebar-item ${active===id ? 'active' : ''}`}
+                        onClick={() => scrollTo(id)}
+                    >
+                        {tr.sections[i]}
+                    </div>
+                ))}
+            </nav>
+
+            {/* Main content */}
+            <main className="main-content">
+                {sections.map(s => (
+                    <div key={s.id} id={s.id} className="mb-12">
+                        {s.content()}
+                    </div>
+                ))}
+            </main>
+
+            {/* Footer */}
+            <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>
+                    Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt
+                </p>
+                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <div style={{marginTop:'1rem'}}>
+                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
+                </div>
+            </footer>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
