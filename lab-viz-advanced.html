@@ -693,14 +693,14 @@ function App() {
                 {/* Preview card */}
                 <div className="preview-card">
                     <div className="preview-card-text">
-                        <h3 style={{color:'white', marginTop:0, marginBottom:'0.4rem'}}>🌍 {tr.overview.previewLabel}</h3>
+                        <h3 style={{color:'white', marginTop:0, marginBottom:'0.4rem'}}>{tr.overview.previewLabel}</h3>
                         <p style={{color:'#888', marginBottom:'1rem', fontSize:'0.85rem'}}>{tr.overview.previewSub}</p>
                         <a href="whi-dashboard.html" target="_blank" rel="noopener noreferrer" className="demo-btn">
                             Demo öffnen / Open Demo →
                         </a>
                     </div>
-                    <div style={{flexShrink:0, textAlign:'right', color:'#444', fontSize:'2rem', lineHeight:1.3}}>
-                        📊<br/>🗺️<br/>📈
+                    <div style={{flexShrink:0, textAlign:'right', color:'#94a3b8', fontSize:'0.8rem', letterSpacing:'0.08em', textTransform:'uppercase', fontWeight:700}}>
+                        Choropleth<br/>Zeitverlauf<br/>Regression
                     </div>
                 </div>
 
@@ -735,7 +735,7 @@ function App() {
                 <p>{tr.setup.desc}</p>
                 <CodeBlock code={CODE_SETUP} />
                 <div className="tip-box">
-                    <p className="font-semibold text-yellow-800">💡 {tr.setup.tip}</p>
+                    <p className="font-semibold text-yellow-800">{tr.setup.tip}</p>
                 </div>
                 <div className="info-box">
                     <p className="font-bold text-blue-800" style={{marginBottom:'0.4rem'}}>{tr.setup.pages_steps_title}</p>
@@ -755,7 +755,7 @@ function App() {
                 <p>{tr.data.desc}</p>
                 <CodeBlock code={CODE_DATA} />
                 <div className="tip-box">
-                    <p className="font-semibold text-yellow-800">💡 {tr.data.tip}</p>
+                    <p className="font-semibold text-yellow-800">{tr.data.tip}</p>
                 </div>
                 <div className="concept-box">
                     <p className="font-bold" style={{color:'#0369A1', marginBottom:'0.5rem'}}>{tr.data.cols_title}</p>
@@ -778,7 +778,7 @@ function App() {
                 <p>{tr.map.desc}</p>
                 <CodeBlock code={CODE_MAP} />
                 <div className="tip-box">
-                    <p className="font-semibold text-yellow-800">💡 {tr.map.tip}</p>
+                    <p className="font-semibold text-yellow-800">{tr.map.tip}</p>
                 </div>
                 <div className="info-box">
                     <p className="text-blue-800 font-semibold text-sm">
@@ -818,7 +818,7 @@ function App() {
                 <p>{tr.interactivity.desc}</p>
                 <CodeBlock code={CODE_INTERACTIVITY} />
                 <div className="tip-box">
-                    <p className="font-semibold text-yellow-800">💡 {tr.interactivity.tip}</p>
+                    <p className="font-semibold text-yellow-800">{tr.interactivity.tip}</p>
                 </div>
             </div>
         )},

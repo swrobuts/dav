@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mit Google Colab starten – DAV Lab</title>
+    <title>Notebooks im Browser – DAV Lab</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -150,29 +150,37 @@
 
     const t = {
         de: {
-            title: 'Mit Google Colab starten',
-            subtitle: 'Kein Setup. Kein Download. Einfach \u00f6ffnen und loslegen.',
+            title: 'Notebooks im Browser ausf\u00fchren',
+            subtitle: 'Cloudbasierte Jupyter-Umgebungen \u2014 keine lokale Installation erforderlich.',
             brand: '\u2190 DAV Lab',
-            nav: ['\u00dcberblick', 'Warum Colab?', 'Schritt 1: \u00d6ffnen', 'Schritt 2: Ausf\u00fchren', 'Schritt 3: Speichern', 'Alle Notebooks', 'Tipps & Tricks'],
+            nav: ['\u00dcberblick', 'Alternativen', 'Schritt 1: \u00d6ffnen', 'Schritt 2: Ausf\u00fchren', 'Schritt 3: Speichern', 'Alle Notebooks', 'Hinweise'],
 
             overview_title: '\u00dcberblick: Google Colab',
-            overview_desc: 'Google Colab ist eine kostenlose, cloudbasierte Jupyter-Umgebung von Google. Keine Installation n\u00f6tig \u2014 Python, pandas und plotly laufen direkt im Browser auf Google-Servern.',
+            overview_desc: 'Google Colab ist eine cloudbasierte Jupyter-Umgebung. Python, pandas und plotly laufen im Browser auf externen Servern \u2014 eine lokale Python-Installation ist nicht erforderlich. F\u00fcr die Nutzung wird ein Google-Account ben\u00f6tigt.',
             features: [
-                { icon: '\u2665', label: 'Kostenlos & sofort', desc: 'Kein Kauf, keine Registrierung mit Kreditkarte. Google-Account reicht.' },
-                { icon: '\u25a0', label: 'Kein Install', desc: 'Kein Python, kein pip, kein Docker. Der Browser ist alles, was Sie brauchen.' },
-                { icon: '\u25b6', label: '\u00dcberall verf\u00fcgbar', desc: 'Windows, Mac, Linux, iPad \u2014 \u00fcberall wo ein moderner Browser l\u00e4uft.' },
+                { icon: '\u25a0', label: 'Kein lokales Setup', desc: 'Keine lokale Python-Installation, kein Paketmanagement. Die Ausf\u00fchrung erfolgt auf den Servern des Anbieters.' },
+                { icon: '\u25b6', label: 'Plattformunabh\u00e4ngig', desc: 'Zugriff \u00fcber jeden modernen Browser \u2014 betriebssystemunabh\u00e4ngig.' },
+                { icon: '\u25cf', label: 'Einschr\u00e4nkungen', desc: 'Sitzungen werden nach ca. 90 Minuten Inaktivit\u00e4t getrennt. Arbeitsergebnisse m\u00fcssen manuell gespeichert werden.' },
             ],
 
-            why_title: 'Warum Colab? \u2014 Docker vs. Colab',
-            why_desc: 'F\u00fcr die DAV-Vorlesung ist Google Colab die einfachste M\u00f6glichkeit, mit den Notebooks zu arbeiten.',
-            docker_label: 'Docker (fr\u00fcher)',
-            colab_label: 'Google Colab (jetzt)',
-            docker_items: ['Terminal \u00f6ffnen', 'Docker Desktop installieren', '~2 GB Download', 'Lokale Ressourcen', 'Windows / Mac / Linux'],
-            colab_items: ['Browser \u00f6ffnen', 'Google-Account', '0 MB Download', 'Google-Server', '\u00dcberall'],
+            why_title: 'Alternativen im \u00dcberblick',
+            why_desc: 'Neben Google Colab existieren weitere Umgebungen f\u00fcr die Ausf\u00fchrung von Jupyter-Notebooks. Die folgende \u00dcbersicht stellt ausgew\u00e4hlte Optionen gegen\u00fcber \u2014 ohne Wertung.',
+            alternatives: [
+                { name: 'Google Colab', type: 'Cloud', cost: 'kostenlos (Basis)', req: 'Google-Account', note: 'Session-Timeout nach Inaktivit\u00e4t; begrenzte Laufzeit pro Tag' },
+                { name: 'Kaggle Notebooks', type: 'Cloud', cost: 'kostenlos', req: 'Kaggle-Account', note: 'GPU verf\u00fcgbar; Integration mit Kaggle-Datens\u00e4tzen' },
+                { name: 'Deepnote', type: 'Cloud', cost: 'kostenlos (Basis)', req: 'Account', note: 'Kollaboratives Arbeiten m\u00f6glich; Data-Science-Fokus' },
+                { name: 'VS\u00a0Code + Jupyter Extension', type: 'Lokal', cost: 'kostenlos', req: 'Python-Installation', note: 'Volle lokale Kontrolle; kein Datenverlust durch Session-Trennung' },
+                { name: 'JupyterLab', type: 'Lokal', cost: 'kostenlos', req: 'Python-Installation', note: 'Klassische Jupyter-Oberfl\u00e4che; vollst\u00e4ndiger Dateisystemzugriff' },
+            ],
+            alt_col_name: 'Umgebung',
+            alt_col_type: 'Art',
+            alt_col_cost: 'Kosten',
+            alt_col_req: 'Voraussetzung',
+            alt_col_note: 'Hinweis',
 
             step1_title: 'Schritt 1: Notebook \u00f6ffnen',
-            step1_option_a: 'Option A: Direktlink (empfohlen)',
-            step1_option_a_desc: 'Klicken Sie auf einen der Colab-Badges auf den Lab-Seiten oder weiter unten auf dieser Seite. Das Notebook \u00f6ffnet sich direkt in Google Colab \u2014 fertig.',
+            step1_option_a: 'Option A: \u00dcber Colab-Badge',
+            step1_option_a_desc: 'Auf den Lab-Seiten sowie weiter unten auf dieser Seite sind Colab-Badges verf\u00fcgbar. Ein Klick \u00f6ffnet das Notebook direkt in Google Colab.',
             step1_option_b: 'Option B: Manuell \u00fcber GitHub',
             step1_option_b_steps: [
                 'Gehen Sie zu colab.research.google.com',
@@ -192,49 +200,57 @@
             step2_note_desc: 'Die erste Zelle in jedem Notebook ist die "Setup"-Zelle. Diese installiert die ben\u00f6tigten Pakete und MUSS zuerst ausgef\u00fchrt werden, bevor andere Zellen ausgef\u00fchrt werden.',
 
             step3_title: 'Schritt 3: Arbeit speichern',
-            step3_gdrive: 'In Google Drive speichern (empfohlen)',
-            step3_gdrive_desc: 'Datei \u2192 In Google Drive speichern. Ihre \u00c4nderungen werden dauerhaft in Ihrem Google Drive abgelegt und sind beim n\u00e4chsten \u00d6ffnen noch da.',
+            step3_gdrive: 'In Google Drive speichern',
+            step3_gdrive_desc: 'Datei \u2192 In Google Drive speichern. \u00c4nderungen werden in Google Drive abgelegt und stehen beim n\u00e4chsten \u00d6ffnen zur Verf\u00fcgung.',
             step3_download: 'Herunterladen (.ipynb)',
-            step3_download_desc: 'Datei \u2192 Herunterladen \u2192 .ipynb herunterladen. F\u00fcr eine lokale Sicherungskopie auf Ihrem Computer.',
-            step3_warning: 'Colab speichert NICHT automatisch zwischen Sessions. Beim Schlie\u00dfen des Tabs gehen ungespeicherte \u00c4nderungen verloren. Speichern Sie Ihre Arbeit regelm\u00e4\u00dfig!',
+            step3_download_desc: 'Datei \u2192 Herunterladen \u2192 .ipynb herunterladen. Erstellt eine lokale Kopie des Notebooks.',
+            step3_warning: 'Colab speichert nicht automatisch zwischen Sessions. Beim Schlie\u00dfen des Tabs gehen nicht gespeicherte \u00c4nderungen verloren.',
 
-            notebooks_title: 'Alle Notebooks \u2014 direkt \u00f6ffnen',
-            notebooks_desc: 'Klicken Sie auf einen Badge, um das Notebook sofort in Google Colab zu \u00f6ffnen.',
+            notebooks_title: 'Alle Notebooks \u2014 \u00d6ffnen in Colab',
+            notebooks_desc: 'Ein Klick auf den Badge \u00f6ffnet das jeweilige Notebook in Google Colab.',
             group_grundlagen: 'Grundlagen (00\u201308)',
             group_fallstudien: 'Fallstudien (09\u201316)',
 
-            tips_title: 'Tipps & Tricks',
+            tips_title: 'Hinweise zur Nutzung',
             tips: [
-                { icon: '\u2714', title: 'Daten werden automatisch geladen', desc: 'Alle DAV-Notebooks verwenden GitHub Raw URLs f\u00fcr den Datenzugriff. Kein manuelles Hochladen von CSV-Dateien n\u00f6tig \u2014 die Daten werden beim Ausf\u00fchren direkt aus GitHub geladen.' },
-                { icon: '\u2714', title: 'GPU nicht n\u00f6tig f\u00fcr DAV', desc: 'Die DAV-\u00dcbungen sind f\u00fcr klassisches Data Analysis ausgelegt und brauchen keine GPU. Die Standard-Laufzeit (CPU) reicht vollkommen aus.' },
-                { icon: '\u26a0', title: 'Session-Trennung nach Inaktivit\u00e4t', desc: 'Colab trennt die Verbindung nach ca. 90 Minuten Inaktivit\u00e4t. Danach m\u00fcssen alle Zellen neu ausgef\u00fchrt werden. Speichern Sie Ihre Arbeit regelm\u00e4\u00dfig in Google Drive.' },
-                { icon: '\u21ba', title: 'Notebook zur\u00fccksetzen', desc: 'Wenn etwas nicht mehr funktioniert: Laufzeit \u2192 Laufzeit neu starten und alle ausf\u00fchren. Das setzt den Kernel-Zustand zur\u00fcck und f\u00fchrt alle Zellen von vorne aus.' },
+                { icon: '\u2714', title: 'Daten werden automatisch geladen', desc: 'Alle DAV-Notebooks beziehen Daten \u00fcber GitHub Raw URLs. Ein manuelles Hochladen von CSV-Dateien ist nicht erforderlich.' },
+                { icon: '\u2714', title: 'GPU nicht erforderlich', desc: 'Die DAV-\u00dcbungen sind f\u00fcr klassische Datenanalyse konzipiert. Die Standard-Laufzeit (CPU) ist ausreichend.' },
+                { icon: '\u26a0', title: 'Session-Trennung nach Inaktivit\u00e4t', desc: 'Google Colab trennt die Verbindung nach ca. 90 Minuten Inaktivit\u00e4t. Anschlie\u00dfend m\u00fcssen alle Zellen erneut ausgef\u00fchrt werden.' },
+                { icon: '\u21ba', title: 'Kernel zur\u00fccksetzen', desc: 'Bei unerwartetem Verhalten: Laufzeit \u2192 Laufzeit neu starten und alle ausf\u00fchren. Dadurch wird der Kernel-Zustand vollst\u00e4ndig zur\u00fcckgesetzt.' },
             ],
         },
         en: {
-            title: 'Start with Google Colab',
-            subtitle: 'No setup. No download. Just open and start.',
+            title: 'Running Notebooks in the Browser',
+            subtitle: 'Cloud-based Jupyter environments \u2014 no local installation required.',
             brand: '\u2190 DAV Lab',
-            nav: ['Overview', 'Why Colab?', 'Step 1: Open', 'Step 2: Run', 'Step 3: Save', 'All Notebooks', 'Tips & Tricks'],
+            nav: ['Overview', 'Alternatives', 'Step 1: Open', 'Step 2: Run', 'Step 3: Save', 'All Notebooks', 'Notes'],
 
             overview_title: 'Overview: Google Colab',
-            overview_desc: 'Google Colab is a free, cloud-based Jupyter environment by Google. No installation required \u2014 Python, pandas and plotly run directly in your browser on Google\u2019s servers.',
+            overview_desc: 'Google Colab is a cloud-based Jupyter environment. Python, pandas and plotly run in the browser on external servers \u2014 no local Python installation is required. A Google account is needed to use the service.',
             features: [
-                { icon: '\u2665', label: 'Free & instant', desc: 'No purchase, no credit card registration. A Google account is all you need.' },
-                { icon: '\u25a0', label: 'No install', desc: 'No Python, no pip, no Docker. The browser is everything you need.' },
-                { icon: '\u25b6', label: 'Available everywhere', desc: 'Windows, Mac, Linux, iPad \u2014 anywhere a modern browser runs.' },
+                { icon: '\u25a0', label: 'No local setup', desc: 'No local Python installation or package management. Execution happens on the provider\u2019s servers.' },
+                { icon: '\u25b6', label: 'Platform-independent', desc: 'Accessible via any modern browser \u2014 operating system independent.' },
+                { icon: '\u25cf', label: 'Limitations', desc: 'Sessions are disconnected after approximately 90 minutes of inactivity. Work must be saved manually.' },
             ],
 
-            why_title: 'Why Colab? \u2014 Docker vs. Colab',
-            why_desc: 'For the DAV course, Google Colab is the easiest way to work with the notebooks.',
-            docker_label: 'Docker (before)',
-            colab_label: 'Google Colab (now)',
-            docker_items: ['Open terminal', 'Install Docker Desktop', '~2 GB download', 'Local resources', 'Windows / Mac / Linux'],
-            colab_items: ['Open browser', 'Google account', '0 MB download', 'Google servers', 'Everywhere'],
+            why_title: 'Alternatives at a Glance',
+            why_desc: 'Besides Google Colab, several other environments exist for running Jupyter notebooks. The following overview compares selected options \u2014 without any recommendation.',
+            alternatives: [
+                { name: 'Google Colab', type: 'Cloud', cost: 'free (basic)', req: 'Google account', note: 'Session timeout after inactivity; limited daily runtime' },
+                { name: 'Kaggle Notebooks', type: 'Cloud', cost: 'free', req: 'Kaggle account', note: 'GPU available; integrated with Kaggle datasets' },
+                { name: 'Deepnote', type: 'Cloud', cost: 'free (basic)', req: 'Account', note: 'Collaborative work possible; data science focus' },
+                { name: 'VS\u00a0Code + Jupyter Extension', type: 'Local', cost: 'free', req: 'Python installation', note: 'Full local control; no data loss from session disconnect' },
+                { name: 'JupyterLab', type: 'Local', cost: 'free', req: 'Python installation', note: 'Classic Jupyter interface; full file system access' },
+            ],
+            alt_col_name: 'Environment',
+            alt_col_type: 'Type',
+            alt_col_cost: 'Cost',
+            alt_col_req: 'Requirement',
+            alt_col_note: 'Notes',
 
             step1_title: 'Step 1: Open Notebook',
-            step1_option_a: 'Option A: Direct link (recommended)',
-            step1_option_a_desc: 'Click on one of the Colab badges on the lab pages or below on this page. The notebook opens directly in Google Colab \u2014 done.',
+            step1_option_a: 'Option A: Via Colab Badge',
+            step1_option_a_desc: 'Colab badges are available on the lab pages and below on this page. Clicking a badge opens the notebook directly in Google Colab.',
             step1_option_b: 'Option B: Manually via GitHub',
             step1_option_b_steps: [
                 'Go to colab.research.google.com',
@@ -254,23 +270,23 @@
             step2_note_desc: 'The first cell in every notebook is the "Setup" cell. It installs the required packages and MUST be run before any other cell.',
 
             step3_title: 'Step 3: Save Your Work',
-            step3_gdrive: 'Save to Google Drive (recommended)',
-            step3_gdrive_desc: 'File \u2192 Save in Drive. Your changes are permanently stored in your Google Drive and will be there the next time you open it.',
+            step3_gdrive: 'Save to Google Drive',
+            step3_gdrive_desc: 'File \u2192 Save in Drive. Changes are stored in Google Drive and available the next time the notebook is opened.',
             step3_download: 'Download (.ipynb)',
-            step3_download_desc: 'File \u2192 Download \u2192 Download .ipynb. For a local backup copy on your computer.',
-            step3_warning: 'Colab does NOT automatically save between sessions. Closing the tab will discard unsaved changes. Save your work regularly!',
+            step3_download_desc: 'File \u2192 Download \u2192 Download .ipynb. Creates a local copy of the notebook.',
+            step3_warning: 'Colab does not save automatically between sessions. Unsaved changes will be lost when the tab is closed.',
 
-            notebooks_title: 'All Notebooks \u2014 open directly',
-            notebooks_desc: 'Click a badge to open the notebook instantly in Google Colab.',
+            notebooks_title: 'All Notebooks \u2014 Open in Colab',
+            notebooks_desc: 'Click a badge to open the respective notebook in Google Colab.',
             group_grundlagen: 'Fundamentals (00\u201308)',
             group_fallstudien: 'Case Studies (09\u201316)',
 
-            tips_title: 'Tips & Tricks',
+            tips_title: 'Notes on Usage',
             tips: [
-                { icon: '\u2714', title: 'Data loads automatically', desc: 'All DAV notebooks use GitHub Raw URLs for data access. No manual CSV uploading needed \u2014 data is loaded directly from GitHub when you run the cells.' },
-                { icon: '\u2714', title: 'No GPU needed for DAV', desc: 'The DAV exercises are designed for classic data analysis and don\u2019t require a GPU. The standard runtime (CPU) is more than sufficient.' },
-                { icon: '\u26a0', title: 'Session disconnect after inactivity', desc: 'Colab disconnects after approximately 90 minutes of inactivity. After that, all cells need to be re-run. Save your work to Google Drive regularly.' },
-                { icon: '\u21ba', title: 'Reset notebook', desc: 'If something stops working: Runtime \u2192 Restart runtime and run all. This resets the kernel state and runs all cells from scratch.' },
+                { icon: '\u2714', title: 'Data loads automatically', desc: 'All DAV notebooks retrieve data via GitHub Raw URLs. Manual uploading of CSV files is not required.' },
+                { icon: '\u2714', title: 'No GPU required', desc: 'The DAV exercises are designed for classic data analysis. The standard runtime (CPU) is sufficient.' },
+                { icon: '\u26a0', title: 'Session disconnect after inactivity', desc: 'Google Colab disconnects the session after approximately 90 minutes of inactivity. All cells must then be re-run.' },
+                { icon: '\u21ba', title: 'Reset kernel', desc: 'In case of unexpected behaviour: Runtime \u2192 Restart runtime and run all. This fully resets the kernel state.' },
             ],
         }
     };
@@ -391,37 +407,35 @@
                     <section id="why">
                         <h2 className="section-header">{tr.why_title}</h2>
                         <p className="text-gray-600 mb-6">{tr.why_desc}</p>
-                        <div className="grid md:grid-cols-2 gap-4 mb-4">
-                            {/* Docker box */}
-                            <div className="rounded-xl p-5 border" style={{borderColor:'rgba(100,116,139,0.3)', background:'#f8fafc'}}>
-                                <div className="flex items-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                                    <h3 className="font-bold text-gray-500">{tr.docker_label}</h3>
-                                </div>
-                                <ul className="space-y-2">
-                                    {tr.docker_items.map((item, i) => (
-                                        <li key={i} className="flex items-center gap-2 text-gray-500 text-sm">
-                                            <span className="text-gray-400 font-bold">&#x2715;</span>{item}
-                                        </li>
+                        <div style={{overflowX:'auto'}}>
+                            <table style={{width:'100%', borderCollapse:'collapse', fontSize:'0.875rem'}}>
+                                <thead>
+                                    <tr style={{background:'#f1f5f9', borderBottom:'2px solid #e2e8f0'}}>
+                                        <th style={{padding:'0.7rem 1rem', textAlign:'left', fontWeight:700, color:'#374151'}}>{tr.alt_col_name}</th>
+                                        <th style={{padding:'0.7rem 1rem', textAlign:'left', fontWeight:700, color:'#374151'}}>{tr.alt_col_type}</th>
+                                        <th style={{padding:'0.7rem 1rem', textAlign:'left', fontWeight:700, color:'#374151'}}>{tr.alt_col_cost}</th>
+                                        <th style={{padding:'0.7rem 1rem', textAlign:'left', fontWeight:700, color:'#374151'}}>{tr.alt_col_req}</th>
+                                        <th style={{padding:'0.7rem 1rem', textAlign:'left', fontWeight:700, color:'#374151'}}>{tr.alt_col_note}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tr.alternatives.map((a, i) => (
+                                        <tr key={i} style={{borderBottom:'1px solid #e2e8f0', background: i % 2 === 0 ? 'white' : '#fafafa'}}>
+                                            <td style={{padding:'0.65rem 1rem', fontWeight:600, color:'#1e293b'}}>{a.name}</td>
+                                            <td style={{padding:'0.65rem 1rem', color:'#64748b'}}>{a.type}</td>
+                                            <td style={{padding:'0.65rem 1rem', color:'#64748b'}}>{a.cost}</td>
+                                            <td style={{padding:'0.65rem 1rem', color:'#64748b'}}>{a.req}</td>
+                                            <td style={{padding:'0.65rem 1rem', color:'#64748b', fontSize:'0.825rem'}}>{a.note}</td>
+                                        </tr>
                                     ))}
-                                </ul>
-                            </div>
-                            {/* Colab box — winner */}
-                            <div className="rounded-xl p-5 border-2" style={{borderColor:'#E8792F', background:'rgba(232,121,47,0.04)'}}>
-                                <div className="flex items-center gap-2 mb-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8792F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                                    <h3 className="font-bold" style={{color:'#E8792F'}}>{tr.colab_label}</h3>
-                                    <span className="text-xs font-bold px-2 py-0.5 rounded-full text-white ml-auto" style={{background:'#E8792F'}}>&#10003; Empfohlen</span>
-                                </div>
-                                <ul className="space-y-2">
-                                    {tr.colab_items.map((item, i) => (
-                                        <li key={i} className="flex items-center gap-2 text-sm font-medium" style={{color:'#374151'}}>
-                                            <span className="font-bold" style={{color:'#E8792F'}}>&#x2713;</span>{item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
+                        <p style={{color:'#94a3b8', fontSize:'0.8rem', marginTop:'0.75rem'}}>
+                            {lang === 'de'
+                                ? 'Diese Seite beschreibt die Nutzung mit Google Colab, da die Notebooks über Colab-Badges verlinkt sind. Andere Umgebungen sind grundsätzlich ebenfalls geeignet.'
+                                : 'This page describes usage with Google Colab, as the notebooks are linked via Colab badges. Other environments are generally suitable as well.'}
+                        </p>
                     </section>
 
                     {/* Step 1: Open */}
@@ -434,8 +448,8 @@
                                 <div className="step-number">A</div>
                                 <p className="font-semibold text-gray-800">{tr.step1_option_a}</p>
                             </div>
-                            <div className="success-box ml-10">
-                                <p className="text-green-800 text-sm">{tr.step1_option_a_desc}</p>
+                            <div className="info-box ml-10">
+                                <p className="text-sm" style={{color:'#374151'}}>{tr.step1_option_a_desc}</p>
                                 <div className="mt-3">
                                     <a href={COLAB_BASE + '00_Willkommen.ipynb'} target="_blank" rel="noopener noreferrer" className="colab-badge-btn">
                                         <img src={BADGE_SRC} alt="Open in Colab" />
