@@ -159,9 +159,6 @@
         .footer-methodology { margin-top: 0.5rem; color: #999; }
 
         .chart-footnote.warning { color: #d62728; }
-        /* Prevent Plotly SVG overflow outside card boundaries */
-        #kpiViolinChart .main-svg,
-        #worldMap .main-svg { overflow: hidden; }
 
         /* KPI Card 1 – score/detail spans */
         .score-highlight { color: #2171b5; font-weight: 600; }
@@ -283,7 +280,7 @@
                 </div>
                 <div class="kpi-value" id="kpiAvg">–</div>
                 <div class="kpi-trend" id="kpiAvgTrend"></div>
-                <div id="kpiSparkline" style="height:70px;margin-top:8px;overflow:hidden"></div>
+                <div id="kpiSparkline" style="height:70px;margin-top:8px"></div>
                 <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.08);font-size:0.6875rem;color:#999">
                     Globaler Mittelwert aller Länder im Zeitverlauf
                 </div>

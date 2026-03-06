@@ -168,8 +168,10 @@ function updateKPIs(data) {
 
     const scores = data.map(d => +d["Happiness Score"]).filter(v => !isNaN(v) && v > 0);
     const curAvg = scores.length ? mean(scores) : null;
-    const prevYear = selectedYear - 1;
-    const prevData = allData.filter(r => r.Year === prevYear);
+    // Use the most recent year with actual data before selectedYear (handles 2024 gap)
+    const allAvailYears = [...new Set(allData.map(d => d.Year))].filter(y => y < selectedYear).sort((a,b) => b-a);
+    const prevYear = allAvailYears.length ? allAvailYears[0] : null;
+    const prevData = prevYear ? allData.filter(r => r.Year === prevYear) : [];
 
     // Spitzenreiter
     if (sorted.length > 0) {
@@ -320,7 +322,7 @@ function updateKPIs(data) {
                 }
             }
             Plotly.react("kpiViolinChart", traces, {
-                margin: { l: 30, r: 10, t: 25, b: 22 },
+                margin: { l: 24, r: 8, t: 6, b: 18 },
                 paper_bgcolor: "rgba(0,0,0,0)",
                 plot_bgcolor: "rgba(0,0,0,0)",
                 xaxis: {
@@ -754,9 +756,6 @@ function drawSparkline() {
     const vMin = Math.min(...allV), vMax = Math.max(...allV);
     const pad  = Math.max((vMax - vMin) * 0.25, 0.08);
 
-    // Even years only for x-axis ticks
-    const tickYears = years.filter(y => y % 2 === 1);
-
     Plotly.react("kpiSparkline",
         [
             {
@@ -764,13 +763,14 @@ function drawSparkline() {
                 x: pts.map(p => p.y), y: pts.map(p => p.v),
                 line: { color: "#2171b5", width: 1.5 },
                 hovertemplate: "%{x}: %{y:.2f}<extra></extra>",
-                showlegend: false
+                showlegend: false, connectgaps: false
             },
             {
                 type: "scatter", mode: "markers",
                 x: [last.y], y: [last.v],
-                marker: { color: "#e74c3c", size: 8, line: { color: "white", width: 1 } },
-                hoverinfo: "skip", showlegend: false
+                marker: { color: "#e74c3c", size: 8, line: { color: "white", width: 1.5 } },
+                hovertemplate: "%{x}: %{y:.2f}<extra></extra>",
+                showlegend: false
             }
         ],
         {
@@ -779,14 +779,14 @@ function drawSparkline() {
             xaxis: {
                 showgrid: false, showline: false, zeroline: false,
                 tickfont: { size: 8, color: "#999" },
-                tickmode: "array", tickvals: tickYears
+                dtick: 2, tickformat: "d"
             },
             yaxis: {
                 showgrid: false, showline: false, zeroline: false,
                 tickfont: { size: 8, color: "#999" }, nticks: 3,
                 range: [vMin - pad, vMax + pad]
             },
-            showlegend: false, hovermode: "x unified"
+            showlegend: false, hovermode: "closest"
         },
         { displayModeBar: false, responsive: true }
     );
