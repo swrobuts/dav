@@ -228,6 +228,69 @@
             position: absolute; right: 2.5rem; top: 2rem;
             opacity: 0.09; pointer-events: none;
         }
+
+        /* ── Quote Section ── */
+        .quote-section {
+            background: #FAFAFA;
+            padding: 3.5rem 2rem;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .quote-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .quote-portrait {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        .quote-text-block {
+            opacity: 0;
+            transform: translateX(48px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+            flex: 1;
+        }
+        .quote-text-block.q-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .quote-body {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #1A1A1A;
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 1.75rem;
+        }
+        .quote-attribution {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .quote-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #0389CF;
+            letter-spacing: 0.02em;
+        }
+        .quote-role {
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .quote-inner { flex-direction: column; gap: 2rem; text-align: center; }
+            .quote-attribution { align-items: center; }
+            .quote-portrait { align-self: center; }
+        }
     </style>
 </head>
 <body>
@@ -461,6 +524,21 @@ function App() {
         return () => obs.disconnect();
     }, [lang]);
 
+    useEffect(() => {
+        const textBlock = document.querySelector('.quote-text-block');
+        if (!textBlock) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    textBlock.classList.add('q-visible');
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.25 });
+        observer.observe(textBlock);
+        return () => observer.disconnect();
+    }, []);
+
     const ref = el => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
 
     return (
@@ -553,6 +631,33 @@ function App() {
                 </section>
 
             </div>{/* end viewport-height wrapper */}
+
+            {/* ── Quote Strip ── */}
+            <section className="quote-section">
+                <div className="quote-inner">
+                    <img
+                        src="varian-portrait.png"
+                        alt="Hal Varian"
+                        className="quote-portrait"
+                    />
+                    <div className="quote-text-block">
+                        <p className="quote-body">
+                            {'"The ability to take data — to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it — that\'s going to be a hugely important skill."'}
+                        </p>
+                        <div className="quote-attribution">
+                            <span className="quote-name">
+                                {'— Hal Varian'}
+                            </span>
+                            <span className="quote-role">
+                                {lang === 'de'
+                                    ? 'Chief Economist bei Google & Professor Emeritus, UC Berkeley'
+                                    : 'Chief Economist at Google & Professor Emeritus, UC Berkeley'
+                                }
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* ── Workflow ── */}
             <section style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
