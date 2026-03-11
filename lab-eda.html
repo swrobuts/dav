@@ -275,10 +275,17 @@ content.en = {
     corr_title: 'Correlation Analysis',
     quiz_title: 'Quiz: Data Inspection & EDA',
     quiz_intro: 'Test your knowledge – 5 questions.',
+    quiz: [
+        { q: 'What does "Exploratory Data Analysis (EDA)" describe in the context of data preparation?', opts: ['Developing predictive models based on the data', 'Conducting statistical tests for hypothesis testing', 'Visually and statistically exploring data to identify patterns and generate hypotheses', 'Creating final reports for stakeholders'], ans: 2 },
+        { q: 'In which phase of the CRISP-DM model is data visualization primarily performed?', opts: ['Data Preparation', 'Data Understanding', 'Modeling', 'Evaluation'], ans: 1 },
+        { q: 'Which method does NOT belong to exploratory data analysis (EDA)?', opts: ['Box plots', 'Principal Component Analysis (PCA)', 'Data Enrichment', 'Interquartile range calculation'], ans: 2 },
+        { q: 'Which concept is NOT used for assessing data quality?', opts: ['Completeness', 'Timeliness', 'Visuality', 'Consistency'], ans: 2 },
+        { q: 'What is the main difference between "Data Profiling" and "Data Mining"?', opts: ['Data Profiling focuses on assessing data quality, while Data Mining searches for patterns and relationships in data', 'Data Profiling is a form of data visualization, Data Mining is a form of data cleansing', 'There is no difference; both terms can be used synonymously', 'Data Profiling uses machine learning, Data Mining is based on statistical methods'], ans: 0 }
+    ],
     nb_title: 'Open Notebook', nb_desc: 'For hands-on exercises:'
 };
 
-function CodeBlock({ code }) {
+function CodeBlock({ code, lang }) {
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
@@ -294,22 +301,27 @@ function CodeBlock({ code }) {
             setTimeout(() => setCopied(false), 2000);
         });
     };
+    const copyLabel = lang === 'en' ? 'Copy' : 'Kopieren';
+    const copiedLabel = lang === 'en' ? '✓ Copied' : '✓ Kopiert';
     return (
         <div className="code-wrapper">
-            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
-                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title={copyLabel}>
+                {copied ? copiedLabel : `⎘ ${copyLabel}`}
             </button>
             <div className="code-block">{code}</div>
         </div>
     );
 }
 
-function QuizSection({ questions, title, intro }) {
+function QuizSection({ questions, title, intro, lang }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
     const [score, setScore] = useState(null);
     const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
     const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
+    const btnLabel = lang === 'en' ? 'Results' : 'Auswertung';
+    const goodLabel = lang === 'en' ? 'Excellent!' : 'Sehr gut!';
+    const retryLabel = lang === 'en' ? 'Review the material!' : 'Nochmal lesen!';
     return (
         <div><h2>{title}</h2><p>{intro}</p>
         {questions.map((q,qi) => (
@@ -318,11 +330,11 @@ function QuizSection({ questions, title, intro }) {
                 {q.opts.map((opt,oi) => <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>)}
             </div>
         ))}
-        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>{btnLabel}</button>
         {score !== null && (
             <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}>
                 <p className="text-2xl font-black">{score}/{questions.length}</p>
-                <p className="font-semibold">{score >= questions.length*0.8 ? 'Sehr gut!' : 'Nochmal lesen!'}</p>
+                <p className="font-semibold">{score >= questions.length*0.8 ? goodLabel : retryLabel}</p>
             </div>
         )}
         </div>
@@ -355,11 +367,11 @@ function App() {
                 <div id="overview" className="mb-12">
                     <h2>{tr.overview_title}</h2>
                     <div className="tip-box">
-                        <p className="font-semibold text-yellow-800">Szenario</p>
+                        <p className="font-semibold text-yellow-800">{lang === 'en' ? 'Scenario' : 'Szenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{tr.scenario}</p>
                     </div>
                     <div className="concept-box">
-                        <p className="font-semibold mb-1" style={{color:'#0389CF'}}>Was ist EDA?</p>
+                        <p className="font-semibold mb-1" style={{color:'#0389CF'}}>{lang === 'en' ? 'What is EDA?' : 'Was ist EDA?'}</p>
                         <p className="text-sm text-gray-600">{tr.eda_def}</p>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
@@ -368,69 +380,68 @@ function App() {
                         ))}
                     </div>
                 </div>
-                <div id="first_look" className="mb-12"><h2>{tr.first_look_title}</h2><CodeBlock code={tr.first_look_code} /></div>
+                <div id="first_look" className="mb-12"><h2>{tr.first_look_title}</h2><CodeBlock lang={lang} code={tr.first_look_code} /></div>
                 <div id="missing" className="mb-12">
                     <h2>{tr.missing_title}</h2>
-                    <CodeBlock code={tr.missing_code} />
+                    <CodeBlock lang={lang} code={tr.missing_code} />
                     <div className="tip-box">
-                        <p className="text-yellow-800 text-sm font-semibold">Faustregel: {'<'} 5% fehlend → einfache Imputation. 5–20% → sorgfältig abwägen. {'>'} 20% → Spalte evtl. weglassen.</p>
+                        <p className="text-yellow-800 text-sm font-semibold">{lang === 'en' ? <>Rule of thumb: {'<'} 5% missing → simple imputation. 5–20% → consider carefully. {'>'} 20% → consider dropping the column.</> : <>Faustregel: {'<'} 5% fehlend → einfache Imputation. 5–20% → sorgfältig abwägen. {'>'} 20% → Spalte evtl. weglassen.</>}</p>
                     </div>
                 </div>
                 <div id="distributions" className="mb-12">
                     <h2>{tr.dist_title}</h2>
-                    <CodeBlock code={tr.dist_code} />
+                    <CodeBlock lang={lang} code={tr.dist_code} />
                     <div className="info-box">
-                        <p className="text-blue-800 text-sm font-semibold">Wann welchen Plot?</p>
+                        <p className="text-blue-800 text-sm font-semibold">{lang === 'en' ? 'Which plot when?' : 'Wann welchen Plot?'}</p>
                         <ul className="text-blue-700 text-sm mt-1 space-y-1">
-                            <li><b>Histogramm</b>: Verteilung einer numerischen Variable</li>
-                            <li><b>Boxplot</b>: Median, Quartile, Ausreißer auf einen Blick</li>
-                            <li><b>Violinplot</b>: Wie Boxplot + Dichteverteilung</li>
-                            <li><b>Balkendiagramm</b>: Häufigkeiten kategorischer Variablen</li>
+                            {lang === 'en' ? (<>
+                                <li><b>Histogram</b>: Distribution of a numerical variable</li>
+                                <li><b>Boxplot</b>: Median, quartiles, outliers at a glance</li>
+                                <li><b>Violin plot</b>: Like a boxplot + density distribution</li>
+                                <li><b>Bar chart</b>: Frequencies of categorical variables</li>
+                            </>) : (<>
+                                <li><b>Histogramm</b>: Verteilung einer numerischen Variable</li>
+                                <li><b>Boxplot</b>: Median, Quartile, Ausreißer auf einen Blick</li>
+                                <li><b>Violinplot</b>: Wie Boxplot + Dichteverteilung</li>
+                                <li><b>Balkendiagramm</b>: Häufigkeiten kategorischer Variablen</li>
+                            </>)}
                         </ul>
                     </div>
                 </div>
                 <div id="outliers" className="mb-12">
                     <h2>{tr.outlier_title}</h2>
-                    <CodeBlock code={tr.outlier_code} />
+                    <CodeBlock lang={lang} code={tr.outlier_code} />
                     <div className="info-box">
-                        <p className="text-blue-800 text-sm"><b>Z-Score</b>: Gut bei normalverteilten Daten. <b>IQR</b>: Robuster, funktioniert auch bei schiefen Verteilungen. IQR = Q3 - Q1. Ausreißer: {'<'} Q1 - 1.5×IQR oder {'>'} Q3 + 1.5×IQR.</p>
+                        <p className="text-blue-800 text-sm">{lang === 'en' ? <><b>Z-Score</b>: Good for normally distributed data. <b>IQR</b>: More robust, works with skewed distributions. IQR = Q3 - Q1. Outliers: {'<'} Q1 - 1.5×IQR or {'>'} Q3 + 1.5×IQR.</> : <><b>Z-Score</b>: Gut bei normalverteilten Daten. <b>IQR</b>: Robuster, funktioniert auch bei schiefen Verteilungen. IQR = Q3 - Q1. Ausreißer: {'<'} Q1 - 1.5×IQR oder {'>'} Q3 + 1.5×IQR.</>}</p>
                     </div>
                 </div>
                 <div id="correlations" className="mb-12">
                     <h2>{tr.corr_title}</h2>
-                    <CodeBlock code={tr.corr_code} />
+                    <CodeBlock lang={lang} code={tr.corr_code} />
                     <div className="tip-box">
-                        <p className="text-yellow-800 text-sm"><b>Korrelation ≠ Kausalität!</b> Zwei Variablen können stark korrelieren, ohne dass eine die andere verursacht.</p>
+                        <p className="text-yellow-800 text-sm">{lang === 'en' ? <><b>Correlation ≠ Causation!</b> Two variables can be strongly correlated without one causing the other.</> : <><b>Korrelation ≠ Kausalität!</b> Zwei Variablen können stark korrelieren, ohne dass eine die andere verursacht.</>}</p>
                     </div>
                 </div>
-                <div id="quiz" className="mb-12"><QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} /></div>
+                <div id="quiz" className="mb-12"><QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} lang={lang} /></div>
                 <div id="notebook" className="mb-12">
                     <h2>{tr.nb_title}</h2><p>{tr.nb_desc}</p>
-                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/04_Daten_Inspizieren.ipynb" target="_blank" rel="noopener noreferrer"
-                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold mt-3" style={{background:'#E8792F'}}>
-                        04_Daten_Inspizieren.ipynb →
-                    </a>
-                    <div className="info-box mt-4"><p className="text-blue-800 text-sm">Datensatz: flights.csv aus dem DAV-Kurs.</p></div>
-                    <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
+                    <div style={{marginTop:'1rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
                         <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
                             {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
                         </p>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/04_Daten_Inspizieren.ipynb"
-                           target="_blank" rel="noopener noreferrer"
-                           style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                            Notebook in Colab öffnen →
-                        </a>
-                    <div className="notebook-cta-group">
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/04_Daten_Inspizieren.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 04 Daten Inspizieren</a>
+                        <div className="notebook-buttons" style={{justifyContent:'center'}}>
+                            <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/04_Daten_Inspizieren.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 04 Daten Inspizieren</a>
+                        </div>
                     </div>
-                    </div>
+                    <div className="info-box mt-4"><p className="text-blue-800 text-sm">{lang === 'en' ? 'Dataset: flights.csv from the DAV course.' : 'Datensatz: flights.csv aus dem DAV-Kurs.'}</p></div>
                 </div>
             </main>
 
             {/* Footer */}
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
-                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>{lang === 'en' ? 'Built for BBA Students · THWS Würzburg-Schweinfurt' : 'Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt'}</p>
                 <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <p style={{color:'#475569', fontSize:'0.72rem'}}>© 2026</p>
                 <div style={{marginTop:'1rem'}}>
                     <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
                 </div>
