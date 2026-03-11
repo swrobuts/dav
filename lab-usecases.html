@@ -77,8 +77,10 @@
 const { useState } = React;
 const sectionIds = ['overview','churn','movies','cars','supermarkt','hr','energie','ecommerce','workflow','quiz','notebooks'];
 
-function CodeBlock({ code }) {
+function CodeBlock({ code, lang }) {
     const [copied, setCopied] = useState(false);
+    const copyLabel = lang === 'en' ? 'Copy' : 'Kopieren';
+    const copiedLabel = lang === 'en' ? 'Copied' : 'Kopiert';
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
             setCopied(true);
@@ -95,18 +97,21 @@ function CodeBlock({ code }) {
     };
     return (
         <div className="code-wrapper">
-            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
-                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title={copyLabel}>
+                {copied ? '✓ ' + copiedLabel : '⎘ ' + copyLabel}
             </button>
             <div className="code-block">{code}</div>
         </div>
     );
 }
 
-function QuizSection({ questions, title, intro }) {
+function QuizSection({ questions, title, intro, lang }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
     const [score, setScore] = useState(null);
+    const btnLabel = lang === 'en' ? 'Results' : 'Auswertung';
+    const goodLabel = lang === 'en' ? 'Excellent!' : 'Sehr gut!';
+    const retryLabel = lang === 'en' ? 'Review and retry!' : 'Nochmal lesen!';
     const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
     const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
     return (
@@ -117,23 +122,31 @@ function QuizSection({ questions, title, intro }) {
                 {q.opts.map((opt,oi) => <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>)}
             </div>
         ))}
-        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>{btnLabel}</button>
         {score !== null && (
             <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}>
                 <p className="text-2xl font-black">{score}/{questions.length}</p>
-                <p className="font-semibold">{score>=questions.length*0.8?'Sehr gut!':'Nochmal lesen!'}</p>
+                <p className="font-semibold">{score>=questions.length*0.8?goodLabel:retryLabel}</p>
             </div>
         )}
         </div>
     );
 }
 
-const quiz_questions = [
+const quiz_de = [
     { q: 'Was ist eine "Data Pipeline"?', opts: ['Eine physische Infrastruktur für den Transport von Datenmedien','Ein Prozessablauf, der Rohdaten sammelt, verarbeitet und für Analysezwecke bereitstellt','Eine spezielle Datenstruktur in der Programmierung','Ein Werkzeug zur Visualisierung von Datenflüssen'], ans: 1 },
     { q: 'Was beschreibt "Data Augmentation"?', opts: ['Die Erhöhung der Datenqualität durch Bereinigungsverfahren','Die Erweiterung vorhandener Datensätze durch synthetische Daten zur Verbesserung der Modellgenauigkeit','Die Reduktion der Datenmenge zur Beschleunigung des Analyseprozesses','Die Aggregation von Daten für summarische Berichte'], ans: 1 },
     { q: 'Was ist ein "Data Lake"?', opts: ['Eine spezielle Datenbank für die Speicherung relationaler Daten','Ein Tool zur Datenvisualisierung','Eine Speicherlösung, die eine große Menge an rohen, unstrukturierten Daten schemalos speichert','Ein Algorithmus zur Datenbereinigung'], ans: 2 },
     { q: 'Welche Aussage über "Sparse Data" ist korrekt?', opts: ['Es handelt sich um Daten mit einer hohen Dichte an Nullwerten oder Leerstellen.','Es sind Daten, die ausschließlich aus Textdaten bestehen.','Es sind Daten, die in sehr kurzen Zeitabständen gesammelt werden.','Es beschreibt Daten mit einer geringen Anzahl von Ausreißern.'], ans: 0 },
     { q: 'Was versteht man unter "Temporal Data"?', opts: ['Daten, die zeitabhängige Informationen enthalten','Temporär gespeicherte Daten, die regelmäßig gelöscht werden','Daten, die aus Temperaturmessungen bestehen','Daten, die in temporären Speicherstrukturen gehalten werden'], ans: 0 }
+];
+
+const quiz_en = [
+    { q: 'What is a "Data Pipeline"?', opts: ['A physical infrastructure for transporting data media','A process flow that collects, processes, and provides raw data for analysis purposes','A special data structure in programming','A tool for visualizing data flows'], ans: 1 },
+    { q: 'What does "Data Augmentation" describe?', opts: ['Increasing data quality through cleansing procedures','Expanding existing datasets with synthetic data to improve model accuracy','Reducing the amount of data to speed up the analysis process','Aggregating data for summary reports'], ans: 1 },
+    { q: 'What is a "Data Lake"?', opts: ['A specialized database for storing relational data','A data visualization tool','A storage solution that stores large amounts of raw, unstructured data without a schema','An algorithm for data cleansing'], ans: 2 },
+    { q: 'Which statement about "Sparse Data" is correct?', opts: ['It refers to data with a high density of null values or empty cells.','It refers to data consisting exclusively of text data.','It refers to data collected at very short time intervals.','It describes data with a low number of outliers.'], ans: 0 },
+    { q: 'What is meant by "Temporal Data"?', opts: ['Data that contains time-dependent information','Temporarily stored data that is regularly deleted','Data consisting of temperature measurements','Data held in temporary storage structures'], ans: 0 }
 ];
 
 const crisp_phases_data = [
@@ -146,31 +159,33 @@ const crisp_phases_data = [
 ];
 
 const cases = [
-    { nb: '09', title_de: 'Customer Churn', title_en: 'Customer Churn', label: 'Churn', desc_de: 'Telekommunikationsunternehmen: Welche Kunden werden abwandern?', desc_en: 'Telecom: Which customers will churn?', rows: '1.000', cols: '9', diff: 'Fortgeschritten' },
-    { nb: '10', title_de: 'Filmanalyse', title_en: 'Movie Analysis', label: 'Movies', desc_de: 'Streaming-Plattform: Welches Genre ist am profitabelsten?', desc_en: 'Streaming: Which genre is most profitable?', rows: '500', cols: '9', diff: 'Fortgeschritten' },
-    { nb: '11', title_de: 'Gebrauchtwagen', title_en: 'Used Cars', label: 'Cars', desc_de: 'Händler: Welche Faktoren bestimmen den Preis?', desc_en: 'Dealer: What factors determine price?', rows: '1.000+', cols: '10+', diff: 'Fortgeschritten' },
-    { nb: '12', title_de: 'Supermarktanalyse', title_en: 'Supermarket Analysis', label: 'Supermarkt', desc_de: 'Supermarktkette: Umsatzanalyse nach Kategorie, Filiale und Tageszeit.', desc_en: 'Supermarket chain: Revenue analysis by category, branch and time of day.', rows: '2.000', cols: '9', diff: 'Grundlagen' },
-    { nb: '13', title_de: 'HR Analytics', title_en: 'HR Analytics', label: 'HR', desc_de: 'HR-Abteilung: Welche Faktoren führen zum Mitarbeiterabgang?', desc_en: 'HR dept: What factors drive employee turnover?', rows: '1.500', cols: '10', diff: 'Fortgeschritten' },
-    { nb: '14', title_de: 'Energieverbrauch', title_en: 'Energy Consumption', label: 'Energie', desc_de: 'Unternehmen: Stündlicher Stromverbrauch – Zeitreihenanalyse und Bereinigung.', desc_en: 'Company: Hourly electricity consumption – time series and cleansing.', rows: '8.760', cols: '8', diff: 'Fortgeschritten' },
-    { nb: '15', title_de: 'E-Commerce', title_en: 'E-Commerce', label: 'Ecommerce', desc_de: 'Online-Shop: 3-Tabellen-Join, RFM-Analyse, Retourenanalyse.', desc_en: 'Online shop: 3-table join, RFM analysis, returns analysis.', rows: '3.000+', cols: '10', diff: 'Fortgeschritten' }
+    { nb: '09', title_de: 'Customer Churn', title_en: 'Customer Churn', label: 'Churn', desc_de: 'Telekommunikationsunternehmen: Welche Kunden werden abwandern?', desc_en: 'Telecom: Which customers will churn?', rows: '1.000', cols: '9', diff_de: 'Fortgeschritten', diff_en: 'Advanced' },
+    { nb: '10', title_de: 'Filmanalyse', title_en: 'Movie Analysis', label: 'Movies', desc_de: 'Streaming-Plattform: Welches Genre ist am profitabelsten?', desc_en: 'Streaming: Which genre is most profitable?', rows: '500', cols: '9', diff_de: 'Fortgeschritten', diff_en: 'Advanced' },
+    { nb: '11', title_de: 'Gebrauchtwagen', title_en: 'Used Cars', label: 'Cars', desc_de: 'Händler: Welche Faktoren bestimmen den Preis?', desc_en: 'Dealer: What factors determine price?', rows: '1.000+', cols: '10+', diff_de: 'Fortgeschritten', diff_en: 'Advanced' },
+    { nb: '12', title_de: 'Supermarktanalyse', title_en: 'Supermarket Analysis', label: 'Supermarkt', desc_de: 'Supermarktkette: Umsatzanalyse nach Kategorie, Filiale und Tageszeit.', desc_en: 'Supermarket chain: Revenue analysis by category, branch and time of day.', rows: '2.000', cols: '9', diff_de: 'Grundlagen', diff_en: 'Basics' },
+    { nb: '13', title_de: 'HR Analytics', title_en: 'HR Analytics', label: 'HR', desc_de: 'HR-Abteilung: Welche Faktoren führen zum Mitarbeiterabgang?', desc_en: 'HR dept: What factors drive employee turnover?', rows: '1.500', cols: '10', diff_de: 'Fortgeschritten', diff_en: 'Advanced' },
+    { nb: '14', title_de: 'Energieverbrauch', title_en: 'Energy Consumption', label: 'Energie', desc_de: 'Unternehmen: Stündlicher Stromverbrauch – Zeitreihenanalyse und Bereinigung.', desc_en: 'Company: Hourly electricity consumption – time series and cleansing.', rows: '8.760', cols: '8', diff_de: 'Fortgeschritten', diff_en: 'Advanced' },
+    { nb: '15', title_de: 'E-Commerce', title_en: 'E-Commerce', label: 'Ecommerce', desc_de: 'Online-Shop: 3-Tabellen-Join, RFM-Analyse, Retourenanalyse.', desc_en: 'Online shop: 3-table join, RFM analysis, returns analysis.', rows: '3.000+', cols: '10', diff_de: 'Fortgeschritten', diff_en: 'Advanced' }
 ];
 
 const COLAB_BASE = 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/';
 const COLAB_BADGE = 'https://colab.research.google.com/assets/colab-badge.svg';
 
 const notebooks = [
-    { file: '09_Fallstudie_Customer_Churn', label: '09 Fallstudie Customer Churn' },
-    { file: '10_Fallstudie_Movies', label: '10 Fallstudie Movies' },
-    { file: '11_Fallstudie_Used_Cars', label: '11 Fallstudie Used Cars' },
-    { file: '12_Fallstudie_Supermarkt', label: '12 Fallstudie Supermarkt' },
-    { file: '13_Fallstudie_HR_Analytics', label: '13 Fallstudie HR Analytics' },
-    { file: '14_Fallstudie_Energie', label: '14 Fallstudie Energie' },
-    { file: '15_Fallstudie_Ecommerce', label: '15 Fallstudie Ecommerce' }
+    { file: '09_Fallstudie_Customer_Churn', label_de: '09 Fallstudie Customer Churn', label_en: '09 Case Study Customer Churn' },
+    { file: '10_Fallstudie_Movies', label_de: '10 Fallstudie Movies', label_en: '10 Case Study Movies' },
+    { file: '11_Fallstudie_Used_Cars', label_de: '11 Fallstudie Used Cars', label_en: '11 Case Study Used Cars' },
+    { file: '12_Fallstudie_Supermarkt', label_de: '12 Fallstudie Supermarkt', label_en: '12 Case Study Supermarket' },
+    { file: '13_Fallstudie_HR_Analytics', label_de: '13 Fallstudie HR Analytics', label_en: '13 Case Study HR Analytics' },
+    { file: '14_Fallstudie_Energie', label_de: '14 Fallstudie Energie', label_en: '14 Case Study Energy' },
+    { file: '15_Fallstudie_Ecommerce', label_de: '15 Fallstudie Ecommerce', label_en: '15 Case Study Ecommerce' }
 ];
 
 const diffColors = {
     'Grundlagen': { bg: '#fef3c7', color: '#92400e' },
-    'Fortgeschritten': { bg: '#fee2e2', color: '#991b1b' }
+    'Basics': { bg: '#fef3c7', color: '#92400e' },
+    'Fortgeschritten': { bg: '#fee2e2', color: '#991b1b' },
+    'Advanced': { bg: '#fee2e2', color: '#991b1b' }
 };
 
 function App() {
@@ -209,7 +224,7 @@ function App() {
                                 <div className="text-xs font-bold mb-1" style={{color:'#94a3b8'}}>Notebook {c.nb}</div>
                                 <div style={{display:'flex', gap:'0.5rem', alignItems:'center', marginBottom:'0.5rem'}}>
                                     <span className="text-xs font-bold px-2 py-0.5 rounded text-white" style={{background:'#0389CF'}}>{c.label}</span>
-                                    <span className="text-xs font-bold px-2 py-0.5 rounded" style={diffColors[c.diff]||{bg:'#f3f4f6',color:'#374151'}}>{c.diff}</span>
+                                    <span className="text-xs font-bold px-2 py-0.5 rounded" style={diffColors[lang==='en'?c.diff_en:c.diff_de]||{bg:'#f3f4f6',color:'#374151'}}>{lang==='en'?c.diff_en:c.diff_de}</span>
                                 </div>
                                 <h3 className="text-base font-bold mb-1" style={{color:'#0389CF', marginTop:'0.25rem'}}>{lang==='de'?c.title_de:c.title_en}</h3>
                                 <p className="text-sm text-gray-500 mb-2">{lang==='de'?c.desc_de:c.desc_en}</p>
@@ -230,7 +245,7 @@ function App() {
                         <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du bist Data Analyst bei einem Telekommunikationsunternehmen. Auftrag: Analysiere, welche Kunden das Unternehmen verlassen ("Churn"), und bereite die Daten für ein ML-Modell vor.':'You are a Data Analyst at a telecom company. Task: Analyze which customers leave the company ("churn") and prepare data for an ML model.'}</p>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 
 import pandas as pd
 import numpy as np
@@ -259,7 +274,7 @@ df_encoded[num_cols] = scaler.fit_transform(df_encoded[num_cols])
 print(f"ML-bereit: {df_encoded.shape}")`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "09_Fallstudie_Customer_Churn.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 09 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'09 Open Notebook':'09 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -271,7 +286,7 @@ print(f"ML-bereit: {df_encoded.shape}")`} />
                         <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du analysierst Filmdaten für eine Streaming-Plattform. Fragen: Welches Genre ist am profitabelsten? Gibt es eine Korrelation zwischen Budget und Umsatz?':'You analyze movie data for a streaming platform. Questions: Which genre is most profitable? Is there a correlation between budget and revenue?'}</p>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 import pandas as pd
 import plotly.express as px
 
@@ -295,7 +310,7 @@ fig2 = px.scatter(df, x='budget_mio', y='revenue_mio', color='genre',
 fig2.show()`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "10_Fallstudie_Movies.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 10 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'10 Open Notebook':'10 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -307,7 +322,7 @@ fig2.show()`} />
                         <p className="font-semibold text-yellow-800">{lang==='de'?'Szenario':'Scenario'}</p>
                         <p className="text-yellow-700 text-sm mt-1">{lang==='de'?'Du arbeitest für einen Gebrauchtwagenhändler. Ziel: Bereite den Datensatz für ein Preisvorhersage-Modell vor.':'You work for a used car dealer. Goal: Prepare the dataset for a price prediction model.'}</p>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
@@ -331,7 +346,7 @@ for col in df.select_dtypes('object').columns:
 print(f"ML-bereit: {df.shape}")`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "11_Fallstudie_Used_Cars.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 11 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'11 Open Notebook':'11 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -352,7 +367,7 @@ print(f"ML-bereit: {df.shape}")`} />
                             <li>✓ {lang==='de'?'Feature Engineering für ML-Vorbereitung':'Feature engineering for ML preparation'}</li>
                         </ul>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 import pandas as pd
 import plotly.express as px
 
@@ -375,7 +390,7 @@ fig2 = px.bar(filiale_umsatz, x='filiale', y='gesamtpreis',
 fig2.show()`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "12_Fallstudie_Supermarkt.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 12 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'12 Open Notebook':'12 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -396,7 +411,7 @@ fig2.show()`} />
                             <li>✓ {lang==='de'?'Feature Engineering: Risikoscore berechnen':'Feature engineering: calculate risk score'}</li>
                         </ul>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 import pandas as pd
 import plotly.express as px
 
@@ -423,7 +438,7 @@ fig3 = px.scatter(df, x='gehalt', y='zufriedenheit',
 fig3.show()`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "13_Fallstudie_HR_Analytics.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 13 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'13 Open Notebook':'13 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -444,7 +459,7 @@ fig3.show()`} />
                             <li>✓ {lang==='de'?'Heatmap: Stunde × Wochentag':'Heatmap: hour × weekday'}</li>
                         </ul>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 import pandas as pd
 import plotly.express as px
 
@@ -470,7 +485,7 @@ fig2 = px.imshow(pivot, title='Verbrauch: Stunde × Wochentag',
 fig2.show()`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "14_Fallstudie_Energie.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 14 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'14 Open Notebook':'14 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -491,7 +506,7 @@ fig2.show()`} />
                             <li>✓ {lang==='de'?'Retourenquote analysieren':'Analyze return rates'}</li>
                         </ul>
                     </div>
-                    <CodeBlock code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
+                    <CodeBlock lang={lang} code={`BASE_URL = "https://raw.githubusercontent.com/swrobuts/dav/main/data/"
 import pandas as pd
 import plotly.express as px
 
@@ -522,7 +537,7 @@ rfm = df.groupby('kunden_id').agg(
 print(rfm.describe())`} />
                     <div className="notebook-buttons">
                         <a href={COLAB_BASE + "15_Fallstudie_Ecommerce.ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                            <img src={COLAB_BADGE} alt="Open in Colab"/> 15 Notebook öffnen
+                            <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?'15 Open Notebook':'15 Notebook öffnen'}
                         </a>
                     </div>
                 </div>
@@ -543,13 +558,13 @@ print(rfm.describe())`} />
                         ))}
                     </div>
                     <div className="concept-box mt-4">
-                        <p className="font-semibold" style={{color:'#0389CF'}}>DAV-Anteil am Workflow:</p>
+                        <p className="font-semibold" style={{color:'#0389CF'}}>{lang==='en'?'DAV Share of the Workflow:':'DAV-Anteil am Workflow:'}</p>
                         <p className="text-sm text-gray-600 mt-1">{lang==='de'?'Phasen 2+3 (Data Understanding + Data Preparation) machen 60-80% der gesamten Projektzeit aus. Ohne saubere Daten scheitert jedes ML-Modell.':'Phases 2+3 (Data Understanding + Data Preparation) make up 60-80% of total project time. Without clean data, every ML model fails.'}</p>
                     </div>
                 </div>
 
                 <div id="quiz" className="mb-12">
-                    <QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Fallstudien & Konzepte':'Quiz: Case Studies & Concepts'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} />
+                    <QuizSection questions={lang==='de'?quiz_de:quiz_en} title={lang==='de'?'Quiz: Fallstudien & Konzepte':'Quiz: Case Studies & Concepts'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} lang={lang} />
                 </div>
 
                 <div id="notebooks" className="mb-12">
@@ -558,27 +573,17 @@ print(rfm.describe())`} />
                     <div className="notebook-buttons">
                         {notebooks.map(nb => (
                             <a key={nb.file} href={COLAB_BASE + nb.file + ".ipynb"} target="_blank" rel="noopener noreferrer" className="colab-btn">
-                                <img src={COLAB_BADGE} alt="Open in Colab"/> {nb.label}
+                                <img src={COLAB_BADGE} alt="Open in Colab"/> {lang==='en'?nb.label_en:nb.label_de}
                             </a>
                         ))}
-                    </div>
-                    <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
-                        <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                            {lang==='de' ? 'Alle Notebooks in Google Colab starten:' : 'Start all notebooks in Google Colab:'}
-                        </p>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/09_Fallstudie_Customer_Churn.ipynb"
-                           target="_blank" rel="noopener noreferrer"
-                           style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                            {lang==='de' ? 'Erste Fallstudie öffnen →' : 'Open first case study →'}
-                        </a>
                     </div>
                 </div>
             </main>
 
             {/* Footer */}
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
-                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
-                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>{lang==='en'?'Built for BBA Students':'Gebaut für BBA Studierende'} · THWS</p>
+                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>© 2025 Prof. Dr. Robert Butscher</p>
                 <div style={{marginTop:'1rem'}}>
                     <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
                 </div>
