@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAV Lab - Datenaufbereitung und -verarbeitung | THWS BBA</title>
+    <title>DAV Lab – Datenaufbereitung und -verarbeitung | THWS BBA</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -42,8 +42,6 @@
             position: sticky; top: 0; z-index: 50;
             height: 60px;
         }
-        .nav-links { display: flex; gap: 1.5rem; }
-        @media (max-width: 640px) { .nav-links { display: none; } }
 
         /* ── Stats bar ── */
         .stat-bar {
@@ -51,11 +49,6 @@
             box-shadow: 0 -1px 0 rgba(3,137,207,0.08), 0 4px 20px rgba(0,0,0,0.05);
             flex-shrink: 0;
         }
-        .stat-grid {
-            max-width: 900px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(4,1fr);
-        }
-        @media (max-width: 640px) { .stat-grid { grid-template-columns: repeat(2,1fr); } }
         .stat-item {
             text-align: center;
             padding: 1.75rem 1.5rem;
@@ -104,7 +97,6 @@
             display: flex; align-items: center;
             gap: 0; flex-wrap: nowrap;
             overflow-x: auto; padding-bottom: 4px;
-            justify-content: center;
         }
         .workflow-box {
             background: white;
@@ -161,7 +153,7 @@
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0; margin-bottom: 1rem;
         }
-        .lab-icon-box svg { color: white; stroke: white; }
+        .lab-icon-box svg { color: white; }
         .lab-title {
             font-size: 1rem; font-weight: 800;
             color: #0369A1; line-height: 1.25;
@@ -188,7 +180,6 @@
         .diff-einstieg    { background: #dcfce7; color: #166534; }
         .diff-grundlagen  { background: #fef3c7; color: #92400e; }
         .diff-fortgeschritten { background: #fee2e2; color: #991b1b; }
-        .diff-bonus { background: #ede9fe; color: #5b21b6; }
         .lab-cta {
             font-size: 0.82rem; font-weight: 700;
             color: #E8792F;
@@ -213,32 +204,23 @@
         }
         .copy-btn:hover { background: #d4652b; }
 
-        /* ── Colab steps ── */
-        .colab-step {
+        /* ── Docker steps ── */
+        .docker-step {
             background: rgba(255,255,255,0.1);
             border-radius: 10px; padding: 1.25rem;
             backdrop-filter: blur(4px);
         }
-        .colab-step-label {
+        .docker-step-label {
             font-size: 0.72rem; font-weight: 800;
             text-transform: uppercase; letter-spacing: 0.08em;
             color: rgba(255,255,255,0.6); margin-bottom: 0.6rem;
         }
-        .colab-step-code {
+        .docker-step-code {
             font-family: 'Monaco','Courier New', monospace;
             font-size: 0.82rem; color: #fff;
             background: rgba(0,0,0,0.25); border-radius: 6px;
             padding: 0.65rem 0.85rem; line-height: 1.5;
             word-break: break-all;
-        }
-
-        /* ── Tech stack chips ── */
-        .tech-chip {
-            display: inline-flex; align-items: center; gap: 0.35rem;
-            background: rgba(3,137,207,0.08); color: #0369A1;
-            border: 1px solid rgba(3,137,207,0.2);
-            padding: 0.35rem 0.75rem; border-radius: 999px;
-            font-size: 0.8rem; font-weight: 600;
         }
 
         /* ── Geometric deco ── */
@@ -255,12 +237,12 @@
 const { useState, useEffect, useRef } = React;
 
 /* ── Lucide-style SVG icon renderer ── */
-const Icon = ({ paths, size = 20, strokeWidth = 2, className = '', style = {} }) => (
+const Icon = ({ paths, size = 20, strokeWidth = 2, className = '' }) => (
     <svg
         width={size} height={size} viewBox="0 0 24 24"
         fill="none" stroke="currentColor"
         strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"
-        className={className} style={style}
+        className={className}
     >
         {(Array.isArray(paths) ? paths : [paths]).map((d, i) => (
             typeof d === 'string' ? <path key={i} d={d}/> : d
@@ -279,21 +261,19 @@ const ICON_CODE     = ['M10 20l4-16','M4.93 4.93l4.24 4.24-4.24 4.24','M19.07 4.
 const ICON_PACKAGE  = ['M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z','M3.27 6.96L12 12.01l8.73-5.05','M12 22.08V12'];
 const ICON_TERMINAL = ['M4 17l6-6-6-6','M12 19h8'];
 const ICON_GITHUB   = ['M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4','M9 18c-4.51 2-5-2-7-2'];
-const ICON_DATABASE = ['M12 2C6.48 2 2 4.02 2 6.5v11C2 19.98 6.48 22 12 22s10-2.02 10-4.5v-11C22 4.02 17.52 2 12 2z','M2 6.5C2 8.98 6.48 11 12 11s10-2.02 10-4.5','M2 11.5c0 2.48 4.48 4.5 10 4.5s10-2.02 10-4.5'];
-const ICON_WRENCH   = ['M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'];
 
 const LAB_ICONS = [ICON_LAYERS, ICON_DOWNLOAD, ICON_BARCHART, ICON_FILTER, ICON_REFRESH, ICON_TARGET];
 
 /* ── Translations ── */
 const T = {
     de: {
-        nav: { labs: 'Module', colab: 'Colab', tools: 'Tools', about: 'Kurs' },
+        nav: { labs: 'Module', docker: 'Colab', about: 'Kurs' },
         hero: {
-            badge: 'THWS BBA \u00b7 Sommersemester 2026',
+            badge: 'THWS BBA · Sommersemester 2026',
             headline: 'Datenaufbereitung und -verarbeitung',
-            tagline: 'DAV - THWS Business School',
+            tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
             sub: 'Praktisches Lernen mit Python, pandas und Google Colab',
-            cta: 'Module erkunden', cta2: 'In Colab \u00f6ffnen'
+            cta: 'Module erkunden', cta2: 'In Colab öffnen'
         },
         stats: [
             { val: '6',   label: 'Themenmodule' },
@@ -302,93 +282,77 @@ const T = {
             { val: 'SQL', label: 'Python + SQL', icon: true }
         ],
         workflow_title: 'Der DAV-Workflow',
-        workflow_sub: 'Von der Datenquelle zur sauberen, analysierbaren Tabelle \u2013 nach CRISP-DM (Chapman et al., 2000).',
+        workflow_sub: 'Von der Datenquelle zur sauberen, analysierbaren Tabelle – angelehnt an CRISP-DM.',
         workflow: ['Datenquellen','Einlesen','Inspizieren','Bereinigen','Transformieren','Analyse'],
         labs_title: 'Die 6 Lernmodule',
-        labs_sub: 'Jedes Modul enth\u00e4lt Theorie, runnable Python-Notebooks und interaktive Quizfragen.',
+        labs_sub: 'Jedes Modul enthält Theorie, runnable Python-Notebooks und interaktive Quizfragen.',
         labs: [
             { name: 'Grundlagen & CRISP-DM', subtitle: 'Datenaufbereitung verstehen',
-              desc: 'Was ist Datenaufbereitung? CRISP-DM-Prozessmodell (Chapman et al., 2000), Garbage in \u2013 Garbage out, Warum Python?',
+              desc: 'Was ist Datenaufbereitung? CRISP-DM-Prozessmodell (Chapman et al., 2000), Garbage in – Garbage out, Warum Python? Data-Literacy-Grundlagen.',
               link: 'lab-grundlagen.html', diff: 'Einstieg' },
-            { name: 'Daten sammeln', subtitle: 'Dateiformate \u00b7 APIs \u00b7 Web Scraping',
+            { name: 'Daten sammeln', subtitle: 'Dateiformate · APIs · Web Scraping',
               desc: 'CSV, JSON, XML, Excel, Parquet einlesen. REST-APIs abfragen. Web Scraping mit BeautifulSoup. SQL-Datenbankverbindungen mit SQLAlchemy.',
               link: 'lab-data-acquisition.html', diff: 'Einstieg' },
             { name: 'Daten inspizieren & EDA', subtitle: 'Explorative Datenanalyse',
-              desc: 'df.info(), df.describe(), fehlende Werte visualisieren, Verteilungen, Korrelationen, Ausrei\u00dfer erkennen mit IQR und Z-Score.',
+              desc: 'df.info(), df.describe(), Fehlende Werte visualisieren, Verteilungen, Korrelationen, Ausreißer erkennen (IQR, Z-Score).',
               link: 'lab-eda.html', diff: 'Grundlagen' },
             { name: 'Daten bereinigen', subtitle: 'Data Cleansing systematisch',
-              desc: 'Missing Values (MCAR, MAR, MNAR), Duplikate, Inkonsistenzen, Imputation-Strategien (Mean, Median, KNN), Datentypen korrigieren.',
+              desc: 'Missing Values (MCAR/MAR/MNAR), Duplikate, Inkonsistenzen, Imputation-Strategien, Datentypen korrigieren – an echten Problemdatensätzen.',
               link: 'lab-cleansing.html', diff: 'Grundlagen' },
             { name: 'Daten transformieren', subtitle: 'Strukturieren & kodieren',
-              desc: 'melt(), pivot(), One-Hot-Encoding, Label-Encoding, Feature Scaling (MinMax, Standard), Feature Engineering, Merging & Joining.',
+              desc: 'melt(), pivot(), One-Hot-Encoding, Feature Scaling, Feature Engineering, Merging & Joining.',
               link: 'lab-transformation.html', diff: 'Fortgeschritten' },
             { name: 'Fallstudien & Use Cases', subtitle: 'Komplette DAV-Workflows',
-              desc: 'Customer Churn, Filmanalyse, Gebrauchtwagen-Preise \u2013 von Rohdaten bis zur analysierbaren Datenbasis. Vollst\u00e4ndige CRISP-DM-Pipelines.',
+              desc: 'Customer Churn, Filmanalyse, Gebrauchtwagen-Preise – von Rohdaten bis zur analysierbaren Datenbasis.',
               link: 'lab-usecases.html', diff: 'Fortgeschritten' }
         ],
         diffClass: { 'Einstieg': 'diff-einstieg', 'Grundlagen': 'diff-grundlagen', 'Fortgeschritten': 'diff-fortgeschritten' },
-        cta_module: 'Zum Modul \u2192',
-        tools_title: 'Tech Stack & Tools',
-        tools_sub: 'Alle Tools sind kostenlos und Open Source \u2013 kein lokales Setup erforderlich dank Google Colab.',
-        tool_categories: [
-            { title: 'Sprachen', items: ['Python 3.11+', 'SQL (SQLite, PostgreSQL)'] },
-            { title: 'Kernbibliotheken', items: ['pandas', 'NumPy', 'scikit-learn (Preprocessing)'] },
-            { title: 'Visualisierung', items: ['matplotlib', 'seaborn', 'Plotly'] },
-            { title: 'Datenquellen', items: ['REST APIs (requests)', 'BeautifulSoup (Scraping)', 'SQLAlchemy', 'openpyxl'] },
-            { title: 'Umgebung', items: ['Google Colab', 'JupyterLab', 'GitHub'] },
+        cta_module: 'Zum Modul →',
+        docker_title: 'Jetzt mit Google Colab starten',
+        docker_sub: 'Kein Setup. Kein Download. Python direkt im Browser – auf jedem Gerät.',
+        docker_steps: [
+            { label: '1. Notebook öffnen', code: 'colab.research.google.com\noder Colab-Badge klicken →' },
+            { label: '2. Laufzeit starten',  code: 'Laufzeit → Alle ausführen\n(Strg+F9)' },
+            { label: '3. Fertig!', code: 'Alles läuft in der Cloud.\nKein Install nötig.' }
         ],
-        prereq_title: 'Voraussetzungen',
-        prereq_items: [
-            'Google-Account f\u00fcr Colab (kostenlos)',
-            'Grundlegende Programmierkenntnisse (Variablen, Schleifen, Funktionen)',
-            'Keine Python-Vorkenntnisse n\u00f6tig \u2013 Grundlagen werden in Modul 1 vermittelt',
-        ],
-        colab_title: 'Jetzt mit Google Colab starten',
-        colab_sub: 'Kein Setup. Kein Download. Python direkt im Browser \u2013 auf jedem Ger\u00e4t.',
-        colab_steps: [
-            { label: '1. Notebook \u00f6ffnen', code: 'colab.research.google.com\noder Colab-Badge klicken \u2192' },
-            { label: '2. Laufzeit starten',  code: 'Laufzeit \u2192 Alle ausf\u00fchren\n(Strg+F9)' },
-            { label: '3. Fertig!', code: 'Alles l\u00e4uft in der Cloud.\nKein Install n\u00f6tig.' }
-        ],
-        colab_cta: 'Vollst\u00e4ndiger Colab Guide \u2192',
-        about_title: '\u00dcber den Kurs',
-        about_desc: 'Der Kurs \u201eDatenaufbereitung und -verarbeitung\u201c (DAV) im BBA-Studiengang an der THWS vermittelt die praktischen Grundlagen der Datenvorbereitung f\u00fcr Analyse und Machine Learning. 80\u00a0% der Arbeit eines Data Scientists entf\u00e4llt auf Datenaufbereitung (Lohr, 2014) \u2013 dieser Kurs macht Sie damit vertraut.',
+        docker_cta: 'Vollständiger Colab Guide →',
+        about_title: 'Über den Kurs',
+        about_desc: 'Der Kurs „Datenaufbereitung und -verarbeitung" im BBA-Studiengang an der THWS vermittelt die praktischen Grundlagen der Datenvorbereitung für Analyse und Machine Learning. 80 % der Arbeit eines Data Scientists entfällt auf Datenaufbereitung – dieser Kurs macht Sie damit vertraut.',
         why_title: 'Warum DAV?',
-        why_text: 'Rohdaten sind fast nie analysefertig. Sie haben fehlende Werte, Inkonsistenzen, falsche Datentypen und versteckte Ausrei\u00dfer. DAV lehrt Sie, diese Probleme systematisch nach dem CRISP-DM-Prozessmodell zu erkennen und zu beheben.',
+        why_text: 'Rohdaten sind fast nie analysefertig. Sie haben fehlende Werte, Inkonsistenzen, falsche Datentypen und versteckte Ausreißer. DAV lehrt Sie, diese Probleme systematisch zu erkennen und zu beheben.',
         goals_title: 'Lernziele',
         goals: [
-            'Verschiedene Datenquellen einlesen und verarbeiten (CSV, JSON, XML, Excel, APIs, SQL)',
-            'Datenqualit\u00e4t beurteilen und Fehlerbilder erkennen (EDA)',
-            'Fehlende Werte, Duplikate und Ausrei\u00dfer systematisch behandeln',
-            'Daten f\u00fcr ML-Modelle transformieren, kodieren und skalieren',
-            'Vollst\u00e4ndige Data-Prep-Workflows mit Python/pandas umsetzen',
+            'Verschiedene Datenquellen einlesen und verarbeiten (CSV, JSON, XML, Excel, APIs)',
+            'Datenqualität beurteilen und Fehlerbilder erkennen',
+            'Fehlende Werte, Duplikate und Ausreißer systematisch behandeln',
+            'Daten für ML-Modelle transformieren und kodieren',
+            'Vollständige Data-Prep-Workflows mit Python/pandas umsetzen',
             'Ergebnisse reproduzierbar in Notebooks dokumentieren'
         ],
         bonus: {
-            badge: '\u2b50 Bonus',
+            badge: '⭐ Bonus',
             title: 'Advanced Visualization',
-            subtitle: 'Plotly.js \u00b7 GitHub Pages \u00b7 Dashboard',
-            desc: 'Baue ein vollst\u00e4ndiges interaktives Dashboard f\u00fcr den World Happiness Report \u2013 mit Choropleth-Weltkarte, Trendlinien und Korrelationsanalyse. Statisch auf GitHub Pages deployt.',
+            subtitle: 'Plotly.js · GitHub Pages · Dashboard',
+            desc: 'Baue ein vollständiges interaktives Dashboard für den World Happiness Report – mit Choropleth-Weltkarte, Trendlinien und Korrelationsanalyse. Statisch auf GitHub Pages deployt.',
             link: 'lab-viz-advanced.html',
             diff: 'Bonus'
         },
-        ref_title: 'Literatur',
+        refs_title: 'Literatur',
         refs: [
-            'Chapman, P. et al. (2000). CRISP-DM 1.0 \u2013 Step-by-step data mining guide.',
-            'McKinney, W. (2022). Python for Data Analysis. 3rd ed. O\u2019Reilly.',
-            'Lohr, S. (2014). \u201eFor Big-Data Scientists, Janitor Work Is Key Hurdle.\u201c NYT.',
+            'Chapman, P. et al. (2000): CRISP-DM 1.0 – Step-by-step data mining guide.',
+            'McKinney, W. (2022): Python for Data Analysis, 3rd Edition, O'Reilly.',
+            'Lohr, S. (2014): For Big-Data Scientists, "Janitor Work" Is Key Hurdle – NYT.'
         ],
-        footer_built: 'Gebaut mit \u2665 f\u00fcr BBA Studierende \u00b7 THWS W\u00fcrzburg-Schweinfurt',
+        footer_built: 'Gebaut mit ♥ für BBA Studierende · THWS Würzburg-Schweinfurt',
         footer_prof: 'Prof. Dr. Robert Butscher',
-        footer_github: 'GitHub Repository',
-        footer_copy: '\u00a9 2025\u20132026 THWS Business School',
+        footer_github: 'GitHub Repository'
     },
     en: {
-        nav: { labs: 'Modules', colab: 'Colab', tools: 'Tools', about: 'Course' },
+        nav: { labs: 'Modules', docker: 'Colab', about: 'Course' },
         hero: {
-            badge: 'THWS BBA \u00b7 Summer Term 2026',
+            badge: 'THWS BBA · Summer Term 2026',
             headline: 'Data Preparation & Processing',
-            tagline: 'DAV - THWS Business School',
+            tagline: 'DAV – THWS Business School | Prof. Dr. Robert Butscher',
             sub: 'Practical learning with Python, pandas and Google Colab',
             cta: 'Explore Modules', cta2: 'Open in Colab'
         },
@@ -399,98 +363,82 @@ const T = {
             { val: 'SQL', label: 'Python + SQL', icon: true }
         ],
         workflow_title: 'The DAV Workflow',
-        workflow_sub: 'From raw data source to clean, analysis-ready tables \u2013 following CRISP-DM (Chapman et al., 2000).',
+        workflow_sub: 'From raw data source to clean, analysis-ready tables – following CRISP-DM.',
         workflow: ['Data Sources','Load','Inspect','Clean','Transform','Analyse'],
         labs_title: 'The 6 Learning Modules',
         labs_sub: 'Each module contains theory, runnable Python notebooks and interactive quiz questions.',
         labs: [
             { name: 'Fundamentals & CRISP-DM', subtitle: 'Understanding Data Prep',
-              desc: 'What is data preparation? CRISP-DM process model (Chapman et al., 2000), Garbage in \u2013 Garbage out, Why Python?',
+              desc: 'What is data preparation? CRISP-DM process model (Chapman et al., 2000), Garbage in – Garbage out, Why Python? Data literacy fundamentals.',
               link: 'lab-grundlagen.html', diff: 'Beginner' },
-            { name: 'Data Acquisition', subtitle: 'File formats \u00b7 APIs \u00b7 Scraping',
+            { name: 'Data Acquisition', subtitle: 'File formats · APIs · Scraping',
               desc: 'Reading CSV, JSON, XML, Excel, Parquet. Querying REST APIs. Web scraping with BeautifulSoup. SQL database connections with SQLAlchemy.',
               link: 'lab-data-acquisition.html', diff: 'Beginner' },
             { name: 'Data Inspection & EDA', subtitle: 'Exploratory Data Analysis',
-              desc: 'df.info(), df.describe(), visualizing missing values, distributions, correlations, outlier detection with IQR and Z-Score.',
+              desc: 'df.info(), df.describe(), visualizing missing values, distributions, correlations, outlier detection (IQR, Z-Score).',
               link: 'lab-eda.html', diff: 'Foundation' },
             { name: 'Data Cleansing', subtitle: 'Systematic Data Cleaning',
-              desc: 'Missing values (MCAR, MAR, MNAR), duplicates, inconsistencies, imputation strategies (Mean, Median, KNN), fixing data types.',
+              desc: 'Missing values (MCAR/MAR/MNAR), duplicates, inconsistencies, imputation strategies, fixing data types – on real problem datasets.',
               link: 'lab-cleansing.html', diff: 'Foundation' },
             { name: 'Data Transformation', subtitle: 'Structure & Encode',
-              desc: 'melt(), pivot(), One-Hot-Encoding, Label-Encoding, Feature Scaling (MinMax, Standard), Feature Engineering, Merging & Joining.',
+              desc: 'melt(), pivot(), One-Hot-Encoding, Feature Scaling, Feature Engineering, Merging & Joining.',
               link: 'lab-transformation.html', diff: 'Advanced' },
             { name: 'Case Studies & Use Cases', subtitle: 'Complete DAV Workflows',
-              desc: 'Customer Churn, Movie Analysis, Used Cars \u2013 from raw data to analysis-ready dataset. Complete CRISP-DM pipelines.',
+              desc: 'Customer Churn, Movie Analysis, Used Cars – from raw data to analysis-ready dataset.',
               link: 'lab-usecases.html', diff: 'Advanced' }
         ],
         diffClass: { 'Beginner': 'diff-einstieg', 'Foundation': 'diff-grundlagen', 'Advanced': 'diff-fortgeschritten' },
-        cta_module: 'Open Module \u2192',
-        tools_title: 'Tech Stack & Tools',
-        tools_sub: 'All tools are free and open source \u2013 no local setup required thanks to Google Colab.',
-        tool_categories: [
-            { title: 'Languages', items: ['Python 3.11+', 'SQL (SQLite, PostgreSQL)'] },
-            { title: 'Core Libraries', items: ['pandas', 'NumPy', 'scikit-learn (Preprocessing)'] },
-            { title: 'Visualization', items: ['matplotlib', 'seaborn', 'Plotly'] },
-            { title: 'Data Sources', items: ['REST APIs (requests)', 'BeautifulSoup (Scraping)', 'SQLAlchemy', 'openpyxl'] },
-            { title: 'Environment', items: ['Google Colab', 'JupyterLab', 'GitHub'] },
-        ],
-        prereq_title: 'Prerequisites',
-        prereq_items: [
-            'Google account for Colab (free)',
-            'Basic programming knowledge (variables, loops, functions)',
-            'No prior Python experience needed \u2013 basics covered in Module 1',
-        ],
-        colab_title: 'Start with Google Colab Now',
-        colab_sub: 'No setup. No download. Python directly in the browser \u2013 on any device.',
-        colab_steps: [
-            { label: '1. Open Notebook', code: 'colab.research.google.com\nor click a Colab badge \u2192' },
-            { label: '2. Start Runtime',  code: 'Runtime \u2192 Run all\n(Ctrl+F9)' },
+        cta_module: 'Open Module →',
+        docker_title: 'Start with Google Colab Now',
+        docker_sub: 'No setup. No download. Python directly in the browser – on any device.',
+        docker_steps: [
+            { label: '1. Open Notebook', code: 'colab.research.google.com\nor click a Colab badge →' },
+            { label: '2. Start Runtime',  code: 'Runtime → Run all\n(Ctrl+F9)' },
             { label: '3. Done!', code: 'Everything runs in the cloud.\nNo installation needed.' }
         ],
-        colab_cta: 'Full Colab Guide \u2192',
+        docker_cta: 'Full Colab Guide →',
         about_title: 'About the Course',
-        about_desc: 'The course "Data Preparation & Processing" (DAV) in the BBA program at THWS teaches practical foundations of data preparation for analysis and machine learning. 80% of a data scientist\'s work involves data preparation (Lohr, 2014) \u2013 this course makes you proficient.',
+        about_desc: 'The course "Data Preparation & Processing" in the BBA program at THWS teaches practical foundations of data preparation for analysis and machine learning. 80% of a data scientist\'s work involves data preparation – this course makes you proficient.',
         why_title: 'Why DAV?',
-        why_text: 'Raw data is almost never analysis-ready. It has missing values, inconsistencies, wrong data types and hidden outliers. DAV teaches you to systematically identify and fix these issues following the CRISP-DM process model.',
+        why_text: 'Raw data is almost never analysis-ready. It has missing values, inconsistencies, wrong data types and hidden outliers. DAV teaches you to systematically identify and fix these issues.',
         goals_title: 'Learning Objectives',
         goals: [
-            'Read and process various data sources (CSV, JSON, XML, Excel, APIs, SQL)',
-            'Assess data quality and identify error patterns (EDA)',
+            'Read and process various data sources (CSV, JSON, XML, Excel, APIs)',
+            'Assess data quality and identify error patterns',
             'Systematically handle missing values, duplicates and outliers',
-            'Transform, encode and scale data for ML models',
+            'Transform and encode data for ML models',
             'Implement complete data prep workflows with Python/pandas',
             'Document results reproducibly in notebooks'
         ],
         bonus: {
-            badge: '\u2b50 Bonus',
+            badge: '⭐ Bonus',
             title: 'Advanced Visualization',
-            subtitle: 'Plotly.js \u00b7 GitHub Pages \u00b7 Dashboard',
-            desc: 'Build a full interactive dashboard for the World Happiness Report \u2013 with choropleth world map, trend lines, and correlation analysis. Deployed statically on GitHub Pages.',
+            subtitle: 'Plotly.js · GitHub Pages · Dashboard',
+            desc: 'Build a full interactive dashboard for the World Happiness Report – with choropleth world map, trend lines, and correlation analysis. Deployed statically on GitHub Pages.',
             link: 'lab-viz-advanced.html',
             diff: 'Bonus'
         },
-        ref_title: 'References',
+        refs_title: 'References',
         refs: [
-            'Chapman, P. et al. (2000). CRISP-DM 1.0 \u2013 Step-by-step data mining guide.',
-            'McKinney, W. (2022). Python for Data Analysis. 3rd ed. O\u2019Reilly.',
-            'Lohr, S. (2014). "For Big-Data Scientists, Janitor Work Is Key Hurdle." NYT.',
+            'Chapman, P. et al. (2000): CRISP-DM 1.0 – Step-by-step data mining guide.',
+            'McKinney, W. (2022): Python for Data Analysis, 3rd Edition, O\'Reilly.',
+            'Lohr, S. (2014): For Big-Data Scientists, "Janitor Work" Is Key Hurdle – NYT.'
         ],
-        footer_built: 'Built with \u2665 for BBA Students \u00b7 THWS W\u00fcrzburg-Schweinfurt',
+        footer_built: 'Built with ♥ for BBA Students · THWS Würzburg-Schweinfurt',
         footer_prof: 'Prof. Dr. Robert Butscher',
-        footer_github: 'GitHub Repository',
-        footer_copy: '\u00a9 2025\u20132026 THWS Business School',
+        footer_github: 'GitHub Repository'
     }
 };
 
-/* ── Copy Button (bilingual) ── */
+/* ── Copy Button ── */
 function CopyBtn({ text, lang }) {
     const [ok, setOk] = useState(false);
-    const label = lang === 'en' ? 'Copy' : 'Kopieren';
-    const doneLabel = lang === 'en' ? '\u2713 Copied' : '\u2713 Kopiert';
+    const lbl = lang === 'en' ? 'Copy' : 'Kopieren';
+    const done = lang === 'en' ? '✓ Copied' : '✓ Kopiert';
     return (
         <button className="copy-btn" onClick={() => {
             navigator.clipboard.writeText(text).then(() => { setOk(true); setTimeout(() => setOk(false), 2000); });
-        }}>{ok ? doneLabel : label}</button>
+        }}>{ok ? done : lbl}</button>
     );
 }
 
@@ -500,28 +448,20 @@ function App() {
     const [lang, setLang] = useState(() => localStorage.getItem('dav-lang') || urlLang || 'de');
     const t = T[lang];
     const revealRefs = useRef([]);
-
     const toggleLang = (l) => { setLang(l); localStorage.setItem('dav-lang', l); };
 
     useEffect(() => { document.documentElement.lang = lang; }, [lang]);
-
-    useEffect(() => {
-        revealRefs.current = [];
-    }, [lang]);
 
     useEffect(() => {
         const obs = new IntersectionObserver(
             entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
             { threshold: 0.08 }
         );
-        // Small delay to let refs populate after render
-        const timer = setTimeout(() => {
-            revealRefs.current.forEach(el => el && obs.observe(el));
-        }, 50);
-        return () => { clearTimeout(timer); obs.disconnect(); };
+        revealRefs.current.forEach(el => el && obs.observe(el));
+        return () => obs.disconnect();
     }, [lang]);
 
-    const ref = (el) => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
+    const ref = el => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el); };
 
     return (
         <div>
@@ -530,13 +470,13 @@ function App() {
                 <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <div style={{ width: 32, height: 32, background: '#0389CF', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Icon paths={ICON_CODE} size={16} style={{color:'white', stroke:'white'}}/>
+                            <Icon paths={ICON_CODE} size={16} className="" style={{color:'white', stroke:'white'}}/>
                         </div>
                         <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0369A1', letterSpacing: '-0.02em' }}>DAV Lab</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                        <div className="nav-links">
-                            {[['#labs', t.nav.labs], ['#tools', t.nav.tools], ['#colab', t.nav.colab], ['#about', t.nav.about]].map(([href, label]) => (
+                        <div className="hidden md:flex" style={{ gap: '1.5rem', display: 'flex' }}>
+                            {[['#labs', t.nav.labs], ['#docker', t.nav.docker], ['#about', t.nav.about]].map(([href, label]) => (  // #docker section now hosts Colab CTA
                                 <a key={href} href={href} style={{ color: '#64748b', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.15s' }}
                                    onMouseOver={e => e.target.style.color='#0389CF'} onMouseOut={e => e.target.style.color='#64748b'}>{label}</a>
                             ))}
@@ -553,7 +493,7 @@ function App() {
             <div style={{ minHeight: 'calc(100vh - 60px)', display: 'flex', flexDirection: 'column' }}>
 
                 {/* Hero */}
-                <section className="hero-gradient fade-in" style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem 1.5rem 3.5rem' }}>
+                <section className="hero-gradient fade-in" style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 1.5rem' }}>
                     <div className="animated-bg"></div>
 
                     {/* Bauhaus geometric decoration */}
@@ -567,25 +507,25 @@ function App() {
                         </svg>
                     </div>
 
-                    <div style={{ position: 'relative', zIndex: 10, maxWidth: 880, textAlign: 'center' }}>
+                    <div style={{ position: 'relative', zIndex: 10, maxWidth: 760, textAlign: 'center' }}>
                         {/* Badge */}
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', borderRadius: 999, padding: '0.4rem 1rem', marginBottom: '1.5rem', backdropFilter: 'blur(8px)', fontSize: '0.82rem', fontWeight: 600, color: 'rgba(255,255,255,0.9)' }}>
                             <Icon paths={['M22 10v6M2 10l10-5 10 5-10 5z','M6 12v5c3 3 9 3 12 0v-5']} size={14}/>
                             {t.hero.badge}
                         </div>
-                        <h1 style={{ fontSize: 'clamp(3.4rem, 6.5vw, 5.6rem)', fontWeight: 900, color: 'white', lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+                        <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.75rem)', fontWeight: 900, color: 'white', lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
                             {t.hero.headline}
                         </h1>
-                        <p style={{ fontSize: '1.45rem', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: '0.5rem' }}>
+                        <p style={{ fontSize: '1.15rem', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: '0.5rem' }}>
                             {t.hero.tagline}
                         </p>
-                        <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.65)', marginBottom: '2.5rem' }}>
+                        <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.65)', marginBottom: '2.5rem' }}>
                             {t.hero.sub}
                         </p>
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <a href="#labs" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8792F', color: 'white', fontWeight: 700, padding: '0.9rem 2rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none', transition: 'transform 0.15s' }}
                                onMouseOver={e => e.currentTarget.style.transform='translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform='none'}>
-                                {t.hero.cta} \u2192
+                                {t.hero.cta} →
                             </a>
                             <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/00_Willkommen.ipynb" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', fontWeight: 700, padding: '0.9rem 2rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none', backdropFilter: 'blur(4px)', transition: 'background 0.15s' }}
                                onMouseOver={e => e.currentTarget.style.background='rgba(255,255,255,0.22)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.15)'}>
@@ -595,14 +535,14 @@ function App() {
                     </div>
                 </section>
 
-                {/* Stats Bar */}
+                {/* Stats Bar – anchored at bottom of viewport */}
                 <section className="stat-bar">
-                    <div className="stat-grid">
+                    <div style={{ maxWidth: 900, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
                         {t.stats.map((s, i) => (
                             <div key={i} className="stat-item">
                                 {s.icon
                                     ? <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.35rem' }}>
-                                        <Icon paths={ICON_TERMINAL} size={36} style={{ color: '#E8792F', stroke: '#E8792F' }}/>
+                                        <Icon paths={ICON_TERMINAL} size={36} className="" style={{ color: '#E8792F', stroke: '#E8792F' }}/>
                                       </div>
                                     : <div className="stat-number">{s.val}</div>
                                 }
@@ -615,15 +555,15 @@ function App() {
             </div>{/* end viewport-height wrapper */}
 
             {/* ── Workflow ── */}
-            <section className="scroll-reveal" style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
+            <section style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
                 <div style={{ maxWidth: 1000, margin: '0 auto' }}>
                     <h2 style={{ textAlign: 'center', fontSize: '1.6rem', fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem' }}>{t.workflow_title}</h2>
                     <p style={{ textAlign: 'center', color: '#94a3b8', marginBottom: '2.5rem', fontSize: '0.95rem' }}>{t.workflow_sub}</p>
-                    <div className="workflow-row">
+                    <div className="workflow-row" style={{ justifyContent: 'center' }}>
                         {t.workflow.map((item, i) => (
                             <React.Fragment key={i}>
                                 <div className="workflow-box">{item}</div>
-                                {i < t.workflow.length - 1 && <span className="workflow-arrow">\u2192</span>}
+                                {i < t.workflow.length - 1 && <span className="workflow-arrow">→</span>}
                             </React.Fragment>
                         ))}
                     </div>
@@ -633,20 +573,25 @@ function App() {
             {/* ── Lab Cards ── */}
             <section id="labs" style={{ padding: '5rem 1.5rem', background: 'white' }}>
                 <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-                    <div className="scroll-reveal" style={{ textAlign: 'center', marginBottom: '3rem' }} ref={ref}>
+                    <div style={{ textAlign: 'center', marginBottom: '3rem' }} ref={ref}>
                         <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 900, color: '#0369A1', marginBottom: '0.6rem', letterSpacing: '-0.02em' }}>{t.labs_title}</h2>
                         <p style={{ color: '#94a3b8', maxWidth: 560, margin: '0 auto', fontSize: '0.95rem' }}>{t.labs_sub}</p>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>
                         {t.labs.map((lab, i) => (
-                            <a key={i} href={lab.link} className="lab-card scroll-reveal" ref={ref}>
+                            <a key={i} href={lab.link} className="lab-card" ref={ref}>
+                                {/* Ghost module number */}
                                 <span className="lab-card-num">0{i+1}</span>
+                                {/* Icon */}
                                 <div className="lab-icon-box">
                                     <Icon paths={LAB_ICONS[i]} size={20}/>
                                 </div>
+                                {/* Title */}
                                 <div className="lab-title">{lab.name}</div>
                                 <div className="lab-subtitle">{lab.subtitle}</div>
+                                {/* Description */}
                                 <p className="lab-desc">{lab.desc}</p>
+                                {/* Footer */}
                                 <div className="lab-footer">
                                     <span className={`diff-badge ${(t.diffClass||{})[lab.diff]||'diff-einstieg'}`}>{lab.diff}</span>
                                     <span className="lab-cta">{t.cta_module}</span>
@@ -661,8 +606,6 @@ function App() {
             <section style={{ padding: '0 1.5rem 4rem', background: 'white' }}>
                 <div style={{ maxWidth: 1200, margin: '0 auto' }}>
                     <a href={t.bonus.link}
-                       className="scroll-reveal"
-                       ref={ref}
                        style={{
                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                            gap: '2rem', flexWrap: 'wrap',
@@ -674,7 +617,8 @@ function App() {
                            border: '1.5px solid rgba(3,137,207,0.35)'
                        }}
                        onMouseOver={e => { e.currentTarget.style.transform='translateY(-4px)'; e.currentTarget.style.boxShadow='0 16px 40px rgba(3,137,207,0.28)'; }}
-                       onMouseOut={e  => { e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 8px 32px rgba(3,137,207,0.18)'; }}>
+                       onMouseOut={e  => { e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 8px 32px rgba(3,137,207,0.18)'; }}
+                       ref={ref}>
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
                                 <span style={{ background: '#E8792F', color: 'white', fontWeight: 800, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
@@ -700,72 +644,43 @@ function App() {
                 </div>
             </section>
 
-            {/* ── Tech Stack & Tools ── */}
-            <section id="tools" className="scroll-reveal" style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
-                <div style={{ maxWidth: 1000, margin: '0 auto' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{ fontSize: 'clamp(1.6rem,3vw,2.25rem)', fontWeight: 900, color: '#0369A1', marginBottom: '0.6rem', letterSpacing: '-0.02em' }}>{t.tools_title}</h2>
-                        <p style={{ color: '#94a3b8', fontSize: '0.95rem' }}>{t.tools_sub}</p>
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-                        {t.tool_categories.map((cat, i) => (
-                            <div key={i} style={{ background: 'white', borderRadius: 10, padding: '1.25rem', border: '1px solid rgba(3,137,207,0.12)' }}>
-                                <h4 style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0389CF', marginBottom: '0.75rem', marginTop: 0 }}>{cat.title}</h4>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                                    {cat.items.map((item, j) => (
-                                        <span key={j} className="tech-chip">{item}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    {/* Prerequisites */}
-                    <div style={{ background: 'rgba(3,137,207,0.07)', borderLeft: '4px solid #0389CF', borderRadius: '0 8px 8px 0', padding: '1.25rem 1.5rem' }}>
-                        <h3 style={{ fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem', marginTop: 0, fontSize: '0.95rem' }}>{t.prereq_title}</h3>
-                        <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: 2, color: '#4b5563', fontSize: '0.9rem' }}>
-                            {t.prereq_items.map((item, i) => <li key={i}>{item}</li>)}
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
             {/* ── Colab CTA ── */}
-            <section id="colab" className="scroll-reveal" style={{ padding: '5rem 1.5rem', background: '#0389CF' }} ref={ref}>
-                <div style={{ maxWidth: 960, margin: '0 auto', color: 'white' }}>
+            <section id="docker" style={{ padding: '5rem 1.5rem', background: '#0389CF' }}>
+                <div style={{ maxWidth: 960, margin: '0 auto', color: 'white' }} ref={ref}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
                             <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 12, padding: '1rem', display: 'inline-flex' }}>
                                 <Icon paths={ICON_PACKAGE} size={32}/>
                             </div>
                         </div>
-                        <h2 style={{ fontSize: 'clamp(1.6rem,3vw,2.25rem)', fontWeight: 900, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>{t.colab_title}</h2>
-                        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem' }}>{t.colab_sub}</p>
+                        <h2 style={{ fontSize: 'clamp(1.6rem,3vw,2.25rem)', fontWeight: 900, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>{t.docker_title}</h2>
+                        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem' }}>{t.docker_sub}</p>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(250px,1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
-                        {t.colab_steps.map((s, i) => (
-                            <div key={i} className="colab-step">
-                                <div className="colab-step-label">{s.label}</div>
-                                <div className="colab-step-code">{s.code}</div>
+                        {t.docker_steps.map((s, i) => (
+                            <div key={i} className="docker-step">
+                                <div className="docker-step-label">{s.label}</div>
+                                <div className="docker-step-code">{s.code}</div>
                             </div>
                         ))}
                     </div>
                     <div style={{ textAlign: 'center' }}>
                         <a href="colab-guide.html" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#E8792F', color: 'white', fontWeight: 800, padding: '1rem 2.25rem', borderRadius: 10, fontSize: '1rem', textDecoration: 'none' }}>
-                            {t.colab_cta}
+                            {t.docker_cta}
                         </a>
                     </div>
                 </div>
             </section>
 
             {/* ── About ── */}
-            <section id="about" className="scroll-reveal" style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
-                <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <section id="about" style={{ padding: '5rem 1.5rem', background: '#f8fafc' }}>
+                <div style={{ maxWidth: 960, margin: '0 auto' }} ref={ref}>
                     <h2 style={{ fontSize: '1.75rem', fontWeight: 900, color: '#0369A1', marginBottom: '2rem', letterSpacing: '-0.02em' }}>{t.about_title}</h2>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: '3rem' }}>
                         <div>
                             <p style={{ color: '#4b5563', lineHeight: 1.75, marginBottom: '1.5rem', fontSize: '0.95rem' }}>{t.about_desc}</p>
                             <div style={{ background: 'rgba(3,137,207,0.07)', borderLeft: '4px solid #0389CF', borderRadius: '0 8px 8px 0', padding: '1.25rem 1.5rem' }}>
-                                <h3 style={{ fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem', fontSize: '0.95rem', marginTop: 0 }}>{t.why_title}</h3>
+                                <h3 style={{ fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem', fontSize: '0.95rem' }}>{t.why_title}</h3>
                                 <p style={{ color: '#4b5563', fontSize: '0.88rem', lineHeight: 1.7, margin: 0 }}>{t.why_text}</p>
                             </div>
                         </div>
@@ -774,7 +689,7 @@ function App() {
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                                 {t.goals.map((g, i) => (
                                     <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                                        <span style={{ color: '#16a34a', fontWeight: 800, fontSize: '0.9rem', flexShrink: 0, marginTop: '0.1rem' }}>\u2713</span>
+                                        <span style={{ color: '#16a34a', fontWeight: 800, fontSize: '0.9rem', flexShrink: 0, marginTop: '0.1rem' }}>✓</span>
                                         <span style={{ color: '#4b5563', fontSize: '0.88rem', lineHeight: 1.65 }}>{g}</span>
                                     </li>
                                 ))}
@@ -782,10 +697,12 @@ function App() {
                         </div>
                     </div>
                     {/* References */}
-                    <div style={{ marginTop: '2.5rem', borderTop: '1px solid #e5e7eb', paddingTop: '1.5rem' }}>
-                        <h4 style={{ fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0389CF', marginBottom: '0.75rem', marginTop: 0 }}>{t.ref_title}</h4>
-                        <ul style={{ margin: 0, paddingLeft: '1.25rem', color: '#6b7280', fontSize: '0.82rem', lineHeight: 1.8 }}>
-                            {t.refs.map((r, i) => <li key={i}>{r}</li>)}
+                    <div style={{ marginTop: '2.5rem', borderTop: '1px solid rgba(3,137,207,0.12)', paddingTop: '1.5rem' }}>
+                        <h3 style={{ fontWeight: 800, color: '#0369A1', marginBottom: '0.75rem', fontSize: '0.88rem' }}>{t.refs_title}</h3>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                            {t.refs.map((r, i) => (
+                                <li key={i} style={{ color: '#64748b', fontSize: '0.8rem', lineHeight: 1.65, marginBottom: '0.3rem' }}>{r}</li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -794,16 +711,16 @@ function App() {
             {/* ── Footer ── */}
             <footer style={{ padding: '2.5rem 1.5rem', background: '#0f172a', textAlign: 'center' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
-                    <Icon paths={ICON_CODE} size={20} style={{ color: '#475569', stroke: '#475569' }}/>
+                    <Icon paths={ICON_CODE} size={20} className="" style={{ color: '#475569', stroke: '#475569' }}/>
                 </div>
                 <p style={{ fontWeight: 700, color: '#e2e8f0', marginBottom: '0.3rem', fontSize: '0.9rem' }}>{t.footer_built}</p>
                 <p style={{ color: '#64748b', fontSize: '0.82rem', marginBottom: '0.25rem' }}>{t.footer_prof}</p>
-                <div style={{ marginTop: '1rem' }}>
+                <p style={{ color: '#475569', fontSize: '0.72rem', marginBottom: '0.5rem' }}>© 2025–2026 THWS Business School</p>
+                <div style={{ marginTop: '1.25rem' }}>
                     <a href="https://github.com/swrobuts/dav" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#60a5fa', fontSize: '0.82rem', textDecoration: 'none' }}>
                         <Icon paths={ICON_GITHUB} size={14}/> {t.footer_github}
                     </a>
                 </div>
-                <p style={{ color: '#475569', fontSize: '0.72rem', marginTop: '1rem' }}>{t.footer_copy}</p>
             </footer>
         </div>
     );
