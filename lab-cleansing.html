@@ -102,8 +102,8 @@ df['menge'] = df['menge'].fillna(df['menge'].median())
 df['kategorie'] = df['kategorie'].fillna(df['kategorie'].mode()[0])
 
 # --- Strategie 3: Forward/Backward Fill (Zeitreihen) ---
-df['zeitreihe'] = df['zeitreihe'].fillna(method='ffill')  # vorheriger Wert
-df['zeitreihe'] = df['zeitreihe'].fillna(method='bfill')  # nächster Wert
+df['zeitreihe'] = df['zeitreihe'].ffill()  # vorheriger Wert
+df['zeitreihe'] = df['zeitreihe'].bfill()  # nächster Wert
 
 # --- Strategie 4: KNN-Imputation (sklearn) ---
 from sklearn.impute import KNNImputer
@@ -181,7 +181,7 @@ df['menge'] = df['menge'].astype(int)
 
 # String zu Datum
 df['datum'] = pd.to_datetime(df['datum'], format='%d.%m.%Y', errors='coerce')
-df['datum_auto'] = pd.to_datetime(df['datum_str'], infer_datetime_format=True)
+df['datum_auto'] = pd.to_datetime(df['datum_str'], format='mixed')
 
 # Kategorische Spalten (Speicher sparen!)
 df['kategorie'] = df['kategorie'].astype('category')
@@ -229,8 +229,10 @@ scores_after, total_after = data_quality_score(df_clean)
 print(f"Qualitätsscore NACHHER: {total_after:.1f}/100")
 print(f"\\nVerbesserung: +{total_after - total_before:.1f} Punkte")`;
 
-function CodeBlock({ code }) {
+function CodeBlock({ code, lang }) {
     const [copied, setCopied] = useState(false);
+    const copyLabel = lang === 'en' ? 'Copy' : 'Kopieren';
+    const copiedLabel = lang === 'en' ? 'Copied' : 'Kopiert';
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
             setCopied(true);
@@ -247,18 +249,21 @@ function CodeBlock({ code }) {
     };
     return (
         <div className="code-wrapper">
-            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
-                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title={copyLabel}>
+                {copied ? '✓ ' + copiedLabel : '⎘ ' + copyLabel}
             </button>
             <div className="code-block">{code}</div>
         </div>
     );
 }
 
-function QuizSection({ questions, title, intro }) {
+function QuizSection({ questions, title, intro, lang }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
     const [score, setScore] = useState(null);
+    const btnLabel = lang === 'en' ? 'Results' : 'Auswertung';
+    const goodLabel = lang === 'en' ? 'Excellent!' : 'Sehr gut!';
+    const retryLabel = lang === 'en' ? 'Review and retry!' : 'Nochmal lesen!';
     const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
     const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
     return (
@@ -269,18 +274,18 @@ function QuizSection({ questions, title, intro }) {
                 {q.opts.map((opt,oi) => <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>)}
             </div>
         ))}
-        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>{btnLabel}</button>
         {score !== null && (
             <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}>
                 <p className="text-2xl font-black">{score}/{questions.length}</p>
-                <p className="font-semibold">{score>=questions.length*0.8?'Sehr gut!':'Nochmal lesen!'}</p>
+                <p className="font-semibold">{score>=questions.length*0.8?goodLabel:retryLabel}</p>
             </div>
         )}
         </div>
     );
 }
 
-const quiz_questions = [
+const quiz_de = [
     { q: 'Was versteht man unter "Data Cleansing"?', opts: ['Die Integration von Daten aus verschiedenen Quellen','Die Visualisierung von Daten','Das Bereinigen von Daten, um Inkonsistenzen und Fehler zu korrigieren','Die Reduktion von Daten auf wesentliche Informationen'], ans: 2 },
     { q: 'Was ist KEIN typisches Fehlerbild in Daten?', opts: ['Fehlende Merkmalsausprägungen','Duplikate','Zu hohe Datenqualität','Inkonsistente Daten'], ans: 2 },
     { q: 'Was beschreibt "Imputation" im Kontext von Data Preparation am besten?', opts: ['Entfernung von Ausreißern aus dem Datensatz','Ersetzung fehlender Werte durch statistische Schätzungen','Integration von Daten aus mehreren Quellen','Transformation von Daten in ein anderes Skalenniveau'], ans: 1 },
@@ -288,6 +293,16 @@ const quiz_questions = [
     { q: 'Welches Verfahren ist nicht Teil des "Data Cleansing"?', opts: ['Entfernung von Duplikaten','Identifizierung und Korrektur von Schreibfehlern','Erhöhung der Datenmenge durch synthetische Datenerzeugung','Behandlung fehlender Werte'], ans: 2 },
     { q: 'Welcher Algorithmus wird typischerweise NICHT in der Phase der Datenbereinigung eingesetzt?', opts: ['K-Means-Clustering','Nearest-Neighbor-Imputation','Outlier Detection mittels Z-Score','Entfernung von Duplikaten'], ans: 0 },
     { q: 'Was ist "Feature Scaling"?', opts: ['Die Auswahl der wichtigsten Merkmale für das maschinelle Lernen','Die Anpassung der Größe von Grafiken in der Datenvisualisierung','Die Normalisierung oder Standardisierung von Merkmalen in einem Datensatz','Die Erzeugung neuer Merkmale aus bestehenden Daten'], ans: 2 }
+];
+
+const quiz_en = [
+    { q: 'What is "Data Cleansing"?', opts: ['Integrating data from different sources','Visualizing data','Cleaning data to correct inconsistencies and errors','Reducing data to essential information'], ans: 2 },
+    { q: 'Which is NOT a typical error pattern in data?', opts: ['Missing values','Duplicates','Too high data quality','Inconsistent data'], ans: 2 },
+    { q: 'What best describes "Imputation" in Data Preparation?', opts: ['Removing outliers from the dataset','Replacing missing values with statistical estimates','Integrating data from multiple sources','Transforming data to a different scale level'], ans: 1 },
+    { q: 'Which method is typically NOT used to handle missing values?', opts: ['Mean imputation','Deleting observations with missing values','Replacing with the most frequent value','Using blockchain technology'], ans: 3 },
+    { q: 'Which process is NOT part of "Data Cleansing"?', opts: ['Removing duplicates','Identifying and correcting typos','Increasing data volume through synthetic data generation','Handling missing values'], ans: 2 },
+    { q: 'Which algorithm is typically NOT used during the data cleansing phase?', opts: ['K-Means Clustering','Nearest-Neighbor Imputation','Outlier Detection via Z-Score','Removing duplicates'], ans: 0 },
+    { q: 'What is "Feature Scaling"?', opts: ['Selecting the most important features for machine learning','Adjusting the size of graphics in data visualization','Normalizing or standardizing features in a dataset','Generating new features from existing data'], ans: 2 }
 ];
 
 function App() {
@@ -300,12 +315,12 @@ function App() {
     const title = lang === 'de' ? 'Daten bereinigen' : 'Data Cleansing';
 
     const errorPatterns = [
-        { type: lang==='de'?'Fehlende Werte':'Missing Values', examples: 'NaN, None, "", N/A, -999', label: 'NaN' },
-        { type: 'Duplikate / Duplicates', examples: lang==='de'?'Gleiche Zeile 2x vorhanden':'Same row appears twice', label: 'DUP' },
-        { type: lang==='de'?'Inkonsistente Strings':'Inconsistent Strings', examples: '"München", "Muenchen", " münchen"', label: 'STR' },
-        { type: lang==='de'?'Falsche Datentypen':'Wrong Data Types', examples: '"29.5" als String statt Float', label: 'TYPE' },
-        { type: 'Ausreißer / Outliers', examples: lang==='de'?'Preis = -500 oder 99999999':'Price = -500 or 99999999', label: 'OUT' },
-        { type: lang==='de'?'Strukturelle Fehler':'Structural Errors', examples: lang==='de'?'PLZ = "8000" statt "80000"':'ZIP = "8000" instead of "80000"', label: 'ERR' }
+        { type: lang==='en'?'Missing Values':'Fehlende Werte', examples: 'NaN, None, "", N/A, -999', label: 'NaN' },
+        { type: lang==='en'?'Duplicates':'Duplikate', examples: lang==='en'?'Same row appears twice':'Gleiche Zeile 2x vorhanden', label: 'DUP' },
+        { type: lang==='en'?'Inconsistent Strings':'Inkonsistente Strings', examples: '"München", "Muenchen", " münchen"', label: 'STR' },
+        { type: lang==='en'?'Wrong Data Types':'Falsche Datentypen', examples: lang==='en'?'"29.5" as string instead of float':'"29.5" als String statt Float', label: 'TYPE' },
+        { type: lang==='en'?'Outliers':'Ausreißer', examples: lang==='en'?'Price = -500 or 99999999':'Preis = -500 oder 99999999', label: 'OUT' },
+        { type: lang==='en'?'Structural Errors':'Strukturelle Fehler', examples: lang==='en'?'ZIP = "8000" instead of "80000"':'PLZ = "8000" statt "80000"', label: 'ERR' }
     ];
 
     return (
@@ -333,7 +348,10 @@ function App() {
                     </div>
                     <h3>{lang==='de'?'Der systematische Bereinigungsworkflow':'The Systematic Cleaning Workflow'}</h3>
                     <div className="flex flex-wrap gap-2">
-                        {['1. Fehlende Werte / Missing Values','2. Duplikate / Duplicates','3. Strings bereinigen / Clean Strings','4. Datentypen korrigieren / Fix Data Types','5. Ausreißer behandeln / Handle Outliers','6. Qualität messen / Measure Quality'].map((s,i) => (
+                        {(lang==='en'
+                            ? ['1. Missing Values','2. Duplicates','3. Clean Strings','4. Fix Data Types','5. Handle Outliers','6. Measure Quality']
+                            : ['1. Fehlende Werte','2. Duplikate','3. Strings bereinigen','4. Datentypen korrigieren','5. Ausreißer behandeln','6. Qualität messen']
+                        ).map((s,i) => (
                             <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-xl text-sm font-semibold text-white" style={{background:'#0389CF'}}>{s}</span>
                         ))}
                     </div>
@@ -357,26 +375,26 @@ function App() {
                 <div id="missing" className="mb-12">
                     <h2>{lang==='de'?'Fehlende Werte behandeln':'Handling Missing Values'}</h2>
                     <p className="text-gray-600 text-sm">{lang==='de'?'Strategien je nach Anteil fehlender Werte und Domänenwissen:':'Strategies depending on the proportion of missing values and domain knowledge:'}</p>
-                    <CodeBlock code={code_missing} />
+                    <CodeBlock lang={lang} code={code_missing} />
                 </div>
                 <div id="duplicates" className="mb-12">
                     <h2>{lang==='de'?'Duplikate entfernen':'Removing Duplicates'}</h2>
-                    <CodeBlock code={code_duplicates} />
+                    <CodeBlock lang={lang} code={code_duplicates} />
                 </div>
                 <div id="strings" className="mb-12">
                     <h2>{lang==='de'?'Strings bereinigen':'Cleaning Strings'}</h2>
-                    <CodeBlock code={code_strings} />
+                    <CodeBlock lang={lang} code={code_strings} />
                 </div>
                 <div id="datatypes" className="mb-12">
                     <h2>{lang==='de'?'Datentypen korrigieren':'Fixing Data Types'}</h2>
-                    <CodeBlock code={code_datatypes} />
+                    <CodeBlock lang={lang} code={code_datatypes} />
                     <div className="tip-box">
                         <p className="text-yellow-800 text-sm">{lang==='de'?'Kategorische Spalten als "category"-Typ speichern spart oft 60-70% Speicher!':'Saving categorical columns as "category" type often saves 60-70% memory!'}</p>
                     </div>
                 </div>
                 <div id="outlier_handling" className="mb-12">
                     <h2>{lang==='de'?'Ausreißer behandeln':'Handling Outliers'}</h2>
-                    <CodeBlock code={`import pandas as pd
+                    <CodeBlock lang={lang} code={`import pandas as pd
 import numpy as np
 
 df = pd.read_excel('../data/verkaufsdaten_mit_problemen.xlsx')
@@ -401,46 +419,35 @@ print(f"Vorher: {len(df)} | Nachher: {len(df_clean)} ({len(df)-len(df_clean)} en
                 </div>
                 <div id="quality_score" className="mb-12">
                     <h2>{lang==='de'?'Vorher/Nachher Qualitätsscore':'Before/After Quality Score'}</h2>
-                    <CodeBlock code={code_quality} />
+                    <CodeBlock lang={lang} code={code_quality} />
                     <div className="challenge-box">
                         <p className="font-bold text-green-800">Challenge</p>
                         <p className="text-green-700 text-sm mt-1">{lang==='de'?'Lade verkaufsdaten_mit_problemen.xlsx und erstelle eine vollständige Bereinigungspipeline. Erstelle am Ende einen "Vorher/Nachher"-Report.':'Load verkaufsdaten_mit_problemen.xlsx and create a complete cleaning pipeline. Create a "Before/After" report at the end.'}</p>
                     </div>
                 </div>
                 <div id="quiz" className="mb-12">
-                    <QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Daten bereinigen':'Quiz: Data Cleansing'} intro={lang==='de'?'Testen Sie Ihr Wissen – 7 Fragen.':'Test your knowledge – 7 questions.'} />
+                    <QuizSection lang={lang} questions={lang==='de'?quiz_de:quiz_en} title={lang==='de'?'Quiz: Daten bereinigen':'Quiz: Data Cleansing'} intro={lang==='de'?'Testen Sie Ihr Wissen – 7 Fragen.':'Test your knowledge – 7 questions.'} />
                 </div>
                 <div id="notebook" className="mb-12">
                     <h2>{lang==='de'?'Notebook öffnen':'Open Notebook'}</h2>
-                    <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/05_Daten_Bereinigen.ipynb" target="_blank" rel="noopener noreferrer"
-                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
-                        05_Daten_Bereinigen.ipynb →
-                    </a>
                     <div className="info-box mt-4">
                         <p className="text-blue-800 text-sm">{lang==='de'?'Datensatz: verkaufsdaten_mit_problemen.xlsx – ein echter Problemdatensatz!':'Dataset: verkaufsdaten_mit_problemen.xlsx – a real problem dataset!'}</p>
                     </div>
-                    <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
-                        <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                            {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
-                        </p>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/05_Daten_Bereinigen.ipynb"
-                           target="_blank" rel="noopener noreferrer"
-                           style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                            Notebook in Colab öffnen →
+                    <div style={{marginTop:'1rem'}}>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/05_Daten_Bereinigen.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/>
+                            {lang==='en'?'05 Data Cleansing':'05 Daten Bereinigen'}
                         </a>
-                    <div className="notebook-cta-group">
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/05_Daten_Bereinigen.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 05 Daten Bereinigen</a>
-                    </div>
                     </div>
                 </div>
             </main>
 
             {/* Footer */}
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
-                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
-                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>{lang==='en'?'Built for BBA Students':'Gebaut für BBA Studierende'} · THWS</p>
+                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>&copy; 2026 Prof. Dr. Robert Butscher</p>
                 <div style={{marginTop:'1rem'}}>
-                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
+                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>&larr; DAV Lab</a>
                 </div>
             </footer>
         </div>
