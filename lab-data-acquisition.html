@@ -129,16 +129,18 @@ r.hset('user:42', mapping={"name": "Anna", "email": "anna@example.com"})
 print(r.hgetall('user:42'))`;
 
 const CODE_CLOUD = `import pandas as pd
+import os
 from io import StringIO, BytesIO
 
 # ── AWS S3 (pip install boto3) ─────────────────────────────────
 import boto3
 
 s3 = boto3.client('s3',
-    aws_access_key_id='AKIAIOSFODNN7EXAMPLE',
-    aws_secret_access_key='wJalrXUtnFEMI/K7MDENG',
+    aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
     region_name='eu-central-1'
 )
+# Tipp: Keys NIEMALS im Code! → Umgebungsvariablen oder AWS CLI Profile nutzen
 
 # CSV von S3 einlesen
 obj = s3.get_object(Bucket='mein-datenbucket', Key='sales/2026-Q1.csv')
@@ -399,7 +401,7 @@ df = pd.read_sql(query, engine, params={'plz': '97070'})`,
     quiz: [
         { q: 'Welches Format ist ideal für große Datensätze in Cloud-Umgebungen (komprimiert, spaltenbasiert)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
         { q: 'Was sollten Sie vor dem Web Scraping immer prüfen?', opts: ['Die Dateigröße der Webseite', 'Die robots.txt und Nutzungsbedingungen', 'Den HTTP-Status 404', 'Die JavaScript-Version'], ans: 1 },
-        { q: 'Welche pandas-Funktion liest eine CSV-Datei mit Semikolon-Trennzeichen?', opts: ['pd.read_csv(file, delimiter=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")', 'pd.load_csv(file, sep=";")'], ans: 1 },
+        { q: 'Welche pandas-Funktion liest eine CSV-Datei mit Semikolon-Trennzeichen?', opts: ['pd.read_csv(file, separator=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")', 'pd.load_csv(file, sep=";")'], ans: 1 },
         { q: 'Was gibt response.status_code bei einer erfolgreichen HTTP-Anfrage zurück?', opts: ['404', '500', '200', '302'], ans: 2 },
         { q: 'Welche Bibliothek ermöglicht einheitliche Datenbankverbindungen in Python?', opts: ['requests', 'beautifulsoup4', 'sqlalchemy', 'pyarrow'], ans: 2 }
     ],
@@ -451,7 +453,7 @@ const en = {
     quiz: [
         { q: 'Which format is ideal for large datasets in cloud environments (compressed, columnar)?', opts: ['CSV', 'JSON', 'Parquet', 'XML'], ans: 2 },
         { q: 'What should you always check before web scraping?', opts: ['The file size of the website', 'The robots.txt and terms of service', 'The HTTP 404 status', 'The JavaScript version'], ans: 1 },
-        { q: 'Which pandas function reads a CSV file with semicolon separator?', opts: ['pd.read_csv(file, delimiter=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")','pd.load_csv(file, sep=";")'], ans: 1 },
+        { q: 'Which pandas function reads a CSV file with semicolon separator?', opts: ['pd.read_csv(file, separator=";")','pd.read_csv(file, sep=";")','pd.read_excel(file, sep=";")','pd.load_csv(file, sep=";")'], ans: 1 },
         { q: 'What does response.status_code return for a successful HTTP request?', opts: ['404', '500', '200', '302'], ans: 2 },
         { q: 'Which library enables unified database connections in Python?', opts: ['requests', 'beautifulsoup4', 'sqlalchemy', 'pyarrow'], ans: 2 }
     ],
@@ -460,14 +462,13 @@ const en = {
 
 // ── CodeBlock with copy button ───────────────────────────────────────────────
 
-function CodeBlock({ code }) {
+function CodeBlock({ code, lang }) {
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         }).catch(() => {
-            // Fallback for older browsers
             const ta = document.createElement('textarea');
             ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
             document.body.appendChild(ta); ta.select();
@@ -477,10 +478,12 @@ function CodeBlock({ code }) {
             setTimeout(() => setCopied(false), 2000);
         });
     };
+    const copyLabel = lang === 'en' ? 'Copy' : 'Kopieren';
+    const copiedLabel = lang === 'en' ? '✓ Copied' : '✓ Kopiert';
     return (
         <div className="code-wrapper">
-            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
-                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title={copyLabel}>
+                {copied ? copiedLabel : `⎘ ${copyLabel}`}
             </button>
             <div className="code-block">{code}</div>
         </div>
@@ -489,12 +492,15 @@ function CodeBlock({ code }) {
 
 // ── Quiz ─────────────────────────────────────────────────────────────────────
 
-function QuizSection({ questions, title, intro }) {
+function QuizSection({ questions, title, intro, lang }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
     const [score, setScore] = useState(null);
     const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
     const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
+    const btnLabel = lang === 'en' ? 'Results' : 'Auswertung';
+    const goodLabel = lang === 'en' ? 'Excellent!' : 'Sehr gut!';
+    const retryLabel = lang === 'en' ? 'Review the material!' : 'Nochmal lesen!';
     return (
         <div>
             <h2>{title}</h2><p>{intro}</p>
@@ -506,11 +512,11 @@ function QuizSection({ questions, title, intro }) {
                     ))}
                 </div>
             ))}
-            <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+            <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>{btnLabel}</button>
             {score !== null && (
                 <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}>
                     <p className="text-2xl font-black">{score}/{questions.length}</p>
-                    <p className="font-semibold">{score >= questions.length*0.8 ? 'Sehr gut!' : 'Nochmal lesen!'}</p>
+                    <p className="font-semibold">{score >= questions.length*0.8 ? goodLabel : retryLabel}</p>
                 </div>
             )}
         </div>
@@ -530,7 +536,7 @@ function App() {
             <div>
                 <h2>{tr.overview.title}</h2>
                 <div className="tip-box">
-                    <p className="font-semibold text-yellow-800">Szenario / Scenario</p>
+                    <p className="font-semibold text-yellow-800">{lang === 'en' ? 'Scenario' : 'Szenario'}</p>
                     <p className="text-yellow-700 text-sm mt-1">{tr.overview.scenario}</p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
@@ -538,26 +544,33 @@ function App() {
                 </div>
             </div>
         )},
-        {id:'csv',      content: () => <div><h2>{tr.csv_title}</h2><p>{tr.csv_desc}</p><CodeBlock code={tr.csv_code} /></div>},
-        {id:'json',     content: () => <div><h2>{tr.json_title}</h2><p>{tr.json_desc}</p><CodeBlock code={tr.json_code} /></div>},
-        {id:'xml',      content: () => <div><h2>{tr.xml_title}</h2><p>{tr.xml_desc}</p><CodeBlock code={tr.xml_code} /></div>},
-        {id:'excel',    content: () => <div><h2>{tr.excel_title}</h2><p>{tr.excel_desc}</p><CodeBlock code={tr.excel_code} /></div>},
-        {id:'parquet',  content: () => <div><h2>{tr.parquet_title}</h2><p>{tr.parquet_desc}</p><CodeBlock code={tr.parquet_code} /></div>},
-        {id:'api',      content: () => <div><h2>{tr.api_title}</h2><p>{tr.api_desc}</p><CodeBlock code={tr.api_code} /></div>},
+        {id:'csv',      content: () => <div><h2>{tr.csv_title}</h2><p>{tr.csv_desc}</p><CodeBlock lang={lang} code={tr.csv_code} /></div>},
+        {id:'json',     content: () => <div><h2>{tr.json_title}</h2><p>{tr.json_desc}</p><CodeBlock lang={lang} code={tr.json_code} /></div>},
+        {id:'xml',      content: () => <div><h2>{tr.xml_title}</h2><p>{tr.xml_desc}</p><CodeBlock lang={lang} code={tr.xml_code} /></div>},
+        {id:'excel',    content: () => <div><h2>{tr.excel_title}</h2><p>{tr.excel_desc}</p><CodeBlock lang={lang} code={tr.excel_code} /></div>},
+        {id:'parquet',  content: () => <div><h2>{tr.parquet_title}</h2><p>{tr.parquet_desc}</p><CodeBlock lang={lang} code={tr.parquet_code} /></div>},
+        {id:'api',      content: () => <div><h2>{tr.api_title}</h2><p>{tr.api_desc}</p><CodeBlock lang={lang} code={tr.api_code} /></div>},
         {id:'scraping', content: () => (
             <div><h2>{tr.scraping_title}</h2><p>{tr.scraping_desc}</p>
             <div className="tip-box">
-                <p className="font-bold text-yellow-800">Ethische Grundsätze / Ethical Guidelines</p>
+                <p className="font-bold text-yellow-800">{lang === 'en' ? 'Ethical Guidelines' : 'Ethische Grundsätze'}</p>
                 <ul className="text-yellow-700 text-sm mt-1 space-y-1">
-                    <li>• robots.txt immer prüfen / Always check robots.txt</li>
-                    <li>• Nutzungsbedingungen lesen / Read Terms of Service</li>
-                    <li>• Keine personenbezogenen Daten ohne Einwilligung / No personal data without consent</li>
-                    <li>• Requests begrenzen (Rate Limiting) / Limit request rate</li>
+                    {lang === 'en' ? (<>
+                        <li>• Always check robots.txt</li>
+                        <li>• Read Terms of Service</li>
+                        <li>• No personal data without consent</li>
+                        <li>• Limit request rate (Rate Limiting)</li>
+                    </>) : (<>
+                        <li>• robots.txt immer prüfen</li>
+                        <li>• Nutzungsbedingungen lesen</li>
+                        <li>• Keine personenbezogenen Daten ohne Einwilligung</li>
+                        <li>• Requests begrenzen (Rate Limiting)</li>
+                    </>)}
                 </ul>
             </div>
-            <CodeBlock code={tr.scraping_code} /></div>
+            <CodeBlock lang={lang} code={tr.scraping_code} /></div>
         )},
-        {id:'db',  content: () => <div><h2>{tr.db_title}</h2><p>{tr.db_desc}</p><CodeBlock code={tr.db_code} /></div>},
+        {id:'db',  content: () => <div><h2>{tr.db_title}</h2><p>{tr.db_desc}</p><CodeBlock lang={lang} code={tr.db_code} /></div>},
         {id:'nosql', content: () => (
             <div>
                 <h2>{tr.nosql_title}</h2>
@@ -571,7 +584,7 @@ function App() {
                         </div>
                     ))}
                 </div>
-                <CodeBlock code={tr.nosql_code} />
+                <CodeBlock lang={lang} code={tr.nosql_code} />
             </div>
         )},
         {id:'cloud', content: () => (
@@ -583,7 +596,7 @@ function App() {
                         {lang==='de' ? '💡 Tipp: In den Notebooks werden lokale Daten verwendet – für Cloud-Zugriff benötigst du eigene Zugangsdaten (AWS/Azure Account).' : '💡 Tip: Notebooks use local data – for cloud access you need your own credentials (AWS/Azure account).'}
                     </p>
                 </div>
-                <CodeBlock code={tr.cloud_code} />
+                <CodeBlock lang={lang} code={tr.cloud_code} />
             </div>
         )},
         {id:'bigdata', content: () => (
@@ -610,7 +623,7 @@ function App() {
                 </div>
             </div>
         )},
-        {id:'quiz', content: () => <QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} />},
+        {id:'quiz', content: () => <QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} lang={lang} />},
         {id:'notebook', content: () => (
             <div>
                 <h2>{tr.nb_title}</h2><p>{tr.nb_desc}</p>
@@ -622,7 +635,7 @@ function App() {
                         </a>
                     ))}
                 </div>
-                <div className="info-box mt-4"><p className="text-blue-800 text-sm">Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.</p></div>
+                <div className="info-box mt-4"><p className="text-blue-800 text-sm">{lang === 'en' ? 'Open notebooks directly in Google Colab – no local setup required.' : 'Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.'}</p></div>
                 <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
                     <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
                         {lang==='de' ? 'Notebooks in Colab öffnen:' : 'Open Notebooks in Colab:'}
@@ -656,8 +669,9 @@ function App() {
                 {sections.map(s => <div key={s.id} id={s.id} className="mb-12">{s.content()}</div>)}
             </main>
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
-                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>{lang === 'en' ? 'Built for BBA Students · THWS Würzburg-Schweinfurt' : 'Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt'}</p>
                 <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <p style={{color:'#475569', fontSize:'0.72rem'}}>© 2026</p>
                 <div style={{marginTop:'1rem'}}>
                     <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
                 </div>
