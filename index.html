@@ -106,7 +106,7 @@
             font-weight: 700; font-size: 0.9rem;
             color: #0369A1;
             white-space: nowrap;
-            flex-shrink: 0;
+            flex: 1;
             text-align: center;
             min-width: 110px;
         }
@@ -232,9 +232,10 @@
         /* ── Quote Section ── */
         .quote-section {
             background: #FAFAFA;
-            padding: 3.5rem 2rem;
+            padding: 4rem 2rem 4rem;
             border-top: 1px solid #E5E7EB;
             border-bottom: 1px solid #E5E7EB;
+            margin-bottom: 9rem;
         }
         .quote-inner {
             max-width: 900px;
@@ -372,11 +373,11 @@ const T = {
         diffClass: { 'Einstieg': 'diff-einstieg', 'Grundlagen': 'diff-grundlagen', 'Fortgeschritten': 'diff-fortgeschritten' },
         cta_module: 'Zum Modul →',
         docker_title: 'Jetzt mit Google Colab starten',
-        docker_sub: 'Kein Setup. Kein Download. Python direkt im Browser – auf jedem Gerät.',
+        docker_sub: 'Kein Setup. Kein Download. Python direkt im Browser – auf jedem Gerät. (Keine Werbung für Google Colab.)',
         docker_steps: [
-            { label: '1. Notebook öffnen', code: 'colab.research.google.com\noder Colab-Badge klicken →' },
-            { label: '2. Laufzeit starten',  code: 'Laufzeit → Alle ausführen\n(Strg+F9)' },
-            { label: '3. Fertig!', code: 'Alles läuft in der Cloud.\nKein Install nötig.' }
+            { label: '1. Notebook öffnen', code: 'Colab-Badge im Lab klicken' },
+            { label: '2. Laufzeit starten',  code: 'Laufzeit → Alle ausführen (Strg+F9)' },
+            { label: '3. Fertig!', code: 'Läuft in der Cloud – kein Install nötig' }
         ],
         docker_cta: 'Vollständiger Colab Guide →',
         about_title: 'Über den Kurs',
@@ -394,10 +395,14 @@ const T = {
         ],
         bonus: {
             badge: '⭐ Bonus',
-            title: 'Advanced Visualization',
-            subtitle: 'Plotly.js · GitHub Pages · Dashboard',
-            desc: 'Baue ein vollständiges interaktives Dashboard für den World Happiness Report – mit Choropleth-Weltkarte, Trendlinien und Korrelationsanalyse. Statisch auf GitHub Pages deployt.',
-            link: 'lab-viz-advanced.html',
+            title: 'Inspiration: Interactive Dashboards',
+            subtitle: 'Plotly.js · GitHub Pages · Dashboards',
+            desc: 'Lass dich inspirieren – diese Projekte zeigen, was mit interaktiver Datenvisualisierung möglich ist:',
+            projects: [
+                { name: 'World Happiness Report', url: 'https://swrobuts.github.io/dav/lab-viz-advanced.html', note: 'Choropleth-Weltkarte, Trendlinien & Korrelationsanalyse' },
+                { name: 'ALC Dashboard', url: 'https://alc.butscher.cloud', note: 'Interaktives Analytics-Dashboard' },
+                { name: 'Rainforest Dashboard', url: 'https://rainforest.butscher.cloud', note: 'Explorative Datenvisualisierung' }
+            ],
             diff: 'Bonus'
         },
         refs_title: 'Literatur',
@@ -453,11 +458,11 @@ const T = {
         diffClass: { 'Beginner': 'diff-einstieg', 'Foundation': 'diff-grundlagen', 'Advanced': 'diff-fortgeschritten' },
         cta_module: 'Open Module →',
         docker_title: 'Start with Google Colab Now',
-        docker_sub: 'No setup. No download. Python directly in the browser – on any device.',
+        docker_sub: 'No setup. No download. Python directly in the browser – on any device. (Not an ad for Google Colab.)',
         docker_steps: [
-            { label: '1. Open Notebook', code: 'colab.research.google.com\nor click a Colab badge →' },
-            { label: '2. Start Runtime',  code: 'Runtime → Run all\n(Ctrl+F9)' },
-            { label: '3. Done!', code: 'Everything runs in the cloud.\nNo installation needed.' }
+            { label: '1. Open Notebook', code: 'Click the Colab badge in any lab' },
+            { label: '2. Start Runtime',  code: 'Runtime → Run all (Ctrl+F9)' },
+            { label: '3. Done!', code: 'Runs in the cloud – no install needed' }
         ],
         docker_cta: 'Full Colab Guide →',
         about_title: 'About the Course',
@@ -475,10 +480,14 @@ const T = {
         ],
         bonus: {
             badge: '⭐ Bonus',
-            title: 'Advanced Visualization',
-            subtitle: 'Plotly.js · GitHub Pages · Dashboard',
-            desc: 'Build a full interactive dashboard for the World Happiness Report – with choropleth world map, trend lines, and correlation analysis. Deployed statically on GitHub Pages.',
-            link: 'lab-viz-advanced.html',
+            title: 'Inspiration: Interactive Dashboards',
+            subtitle: 'Plotly.js · GitHub Pages · Dashboards',
+            desc: 'Get inspired – these projects showcase what\'s possible with interactive data visualization:',
+            projects: [
+                { name: 'World Happiness Report', url: 'https://swrobuts.github.io/dav/lab-viz-advanced.html', note: 'Choropleth world map, trend lines & correlation analysis' },
+                { name: 'ALC Dashboard', url: 'https://alc.butscher.cloud', note: 'Interactive analytics dashboard' },
+                { name: 'Rainforest Dashboard', url: 'https://rainforest.butscher.cloud', note: 'Exploratory data visualization' }
+            ],
             diff: 'Bonus'
         },
         refs_title: 'References',
@@ -661,10 +670,10 @@ function App() {
 
             {/* ── Workflow ── */}
             <section style={{ padding: '5rem 1.5rem', background: '#f8fafc' }} ref={ref}>
-                <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+                <div style={{ maxWidth: 1200, margin: '0 auto' }}>
                     <h2 style={{ textAlign: 'center', fontSize: '1.6rem', fontWeight: 800, color: '#0369A1', marginBottom: '0.5rem' }}>{t.workflow_title}</h2>
                     <p style={{ textAlign: 'center', color: '#94a3b8', marginBottom: '2.5rem', fontSize: '0.95rem' }}>{t.workflow_sub}</p>
-                    <div className="workflow-row" style={{ justifyContent: 'center' }}>
+                    <div className="workflow-row" style={{ justifyContent: 'stretch' }}>
                         {t.workflow.map((item, i) => (
                             <React.Fragment key={i}>
                                 <div className="workflow-box">{item}</div>
@@ -710,48 +719,55 @@ function App() {
             {/* ── Bonus Card ── */}
             <section style={{ padding: '0 1.5rem 4rem', background: 'white' }}>
                 <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-                    <a href={t.bonus.link}
+                    <div
                        style={{
-                           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                           gap: '2rem', flexWrap: 'wrap',
-                           background: 'linear-gradient(135deg, #1a1a1a 0%, #0f2744 100%)',
+                           background: 'linear-gradient(135deg, rgba(3,137,207,0.12) 0%, rgba(3,137,207,0.22) 100%)',
                            borderRadius: 14, padding: '2rem 2.25rem',
-                           textDecoration: 'none', color: 'inherit',
-                           boxShadow: '0 8px 32px rgba(3,137,207,0.18)',
-                           transition: 'transform 0.2s, box-shadow 0.2s',
-                           border: '1.5px solid rgba(3,137,207,0.35)'
+                           boxShadow: '0 8px 32px rgba(3,137,207,0.10)',
+                           border: '1.5px solid rgba(3,137,207,0.25)'
                        }}
-                       onMouseOver={e => { e.currentTarget.style.transform='translateY(-4px)'; e.currentTarget.style.boxShadow='0 16px 40px rgba(3,137,207,0.28)'; }}
-                       onMouseOut={e  => { e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 8px 32px rgba(3,137,207,0.18)'; }}
                        ref={ref}>
-                        <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
-                                <span style={{ background: '#E8792F', color: 'white', fontWeight: 800, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
-                                    {t.bonus.badge}
-                                </span>
-                                <span style={{ background: 'rgba(3,137,207,0.25)', color: '#60a5fa', fontWeight: 700, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
-                                    {t.bonus.subtitle}
-                                </span>
-                            </div>
-                            <div style={{ fontSize: '1.3rem', fontWeight: 900, color: 'white', marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
-                                {t.bonus.title}
-                            </div>
-                            <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: 600, margin: 0 }}>
-                                {t.bonus.desc}
-                            </p>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.75rem', flexShrink: 0 }}>
-                            <span style={{ color: '#E8792F', fontWeight: 800, fontSize: '0.9rem' }}>
-                                {t.cta_module}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+                            <span style={{ background: '#E8792F', color: 'white', fontWeight: 800, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
+                                {t.bonus.badge}
+                            </span>
+                            <span style={{ background: 'rgba(3,137,207,0.15)', color: '#0389CF', fontWeight: 700, fontSize: '0.72rem', padding: '0.2rem 0.65rem', borderRadius: 999 }}>
+                                {t.bonus.subtitle}
                             </span>
                         </div>
-                    </a>
+                        <div style={{ fontSize: '1.3rem', fontWeight: 900, color: '#0369A1', marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
+                            {t.bonus.title}
+                        </div>
+                        <p style={{ color: '#4b5563', fontSize: '0.88rem', lineHeight: 1.65, margin: '0 0 1rem 0' }}>
+                            {t.bonus.desc}
+                        </p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                            {t.bonus.projects.map((proj, i) => (
+                                <a key={i} href={proj.url} target="_blank" rel="noopener noreferrer"
+                                   style={{
+                                       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                                       background: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '0.65rem 1rem',
+                                       textDecoration: 'none', color: 'inherit',
+                                       border: '1px solid rgba(3,137,207,0.15)',
+                                       transition: 'background 0.2s, transform 0.15s'
+                                   }}
+                                   onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.95)'; e.currentTarget.style.transform='translateX(4px)'; }}
+                                   onMouseOut={e => { e.currentTarget.style.background='rgba(255,255,255,0.7)'; e.currentTarget.style.transform='none'; }}>
+                                    <div>
+                                        <span style={{ fontWeight: 700, fontSize: '0.88rem', color: '#0369A1' }}>{proj.name}</span>
+                                        <span style={{ color: '#6b7280', fontSize: '0.8rem', marginLeft: '0.75rem' }}>{proj.note}</span>
+                                    </div>
+                                    <span style={{ color: '#E8792F', fontWeight: 800, fontSize: '0.85rem', flexShrink: 0 }}>→</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {/* ── Colab CTA ── */}
             <section id="docker" style={{ padding: '5rem 1.5rem', background: '#0389CF' }}>
-                <div style={{ maxWidth: 960, margin: '0 auto', color: 'white' }} ref={ref}>
+                <div style={{ maxWidth: 1200, margin: '0 auto', color: 'white' }} ref={ref}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
                             <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 12, padding: '1rem', display: 'inline-flex' }}>
