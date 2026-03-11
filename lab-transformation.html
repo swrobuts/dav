@@ -76,8 +76,10 @@
 const { useState } = React;
 const sectionIds = ['overview','reshape','encoding','scaling','engineering','merging','quiz','notebook'];
 
-function CodeBlock({ code }) {
+function CodeBlock({ code, lang }) {
     const [copied, setCopied] = useState(false);
+    const copyLabel = lang === 'en' ? 'Copy' : 'Kopieren';
+    const copiedLabel = lang === 'en' ? 'Copied' : 'Kopiert';
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
             setCopied(true);
@@ -94,18 +96,21 @@ function CodeBlock({ code }) {
     };
     return (
         <div className="code-wrapper">
-            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
-                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title={copyLabel}>
+                {copied ? '✓ ' + copiedLabel : '⎘ ' + copyLabel}
             </button>
             <div className="code-block">{code}</div>
         </div>
     );
 }
 
-function QuizSection({ questions, title, intro }) {
+function QuizSection({ questions, title, intro, lang }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
     const [score, setScore] = useState(null);
+    const btnLabel = lang === 'en' ? 'Results' : 'Auswertung';
+    const goodLabel = lang === 'en' ? 'Excellent!' : 'Sehr gut!';
+    const retryLabel = lang === 'en' ? 'Review and retry!' : 'Nochmal lesen!';
     const check = (qi, oi) => { if (checked[qi]) return; setAnswers(a => ({...a,[qi]:oi})); setChecked(c => ({...c,[qi]:true})); };
     const calcScore = () => { let s=0; questions.forEach((q,i) => { if(answers[i]===q.ans) s++; }); setScore(s); };
     return (
@@ -116,23 +121,31 @@ function QuizSection({ questions, title, intro }) {
                 {q.opts.map((opt,oi) => <button key={oi} className={`quiz-option ${checked[qi]?(oi===q.ans?'correct':(answers[qi]===oi?'wrong':'')):''}` } onClick={() => check(qi,oi)}>{opt}</button>)}
             </div>
         ))}
-        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>Auswertung / Results</button>
+        <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>{btnLabel}</button>
         {score !== null && (
             <div className="mt-4 p-4 rounded-xl text-center" style={{background:score>=questions.length*0.8?'#f0fdf4':'#fef2f2'}}>
                 <p className="text-2xl font-black">{score}/{questions.length}</p>
-                <p className="font-semibold">{score>=questions.length*0.8?'Sehr gut!':'Nochmal lesen!'}</p>
+                <p className="font-semibold">{score>=questions.length*0.8?goodLabel:retryLabel}</p>
             </div>
         )}
         </div>
     );
 }
 
-const quiz_questions = [
+const quiz_de = [
     { q: 'Für welches Problem ist "One-Hot-Encoding" eine gängige Lösung?', opts: ['Behandlung von fehlenden Daten','Umwandlung kategorialer Daten in eine maschinenlesbare Form','Reduktion der Dimensionalität von Datensätzen','Erkennung und Korrektur von Ausreißern'], ans: 1 },
     { q: 'Was ist "Feature Scaling"?', opts: ['Die Auswahl der wichtigsten Merkmale für das maschinelle Lernen','Die Anpassung der Größe von Grafiken','Die Normalisierung oder Standardisierung von Merkmalen in einem Datensatz','Die Erzeugung neuer Merkmale aus bestehenden Daten'], ans: 2 },
     { q: 'Was beschreibt den Prozess der "Feature Extraction" am besten?', opts: ['Auswahl existierender Merkmale aus dem Datensatz','Erzeugung neuer Merkmale aus den vorhandenen Daten zur Verbesserung der Modellleistung','Reduktion der Merkmalsdimension durch Eliminierung','Bereinigung der Merkmalswerte'], ans: 1 },
     { q: 'Was ist kein direktes Ziel der Datentransformation?', opts: ['Konvertierung von Daten in ein einheitliches Format','Normalisierung der Daten','Erzeugung von Mehrwert durch Datenanreicherung','Aggregation von Daten'], ans: 2 },
     { q: 'Was beschreibt "Data Integration" im Rahmen der Datenaufbereitung?', opts: ['Die Analyse und Interpretation von Daten','Die Zusammenführung von Daten aus diversen Quellen zu einem einheitlichen Datenbestand','Das Löschen aller Daten, die nicht sofort analysiert werden können','Die Erstellung von Berichten ohne vorherige Datenbereinigung'], ans: 1 }
+];
+
+const quiz_en = [
+    { q: 'For which problem is "One-Hot Encoding" a common solution?', opts: ['Handling missing data','Converting categorical data into a machine-readable form','Reducing the dimensionality of datasets','Detecting and correcting outliers'], ans: 1 },
+    { q: 'What is "Feature Scaling"?', opts: ['Selecting the most important features for machine learning','Adjusting the size of graphics','Normalizing or standardizing features in a dataset','Generating new features from existing data'], ans: 2 },
+    { q: 'What best describes the process of "Feature Extraction"?', opts: ['Selecting existing features from the dataset','Generating new features from existing data to improve model performance','Reducing feature dimensions by elimination','Cleaning feature values'], ans: 1 },
+    { q: 'What is NOT a direct goal of data transformation?', opts: ['Converting data into a uniform format','Normalizing data','Creating added value through data enrichment','Aggregating data'], ans: 2 },
+    { q: 'What describes "Data Integration" in data preparation?', opts: ['Analyzing and interpreting data','Combining data from diverse sources into a unified dataset','Deleting all data that cannot be analyzed immediately','Creating reports without prior data cleansing'], ans: 1 }
 ];
 
 function App() {
@@ -176,7 +189,7 @@ function App() {
                 <div id="reshape" className="mb-12">
                     <h2>{lang==='de'?'Reshape: melt(), pivot(), stack()':'Reshape: melt(), pivot(), stack()'}</h2>
                     <p className="text-gray-600 text-sm">{lang==='de'?'Manchmal müssen Daten von "wide" zu "long" Format umgewandelt werden (oder umgekehrt).':'Sometimes data needs to be converted from "wide" to "long" format (or vice versa).'}</p>
-                    <CodeBlock code={`import pandas as pd
+                    <CodeBlock lang={lang} code={`import pandas as pd
 
 # Beispiel: Umsatzdaten nach Quartal
 df_wide = pd.DataFrame({
@@ -217,7 +230,7 @@ unstacked = stacked.unstack()  # zurück zu wide`} />
 
                 <div id="encoding" className="mb-12">
                     <h2>{lang==='de'?'Encoding kategorischer Variablen':'Encoding Categorical Variables'}</h2>
-                    <CodeBlock code={`import pandas as pd
+                    <CodeBlock lang={lang} code={`import pandas as pd
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 df = pd.read_csv('../data/customer_churn.csv')
@@ -246,13 +259,13 @@ df_ohe = pd.DataFrame(encoded, columns=feature_names)
 print("Encoding abgeschlossen!")
 print(f"Spalten vorher: {len(df.columns)}, nachher: {len(df_encoded.columns)}")`} />
                     <div className="info-box">
-                        <p className="text-blue-800 text-sm"><b>One-Hot vs. Label-Encoding:</b> One-Hot für nominale Kategorien ohne Reihenfolge (Stadt, Farbe). Label-Encoding für ordinale Kategorien mit natürlicher Reihenfolge (Klein &lt; Mittel &lt; Groß).</p>
+                        <p className="text-blue-800 text-sm"><b>One-Hot vs. Label-Encoding:</b> {lang==='en'?'One-Hot for nominal categories without order (city, color). Label-Encoding for ordinal categories with natural order (Small < Medium < Large).':'One-Hot für nominale Kategorien ohne Reihenfolge (Stadt, Farbe). Label-Encoding für ordinale Kategorien mit natürlicher Reihenfolge (Klein < Mittel < Groß).'}</p>
                     </div>
                 </div>
 
                 <div id="scaling" className="mb-12">
                     <h2>{lang==='de'?'Feature Scaling: Normalisierung vs. Standardisierung':'Feature Scaling: Normalization vs. Standardization'}</h2>
-                    <CodeBlock code={`import pandas as pd
+                    <CodeBlock lang={lang} code={`import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
@@ -286,13 +299,13 @@ df_original = pd.DataFrame(
     columns=numeric_cols
 )`} />
                     <div className="tip-box">
-                        <p className="text-yellow-800 text-sm">Immer: <code>fit()</code> nur auf Trainingsdaten, dann <code>transform()</code> auf Training und Test. Sonst Data Leakage!</p>
+                        <p className="text-yellow-800 text-sm">{lang==='en'?'Always: ':'Immer: '}<code>fit()</code> {lang==='en'?'only on training data, then ':'nur auf Trainingsdaten, dann '}<code>transform()</code> {lang==='en'?'on train and test. Otherwise Data Leakage!':'auf Training und Test. Sonst Data Leakage!'}</p>
                     </div>
                 </div>
 
                 <div id="engineering" className="mb-12">
                     <h2>Feature Engineering</h2>
-                    <CodeBlock code={`import pandas as pd
+                    <CodeBlock lang={lang} code={`import pandas as pd
 import numpy as np
 
 df = pd.read_csv('../data/customer_churn.csv')
@@ -327,7 +340,7 @@ print("Neue Features:", [c for c in df.columns if c not in ['customer_id']][:10]
 
                 <div id="merging" className="mb-12">
                     <h2>{lang==='de'?'Merging & Joining: Daten zusammenführen':'Merging & Joining: Combining Data'}</h2>
-                    <CodeBlock code={`import pandas as pd
+                    <CodeBlock lang={lang} code={`import pandas as pd
 
 # Beispiel-Datensätze laden
 kunden = pd.read_csv('../data/customers.csv')     # Kundenstammdaten
@@ -351,62 +364,50 @@ df_outer = pd.merge(kunden, bestellungen, on='customer_id', how='outer')
 df = pd.merge(bestellungen, produkte,
     left_on='product_id', right_on='id', how='left')
 
-# Mehrere Schlüssel
-df = pd.merge(df1, df2, on=['kunden_id', 'datum'])
+# Mehrere Schlüssel (Syntax-Beispiel)
+# df = pd.merge(df1, df2, on=['kunden_id', 'datum'])
 
 # SQL-Äquivalent:
 # SELECT * FROM kunden k LEFT JOIN bestellungen b ON k.customer_id = b.customer_id
 
 # --- pd.concat(): Stapeln ---
-# Zeilenweise (neue Zeilen anfügen)
-df_all = pd.concat([kunden_2023, kunden_2024], axis=0, ignore_index=True)
+# Zeilenweise (Syntax-Beispiel)
+# df_all = pd.concat([kunden_2023, kunden_2024], axis=0, ignore_index=True)
 
-# Spaltenweise
-df_combined = pd.concat([df_basis, df_features], axis=1)
+# Spaltenweise (Syntax-Beispiel)
+# df_combined = pd.concat([df_basis, df_features], axis=1)
 
 print(f"Ergebnis: {df_inner.shape}")`} />
                     <div className="info-box">
-                        <p className="text-blue-800 text-sm"><b>Merge vs. Concat:</b> merge() für Joins auf gemeinsamen Schlüsselspalten (wie SQL). concat() für einfaches Stapeln von DataFrames.</p>
+                        <p className="text-blue-800 text-sm"><b>Merge vs. Concat:</b> {lang==='en'?'merge() for joins on shared key columns (like SQL). concat() for simply stacking DataFrames.':'merge() für Joins auf gemeinsamen Schlüsselspalten (wie SQL). concat() für einfaches Stapeln von DataFrames.'}</p>
                     </div>
                 </div>
 
                 <div id="quiz" className="mb-12">
-                    <QuizSection questions={quiz_questions} title={lang==='de'?'Quiz: Daten transformieren':'Quiz: Data Transformation'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} />
+                    <QuizSection lang={lang} questions={lang==='de'?quiz_de:quiz_en} title={lang==='de'?'Quiz: Daten transformieren':'Quiz: Data Transformation'} intro={lang==='de'?'Testen Sie Ihr Wissen – 5 Fragen.':'Test your knowledge – 5 questions.'} />
                 </div>
 
                 <div id="notebook" className="mb-12">
                     <h2>{lang==='de'?'Notebooks öffnen':'Open Notebooks'}</h2>
-                    <div className="flex flex-wrap gap-3">
-                        {['06_Daten_Transformieren','07_Daten_Zusammenfuehren'].map(nb => (
-                            <a key={nb} href={`https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/${nb}.ipynb`} target="_blank" rel="noopener noreferrer"
-                               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style={{background:'#E8792F'}}>
-                                {nb}.ipynb →
-                            </a>
-                        ))}
-                    </div>
-                    <div style={{marginTop:'2rem', background:'#0389CF', borderRadius:12, padding:'2rem', textAlign:'center'}}>
-                        <p style={{color:'white', fontWeight:800, fontSize:'1.1rem', marginBottom:'1rem'}}>
-                            {lang==='de' ? 'Notebook in Colab öffnen:' : 'Open Notebook in Colab:'}
-                        </p>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/06_Daten_Transformieren.ipynb"
-                           target="_blank" rel="noopener noreferrer"
-                           style={{display:'inline-flex', alignItems:'center', gap:'0.5rem', background:'#E8792F', color:'white', fontWeight:700, padding:'0.9rem 2rem', borderRadius:10, fontSize:'1rem', textDecoration:'none'}}>
-                            Notebook in Colab öffnen →
+                    <div className="flex flex-wrap gap-3" style={{marginTop:'1rem'}}>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/06_Daten_Transformieren.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/>
+                            {lang==='en'?'06 Data Transformation':'06 Daten Transformieren'}
                         </a>
-                    <div className="notebook-cta-group">
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/06_Daten_Transformieren.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 06 Daten Transformieren</a>
-                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/07_Daten_Zusammenfuehren.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/> 07 Daten Zusammenfuehren</a>
-                    </div>
+                        <a href="https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/07_Daten_Zusammenfuehren.ipynb" target="_blank" rel="noopener noreferrer" className="colab-btn">
+                            <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab" style={{height:"18px"}}/>
+                            {lang==='en'?'07 Data Merging':'07 Daten Zusammenfuehren'}
+                        </a>
                     </div>
                 </div>
             </main>
 
             {/* Footer */}
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
-                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
-                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>{lang==='en'?'Built for BBA Students':'Gebaut für BBA Studierende'} · THWS</p>
+                <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>&copy; 2026 Prof. Dr. Robert Butscher</p>
                 <div style={{marginTop:'1rem'}}>
-                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
+                    <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>&larr; DAV Lab</a>
                 </div>
             </footer>
         </div>
