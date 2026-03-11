@@ -84,7 +84,7 @@ const t = {
         brand: 'DAV Lab',
         back: '← DAV Lab',
         title: 'Grundlagen & CRISP-DM',
-        sections: ['Überblick', 'Was ist DAV?', 'CRISP-DM', 'Garbage in/out', 'Warum Python?', 'Lernziele', 'Quiz', 'Notebook'],
+        sections: ['Überblick', 'Was ist DAV?', 'CRISP-DM', 'Garbage in/out', 'Warum Python?', 'Data Literacy', 'Lernziele', 'Quiz', 'Notebook'],
         overview: {
             title: 'Grundlagen & CRISP-DM',
             desc: 'Bevor Sie mit der praktischen Datenaufbereitung beginnen, ist es wichtig, den konzeptionellen Rahmen zu verstehen: Was genau ist Datenaufbereitung, und wie ist sie in den Gesamtprozess der Datenanalyse eingebettet?',
@@ -94,7 +94,7 @@ const t = {
             title: 'Was ist Datenaufbereitung?',
             p1: 'Datenaufbereitung (englisch: Data Preparation oder Data Wrangling) bezeichnet alle Aktivitäten, die notwendig sind, um Rohdaten in eine Form zu bringen, die für die Analyse geeignet ist.',
             quote: '„80% der Arbeit eines Data Scientists entfällt auf die Datenaufbereitung."',
-            quote_src: '— Gartner Research, ComputerWeekly',
+            quote_src: '— CrowdFlower Data Scientist Survey (2016)',
             p2: 'Rohdaten, wie sie aus der Realität kommen, sind fast nie analysefertig. Sie enthalten fehlende Werte, Tippfehler, inkonsistente Formatierungen, doppelte Einträge und unpassende Datentypen.',
             dimensions: 'Die 6 Dimensionen der Datenqualität:',
             dim_items: ['Vollständigkeit – Sind alle Werte vorhanden?', 'Richtigkeit – Sind die Werte korrekt?', 'Konsistenz – Stimmen die Werte überein?', 'Aktualität – Sind die Daten aktuell?', 'Eindeutigkeit – Gibt es keine Duplikate?', 'Validität – Entsprechen Werte erlaubten Formaten?'],
@@ -124,6 +124,7 @@ print(df.dtypes)`
                 { name: 'Evaluation', color: '#22c55e', desc: 'Modell bewerten: Beantwortet es das Geschäftsziel?' },
                 { name: 'Deployment', color: '#f59e0b', desc: 'Ergebnisse in die Praxis bringen, Modell in Produktion nehmen.' }
             ],
+            source: 'Quelle: Chapman, P. et al. (2000): CRISP-DM 1.0 – Step-by-step data mining guide.',
             focus: 'DAV fokussiert auf die Phasen 2 und 3 – Data Understanding und Data Preparation. Diese Phasen sind iterativ: Oft stellt man beim Bereinigen fest, dass man die Daten noch nicht vollständig versteht.',
             iterative: 'CRISP-DM ist kein linearer Prozess! Man springt zwischen Phasen hin und her. Typisch: Man entdeckt beim Modellieren, dass weitere Datenbereinigung nötig ist.'
         },
@@ -143,7 +144,10 @@ print(df.dtypes)`
                 { name: 'numpy', desc: 'Numerische Berechnungen, Array-Operationen.' },
                 { name: 'matplotlib / seaborn', desc: 'Visualisierung von Daten.' },
                 { name: 'scikit-learn', desc: 'Machine Learning Preprocessing (Skalierung, Encoding, Imputation).' },
-                { name: 'sqlalchemy', desc: 'Datenbankverbindungen, SQL in Python.' }
+                { name: 'sqlalchemy', desc: 'Datenbankverbindungen, SQL in Python.' },
+                { name: 'requests', desc: 'HTTP-Anfragen, REST-API-Anbindung.' },
+                { name: 'beautifulsoup4', desc: 'Web Scraping, HTML/XML parsen.' },
+                { name: 'openpyxl', desc: 'Excel-Dateien (.xlsx) lesen und schreiben.' }
             ],
             quickstart: 'Quick-Start: Erste Schritte in pandas',
             code: `import pandas as pd
@@ -168,6 +172,11 @@ print(df.nunique())
 df_delayed = df[df["dep_delay"] > 60]
 print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")`
         },
+        literacy: {
+            title: 'Data Literacy',
+            p1: 'Data Literacy bezeichnet die Fähigkeit, Daten kritisch zu lesen, zu interpretieren, zu hinterfragen und sinnvoll zu kommunizieren. Im Kontext der Datenaufbereitung bedeutet das: die Zuverlässigkeit von Datenquellen beurteilen, Verzerrungen erkennen und die Grenzen von Daten verstehen.',
+            p2: 'Ohne Data Literacy bleibt selbst die beste technische Datenaufbereitung wirkungslos – denn die Ergebnisse müssen verstanden, eingeordnet und kommuniziert werden können.'
+        },
         goals: {
             title: 'Lernziele des DAV-Kurses',
             intro: 'Nach Abschluss des Kurses können Sie:',
@@ -181,10 +190,9 @@ print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")`
             ],
             module_map: 'Modulstruktur:',
             modules: [
-                '01 CRISP-DM & Grundlagen', '02 Dateiformate', '03 APIs & Web Scraping',
-                '04 Daten inspizieren', '05 Daten bereinigen', '06 Daten transformieren',
-                '07 Daten zusammenführen', '08 Visualisierung',
-                '09–11 Fallstudien', '12 Wissenstests'
+                '01 Grundlagen & CRISP-DM', '02 Datenakquise',
+                '03 Explorative Datenanalyse', '04 Datenbereinigung',
+                '05 Datentransformation', '06 Anwendungsfälle'
             ]
         },
         quiz_title: 'Quiz: Grundlagen',
@@ -197,20 +205,20 @@ print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")`
             { q: 'Welcher Schritt gehört NICHT direkt zur "Data Preparation"?', opts: ['Datenbereinigung', 'Datenintegration', 'Modellierung', 'Datentransformation'], ans: 2 }
         ],
         notebook_title: 'Zum Notebook',
-        notebook_desc: 'Öffnen Sie das Notebook in JupyterLab für praktische Übungen:',
+        notebook_desc: 'Öffnen Sie das Notebook in Google Colab für praktische Übungen:',
         notebook_link: 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/01_CRISP_DM.ipynb',
         notebook_label: 'Notebook in Colab öffnen →'
     },
     en: {
         brand: 'DAV Lab', back: '← DAV Lab',
         title: 'Fundamentals & CRISP-DM',
-        sections: ['Overview', 'What is DAV?', 'CRISP-DM', 'Garbage in/out', 'Why Python?', 'Learning Goals', 'Quiz', 'Notebook'],
+        sections: ['Overview', 'What is DAV?', 'CRISP-DM', 'Garbage in/out', 'Why Python?', 'Data Literacy', 'Learning Goals', 'Quiz', 'Notebook'],
         overview: {
             title: 'Fundamentals & CRISP-DM',
             desc: 'Before starting practical data preparation, it is important to understand the conceptual framework: What exactly is data preparation, and how is it embedded in the overall data analysis process?',
             goals: ['Understand the term "Data Preparation" and its significance', 'Learn the CRISP-DM process model', 'Internalize the "Garbage in, Garbage out" principle', 'Get to know Python as the primary tool', 'Overview of DAV course learning objectives']
         },
-        what: { title: 'What is Data Preparation?', p1: 'Data preparation (also: Data Wrangling) refers to all activities necessary to bring raw data into a form suitable for analysis.', quote: '"80% of a data scientist\'s work falls on data preparation."', quote_src: '— Gartner Research, ComputerWeekly', p2: 'Raw data, as it comes from reality, is almost never analysis-ready. It contains missing values, typos, inconsistent formatting, duplicate entries and unsuitable data types.', dimensions: 'The 6 dimensions of data quality:', dim_items: ['Completeness – Are all values present?', 'Accuracy – Are the values correct?', 'Consistency – Do values agree?', 'Timeliness – Is the data current?', 'Uniqueness – Are there no duplicates?', 'Validity – Do values match allowed formats?'], gartner: 'Definition by Gartner: "Data preparation is the process of collecting, cleaning, and consolidating data into one file or data table, primarily for use in analysis."', steps: 'Typical data preparation steps:', step_items: ['Data Collection', 'Data Inspection', 'Data Cleansing', 'Data Transformation', 'Data Integration'], quality_code: `import pandas as pd
+        what: { title: 'What is Data Preparation?', p1: 'Data preparation (also: Data Wrangling) refers to all activities necessary to bring raw data into a form suitable for analysis.', quote: '"80% of a data scientist\'s work falls on data preparation."', quote_src: '— CrowdFlower Data Scientist Survey (2016)', p2: 'Raw data, as it comes from reality, is almost never analysis-ready. It contains missing values, typos, inconsistent formatting, duplicate entries and unsuitable data types.', dimensions: 'The 6 dimensions of data quality:', dim_items: ['Completeness – Are all values present?', 'Accuracy – Are the values correct?', 'Consistency – Do values agree?', 'Timeliness – Is the data current?', 'Uniqueness – Are there no duplicates?', 'Validity – Do values match allowed formats?'], gartner: 'Definition by Gartner: "Data preparation is the process of collecting, cleaning, and consolidating data into one file or data table, primarily for use in analysis."', steps: 'Typical data preparation steps:', step_items: ['Data Collection', 'Data Inspection', 'Data Cleansing', 'Data Transformation', 'Data Integration'], quality_code: `import pandas as pd
 
 df = pd.read_csv("../data/flights.csv")
 
@@ -221,9 +229,9 @@ print(df.isnull().sum())
 print("\\nDuplikate / Duplicates:", df.duplicated().sum())
 print("\\nDatentypen / Data types:")
 print(df.dtypes)` },
-        crisp: { title: 'The CRISP-DM Model', p1: 'CRISP-DM stands for Cross-Industry Standard Process for Data Mining. It is the most widely used process model for data science projects.', phases: [{ name: 'Business Understanding', color: '#0389CF', desc: 'What is the business goal? What questions need to be answered?' }, { name: 'Data Understanding', color: '#06b6d4', desc: 'What data is available? First exploratory analysis.' }, { name: 'Data Preparation', color: '#E8792F', desc: 'Clean, transform, integrate data. ← That\'s DAV!' }, { name: 'Modeling', color: '#8b5cf6', desc: 'Train and optimize machine learning models.' }, { name: 'Evaluation', color: '#22c55e', desc: 'Evaluate model: Does it answer the business goal?' }, { name: 'Deployment', color: '#f59e0b', desc: 'Bring results into practice, deploy model to production.' }], focus: 'DAV focuses on phases 2 and 3 – Data Understanding and Data Preparation. These phases are iterative: Often you discover while cleaning that you don\'t fully understand the data yet.', iterative: 'CRISP-DM is not a linear process! You jump between phases. Typical: You discover during modeling that further data cleaning is needed.' },
+        crisp: { title: 'The CRISP-DM Model', p1: 'CRISP-DM stands for Cross-Industry Standard Process for Data Mining. It is the most widely used process model for data science projects.', phases: [{ name: 'Business Understanding', color: '#0389CF', desc: 'What is the business goal? What questions need to be answered?' }, { name: 'Data Understanding', color: '#06b6d4', desc: 'What data is available? First exploratory analysis.' }, { name: 'Data Preparation', color: '#E8792F', desc: 'Clean, transform, integrate data. ← That\'s DAV!' }, { name: 'Modeling', color: '#8b5cf6', desc: 'Train and optimize machine learning models.' }, { name: 'Evaluation', color: '#22c55e', desc: 'Evaluate model: Does it answer the business goal?' }, { name: 'Deployment', color: '#f59e0b', desc: 'Bring results into practice, deploy model to production.' }], source: 'Source: Chapman, P. et al. (2000): CRISP-DM 1.0 – Step-by-step data mining guide.', focus: 'DAV focuses on phases 2 and 3 – Data Understanding and Data Preparation. These phases are iterative: Often you discover while cleaning that you don\'t fully understand the data yet.', iterative: 'CRISP-DM is not a linear process! You jump between phases. Typical: You discover during modeling that further data cleaning is needed.' },
         garbage: { title: '"Garbage in, Garbage out"', p1: 'This principle describes a fundamental truth of data processing: If bad data is entered into a system, bad results come out – regardless of how good the algorithm is.', example: 'Real-world example: A company trains a churn prediction model with faulty customer data (wrong contract types, missing usage times). The model has high training accuracy, but its real-world predictions are worthless. The cause: Garbage in, Garbage out.', consequences: 'Consequences of poor data quality:', cons_items: ['Wrong business decisions', 'Faulty ML models', 'Regulatory risks', 'Loss of trust in data products'], solution: 'The solution: Systematic data preparation with clear quality criteria – exactly what you learn in the DAV course.' },
-        python: { title: 'Why Python?', p1: 'Python is the language of data science. The ecosystem of libraries is unmatched:', libs: [{ name: 'pandas', desc: 'Data manipulation and analysis. DataFrames as the central data structure.' }, { name: 'numpy', desc: 'Numerical computations, array operations.' }, { name: 'matplotlib / seaborn', desc: 'Data visualization.' }, { name: 'scikit-learn', desc: 'ML Preprocessing (scaling, encoding, imputation).' }, { name: 'sqlalchemy', desc: 'Database connections, SQL in Python.' }], quickstart: 'Quick Start: First steps in pandas', code: `import pandas as pd\nimport numpy as np\n\n# Read CSV\ndf = pd.read_csv('../data/flights.csv')\n\n# First looks\nprint(df.head())           # First 5 rows\nprint(df.info())           # Data types, missing values\nprint(df.describe())       # Statistical summaries\nprint(df.shape)            # (rows, columns)\nprint(df.columns.tolist()) # Column names`, code2: `# Häufigkeitsanalyse / Frequency analysis
+        python: { title: 'Why Python?', p1: 'Python is the language of data science. The ecosystem of libraries is unmatched:', libs: [{ name: 'pandas', desc: 'Data manipulation and analysis. DataFrames as the central data structure.' }, { name: 'numpy', desc: 'Numerical computations, array operations.' }, { name: 'matplotlib / seaborn', desc: 'Data visualization.' }, { name: 'scikit-learn', desc: 'ML Preprocessing (scaling, encoding, imputation).' }, { name: 'sqlalchemy', desc: 'Database connections, SQL in Python.' }, { name: 'requests', desc: 'HTTP requests, REST API integration.' }, { name: 'beautifulsoup4', desc: 'Web scraping, HTML/XML parsing.' }, { name: 'openpyxl', desc: 'Read and write Excel files (.xlsx).' }], quickstart: 'Quick Start: First steps in pandas', code: `import pandas as pd\nimport numpy as np\n\n# Read CSV\ndf = pd.read_csv('../data/flights.csv')\n\n# First looks\nprint(df.head())           # First 5 rows\nprint(df.info())           # Data types, missing values\nprint(df.describe())       # Statistical summaries\nprint(df.shape)            # (rows, columns)\nprint(df.columns.tolist()) # Column names`, code2: `# Häufigkeitsanalyse / Frequency analysis
 print(df["origin"].value_counts().head())
 
 # Eindeutige Werte / Unique values
@@ -232,7 +240,8 @@ print(df.nunique())
 # Einfache Filterung / Simple filtering
 df_delayed = df[df["dep_delay"] > 60]
 print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")` },
-        goals: { title: 'Course Learning Objectives', intro: 'After completing the course, you will be able to:', items: ['Read various data sources (CSV, JSON, XML, Excel, REST APIs, SQL)', 'Assess data quality and systematically identify error patterns', 'Deliberately handle missing values, duplicates and outliers', 'Transform and encode data for ML models', 'Independently implement complete data prep workflows with Python/pandas', 'Visualize and communicate results'], module_map: 'Module structure:', modules: ['01 CRISP-DM & Basics', '02 File Formats', '03 APIs & Web Scraping', '04 Data Inspection', '05 Data Cleansing', '06 Data Transformation', '07 Data Merging', '08 Visualization', '09–11 Case Studies', '12 Knowledge Tests'] },
+        literacy: { title: 'Data Literacy', p1: 'Data Literacy is the ability to critically read, interpret, question, and meaningfully communicate data. In the context of data preparation, this means: assessing the reliability of data sources, recognizing biases, and understanding the limitations of data.', p2: 'Without Data Literacy, even the best technical data preparation is ineffective – because results need to be understood, contextualized, and communicated.' },
+        goals: { title: 'Course Learning Objectives', intro: 'After completing the course, you will be able to:', items: ['Read various data sources (CSV, JSON, XML, Excel, REST APIs, SQL)', 'Assess data quality and systematically identify error patterns', 'Deliberately handle missing values, duplicates and outliers', 'Transform and encode data for ML models', 'Independently implement complete data prep workflows with Python/pandas', 'Visualize and communicate results'], module_map: 'Module structure:', modules: ['01 Fundamentals & CRISP-DM', '02 Data Acquisition', '03 Exploratory Data Analysis', '04 Data Cleansing', '05 Data Transformation', '06 Use Cases'] },
         quiz_title: 'Quiz: Fundamentals',
         quiz_intro: 'Test your understanding – 5 questions.',
         quiz: [
@@ -243,15 +252,15 @@ print(f"Stark verspätet / Heavily delayed: {len(df_delayed)} Flüge/flights")` 
             { q: 'Which step does NOT belong directly to "Data Preparation"?', opts: ['Data cleansing', 'Data integration', 'Modeling', 'Data transformation'], ans: 2 }
         ],
         notebook_title: 'Open Notebook',
-        notebook_desc: 'Open the notebook in JupyterLab for hands-on exercises:',
+        notebook_desc: 'Open the notebook in Google Colab for hands-on exercises:',
         notebook_link: 'https://colab.research.google.com/github/swrobuts/dav/blob/main/notebooks/01_CRISP_DM.ipynb',
         notebook_label: 'Open Notebook in Colab →'
     }
 };
 
-const sectionIds = ['overview','what','crisp','garbage','python','goals','quiz','notebook'];
+const sectionIds = ['overview','what','crisp','garbage','python','literacy','goals','quiz','notebook'];
 
-function CodeBlock({ code }) {
+function CodeBlock({ code, lang }) {
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
         navigator.clipboard.writeText(code).then(() => {
@@ -267,17 +276,19 @@ function CodeBlock({ code }) {
             setTimeout(() => setCopied(false), 2000);
         });
     };
+    const copyLabel = lang === 'en' ? 'Copy' : 'Kopieren';
+    const copiedLabel = lang === 'en' ? '✓ Copied' : '✓ Kopiert';
     return (
         <div className="code-wrapper">
-            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title="Code kopieren">
-                {copied ? '✓ Kopiert' : '⎘ Kopieren'}
+            <button className={`copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy} title={copyLabel}>
+                {copied ? copiedLabel : `⎘ ${copyLabel}`}
             </button>
             <div className="code-block">{code}</div>
         </div>
     );
 }
 
-function QuizSection({ questions, title, intro }) {
+function QuizSection({ questions, title, intro, lang }) {
     const [answers, setAnswers] = useState({});
     const [checked, setChecked] = useState({});
     const [score, setScore] = useState(null);
@@ -292,6 +303,9 @@ function QuizSection({ questions, title, intro }) {
         questions.forEach((q, i) => { if (answers[i] === q.ans) s++; });
         setScore(s);
     };
+    const btnLabel = lang === 'en' ? 'Results' : 'Auswertung';
+    const goodLabel = lang === 'en' ? 'Excellent!' : 'Sehr gut!';
+    const retryLabel = lang === 'en' ? 'Review the material!' : 'Nochmal lesen!';
 
     return (
         <div>
@@ -310,12 +324,12 @@ function QuizSection({ questions, title, intro }) {
                 </div>
             ))}
             <button onClick={calcScore} className="mt-4 px-6 py-3 rounded-xl text-white font-bold" style={{background:'#0389CF'}}>
-                Auswertung / Results
+                {btnLabel}
             </button>
             {score !== null && (
                 <div className="mt-4 p-4 rounded-xl text-center" style={{background: score >= questions.length * 0.8 ? '#f0fdf4' : '#fef2f2'}}>
                     <p className="text-2xl font-black">{score}/{questions.length}</p>
-                    <p className="font-semibold">{score >= questions.length * 0.8 ? 'Sehr gut!' : 'Nochmal lesen!'}</p>
+                    <p className="font-semibold">{score >= questions.length * 0.8 ? goodLabel : retryLabel}</p>
                 </div>
             )}
         </div>
@@ -356,7 +370,7 @@ function App() {
                     <h2>{tr.overview.title}</h2>
                     <p>{tr.overview.desc}</p>
                     <div className="concept-box">
-                        <p className="font-semibold mb-2" style={{color:'#0389CF'}}>In diesem Modul lernen Sie:</p>
+                        <p className="font-semibold mb-2" style={{color:'#0389CF'}}>{lang === 'en' ? 'In this module you will learn:' : 'In diesem Modul lernen Sie:'}</p>
                         <ul>{tr.overview.goals.map((g,i) => <li key={i} className="flex items-start gap-2 text-sm text-gray-600 mb-1"><span className="text-green-500 font-bold flex-shrink-0">✓</span>{g}</li>)}</ul>
                     </div>
                 </div>
@@ -375,7 +389,7 @@ function App() {
                             <div key={i} className="bg-white rounded-xl p-3 border border-gray-200 text-sm text-gray-700">{d}</div>
                         ))}
                     </div>
-                    <CodeBlock code={tr.what.quality_code} />
+                    <CodeBlock lang={lang} code={tr.what.quality_code} />
                     <div className="info-box mt-4">
                         <p className="text-sm text-blue-800 italic">{tr.what.gartner}</p>
                     </div>
@@ -402,12 +416,13 @@ function App() {
                     </div>
                     <div className="info-box"><p className="text-blue-800 text-sm">{tr.crisp.focus}</p></div>
                     <div className="tip-box"><p className="text-yellow-800 text-sm font-semibold">{tr.crisp.iterative}</p></div>
+                    <p className="text-xs text-gray-400 mt-3 italic">{tr.crisp.source}</p>
                 </div>
 
                 <div id="garbage" className="mb-12">
                     <h2>{tr.garbage.title}</h2>
                     <p>{tr.garbage.p1}</p>
-                    <div className="challenge-box"><p className="text-green-800 text-sm"><span className="font-bold">Praxisbeispiel: </span>{tr.garbage.example}</p></div>
+                    <div className="challenge-box"><p className="text-green-800 text-sm"><span className="font-bold">{lang === 'en' ? 'Real-world example: ' : 'Praxisbeispiel: '}</span>{tr.garbage.example}</p></div>
                     <h3>{tr.garbage.consequences}</h3>
                     <ul className="space-y-2">
                         {tr.garbage.cons_items.map((c,i) => (
@@ -431,8 +446,14 @@ function App() {
                         ))}
                     </div>
                     <h3>{tr.python.quickstart}</h3>
-                    <CodeBlock code={tr.python.code} />
-                    <CodeBlock code={tr.python.code2} />
+                    <CodeBlock lang={lang} code={tr.python.code} />
+                    <CodeBlock lang={lang} code={tr.python.code2} />
+                </div>
+
+                <div id="literacy" className="mb-12">
+                    <h2>{tr.literacy.title}</h2>
+                    <p>{tr.literacy.p1}</p>
+                    <div className="concept-box"><p className="text-sm" style={{color:'#0389CF'}}>{tr.literacy.p2}</p></div>
                 </div>
 
                 <div id="goals" className="mb-12">
@@ -455,7 +476,7 @@ function App() {
                 </div>
 
                 <div id="quiz" className="mb-12">
-                    <QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} />
+                    <QuizSection questions={tr.quiz} title={tr.quiz_title} intro={tr.quiz_intro} lang={lang} />
                 </div>
 
                 <div id="notebook" className="mb-12">
@@ -470,15 +491,16 @@ function App() {
                         </div>
                     </div>
                     <div className="info-box mt-4">
-                        <p className="text-blue-800 text-sm">Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.</p>
+                        <p className="text-blue-800 text-sm">{lang === 'en' ? 'Open notebook directly in Google Colab – no local setup required.' : 'Notebook direkt in Google Colab öffnen – kein lokales Setup nötig.'}</p>
                     </div>
                 </div>
             </main>
 
             {/* Footer */}
             <footer style={{background:'#0f172a', padding:'2.5rem 1.5rem', textAlign:'center', marginLeft:260}}>
-                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt</p>
+                <p style={{fontWeight:700, color:'#e2e8f0', marginBottom:'0.3rem', fontSize:'0.9rem'}}>{lang === 'en' ? 'Built for BBA Students · THWS Würzburg-Schweinfurt' : 'Gebaut für BBA Studierende · THWS Würzburg-Schweinfurt'}</p>
                 <p style={{color:'#64748b', fontSize:'0.82rem', marginBottom:'0.25rem'}}>Prof. Dr. Robert Butscher</p>
+                <p style={{color:'#475569', fontSize:'0.72rem'}}>© 2026</p>
                 <div style={{marginTop:'1rem'}}>
                     <a href="index.html" style={{color:'#60a5fa', fontSize:'0.82rem', textDecoration:'none'}}>← DAV Lab</a>
                 </div>
